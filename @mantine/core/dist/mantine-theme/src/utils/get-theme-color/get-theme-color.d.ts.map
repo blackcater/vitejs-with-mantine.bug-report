@@ -1,0 +1,1 @@
+{"version":3,"file":"get-theme-color.d.ts","sourceRoot":"","sources":["../../../../../../mantine-theme/src/utils/get-theme-color/get-theme-color.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,YAAY,EAAE,MAAM,aAAa,CAAC;AAE3C,wBAAgB,aAAa,CAAC,EAC5B,KAAK,EACL,KAAK,EACL,KAAK,GACN,EAAE;IACD,KAAK,EAAE,YAAY,CAAC;IACpB,KAAK,EAAE,MAAM,CAAC;IACd,KAAK,EAAE,MAAM,CAAC;CACf,UAGA"}

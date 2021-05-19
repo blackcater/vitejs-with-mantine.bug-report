@@ -1,0 +1,1 @@
+{"version":3,"file":"Text.styles.d.ts","sourceRoot":"","sources":["../../../../src/Text/Text.styles.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,YAAY,EAAE,WAAW,EAAiC,mCAAuB;AAE1F,oBAAY,WAAW,GAAG,MAAM,GAAG,MAAM,CAAC;AAE1C,UAAU,eAAe;IACvB,KAAK,EAAE,YAAY,CAAC;IACpB,KAAK,EAAE,MAAM,CAAC;IACd,OAAO,EAAE,WAAW,CAAC;IACrB,IAAI,EAAE,WAAW,CAAC;CACnB;;;;AAED,wBAwBE"}
