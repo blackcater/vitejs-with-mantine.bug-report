@@ -1,0 +1,23 @@
+{
+  "name": "@mantine/core",
+  "version": "1.0.6",
+  "main": "dist/index.js",
+  "module": "es/index.js",
+  "esnext": "es/index.js",
+  "types": "dist/mantine-core/src/index.d.ts",
+  "license": "MIT",
+  "author": "Vitaly Rtishchev <rtivital@gmail.com>",
+  "sideEffects": false,
+  "peerDependencies": {
+    "@mantine/hooks": "1.0.6",
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0",
+    "react-jss": ">=10.1.1"
+  },
+  "dependencies": {
+    "clsx": "^1.1.1",
+    "react-textarea-autosize": "^8.3.0",
+    "react-transition-group": "^4.4.1"
+  },
+  "devDependencies": {}
+}
