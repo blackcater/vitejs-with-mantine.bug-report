@@ -1,0 +1,13 @@
+{
+  "name": "@mantine/types",
+  "version": "1.0.6",
+  "main": "cjs/index.js",
+  "module": "esm/index.js",
+  "browser": "lib/index.umd.js",
+  "types": "lib/index.d.ts",
+  "license": "MIT",
+  "author": "Vitaly Rtishchev <rtivital@gmail.com>",
+  "peerDependencies": {},
+  "dependencies": {},
+  "devDependencies": {}
+}

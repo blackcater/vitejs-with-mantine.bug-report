@@ -1,0 +1,25 @@
+export function createAriaHider(containerNode, selector = 'body > :not(script)') {
+    const rootNodes = Array.from(document.querySelectorAll(selector)).map((node) => {
+        if (node.contains(containerNode)) {
+            return undefined;
+        }
+        const ariaHidden = node.getAttribute('aria-hidden');
+        if (ariaHidden === null || ariaHidden === 'false') {
+            node.setAttribute('aria-hidden', 'true');
+        }
+        return { node, ariaHidden };
+    });
+    return () => {
+        rootNodes.forEach((item) => {
+            if (!item) {
+                return;
+            }
+            if (item.ariaHidden === null) {
+                item.node.removeAttribute('aria-hidden');
+            }
+            else {
+                item.node.setAttribute('aria-hidden', item.ariaHidden);
+            }
+        });
+    };
+}

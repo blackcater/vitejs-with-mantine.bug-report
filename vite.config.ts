@@ -8,13 +8,21 @@ export default defineConfig({
   resolve: {
     alias: [
       {
-        "find": "@mantine/core",
-        replacement: path.resolve(__dirname, '@mantine/core')
+        find: "@mantine/core",
+        replacement: path.resolve(__dirname, "@mantine/core"),
       },
       {
-        "find": "@mantine/hooks",
-        replacement: path.resolve(__dirname, '@mantine/hooks')
-      }
-    ]
-  }
+        find: "@mantine/hooks",
+        replacement: path.resolve(__dirname, "@mantine/hooks"),
+      },
+      {
+        find: "@mantine/theme",
+        replacement: path.resolve(__dirname, "@mantine/theme"),
+      },
+      {
+        find: "@mantine/types",
+        replacement: path.resolve(__dirname, "@mantine/types"),
+      },
+    ],
+  },
 });
