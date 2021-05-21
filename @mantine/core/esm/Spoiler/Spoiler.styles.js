@@ -1,6 +1,6 @@
-import { createUseStyles } from 'react-jss';
+import { createMemoStyles } from '@mantine/theme';
 
-var useStyles = createUseStyles({
+var useStyles = createMemoStyles({
   spoiler: {
     position: "relative"
   },
@@ -10,7 +10,7 @@ var useStyles = createUseStyles({
     transitionTimingFunction: "ease",
     transitionDuration: transitionDuration || 0
   })
-}, {link: true});
+});
 
 export default useStyles;
 //# sourceMappingURL=Spoiler.styles.js.map

@@ -4,7 +4,6 @@ interface ThemeIconStylesProps {
     color: string;
     size: MantineNumberSize;
     radius: MantineNumberSize;
-    variant: 'filled' | 'light';
 }
 export declare const sizes: {
     xs: number;
@@ -13,8 +12,6 @@ export declare const sizes: {
     lg: number;
     xl: number;
 };
-declare const _default: (data?: ThemeIconStylesProps & {
-    theme?: MantineTheme;
-}) => import("jss").Classes<"themeIcon">;
+declare const _default: (args?: ThemeIconStylesProps) => import("jss").Classes<"filled" | "light" | "themeIcon">;
 export default _default;
 //# sourceMappingURL=ThemeIcon.styles.d.ts.map

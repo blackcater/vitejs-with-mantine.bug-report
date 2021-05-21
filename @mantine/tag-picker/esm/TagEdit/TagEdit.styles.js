@@ -1,5 +1,4 @@
-import { createUseStyles } from 'react-jss';
-import { getFocusStyles, getFontStyles } from '@mantine/core';
+import { createMemoStyles, hexToRgba, getFocusStyles, getFontStyles } from '@mantine/core';
 
 var __defProp = Object.defineProperty;
 var __defProps = Object.defineProperties;
@@ -20,10 +19,10 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-var useStyles = createUseStyles({
+var useStyles = createMemoStyles({
   tagEdit: ({theme}) => ({
-    border: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[2]}`,
-    backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[8] : theme.white,
+    border: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.colors.gray[2]}`,
+    backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.white,
     paddingTop: 10,
     paddingBottom: 10,
     position: "absolute",
@@ -58,7 +57,7 @@ var useStyles = createUseStyles({
     cursor: "pointer",
     marginTop: 10,
     "&:hover, &:focus": {
-      backgroundColor: theme.colorScheme === "dark" ? theme.colors.red[9] : theme.colors.red[0],
+      backgroundColor: theme.colorScheme === "dark" ? hexToRgba(theme.colors.red[9], 0.4) : theme.colors.red[0],
       color: theme.colorScheme === "dark" ? theme.colors.red[0] : theme.colors.red[7]
     }
   }),
@@ -96,7 +95,7 @@ var useStyles = createUseStyles({
     alignItems: "center",
     flex: 1
   }
-}, {link: true});
+});
 
 export default useStyles;
 //# sourceMappingURL=TagEdit.styles.js.map

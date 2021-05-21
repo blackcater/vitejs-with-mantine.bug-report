@@ -1,7 +1,6 @@
-import { createUseStyles } from 'react-jss';
-import { getSizeValue } from '@mantine/theme';
+import { createMemoStyles, getSizeValue } from '@mantine/theme';
 
-var useStyles = createUseStyles({
+var useStyles = createMemoStyles({
   wrapper: ({theme, spacing, variant}) => ({
     display: "flex",
     flexWrap: "wrap",
@@ -14,7 +13,7 @@ var useStyles = createUseStyles({
       marginBottom: variant === "vertical" && getSizeValue({sizes: theme.spacing, size: spacing}) / 4
     }
   })
-}, {link: true});
+});
 
 export default useStyles;
 //# sourceMappingURL=RadioGroup.styles.js.map

@@ -9,7 +9,6 @@ function useClickOutside(handler, events = ["mousedown", "touchstart"]) {
   react.useEffect(() => {
     const listener = (event) => {
       if (ref.current && !ref.current.contains(event.target)) {
-        event.preventDefault();
         handler();
       }
     };

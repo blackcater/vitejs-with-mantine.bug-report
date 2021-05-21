@@ -2,7 +2,6 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var reactJss = require('react-jss');
 var theme = require('@mantine/theme');
 
 var __defProp = Object.defineProperty;
@@ -24,7 +23,7 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-var useStyles = reactJss.createUseStyles({
+var useStyles = theme.createMemoStyles({
   wrapper: {
     position: "relative",
     overflow: "hidden"
@@ -51,7 +50,7 @@ var useStyles = reactJss.createUseStyles({
     right: 0,
     bottom: 0
   })
-}, {link: true});
+});
 
 exports.default = useStyles;
 //# sourceMappingURL=Image.styles.js.map

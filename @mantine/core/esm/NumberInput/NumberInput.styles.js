@@ -1,8 +1,7 @@
-import { createUseStyles } from 'react-jss';
-import { getSizeValue } from '@mantine/theme';
+import { createMemoStyles, getSizeValue } from '@mantine/theme';
 
 const CONTROL_WIDTH = 24;
-var useStyles = createUseStyles({
+var useStyles = createMemoStyles({
   rightSection: {
     display: "flex",
     flexDirection: "column",
@@ -15,7 +14,8 @@ var useStyles = createUseStyles({
     flex: "0 0 50%",
     boxSizing: "border-box",
     width: CONTROL_WIDTH,
-    border: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[4]}`,
+    borderBottom: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[4]}`,
+    borderLeft: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[4]}`,
     borderTop: 0,
     borderRight: 0,
     backgroundColor: "transparent",
@@ -65,7 +65,7 @@ var useStyles = createUseStyles({
       borderTopColor: theme.colorScheme === "dark" ? theme.colors.dark[2] : theme.colors.gray[5]
     }
   })
-}, {link: true});
+});
 
 export default useStyles;
 export { CONTROL_WIDTH };

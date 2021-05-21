@@ -10,8 +10,6 @@ export declare const sizes: {
     lg: number;
     xl: number;
 };
-declare const _default: (data?: MenuStylesProps & {
-    theme?: MantineTheme;
-}) => import("jss").Classes<"hr" | "menu">;
+declare const _default: (args?: MenuStylesProps) => import("jss").Classes<"hr" | "menu">;
 export default _default;
 //# sourceMappingURL=MenuBody.styles.d.ts.map

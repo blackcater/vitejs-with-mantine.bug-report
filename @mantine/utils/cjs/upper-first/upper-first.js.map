@@ -1,0 +1,1 @@
+{"version":3,"file":"upper-first.js","sources":["../../src/upper-first/upper-first.ts"],"sourcesContent":["export function upperFirst(value: string) {\n  return typeof value !== 'string' ? '' : value.charAt(0).toUpperCase() + value.slice(1);\n}\n"],"names":[],"mappings":";;;;oBAA2B,OAAe;AACxC,SAAO,OAAO,UAAU,WAAW,KAAK,MAAM,OAAO,GAAG,gBAAgB,MAAM,MAAM;AAAA;;;;"}

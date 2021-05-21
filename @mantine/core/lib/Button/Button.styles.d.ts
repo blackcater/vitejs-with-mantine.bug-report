@@ -7,8 +7,6 @@ interface ButtonStylesProps {
     fullWidth: boolean;
 }
 export declare const heights: MantineSizes;
-declare const _default: (data?: ButtonStylesProps & {
-    theme?: MantineTheme;
-}) => import("jss").Classes<"outline" | "icon" | "light" | "filled" | "label" | "link" | "inner" | "leftIcon" | "rightIcon" | "shared">;
+declare const _default: (args?: ButtonStylesProps) => import("jss").Classes<"outline" | "filled" | "light" | "label" | "link" | "inner" | "icon" | "leftIcon" | "rightIcon" | "shared">;
 export default _default;
 //# sourceMappingURL=Button.styles.d.ts.map

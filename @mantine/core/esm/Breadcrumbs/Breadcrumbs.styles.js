@@ -1,6 +1,6 @@
-import { createUseStyles } from 'react-jss';
+import { createMemoStyles } from '@mantine/theme';
 
-var useStyles = createUseStyles({
+var useStyles = createMemoStyles({
   breadcrumbs: {
     display: "flex"
   },
@@ -18,7 +18,7 @@ var useStyles = createUseStyles({
     alignItems: "center",
     justifyContent: "center"
   })
-}, {link: true});
+});
 
 export default useStyles;
 //# sourceMappingURL=Breadcrumbs.styles.js.map

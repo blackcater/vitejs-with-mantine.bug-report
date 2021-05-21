@@ -6,7 +6,7 @@ interface MenuBodyProps extends DefaultProps, React.ComponentPropsWithoutRef<'di
     opened: boolean;
     /** Triggers when menu is closed */
     onClose(): void;
-    /** <MenuItem /> and <Hr /> components only */
+    /** <MenuItem /> and <Divider /> components only */
     children: React.ReactNode;
     /** Transition styles */
     transition?: MantineTransition;

@@ -12,8 +12,6 @@ interface AvatarStylesProps {
     theme: MantineTheme;
     color: string;
 }
-declare const _default: (data?: AvatarStylesProps & {
-    theme?: MantineTheme;
-}) => import("jss").Classes<"image" | "placeholder" | "avatar" | "placeholderIcon">;
+declare const _default: (args?: AvatarStylesProps) => import("jss").Classes<"image" | "placeholder" | "avatar" | "placeholderIcon">;
 export default _default;
 //# sourceMappingURL=Avatar.styles.d.ts.map

@@ -1,10 +1,10 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('react'), require('@mantine/hooks'), require('@mantine/core'), require('react-jss')) :
-	typeof define === 'function' && define.amd ? define(['exports', 'react', '@mantine/hooks', '@mantine/core', 'react-jss'], factory) :
-	(global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global['@mantine/tag-picker'] = {}, global.React, global['@mantine/hooks'], global['@mantine/core'], global.reactJss));
-}(this, (function (exports, React, hooks, core, reactJss) { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('react'), require('@mantine/hooks'), require('@mantine/core')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'react', '@mantine/hooks', '@mantine/core'], factory) :
+	(global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global['@mantine/tag-picker'] = {}, global.React, global['@mantine/hooks'], global['@mantine/core']));
+}(this, (function (exports, React, hooks, core) { 'use strict';
 
-	function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+	function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 	var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 
@@ -66,13 +66,13 @@
 	  return a;
 	};
 	function MenuIcon(props) {
-	  return /* @__PURE__ */ React__default['default'].createElement("svg", __spreadValues$8({
+	  return /* @__PURE__ */ React__default.createElement("svg", __spreadValues$8({
 	    width: "15",
 	    height: "15",
 	    viewBox: "0 0 15 15",
 	    fill: "none",
 	    xmlns: "http://www.w3.org/2000/svg"
-	  }, props), /* @__PURE__ */ React__default['default'].createElement("path", {
+	  }, props), /* @__PURE__ */ React__default.createElement("path", {
 	    d: "M3.625 7.5C3.625 8.12132 3.12132 8.625 2.5 8.625C1.87868 8.625 1.375 8.12132 1.375 7.5C1.375 6.87868 1.87868 6.375 2.5 6.375C3.12132 6.375 3.625 6.87868 3.625 7.5ZM8.625 7.5C8.625 8.12132 8.12132 8.625 7.5 8.625C6.87868 8.625 6.375 8.12132 6.375 7.5C6.375 6.87868 6.87868 6.375 7.5 6.375C8.12132 6.375 8.625 6.87868 8.625 7.5ZM12.5 8.625C13.1213 8.625 13.625 8.12132 13.625 7.5C13.625 6.87868 13.1213 6.375 12.5 6.375C11.8787 6.375 11.375 6.87868 11.375 7.5C11.375 8.12132 11.8787 8.625 12.5 8.625Z",
 	    fill: "currentColor",
 	    fillRule: "evenodd",
@@ -97,13 +97,13 @@
 	  return a;
 	};
 	function CheckIcon(props) {
-	  return /* @__PURE__ */ React__default['default'].createElement("svg", __spreadValues$7({
+	  return /* @__PURE__ */ React__default.createElement("svg", __spreadValues$7({
 	    width: "20",
 	    height: "20",
 	    viewBox: "0 0 15 15",
 	    fill: "none",
 	    xmlns: "http://www.w3.org/2000/svg"
-	  }, props), /* @__PURE__ */ React__default['default'].createElement("path", {
+	  }, props), /* @__PURE__ */ React__default.createElement("path", {
 	    d: "M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z",
 	    fill: "currentColor",
 	    fillRule: "evenodd",
@@ -130,10 +130,10 @@
 	  return a;
 	};
 	var __spreadProps$5 = (a, b) => __defProps$5(a, __getOwnPropDescs$5(b));
-	var useStyles$3 = reactJss.createUseStyles({
+	var useStyles$3 = core.createMemoStyles({
 	  tagEdit: ({theme}) => ({
-	    border: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[2]}`,
-	    backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[8] : theme.white,
+	    border: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.colors.gray[2]}`,
+	    backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.white,
 	    paddingTop: 10,
 	    paddingBottom: 10,
 	    position: "absolute",
@@ -168,7 +168,7 @@
 	    cursor: "pointer",
 	    marginTop: 10,
 	    "&:hover, &:focus": {
-	      backgroundColor: theme.colorScheme === "dark" ? theme.colors.red[9] : theme.colors.red[0],
+	      backgroundColor: theme.colorScheme === "dark" ? core.hexToRgba(theme.colors.red[9], 0.4) : theme.colors.red[0],
 	      color: theme.colorScheme === "dark" ? theme.colors.red[0] : theme.colors.red[7]
 	    }
 	  }),
@@ -206,7 +206,7 @@
 	    alignItems: "center",
 	    flex: 1
 	  }
-	}, {link: true});
+	});
 
 	var __defProp$5 = Object.defineProperty;
 	var __defProps$4 = Object.defineProperties;
@@ -265,36 +265,36 @@
 	  React.useEffect(() => {
 	    setValues(initialValues);
 	  }, [initialValues]);
-	  const colorsList = colors.map((color) => /* @__PURE__ */ React__default['default'].createElement("button", {
+	  const colorsList = colors.map((color) => /* @__PURE__ */ React__default.createElement("button", {
 	    "data-mantine-tag-color": true,
 	    className: classes.colorControl,
 	    type: "button",
 	    key: color.color,
 	    onClick: () => handleColorChange(color.color)
-	  }, /* @__PURE__ */ React__default['default'].createElement("div", {
+	  }, /* @__PURE__ */ React__default.createElement("div", {
 	    className: classes.colorControlBody
-	  }, /* @__PURE__ */ React__default['default'].createElement(core.ColorSwatch, {
+	  }, /* @__PURE__ */ React__default.createElement(core.ColorSwatch, {
 	    color: theme.colors[color.color][5],
 	    size: 18,
 	    themeOverride
-	  }), /* @__PURE__ */ React__default['default'].createElement("span", {
+	  }), /* @__PURE__ */ React__default.createElement("span", {
 	    "data-mantine-tag-color-label": true,
 	    className: classes.colorLabel
-	  }, color.name)), color.color === values.color && /* @__PURE__ */ React__default['default'].createElement(CheckIcon, {
+	  }, color.name)), color.color === values.color && /* @__PURE__ */ React__default.createElement(CheckIcon, {
 	    style: {width: 14, height: 14}
 	  })));
-	  return /* @__PURE__ */ React__default['default'].createElement(core.Paper, {
+	  return /* @__PURE__ */ React__default.createElement(core.Paper, {
 	    shadow: "sm",
 	    className: classes.tagEdit,
 	    elementRef: dropdownRef,
 	    onKeyDownCapture: handleKeyDownCapture,
 	    style,
 	    themeOverride
-	  }, /* @__PURE__ */ React__default['default'].createElement("div", {
+	  }, /* @__PURE__ */ React__default.createElement("div", {
 	    ref: focusTrapRef
-	  }, /* @__PURE__ */ React__default['default'].createElement("div", {
+	  }, /* @__PURE__ */ React__default.createElement("div", {
 	    className: classes.header
-	  }, /* @__PURE__ */ React__default['default'].createElement(core.TextInput, {
+	  }, /* @__PURE__ */ React__default.createElement(core.TextInput, {
 	    "data-mantine-tag-input": true,
 	    className: classes.input,
 	    value: values.name,
@@ -303,21 +303,21 @@
 	    autoFocus: true,
 	    "aria-label": tagNameEditLabel,
 	    themeOverride
-	  }), /* @__PURE__ */ React__default['default'].createElement(core.ActionIcon, {
+	  }), /* @__PURE__ */ React__default.createElement(core.ActionIcon, {
 	    "data-mantine-tag-save": true,
 	    size: 36,
 	    variant: theme.colorScheme === "dark" ? "transparent" : "light",
 	    onClick: handleSubmit,
 	    themeOverride,
 	    "aria-label": saveLabel
-	  }, /* @__PURE__ */ React__default['default'].createElement(CheckIcon, {
+	  }, /* @__PURE__ */ React__default.createElement(CheckIcon, {
 	    style: {width: 16, height: 16}
-	  }))), enableDelete && /* @__PURE__ */ React__default['default'].createElement("button", {
+	  }))), enableDelete && /* @__PURE__ */ React__default.createElement("button", {
 	    "data-mantine-tag-delete": true,
 	    className: classes.deleteControl,
 	    type: "button",
 	    onClick: handleDelete
-	  }, deleteLabel), enableColorChange && /* @__PURE__ */ React__default['default'].createElement("div", {
+	  }, deleteLabel), enableColorChange && /* @__PURE__ */ React__default.createElement("div", {
 	    "data-mantine-tag-colors": true,
 	    className: classes.colorsList
 	  }, colorsList)));
@@ -343,7 +343,7 @@
 	  return a;
 	};
 	var __spreadProps$3 = (a, b) => __defProps$3(a, __getOwnPropDescs$3(b));
-	var useStyles$2 = reactJss.createUseStyles({
+	var useStyles$2 = core.createMemoStyles({
 	  item: {
 	    position: "relative"
 	  },
@@ -374,7 +374,7 @@
 	  hovered: ({theme}) => ({
 	    backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[0]
 	  })
-	}, {link: true});
+	});
 
 	function TagItem({
 	  index,
@@ -415,16 +415,16 @@
 	      controlRef.current.focus();
 	    }, transitionDuration + 35);
 	  };
-	  return /* @__PURE__ */ React__default['default'].createElement("div", {
+	  return /* @__PURE__ */ React__default.createElement("div", {
 	    className: cx(classes.item, {[classes.hovered]: hovered === index}),
 	    onMouseEnter: () => onHover(index)
-	  }, /* @__PURE__ */ React__default['default'].createElement(core.Transition, {
+	  }, /* @__PURE__ */ React__default.createElement(core.Transition, {
 	    duration,
 	    mounted: editDropdownOpened,
 	    transition,
 	    timingFunction: transitionTimingFunction,
 	    themeOverride
-	  }, (transitionStyles) => /* @__PURE__ */ React__default['default'].createElement(TagEdit, {
+	  }, (transitionStyles) => /* @__PURE__ */ React__default.createElement(TagEdit, {
 	    style: transitionStyles,
 	    saveLabel,
 	    tagNameEditLabel,
@@ -438,29 +438,29 @@
 	    enableDelete,
 	    enableColorChange,
 	    themeOverride
-	  })), /* @__PURE__ */ React__default['default'].createElement("div", {
+	  })), /* @__PURE__ */ React__default.createElement("div", {
 	    className: classes.body
-	  }, /* @__PURE__ */ React__default['default'].createElement("button", {
+	  }, /* @__PURE__ */ React__default.createElement("button", {
 	    role: "option",
 	    type: "button",
 	    "aria-selected": !!selected && data.id === selected.id,
 	    className: classes.control,
 	    onClick: () => onSelect(data)
-	  }, /* @__PURE__ */ React__default['default'].createElement("div", {
+	  }, /* @__PURE__ */ React__default.createElement("div", {
 	    className: classes.controlInner
-	  }, /* @__PURE__ */ React__default['default'].createElement(core.Badge, {
+	  }, /* @__PURE__ */ React__default.createElement(core.Badge, {
 	    variant: "light",
 	    className: classes.badge,
 	    color: data.color,
 	    fullWidth: true,
 	    style: {cursor: "pointer"},
 	    themeOverride
-	  }, data.name))), enableUpdate && /* @__PURE__ */ React__default['default'].createElement(core.ActionIcon, {
+	  }, data.name))), enableUpdate && /* @__PURE__ */ React__default.createElement(core.ActionIcon, {
 	    onClick: openEditDropdown,
 	    elementRef: controlRef,
 	    themeOverride,
 	    "aria-label": editTagLabel
-	  }, /* @__PURE__ */ React__default['default'].createElement(MenuIcon, null))));
+	  }, /* @__PURE__ */ React__default.createElement(MenuIcon, null))));
 	}
 	TagItem.displayName = "@mantine/tag-picker/TagItem";
 
@@ -483,7 +483,7 @@
 	  return a;
 	};
 	var __spreadProps$2 = (a, b) => __defProps$2(a, __getOwnPropDescs$2(b));
-	var useStyles$1 = reactJss.createUseStyles({
+	var useStyles$1 = core.createMemoStyles({
 	  tagsList: ({theme}) => ({
 	    paddingTop: theme.spacing.xs,
 	    paddingBottom: theme.spacing.xs
@@ -524,7 +524,7 @@
 	  createControlHovered: ({theme}) => ({
 	    backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[0]
 	  })
-	}, {link: true});
+	});
 
 	function TagsList({
 	  searchQuery,
@@ -560,7 +560,7 @@
 	}) {
 	  const classes = useStyles$1({theme: core.useMantineTheme(themeOverride)});
 	  const focusTrapRef = hooks.useFocusTrap();
-	  const tags = data.map((tag, index) => /* @__PURE__ */ React__default['default'].createElement(TagItem, {
+	  const tags = data.map((tag, index) => /* @__PURE__ */ React__default.createElement(TagItem, {
 	    key: tag.id,
 	    index,
 	    hovered,
@@ -584,11 +584,11 @@
 	    transitionDuration,
 	    themeOverride
 	  }));
-	  return /* @__PURE__ */ React__default['default'].createElement("div", {
+	  return /* @__PURE__ */ React__default.createElement("div", {
 	    className: classes.tagsList,
 	    ref: focusTrapRef,
 	    role: "listbox"
-	  }, /* @__PURE__ */ React__default['default'].createElement(core.TextInput, {
+	  }, /* @__PURE__ */ React__default.createElement(core.TextInput, {
 	    themeOverride,
 	    className: classes.searchInput,
 	    placeholder: searchPlaceholder,
@@ -599,21 +599,21 @@
 	      onHoveredChange(-1);
 	      onArrowsCaptureChange(false);
 	    }
-	  }), description && /* @__PURE__ */ React__default['default'].createElement(core.Text, {
+	  }), description && /* @__PURE__ */ React__default.createElement(core.Text, {
 	    color: "gray",
 	    size: "sm",
 	    className: classes.description,
 	    themeOverride
-	  }, description), /* @__PURE__ */ React__default['default'].createElement("div", null, tags, enableCreate && canCreate && /* @__PURE__ */ React__default['default'].createElement("button", {
+	  }, description), /* @__PURE__ */ React__default.createElement("div", null, tags, enableCreate && canCreate && /* @__PURE__ */ React__default.createElement("button", {
 	    className: cx(classes.createControl, {
 	      [classes.createControlHovered]: hovered === data.length
 	    }),
 	    type: "button",
 	    onClick: onCreate,
 	    onMouseEnter: () => onHoveredChange(data.length)
-	  }, /* @__PURE__ */ React__default['default'].createElement("span", {
+	  }, /* @__PURE__ */ React__default.createElement("span", {
 	    className: classes.createControlLabel
-	  }, createLabel || "+"), /* @__PURE__ */ React__default['default'].createElement(core.Badge, {
+	  }, createLabel || "+"), /* @__PURE__ */ React__default.createElement(core.Badge, {
 	    variant: "light",
 	    className: classes.createControlBadge,
 	    color: createColor,
@@ -642,13 +642,13 @@
 	  return a;
 	};
 	var __spreadProps$1 = (a, b) => __defProps$1(a, __getOwnPropDescs$1(b));
-	var useStyles = reactJss.createUseStyles({
+	var useStyles = core.createMemoStyles({
 	  tagPicker: {
 	    position: "relative"
 	  },
 	  dropdown: ({theme}) => ({
-	    border: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[2]}`,
-	    backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[8] : theme.white,
+	    border: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.colors.gray[2]}`,
+	    backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.white,
 	    width: 280,
 	    position: "absolute",
 	    top: 0,
@@ -656,6 +656,7 @@
 	    zIndex: 1
 	  }),
 	  control: ({theme}) => __spreadProps$1(__spreadValues$2({}, core.getFocusStyles(theme)), {
+	    backgroundColor: "transparent",
 	    border: 0,
 	    padding: [0, 0],
 	    borderRadius: 24,
@@ -663,7 +664,7 @@
 	    appearance: "none",
 	    WebkitAppearance: "none"
 	  })
-	}, {link: true});
+	});
 
 	var __defProp$1 = Object.defineProperty;
 	var __getOwnPropSymbols$1 = Object.getOwnPropertySymbols;
@@ -726,9 +727,9 @@
 	  const dropdownRef = hooks.useClickOutside(closeDropdown);
 	  const reduceMotion = hooks.useReducedMotion();
 	  const duration = reduceMotion ? 1 : transitionDuration;
-	  return /* @__PURE__ */ React__default['default'].createElement("div", {
+	  return /* @__PURE__ */ React__default.createElement("div", {
 	    className: classes.tagPicker
-	  }, /* @__PURE__ */ React__default['default'].createElement("button", {
+	  }, /* @__PURE__ */ React__default.createElement("button", {
 	    className: classes.control,
 	    type: "button",
 	    ref: controlRef,
@@ -737,24 +738,24 @@
 	    "aria-labelledby": labelledBy,
 	    "aria-haspopup": "listbox",
 	    "aria-expanded": dropdownOpened
-	  }, /* @__PURE__ */ React__default['default'].createElement(core.Badge, {
+	  }, /* @__PURE__ */ React__default.createElement(core.Badge, {
 	    color: value && value.color || "gray",
 	    style: {cursor: "pointer", display: "block"},
 	    themeOverride
-	  }, value && value.name || noValueLabel)), /* @__PURE__ */ React__default['default'].createElement(core.Transition, {
+	  }, value && value.name || noValueLabel)), /* @__PURE__ */ React__default.createElement(core.Transition, {
 	    duration,
 	    mounted: dropdownOpened,
 	    transition,
 	    timingFunction: transitionTimingFunction,
 	    themeOverride
-	  }, (transitionStyles) => /* @__PURE__ */ React__default['default'].createElement(core.Paper, {
+	  }, (transitionStyles) => /* @__PURE__ */ React__default.createElement(core.Paper, {
 	    shadow: "sm",
 	    className: classes.dropdown,
 	    elementRef: dropdownRef,
 	    style: transitionStyles,
 	    themeOverride,
 	    tabIndex: -1
-	  }, /* @__PURE__ */ React__default['default'].createElement(TagsList, __spreadValues$1({
+	  }, /* @__PURE__ */ React__default.createElement(TagsList, __spreadValues$1({
 	    value,
 	    transition,
 	    transitionDuration,
@@ -873,11 +874,11 @@
 	      }
 	    }
 	  };
-	  return /* @__PURE__ */ React__default['default'].createElement("div", {
+	  return /* @__PURE__ */ React__default.createElement("div", {
 	    onKeyDownCapture: handleKeyboardEvents,
 	    className: props.className,
 	    style: props.style
-	  }, /* @__PURE__ */ React__default['default'].createElement(TagPicker, {
+	  }, /* @__PURE__ */ React__default.createElement(TagPicker, {
 	    createColor,
 	    searchQuery: query,
 	    hovered,

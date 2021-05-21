@@ -4,7 +4,7 @@ import { useReducedMotion, useFocusTrap, useClickOutside } from '@mantine/hooks'
 import { useMantineTheme } from '@mantine/theme';
 import { Transition } from '../../Transition/Transition.js';
 import { Paper } from '../../Paper/Paper.js';
-import { Hr } from '../../Hr/Hr.js';
+import { Divider } from '../../Divider/Divider.js';
 import { MenuItem } from '../MenuItem/MenuItem.js';
 import { MenuButton } from '../MenuButton/MenuButton.js';
 import useStyles from './MenuBody.styles.js';
@@ -96,7 +96,7 @@ function MenuBody(_a) {
     "closeOnItemClick",
     "zIndex"
   ]);
-  const items = React.Children.toArray(children).filter((item) => item.type === MenuItem || item.type === Hr);
+  const items = React.Children.toArray(children).filter((item) => item.type === MenuItem || item.type === Divider);
   const hoveredTimeout = useRef();
   const buttonsRefs = useRef({});
   const theme = useMantineTheme(themeOverride);
@@ -158,8 +158,8 @@ function MenuBody(_a) {
         }
       }));
     }
-    if (item.type === Hr) {
-      return /* @__PURE__ */ React.createElement(Hr, {
+    if (item.type === Divider) {
+      return /* @__PURE__ */ React.createElement(Divider, {
         key: index,
         variant: "solid",
         className: classes.hr

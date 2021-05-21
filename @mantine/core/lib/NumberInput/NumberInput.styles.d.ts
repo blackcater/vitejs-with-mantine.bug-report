@@ -4,8 +4,6 @@ interface NumberInputStylesProps {
     radius: MantineNumberSize;
 }
 export declare const CONTROL_WIDTH = 24;
-declare const _default: (data?: NumberInputStylesProps & {
-    theme?: MantineTheme;
-}) => import("jss").Classes<"rightSection" | "control" | "controlUp" | "controlDown">;
+declare const _default: (args?: NumberInputStylesProps) => import("jss").Classes<"rightSection" | "control" | "controlUp" | "controlDown">;
 export default _default;
 //# sourceMappingURL=NumberInput.styles.d.ts.map

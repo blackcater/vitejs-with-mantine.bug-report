@@ -8,12 +8,12 @@ var hooks = require('@mantine/hooks');
 var theme = require('@mantine/theme');
 var Transition = require('../../Transition/Transition.js');
 var Paper = require('../../Paper/Paper.js');
-var Hr = require('../../Hr/Hr.js');
+var Divider = require('../../Divider/Divider.js');
 var MenuItem = require('../MenuItem/MenuItem.js');
 var MenuButton = require('../MenuButton/MenuButton.js');
 var MenuBody_styles = require('./MenuBody.styles.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var cx__default = /*#__PURE__*/_interopDefaultLegacy(cx);
@@ -105,7 +105,7 @@ function MenuBody(_a) {
     "closeOnItemClick",
     "zIndex"
   ]);
-  const items = React__default['default'].Children.toArray(children).filter((item) => item.type === MenuItem.MenuItem || item.type === Hr.Hr);
+  const items = React__default.Children.toArray(children).filter((item) => item.type === MenuItem.MenuItem || item.type === Divider.Divider);
   const hoveredTimeout = React.useRef();
   const buttonsRefs = React.useRef({});
   const theme$1 = theme.useMantineTheme(themeOverride);
@@ -150,7 +150,7 @@ function MenuBody(_a) {
   }
   const buttons = items.map((item, index) => {
     if (item.type === MenuItem.MenuItem) {
-      return /* @__PURE__ */ React__default['default'].createElement(MenuButton.MenuButton, __spreadProps(__spreadValues({}, item.props), {
+      return /* @__PURE__ */ React__default.createElement(MenuButton.MenuButton, __spreadProps(__spreadValues({}, item.props), {
         key: index,
         hovered: hovered === index,
         onHover: () => setHovered(-1),
@@ -167,8 +167,8 @@ function MenuBody(_a) {
         }
       }));
     }
-    if (item.type === Hr.Hr) {
-      return /* @__PURE__ */ React__default['default'].createElement(Hr.Hr, {
+    if (item.type === Divider.Divider) {
+      return /* @__PURE__ */ React__default.createElement(Divider.Divider, {
         key: index,
         variant: "solid",
         className: classes.hr
@@ -176,21 +176,21 @@ function MenuBody(_a) {
     }
     return null;
   });
-  return /* @__PURE__ */ React__default['default'].createElement(Transition.Transition, {
+  return /* @__PURE__ */ React__default.createElement(Transition.Transition, {
     mounted: opened,
     duration,
     transition,
     timingFunction: transitionTimingFunction,
     themeOverride
-  }, (transitionStyles) => /* @__PURE__ */ React__default['default'].createElement(Paper.Paper, __spreadValues({
+  }, (transitionStyles) => /* @__PURE__ */ React__default.createElement(Paper.Paper, __spreadValues({
     shadow,
-    className: cx__default['default'](classes.menu, className),
+    className: cx__default(classes.menu, className),
     style: __spreadProps(__spreadValues(__spreadValues({}, style), transitionStyles), {zIndex}),
     onKeyDownCapture: handleKeyDown,
     elementRef: menuRef,
     role: "menu",
     "aria-orientation": "vertical"
-  }, others), /* @__PURE__ */ React__default['default'].createElement("div", {
+  }, others), /* @__PURE__ */ React__default.createElement("div", {
     ref: focusTrapRef
   }, buttons)));
 }

@@ -4,10 +4,22 @@
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global['@mantine/core'] = {}, global.React, global.reactJss, global['@mantine/hooks'], global.ReactDOM));
 }(this, (function (exports, React, reactJss, hooks, ReactDOM) { 'use strict';
 
-  function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+  function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
   var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
   var ReactDOM__default = /*#__PURE__*/_interopDefaultLegacy(ReactDOM);
+
+  function createMemoStyles(styles) {
+    const useStyles = reactJss.createUseStyles(styles);
+    return function useMemoStyles(args) {
+      const dependencies = typeof args === "object" && args !== null ? Object.keys(args).filter((key) => key !== "theme").map((key) => args[key]) : [];
+      if (typeof args === "object" && "theme" in args) {
+        dependencies.push(args.theme.colorScheme);
+      }
+      const stylesProps = React.useMemo(() => args, dependencies);
+      return useStyles(stylesProps);
+    };
+  }
 
   function getThemeColor({
     theme,
@@ -22,7 +34,7 @@
     return {
       "&:focus": {
         outline: "none",
-        boxShadow: `0 0 0 2px ${theme.colorScheme === "dark" ? theme.colors.dark[9] : theme.white}, 0 0 0 4px ${theme.colors[theme.primaryColor][5]}`
+        boxShadow: `0 0 0 2px ${theme.colorScheme === "dark" ? theme.colors.dark[9] : theme.white}, 0 0 0 4px ${theme.colors[theme.primaryColor][theme.colorScheme === "dark" ? 7 : 5]}`
       },
       "&:focus:not(:focus-visible)": {
         boxShadow: "none"
@@ -47,6 +59,21 @@
       return size;
     }
     return sizes[size] || size || sizes[defaultSize];
+  }
+
+  function hexToRgba(hex, alpha) {
+    if (!hex || typeof alpha !== "number" || alpha > 1 || alpha < 0) {
+      return "";
+    }
+    const replaced = hex.replace("#", "");
+    if (replaced.length !== 6) {
+      return "";
+    }
+    const parsed = parseInt(replaced, 16);
+    const r = parsed >> 16 & 255;
+    const g = parsed >> 8 & 255;
+    const b = parsed & 255;
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
   }
 
   const colors = {
@@ -272,25 +299,25 @@
     }
   };
 
-  var __defProp$1j = Object.defineProperty;
-  var __defProps$J = Object.defineProperties;
-  var __getOwnPropDescs$J = Object.getOwnPropertyDescriptors;
-  var __getOwnPropSymbols$1j = Object.getOwnPropertySymbols;
-  var __hasOwnProp$1j = Object.prototype.hasOwnProperty;
-  var __propIsEnum$1j = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$1j = (obj, key, value) => key in obj ? __defProp$1j(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$1j = (a, b) => {
+  var __defProp$1p = Object.defineProperty;
+  var __defProps$N = Object.defineProperties;
+  var __getOwnPropDescs$N = Object.getOwnPropertyDescriptors;
+  var __getOwnPropSymbols$1p = Object.getOwnPropertySymbols;
+  var __hasOwnProp$1p = Object.prototype.hasOwnProperty;
+  var __propIsEnum$1p = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$1p = (obj, key, value) => key in obj ? __defProp$1p(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$1p = (a, b) => {
     for (var prop in b || (b = {}))
-      if (__hasOwnProp$1j.call(b, prop))
-        __defNormalProp$1j(a, prop, b[prop]);
-    if (__getOwnPropSymbols$1j)
-      for (var prop of __getOwnPropSymbols$1j(b)) {
-        if (__propIsEnum$1j.call(b, prop))
-          __defNormalProp$1j(a, prop, b[prop]);
+      if (__hasOwnProp$1p.call(b, prop))
+        __defNormalProp$1p(a, prop, b[prop]);
+    if (__getOwnPropSymbols$1p)
+      for (var prop of __getOwnPropSymbols$1p(b)) {
+        if (__propIsEnum$1p.call(b, prop))
+          __defNormalProp$1p(a, prop, b[prop]);
       }
     return a;
   };
-  var __spreadProps$J = (a, b) => __defProps$J(a, __getOwnPropDescs$J(b));
+  var __spreadProps$N = (a, b) => __defProps$N(a, __getOwnPropDescs$N(b));
   function mergeTheme(currentTheme, themeOverride) {
     if (!themeOverride) {
       return currentTheme;
@@ -298,16 +325,16 @@
     return Object.keys(currentTheme).reduce((acc, key) => {
       if (key === "headings" && themeOverride.headings) {
         const sizes = themeOverride.headings.sizes ? Object.keys(currentTheme.headings.sizes).reduce((headingsAcc, h) => {
-          headingsAcc[h] = __spreadValues$1j(__spreadValues$1j({}, currentTheme.headings.sizes[h]), themeOverride.headings.sizes[h]);
+          headingsAcc[h] = __spreadValues$1p(__spreadValues$1p({}, currentTheme.headings.sizes[h]), themeOverride.headings.sizes[h]);
           return headingsAcc;
         }, {}) : currentTheme.headings.sizes;
-        return __spreadProps$J(__spreadValues$1j({}, acc), {
-          headings: __spreadProps$J(__spreadValues$1j(__spreadValues$1j({}, currentTheme.headings), themeOverride.headings), {
+        return __spreadProps$N(__spreadValues$1p({}, acc), {
+          headings: __spreadProps$N(__spreadValues$1p(__spreadValues$1p({}, currentTheme.headings), themeOverride.headings), {
             sizes
           })
         });
       }
-      acc[key] = typeof themeOverride[key] === "object" ? __spreadValues$1j(__spreadValues$1j({}, currentTheme[key]), themeOverride[key]) : themeOverride[key] || currentTheme[key];
+      acc[key] = typeof themeOverride[key] === "object" ? __spreadValues$1p(__spreadValues$1p({}, currentTheme[key]), themeOverride[key]) : themeOverride[key] || currentTheme[key];
       return acc;
     }, {});
   }
@@ -316,55 +343,63 @@
   const theming = reactJss.createTheming(ThemeContext);
   const {ThemeProvider, useTheme} = theming;
 
-  var __defProp$1i = Object.defineProperty;
-  var __getOwnPropSymbols$1i = Object.getOwnPropertySymbols;
-  var __hasOwnProp$1i = Object.prototype.hasOwnProperty;
-  var __propIsEnum$1i = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$1i = (obj, key, value) => key in obj ? __defProp$1i(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$1i = (a, b) => {
+  var __defProp$1o = Object.defineProperty;
+  var __getOwnPropSymbols$1o = Object.getOwnPropertySymbols;
+  var __hasOwnProp$1o = Object.prototype.hasOwnProperty;
+  var __propIsEnum$1o = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$1o = (obj, key, value) => key in obj ? __defProp$1o(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$1o = (a, b) => {
     for (var prop in b || (b = {}))
-      if (__hasOwnProp$1i.call(b, prop))
-        __defNormalProp$1i(a, prop, b[prop]);
-    if (__getOwnPropSymbols$1i)
-      for (var prop of __getOwnPropSymbols$1i(b)) {
-        if (__propIsEnum$1i.call(b, prop))
-          __defNormalProp$1i(a, prop, b[prop]);
+      if (__hasOwnProp$1o.call(b, prop))
+        __defNormalProp$1o(a, prop, b[prop]);
+    if (__getOwnPropSymbols$1o)
+      for (var prop of __getOwnPropSymbols$1o(b)) {
+        if (__propIsEnum$1o.call(b, prop))
+          __defNormalProp$1o(a, prop, b[prop]);
       }
     return a;
   };
   function MantineProvider({children, theme}) {
-    return /* @__PURE__ */ React__default['default'].createElement(ThemeProvider, {
-      theme: mergeTheme(__spreadValues$1i({__mantine_theme: true}, DEFAULT_THEME), theme)
+    return /* @__PURE__ */ React__default.createElement(ThemeProvider, {
+      theme: mergeTheme(__spreadValues$1o({__mantine_theme: true}, DEFAULT_THEME), theme)
     }, children);
   }
   MantineProvider.displayName = "@mantine/Provider";
 
-  var __defProp$1h = Object.defineProperty;
-  var __getOwnPropSymbols$1h = Object.getOwnPropertySymbols;
-  var __hasOwnProp$1h = Object.prototype.hasOwnProperty;
-  var __propIsEnum$1h = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$1h = (obj, key, value) => key in obj ? __defProp$1h(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$1h = (a, b) => {
+  var __defProp$1n = Object.defineProperty;
+  var __getOwnPropSymbols$1n = Object.getOwnPropertySymbols;
+  var __hasOwnProp$1n = Object.prototype.hasOwnProperty;
+  var __propIsEnum$1n = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$1n = (obj, key, value) => key in obj ? __defProp$1n(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$1n = (a, b) => {
     for (var prop in b || (b = {}))
-      if (__hasOwnProp$1h.call(b, prop))
-        __defNormalProp$1h(a, prop, b[prop]);
-    if (__getOwnPropSymbols$1h)
-      for (var prop of __getOwnPropSymbols$1h(b)) {
-        if (__propIsEnum$1h.call(b, prop))
-          __defNormalProp$1h(a, prop, b[prop]);
+      if (__hasOwnProp$1n.call(b, prop))
+        __defNormalProp$1n(a, prop, b[prop]);
+    if (__getOwnPropSymbols$1n)
+      for (var prop of __getOwnPropSymbols$1n(b)) {
+        if (__propIsEnum$1n.call(b, prop))
+          __defNormalProp$1n(a, prop, b[prop]);
       }
     return a;
   };
   function useMantineTheme(themeOverride) {
-    const internalTheme = __spreadValues$1h({}, useTheme());
+    const internalTheme = __spreadValues$1n({}, useTheme());
     let mergedTheme = null;
     if (!internalTheme.__mantine_theme) {
-      mergedTheme = mergeTheme(__spreadValues$1h({__mantine_theme: true}, DEFAULT_THEME), themeOverride);
+      mergedTheme = mergeTheme(__spreadValues$1n({__mantine_theme: true}, DEFAULT_THEME), themeOverride);
     } else {
       mergedTheme = mergeTheme(internalTheme, themeOverride);
     }
     delete mergedTheme.__mantine_theme;
     return mergedTheme;
+  }
+
+  function randomId() {
+    return `mantine-${Math.random().toString(36).substr(2, 9)}`;
+  }
+
+  function upperFirst(value) {
+    return typeof value !== "string" ? "" : value.charAt(0).toUpperCase() + value.slice(1);
   }
 
   function toVal(mix) {
@@ -408,38 +443,38 @@
   	return str;
   }
 
-  var __defProp$1g = Object.defineProperty;
-  var __defProps$I = Object.defineProperties;
-  var __getOwnPropDescs$I = Object.getOwnPropertyDescriptors;
-  var __getOwnPropSymbols$1g = Object.getOwnPropertySymbols;
-  var __hasOwnProp$1g = Object.prototype.hasOwnProperty;
-  var __propIsEnum$1g = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$1g = (obj, key, value) => key in obj ? __defProp$1g(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$1g = (a, b) => {
+  var __defProp$1m = Object.defineProperty;
+  var __defProps$M = Object.defineProperties;
+  var __getOwnPropDescs$M = Object.getOwnPropertyDescriptors;
+  var __getOwnPropSymbols$1m = Object.getOwnPropertySymbols;
+  var __hasOwnProp$1m = Object.prototype.hasOwnProperty;
+  var __propIsEnum$1m = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$1m = (obj, key, value) => key in obj ? __defProp$1m(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$1m = (a, b) => {
     for (var prop in b || (b = {}))
-      if (__hasOwnProp$1g.call(b, prop))
-        __defNormalProp$1g(a, prop, b[prop]);
-    if (__getOwnPropSymbols$1g)
-      for (var prop of __getOwnPropSymbols$1g(b)) {
-        if (__propIsEnum$1g.call(b, prop))
-          __defNormalProp$1g(a, prop, b[prop]);
+      if (__hasOwnProp$1m.call(b, prop))
+        __defNormalProp$1m(a, prop, b[prop]);
+    if (__getOwnPropSymbols$1m)
+      for (var prop of __getOwnPropSymbols$1m(b)) {
+        if (__propIsEnum$1m.call(b, prop))
+          __defNormalProp$1m(a, prop, b[prop]);
       }
     return a;
   };
-  var __spreadProps$I = (a, b) => __defProps$I(a, __getOwnPropDescs$I(b));
-  const sizes$e = {
+  var __spreadProps$M = (a, b) => __defProps$M(a, __getOwnPropDescs$M(b));
+  const sizes$f = {
     xs: 18,
     sm: 22,
     md: 28,
     lg: 34,
     xl: 44
   };
-  var useStyles$E = reactJss.createUseStyles({
+  var useStyles$G = createMemoStyles({
     filled: ({theme, color}) => ({
-      backgroundColor: getThemeColor({theme, color, shade: 6}),
+      backgroundColor: hexToRgba(getThemeColor({theme, color, shade: 7}), theme.colorScheme === "dark" ? 0.65 : 1),
       color: theme.white,
       "&:not(:disabled):hover": {
-        backgroundColor: getThemeColor({theme, color, shade: 7})
+        backgroundColor: hexToRgba(getThemeColor({theme, color, shade: 8}), theme.colorScheme === "dark" ? 0.95 : 1)
       },
       "&:disabled": {
         backgroundColor: getThemeColor({
@@ -450,14 +485,10 @@
       }
     }),
     light: ({theme, color}) => ({
-      backgroundColor: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 4 : 0}),
-      color: theme.colorScheme === "dark" ? theme.colors.dark[9] : getThemeColor({theme, color, shade: 9}),
+      backgroundColor: hexToRgba(getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 9 : 0}), theme.colorScheme === "dark" ? 0.3 : 1),
+      color: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 3 : 9}),
       "&:not(:disabled):hover": {
-        backgroundColor: getThemeColor({
-          theme,
-          color,
-          shade: theme.colorScheme === "dark" ? 5 : 1
-        })
+        backgroundColor: hexToRgba(getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 8 : 1}), theme.colorScheme === "dark" ? 0.65 : 1)
       },
       "&:disabled": {
         backgroundColor: getThemeColor({
@@ -468,26 +499,26 @@
       }
     }),
     hover: ({theme, color}) => ({
-      color: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 4 : 6}),
+      color: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 5 : 7}),
       backgroundColor: "transparent",
       "&:not(:disabled):hover": {
         backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[8] : getThemeColor({theme, color, shade: 0})
       }
     }),
     transparent: ({theme, color}) => ({
-      color: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 4 : 6}),
+      color: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 5 : 7}),
       backgroundColor: "transparent"
     }),
-    actionIcon: ({radius, theme, size}) => __spreadProps$I(__spreadValues$1g(__spreadValues$1g({}, getFocusStyles(theme)), getFontStyles(theme)), {
+    actionIcon: ({radius, theme, size}) => __spreadProps$M(__spreadValues$1m(__spreadValues$1m({}, getFocusStyles(theme)), getFontStyles(theme)), {
       appearance: "none",
       WebkitAppearance: "none",
       WebkitTapHighlightColor: "transparent",
       border: "1px solid transparent",
       boxSizing: "border-box",
-      height: getSizeValue({size, sizes: sizes$e}),
-      minHeight: getSizeValue({size, sizes: sizes$e}),
-      width: getSizeValue({size, sizes: sizes$e}),
-      minWidth: getSizeValue({size, sizes: sizes$e}),
+      height: getSizeValue({size, sizes: sizes$f}),
+      minHeight: getSizeValue({size, sizes: sizes$f}),
+      width: getSizeValue({size, sizes: sizes$f}),
+      minWidth: getSizeValue({size, sizes: sizes$f}),
       borderRadius: getSizeValue({size: radius, sizes: theme.radius}),
       padding: 0,
       lineHeight: 1,
@@ -505,13 +536,9 @@
       }
     }),
     outline: ({theme, color}) => ({
-      color: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 4 : 6}),
+      color: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 4 : 8}),
       backgroundColor: "transparent",
-      borderColor: getThemeColor({
-        theme,
-        color,
-        shade: theme.colorScheme === "dark" ? 4 : 6
-      }),
+      border: `1px solid ${hexToRgba(getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 3 : 4}), theme.colorScheme === "dark" ? 0.45 : 1)}`,
       "&:not(:disabled):hover": {
         backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[8] : getThemeColor({theme, color, shade: 0})
       },
@@ -519,40 +546,40 @@
         borderColor: theme.colors.gray[theme.colorScheme === "dark" ? 7 : 3]
       }
     })
-  }, {link: true});
+  });
 
-  var __defProp$1f = Object.defineProperty;
-  var __defProps$H = Object.defineProperties;
-  var __getOwnPropDescs$H = Object.getOwnPropertyDescriptors;
-  var __getOwnPropSymbols$1f = Object.getOwnPropertySymbols;
-  var __hasOwnProp$1f = Object.prototype.hasOwnProperty;
-  var __propIsEnum$1f = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$1f = (obj, key, value) => key in obj ? __defProp$1f(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$1f = (a, b) => {
+  var __defProp$1l = Object.defineProperty;
+  var __defProps$L = Object.defineProperties;
+  var __getOwnPropDescs$L = Object.getOwnPropertyDescriptors;
+  var __getOwnPropSymbols$1l = Object.getOwnPropertySymbols;
+  var __hasOwnProp$1l = Object.prototype.hasOwnProperty;
+  var __propIsEnum$1l = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$1l = (obj, key, value) => key in obj ? __defProp$1l(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$1l = (a, b) => {
     for (var prop in b || (b = {}))
-      if (__hasOwnProp$1f.call(b, prop))
-        __defNormalProp$1f(a, prop, b[prop]);
-    if (__getOwnPropSymbols$1f)
-      for (var prop of __getOwnPropSymbols$1f(b)) {
-        if (__propIsEnum$1f.call(b, prop))
-          __defNormalProp$1f(a, prop, b[prop]);
+      if (__hasOwnProp$1l.call(b, prop))
+        __defNormalProp$1l(a, prop, b[prop]);
+    if (__getOwnPropSymbols$1l)
+      for (var prop of __getOwnPropSymbols$1l(b)) {
+        if (__propIsEnum$1l.call(b, prop))
+          __defNormalProp$1l(a, prop, b[prop]);
       }
     return a;
   };
-  var __spreadProps$H = (a, b) => __defProps$H(a, __getOwnPropDescs$H(b));
-  var __objRest$O = (source, exclude) => {
+  var __spreadProps$L = (a, b) => __defProps$L(a, __getOwnPropDescs$L(b));
+  var __objRest$S = (source, exclude) => {
     var target = {};
     for (var prop in source)
-      if (__hasOwnProp$1f.call(source, prop) && exclude.indexOf(prop) < 0)
+      if (__hasOwnProp$1l.call(source, prop) && exclude.indexOf(prop) < 0)
         target[prop] = source[prop];
-    if (source != null && __getOwnPropSymbols$1f)
-      for (var prop of __getOwnPropSymbols$1f(source)) {
-        if (exclude.indexOf(prop) < 0 && __propIsEnum$1f.call(source, prop))
+    if (source != null && __getOwnPropSymbols$1l)
+      for (var prop of __getOwnPropSymbols$1l(source)) {
+        if (exclude.indexOf(prop) < 0 && __propIsEnum$1l.call(source, prop))
           target[prop] = source[prop];
       }
     return target;
   };
-  const ACTION_ICON_SIZES = sizes$e;
+  const ACTION_ICON_SIZES = sizes$f;
   function ActionIcon(_a) {
     var _b = _a, {
       className,
@@ -562,8 +589,9 @@
       size = "md",
       variant = "hover",
       themeOverride,
-      elementRef
-    } = _b, others = __objRest$O(_b, [
+      elementRef,
+      component: Element = "button"
+    } = _b, others = __objRest$S(_b, [
       "className",
       "color",
       "children",
@@ -571,16 +599,16 @@
       "size",
       "variant",
       "themeOverride",
-      "elementRef"
+      "elementRef",
+      "component"
     ]);
-    const classes = useStyles$E({
+    const classes = useStyles$G({
       size,
       radius,
       color,
       theme: useMantineTheme(themeOverride)
     });
-    return /* @__PURE__ */ React__default['default'].createElement("button", __spreadProps$H(__spreadValues$1f({}, others), {
-      "data-mantine-composable": true,
+    return /* @__PURE__ */ React__default.createElement(Element, __spreadProps$L(__spreadValues$1l({}, others), {
       className: cx(classes.actionIcon, classes[variant], className),
       type: "button",
       ref: elementRef
@@ -588,27 +616,27 @@
   }
   ActionIcon.displayName = "@mantine/core/ActionIcon";
 
-  var __defProp$1e = Object.defineProperty;
-  var __defProps$G = Object.defineProperties;
-  var __getOwnPropDescs$G = Object.getOwnPropertyDescriptors;
-  var __getOwnPropSymbols$1e = Object.getOwnPropertySymbols;
-  var __hasOwnProp$1e = Object.prototype.hasOwnProperty;
-  var __propIsEnum$1e = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$1e = (obj, key, value) => key in obj ? __defProp$1e(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$1e = (a, b) => {
+  var __defProp$1k = Object.defineProperty;
+  var __defProps$K = Object.defineProperties;
+  var __getOwnPropDescs$K = Object.getOwnPropertyDescriptors;
+  var __getOwnPropSymbols$1k = Object.getOwnPropertySymbols;
+  var __hasOwnProp$1k = Object.prototype.hasOwnProperty;
+  var __propIsEnum$1k = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$1k = (obj, key, value) => key in obj ? __defProp$1k(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$1k = (a, b) => {
     for (var prop in b || (b = {}))
-      if (__hasOwnProp$1e.call(b, prop))
-        __defNormalProp$1e(a, prop, b[prop]);
-    if (__getOwnPropSymbols$1e)
-      for (var prop of __getOwnPropSymbols$1e(b)) {
-        if (__propIsEnum$1e.call(b, prop))
-          __defNormalProp$1e(a, prop, b[prop]);
+      if (__hasOwnProp$1k.call(b, prop))
+        __defNormalProp$1k(a, prop, b[prop]);
+    if (__getOwnPropSymbols$1k)
+      for (var prop of __getOwnPropSymbols$1k(b)) {
+        if (__propIsEnum$1k.call(b, prop))
+          __defNormalProp$1k(a, prop, b[prop]);
       }
     return a;
   };
-  var __spreadProps$G = (a, b) => __defProps$G(a, __getOwnPropDescs$G(b));
-  var useStyles$D = reactJss.createUseStyles({
-    text: ({theme, color, variant, size}) => __spreadProps$G(__spreadValues$1e(__spreadValues$1e({}, getFontStyles(theme)), getFocusStyles(theme)), {
+  var __spreadProps$K = (a, b) => __defProps$K(a, __getOwnPropDescs$K(b));
+  var useStyles$F = createMemoStyles({
+    text: ({theme, color, variant, size}) => __spreadProps$K(__spreadValues$1k(__spreadValues$1k({}, getFontStyles(theme)), getFocusStyles(theme)), {
       color: color in theme.colors ? theme.colors[color][theme.colorScheme === "dark" ? 4 : 6] : variant === "link" ? theme.colors[theme.primaryColor][theme.colorScheme === "dark" ? 4 : 6] : theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black,
       fontSize: theme.fontSizes[size],
       lineHeight: theme.lineHeight,
@@ -618,32 +646,32 @@
         textDecoration: variant === "link" ? "underline" : "none"
       }
     })
-  }, {link: true});
+  });
 
-  var __defProp$1d = Object.defineProperty;
-  var __getOwnPropSymbols$1d = Object.getOwnPropertySymbols;
-  var __hasOwnProp$1d = Object.prototype.hasOwnProperty;
-  var __propIsEnum$1d = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$1d = (obj, key, value) => key in obj ? __defProp$1d(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$1d = (a, b) => {
+  var __defProp$1j = Object.defineProperty;
+  var __getOwnPropSymbols$1j = Object.getOwnPropertySymbols;
+  var __hasOwnProp$1j = Object.prototype.hasOwnProperty;
+  var __propIsEnum$1j = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$1j = (obj, key, value) => key in obj ? __defProp$1j(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$1j = (a, b) => {
     for (var prop in b || (b = {}))
-      if (__hasOwnProp$1d.call(b, prop))
-        __defNormalProp$1d(a, prop, b[prop]);
-    if (__getOwnPropSymbols$1d)
-      for (var prop of __getOwnPropSymbols$1d(b)) {
-        if (__propIsEnum$1d.call(b, prop))
-          __defNormalProp$1d(a, prop, b[prop]);
+      if (__hasOwnProp$1j.call(b, prop))
+        __defNormalProp$1j(a, prop, b[prop]);
+    if (__getOwnPropSymbols$1j)
+      for (var prop of __getOwnPropSymbols$1j(b)) {
+        if (__propIsEnum$1j.call(b, prop))
+          __defNormalProp$1j(a, prop, b[prop]);
       }
     return a;
   };
-  var __objRest$N = (source, exclude) => {
+  var __objRest$R = (source, exclude) => {
     var target = {};
     for (var prop in source)
-      if (__hasOwnProp$1d.call(source, prop) && exclude.indexOf(prop) < 0)
+      if (__hasOwnProp$1j.call(source, prop) && exclude.indexOf(prop) < 0)
         target[prop] = source[prop];
-    if (source != null && __getOwnPropSymbols$1d)
-      for (var prop of __getOwnPropSymbols$1d(source)) {
-        if (exclude.indexOf(prop) < 0 && __propIsEnum$1d.call(source, prop))
+    if (source != null && __getOwnPropSymbols$1j)
+      for (var prop of __getOwnPropSymbols$1j(source)) {
+        if (exclude.indexOf(prop) < 0 && __propIsEnum$1j.call(source, prop))
           target[prop] = source[prop];
       }
     return target;
@@ -662,7 +690,7 @@
       variant = "text",
       themeOverride,
       elementRef
-    } = _b, others = __objRest$N(_b, [
+    } = _b, others = __objRest$R(_b, [
       "className",
       "component",
       "children",
@@ -676,10 +704,10 @@
       "themeOverride",
       "elementRef"
     ]);
-    const classes = useStyles$D({variant, color, size, theme: useMantineTheme(themeOverride)});
-    return React__default['default'].createElement(component, __spreadValues$1d({
+    const classes = useStyles$F({variant, color, size, theme: useMantineTheme(themeOverride)});
+    return React__default.createElement(component, __spreadValues$1j({
       className: cx(classes.text, className),
-      style: __spreadValues$1d({fontWeight: weight, textTransform: transform, textAlign: align}, style),
+      style: __spreadValues$1j({fontWeight: weight, textTransform: transform, textAlign: align}, style),
       ref: elementRef
     }, others), children);
   }
@@ -687,17 +715,17 @@
   function Anchor(_c) {
     var _d = _c, {
       component = "a"
-    } = _d, others = __objRest$N(_d, [
+    } = _d, others = __objRest$R(_d, [
       "component"
     ]);
-    return /* @__PURE__ */ React__default['default'].createElement(Text, __spreadValues$1d({
+    return /* @__PURE__ */ React__default.createElement(Text, __spreadValues$1j({
       component,
       variant: "link"
     }, others));
   }
   Anchor.displayName = "@mantine/core/Anchor";
 
-  var useStyles$C = reactJss.createUseStyles({
+  var useStyles$E = createMemoStyles({
     paper: ({theme, radius, shadow, padding}) => ({
       backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
       boxSizing: "border-box",
@@ -705,9 +733,361 @@
       boxShadow: theme.shadows[shadow] || shadow || "none",
       padding: getSizeValue({size: padding, sizes: theme.spacing})
     })
-  }, {link: true});
+  });
+
+  var __defProp$1i = Object.defineProperty;
+  var __getOwnPropSymbols$1i = Object.getOwnPropertySymbols;
+  var __hasOwnProp$1i = Object.prototype.hasOwnProperty;
+  var __propIsEnum$1i = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$1i = (obj, key, value) => key in obj ? __defProp$1i(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$1i = (a, b) => {
+    for (var prop in b || (b = {}))
+      if (__hasOwnProp$1i.call(b, prop))
+        __defNormalProp$1i(a, prop, b[prop]);
+    if (__getOwnPropSymbols$1i)
+      for (var prop of __getOwnPropSymbols$1i(b)) {
+        if (__propIsEnum$1i.call(b, prop))
+          __defNormalProp$1i(a, prop, b[prop]);
+      }
+    return a;
+  };
+  var __objRest$Q = (source, exclude) => {
+    var target = {};
+    for (var prop in source)
+      if (__hasOwnProp$1i.call(source, prop) && exclude.indexOf(prop) < 0)
+        target[prop] = source[prop];
+    if (source != null && __getOwnPropSymbols$1i)
+      for (var prop of __getOwnPropSymbols$1i(source)) {
+        if (exclude.indexOf(prop) < 0 && __propIsEnum$1i.call(source, prop))
+          target[prop] = source[prop];
+      }
+    return target;
+  };
+  function Paper(_a) {
+    var _b = _a, {
+      className,
+      children,
+      padding = 0,
+      radius = "sm",
+      shadow,
+      themeOverride,
+      elementRef
+    } = _b, others = __objRest$Q(_b, [
+      "className",
+      "children",
+      "padding",
+      "radius",
+      "shadow",
+      "themeOverride",
+      "elementRef"
+    ]);
+    const classes = useStyles$E({radius, shadow, padding, theme: useMantineTheme(themeOverride)});
+    return /* @__PURE__ */ React__default.createElement("div", __spreadValues$1i({
+      className: cx(classes.paper, className),
+      ref: elementRef
+    }, others), children);
+  }
+  Paper.displayName = "@mantine/core/Paper";
+
+  var __defProp$1h = Object.defineProperty;
+  var __defProps$J = Object.defineProperties;
+  var __getOwnPropDescs$J = Object.getOwnPropertyDescriptors;
+  var __getOwnPropSymbols$1h = Object.getOwnPropertySymbols;
+  var __hasOwnProp$1h = Object.prototype.hasOwnProperty;
+  var __propIsEnum$1h = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$1h = (obj, key, value) => key in obj ? __defProp$1h(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$1h = (a, b) => {
+    for (var prop in b || (b = {}))
+      if (__hasOwnProp$1h.call(b, prop))
+        __defNormalProp$1h(a, prop, b[prop]);
+    if (__getOwnPropSymbols$1h)
+      for (var prop of __getOwnPropSymbols$1h(b)) {
+        if (__propIsEnum$1h.call(b, prop))
+          __defNormalProp$1h(a, prop, b[prop]);
+      }
+    return a;
+  };
+  var __spreadProps$J = (a, b) => __defProps$J(a, __getOwnPropDescs$J(b));
+  const LINE_WIDTH = 4;
+  var useStyles$D = createMemoStyles({
+    alert: ({color, theme}) => ({
+      position: "relative",
+      padding: [theme.spacing.xs, theme.spacing.md],
+      paddingLeft: theme.spacing.md + theme.spacing.xs / 2 + LINE_WIDTH,
+      backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.white,
+      border: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.colors.gray[2]}`,
+      "&::before": {
+        content: '""',
+        display: "block",
+        position: "absolute",
+        top: theme.spacing.xs,
+        bottom: theme.spacing.xs,
+        left: theme.spacing.xs,
+        width: LINE_WIDTH,
+        borderRadius: LINE_WIDTH,
+        backgroundColor: getThemeColor({
+          theme,
+          color,
+          shade: theme.colorScheme === "dark" ? 4 : 6
+        })
+      }
+    }),
+    title: ({color, theme}) => ({
+      boxSizing: "border-box",
+      color: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 4 : 6}),
+      margin: 0,
+      marginBottom: theme.spacing.xs / 2,
+      textOverflow: "ellipsis",
+      overflow: "hidden"
+    }),
+    body: ({theme}) => __spreadProps$J(__spreadValues$1h({}, getFontStyles(theme)), {
+      lineHeight: theme.lineHeight,
+      borderBottomLeftRadius: theme.radius.sm,
+      borderBottomRightRadius: theme.radius.sm,
+      textOverflow: "ellipsis",
+      overflow: "hidden",
+      fontSize: theme.fontSizes.sm,
+      color: theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black,
+      "&:only-child": {
+        borderTopRightRadius: theme.radius.sm,
+        borderTopLeftRadius: theme.radius.sm
+      }
+    })
+  });
+
+  var __defProp$1g = Object.defineProperty;
+  var __getOwnPropSymbols$1g = Object.getOwnPropertySymbols;
+  var __hasOwnProp$1g = Object.prototype.hasOwnProperty;
+  var __propIsEnum$1g = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$1g = (obj, key, value) => key in obj ? __defProp$1g(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$1g = (a, b) => {
+    for (var prop in b || (b = {}))
+      if (__hasOwnProp$1g.call(b, prop))
+        __defNormalProp$1g(a, prop, b[prop]);
+    if (__getOwnPropSymbols$1g)
+      for (var prop of __getOwnPropSymbols$1g(b)) {
+        if (__propIsEnum$1g.call(b, prop))
+          __defNormalProp$1g(a, prop, b[prop]);
+      }
+    return a;
+  };
+  var __objRest$P = (source, exclude) => {
+    var target = {};
+    for (var prop in source)
+      if (__hasOwnProp$1g.call(source, prop) && exclude.indexOf(prop) < 0)
+        target[prop] = source[prop];
+    if (source != null && __getOwnPropSymbols$1g)
+      for (var prop of __getOwnPropSymbols$1g(source)) {
+        if (exclude.indexOf(prop) < 0 && __propIsEnum$1g.call(source, prop))
+          target[prop] = source[prop];
+      }
+    return target;
+  };
+  function Alert(_a) {
+    var _b = _a, {
+      className,
+      title,
+      children,
+      themeOverride,
+      color,
+      shadow = "sm"
+    } = _b, others = __objRest$P(_b, [
+      "className",
+      "title",
+      "children",
+      "themeOverride",
+      "color",
+      "shadow"
+    ]);
+    const classes = useStyles$D({color, theme: useMantineTheme(themeOverride)});
+    return /* @__PURE__ */ React__default.createElement(Paper, __spreadValues$1g({
+      shadow,
+      className: cx(classes.alert, className),
+      themeOverride
+    }, others), title && /* @__PURE__ */ React__default.createElement(Text, {
+      themeOverride,
+      "data-mantine-alert-title": true,
+      weight: 700,
+      className: classes.title
+    }, title), /* @__PURE__ */ React__default.createElement("div", {
+      "data-mantine-alert-body": true,
+      className: classes.body
+    }, children));
+  }
+  Alert.displayName = "@mantine/core/Alert";
+
+  var __defProp$1f = Object.defineProperty;
+  var __defProps$I = Object.defineProperties;
+  var __getOwnPropDescs$I = Object.getOwnPropertyDescriptors;
+  var __getOwnPropSymbols$1f = Object.getOwnPropertySymbols;
+  var __hasOwnProp$1f = Object.prototype.hasOwnProperty;
+  var __propIsEnum$1f = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$1f = (obj, key, value) => key in obj ? __defProp$1f(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$1f = (a, b) => {
+    for (var prop in b || (b = {}))
+      if (__hasOwnProp$1f.call(b, prop))
+        __defNormalProp$1f(a, prop, b[prop]);
+    if (__getOwnPropSymbols$1f)
+      for (var prop of __getOwnPropSymbols$1f(b)) {
+        if (__propIsEnum$1f.call(b, prop))
+          __defNormalProp$1f(a, prop, b[prop]);
+      }
+    return a;
+  };
+  var __spreadProps$I = (a, b) => __defProps$I(a, __getOwnPropDescs$I(b));
+  function PlaceholderIcon(props) {
+    return /* @__PURE__ */ React__default.createElement("svg", __spreadProps$I(__spreadValues$1f({}, props), {
+      width: "15",
+      height: "15",
+      viewBox: "0 0 15 15",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg"
+    }), /* @__PURE__ */ React__default.createElement("path", {
+      d: "M0.877014 7.49988C0.877014 3.84219 3.84216 0.877045 7.49985 0.877045C11.1575 0.877045 14.1227 3.84219 14.1227 7.49988C14.1227 11.1575 11.1575 14.1227 7.49985 14.1227C3.84216 14.1227 0.877014 11.1575 0.877014 7.49988ZM7.49985 1.82704C4.36683 1.82704 1.82701 4.36686 1.82701 7.49988C1.82701 8.97196 2.38774 10.3131 3.30727 11.3213C4.19074 9.94119 5.73818 9.02499 7.50023 9.02499C9.26206 9.02499 10.8093 9.94097 11.6929 11.3208C12.6121 10.3127 13.1727 8.97172 13.1727 7.49988C13.1727 4.36686 10.6328 1.82704 7.49985 1.82704ZM10.9818 11.9787C10.2839 10.7795 8.9857 9.97499 7.50023 9.97499C6.01458 9.97499 4.71624 10.7797 4.01845 11.9791C4.97952 12.7272 6.18765 13.1727 7.49985 13.1727C8.81227 13.1727 10.0206 12.727 10.9818 11.9787ZM5.14999 6.50487C5.14999 5.207 6.20212 4.15487 7.49999 4.15487C8.79786 4.15487 9.84999 5.207 9.84999 6.50487C9.84999 7.80274 8.79786 8.85487 7.49999 8.85487C6.20212 8.85487 5.14999 7.80274 5.14999 6.50487ZM7.49999 5.10487C6.72679 5.10487 6.09999 5.73167 6.09999 6.50487C6.09999 7.27807 6.72679 7.90487 7.49999 7.90487C8.27319 7.90487 8.89999 7.27807 8.89999 6.50487C8.89999 5.73167 8.27319 5.10487 7.49999 5.10487Z",
+      fill: "currentColor",
+      fillRule: "evenodd",
+      clipRule: "evenodd"
+    }));
+  }
+
+  var __defProp$1e = Object.defineProperty;
+  var __defProps$H = Object.defineProperties;
+  var __getOwnPropDescs$H = Object.getOwnPropertyDescriptors;
+  var __getOwnPropSymbols$1e = Object.getOwnPropertySymbols;
+  var __hasOwnProp$1e = Object.prototype.hasOwnProperty;
+  var __propIsEnum$1e = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$1e = (obj, key, value) => key in obj ? __defProp$1e(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$1e = (a, b) => {
+    for (var prop in b || (b = {}))
+      if (__hasOwnProp$1e.call(b, prop))
+        __defNormalProp$1e(a, prop, b[prop]);
+    if (__getOwnPropSymbols$1e)
+      for (var prop of __getOwnPropSymbols$1e(b)) {
+        if (__propIsEnum$1e.call(b, prop))
+          __defNormalProp$1e(a, prop, b[prop]);
+      }
+    return a;
+  };
+  var __spreadProps$H = (a, b) => __defProps$H(a, __getOwnPropDescs$H(b));
+  const sizes$e = {
+    xs: 16,
+    sm: 26,
+    md: 38,
+    lg: 56,
+    xl: 84
+  };
+  var useStyles$C = createMemoStyles({
+    avatar: ({size, radius, theme}) => ({
+      boxSizing: "border-box",
+      position: "relative",
+      userSelect: "none",
+      overflow: "hidden",
+      width: getSizeValue({size, sizes: sizes$e}),
+      height: getSizeValue({size, sizes: sizes$e}),
+      borderRadius: radius ? getSizeValue({size: radius, sizes: theme.radius}) : size
+    }),
+    image: {
+      objectFit: "cover",
+      width: "100%",
+      height: "100%"
+    },
+    placeholder: ({theme, size, color}) => __spreadProps$H(__spreadValues$1e({}, getFontStyles(theme)), {
+      fontSize: getSizeValue({size, sizes: sizes$e}) / 2.5,
+      color: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 0 : 6}),
+      fontWeight: 700,
+      backgroundColor: hexToRgba(getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 8 : 1}), theme.colorScheme === "dark" ? 0.5 : 1),
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      width: "100%",
+      height: "100%",
+      userSelect: "none"
+    }),
+    placeholderIcon: ({theme, color}) => ({
+      width: "70%",
+      height: "70%",
+      color: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 0 : 6})
+    })
+  });
+
+  var __defProp$1d = Object.defineProperty;
+  var __defProps$G = Object.defineProperties;
+  var __getOwnPropDescs$G = Object.getOwnPropertyDescriptors;
+  var __getOwnPropSymbols$1d = Object.getOwnPropertySymbols;
+  var __hasOwnProp$1d = Object.prototype.hasOwnProperty;
+  var __propIsEnum$1d = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$1d = (obj, key, value) => key in obj ? __defProp$1d(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$1d = (a, b) => {
+    for (var prop in b || (b = {}))
+      if (__hasOwnProp$1d.call(b, prop))
+        __defNormalProp$1d(a, prop, b[prop]);
+    if (__getOwnPropSymbols$1d)
+      for (var prop of __getOwnPropSymbols$1d(b)) {
+        if (__propIsEnum$1d.call(b, prop))
+          __defNormalProp$1d(a, prop, b[prop]);
+      }
+    return a;
+  };
+  var __spreadProps$G = (a, b) => __defProps$G(a, __getOwnPropDescs$G(b));
+  var __objRest$O = (source, exclude) => {
+    var target = {};
+    for (var prop in source)
+      if (__hasOwnProp$1d.call(source, prop) && exclude.indexOf(prop) < 0)
+        target[prop] = source[prop];
+    if (source != null && __getOwnPropSymbols$1d)
+      for (var prop of __getOwnPropSymbols$1d(source)) {
+        if (exclude.indexOf(prop) < 0 && __propIsEnum$1d.call(source, prop))
+          target[prop] = source[prop];
+      }
+    return target;
+  };
+  const AVATAR_SIZES = sizes$e;
+  function Avatar(_a) {
+    var _b = _a, {
+      className,
+      size = "md",
+      src,
+      alt,
+      radius = "sm",
+      children,
+      color = "gray",
+      themeOverride
+    } = _b, others = __objRest$O(_b, [
+      "className",
+      "size",
+      "src",
+      "alt",
+      "radius",
+      "children",
+      "color",
+      "themeOverride"
+    ]);
+    const theme = useMantineTheme(themeOverride);
+    const classes = useStyles$C({color, radius, size, theme});
+    const [error, setError] = React.useState(!src);
+    React.useEffect(() => {
+      !src ? setError(true) : setError(false);
+    }, [src]);
+    return /* @__PURE__ */ React__default.createElement("div", __spreadProps$G(__spreadValues$1d({}, others), {
+      className: cx(classes.avatar, className)
+    }), error ? /* @__PURE__ */ React__default.createElement("div", {
+      "data-mantine-placeholder": true,
+      className: classes.placeholder,
+      title: alt
+    }, children || /* @__PURE__ */ React__default.createElement(PlaceholderIcon, {
+      className: classes.placeholderIcon
+    })) : /* @__PURE__ */ React__default.createElement("img", {
+      className: classes.image,
+      src,
+      alt,
+      onError: () => setError(true)
+    }));
+  }
+  Avatar.displayName = "@mantine/core/Avatar";
 
   var __defProp$1c = Object.defineProperty;
+  var __defProps$F = Object.defineProperties;
+  var __getOwnPropDescs$F = Object.getOwnPropertyDescriptors;
   var __getOwnPropSymbols$1c = Object.getOwnPropertySymbols;
   var __hasOwnProp$1c = Object.prototype.hasOwnProperty;
   var __propIsEnum$1c = Object.prototype.propertyIsEnumerable;
@@ -723,357 +1103,8 @@
       }
     return a;
   };
-  var __objRest$M = (source, exclude) => {
-    var target = {};
-    for (var prop in source)
-      if (__hasOwnProp$1c.call(source, prop) && exclude.indexOf(prop) < 0)
-        target[prop] = source[prop];
-    if (source != null && __getOwnPropSymbols$1c)
-      for (var prop of __getOwnPropSymbols$1c(source)) {
-        if (exclude.indexOf(prop) < 0 && __propIsEnum$1c.call(source, prop))
-          target[prop] = source[prop];
-      }
-    return target;
-  };
-  function Paper(_a) {
-    var _b = _a, {
-      className,
-      children,
-      padding = 0,
-      radius = "sm",
-      shadow,
-      themeOverride,
-      elementRef
-    } = _b, others = __objRest$M(_b, [
-      "className",
-      "children",
-      "padding",
-      "radius",
-      "shadow",
-      "themeOverride",
-      "elementRef"
-    ]);
-    const classes = useStyles$C({radius, shadow, padding, theme: useMantineTheme(themeOverride)});
-    return /* @__PURE__ */ React__default['default'].createElement("div", __spreadValues$1c({
-      className: cx(classes.paper, className),
-      ref: elementRef
-    }, others), children);
-  }
-  Paper.displayName = "@mantine/core/Paper";
-
-  var __defProp$1b = Object.defineProperty;
-  var __defProps$F = Object.defineProperties;
-  var __getOwnPropDescs$F = Object.getOwnPropertyDescriptors;
-  var __getOwnPropSymbols$1b = Object.getOwnPropertySymbols;
-  var __hasOwnProp$1b = Object.prototype.hasOwnProperty;
-  var __propIsEnum$1b = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$1b = (obj, key, value) => key in obj ? __defProp$1b(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$1b = (a, b) => {
-    for (var prop in b || (b = {}))
-      if (__hasOwnProp$1b.call(b, prop))
-        __defNormalProp$1b(a, prop, b[prop]);
-    if (__getOwnPropSymbols$1b)
-      for (var prop of __getOwnPropSymbols$1b(b)) {
-        if (__propIsEnum$1b.call(b, prop))
-          __defNormalProp$1b(a, prop, b[prop]);
-      }
-    return a;
-  };
   var __spreadProps$F = (a, b) => __defProps$F(a, __getOwnPropDescs$F(b));
-  const LINE_WIDTH = 4;
-  var useStyles$B = reactJss.createUseStyles({
-    alert: ({color, theme}) => ({
-      position: "relative",
-      padding: [theme.spacing.xs, theme.spacing.md],
-      paddingLeft: theme.spacing.md + theme.spacing.xs / 2 + LINE_WIDTH,
-      backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[9] : theme.white,
-      border: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[9] : theme.colors.gray[2]}`,
-      "&::before": {
-        content: '""',
-        display: "block",
-        position: "absolute",
-        top: theme.spacing.xs,
-        bottom: theme.spacing.xs,
-        left: theme.spacing.xs,
-        width: LINE_WIDTH,
-        borderRadius: LINE_WIDTH,
-        backgroundColor: getThemeColor({theme, color, shade: 6})
-      }
-    }),
-    title: ({color, theme}) => ({
-      boxSizing: "border-box",
-      color: getThemeColor({theme, color, shade: 6}),
-      margin: 0,
-      marginBottom: theme.spacing.xs / 2,
-      textOverflow: "ellipsis",
-      overflow: "hidden"
-    }),
-    body: ({theme}) => __spreadProps$F(__spreadValues$1b({}, getFontStyles(theme)), {
-      lineHeight: theme.lineHeight,
-      borderBottomLeftRadius: theme.radius.sm,
-      borderBottomRightRadius: theme.radius.sm,
-      textOverflow: "ellipsis",
-      overflow: "hidden",
-      fontSize: theme.fontSizes.sm,
-      color: theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black,
-      "&:only-child": {
-        borderTopRightRadius: theme.radius.sm,
-        borderTopLeftRadius: theme.radius.sm
-      }
-    })
-  }, {link: true});
-
-  var __defProp$1a = Object.defineProperty;
-  var __getOwnPropSymbols$1a = Object.getOwnPropertySymbols;
-  var __hasOwnProp$1a = Object.prototype.hasOwnProperty;
-  var __propIsEnum$1a = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$1a = (obj, key, value) => key in obj ? __defProp$1a(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$1a = (a, b) => {
-    for (var prop in b || (b = {}))
-      if (__hasOwnProp$1a.call(b, prop))
-        __defNormalProp$1a(a, prop, b[prop]);
-    if (__getOwnPropSymbols$1a)
-      for (var prop of __getOwnPropSymbols$1a(b)) {
-        if (__propIsEnum$1a.call(b, prop))
-          __defNormalProp$1a(a, prop, b[prop]);
-      }
-    return a;
-  };
-  var __objRest$L = (source, exclude) => {
-    var target = {};
-    for (var prop in source)
-      if (__hasOwnProp$1a.call(source, prop) && exclude.indexOf(prop) < 0)
-        target[prop] = source[prop];
-    if (source != null && __getOwnPropSymbols$1a)
-      for (var prop of __getOwnPropSymbols$1a(source)) {
-        if (exclude.indexOf(prop) < 0 && __propIsEnum$1a.call(source, prop))
-          target[prop] = source[prop];
-      }
-    return target;
-  };
-  function Alert(_a) {
-    var _b = _a, {
-      className,
-      title,
-      children,
-      themeOverride,
-      color,
-      shadow = "sm"
-    } = _b, others = __objRest$L(_b, [
-      "className",
-      "title",
-      "children",
-      "themeOverride",
-      "color",
-      "shadow"
-    ]);
-    const classes = useStyles$B({color, theme: useMantineTheme(themeOverride)});
-    return /* @__PURE__ */ React__default['default'].createElement(Paper, __spreadValues$1a({
-      shadow,
-      className: cx(classes.alert, className),
-      themeOverride
-    }, others), title && /* @__PURE__ */ React__default['default'].createElement(Text, {
-      themeOverride,
-      "data-mantine-alert-title": true,
-      weight: 700,
-      className: classes.title
-    }, title), /* @__PURE__ */ React__default['default'].createElement("div", {
-      "data-mantine-alert-body": true,
-      className: classes.body
-    }, children));
-  }
-  Alert.displayName = "@mantine/core/Alert";
-
-  var __defProp$19 = Object.defineProperty;
-  var __defProps$E = Object.defineProperties;
-  var __getOwnPropDescs$E = Object.getOwnPropertyDescriptors;
-  var __getOwnPropSymbols$19 = Object.getOwnPropertySymbols;
-  var __hasOwnProp$19 = Object.prototype.hasOwnProperty;
-  var __propIsEnum$19 = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$19 = (obj, key, value) => key in obj ? __defProp$19(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$19 = (a, b) => {
-    for (var prop in b || (b = {}))
-      if (__hasOwnProp$19.call(b, prop))
-        __defNormalProp$19(a, prop, b[prop]);
-    if (__getOwnPropSymbols$19)
-      for (var prop of __getOwnPropSymbols$19(b)) {
-        if (__propIsEnum$19.call(b, prop))
-          __defNormalProp$19(a, prop, b[prop]);
-      }
-    return a;
-  };
-  var __spreadProps$E = (a, b) => __defProps$E(a, __getOwnPropDescs$E(b));
-  function PlaceholderIcon(props) {
-    return /* @__PURE__ */ React__default['default'].createElement("svg", __spreadProps$E(__spreadValues$19({}, props), {
-      width: "15",
-      height: "15",
-      viewBox: "0 0 15 15",
-      fill: "none",
-      xmlns: "http://www.w3.org/2000/svg"
-    }), /* @__PURE__ */ React__default['default'].createElement("path", {
-      d: "M0.877014 7.49988C0.877014 3.84219 3.84216 0.877045 7.49985 0.877045C11.1575 0.877045 14.1227 3.84219 14.1227 7.49988C14.1227 11.1575 11.1575 14.1227 7.49985 14.1227C3.84216 14.1227 0.877014 11.1575 0.877014 7.49988ZM7.49985 1.82704C4.36683 1.82704 1.82701 4.36686 1.82701 7.49988C1.82701 8.97196 2.38774 10.3131 3.30727 11.3213C4.19074 9.94119 5.73818 9.02499 7.50023 9.02499C9.26206 9.02499 10.8093 9.94097 11.6929 11.3208C12.6121 10.3127 13.1727 8.97172 13.1727 7.49988C13.1727 4.36686 10.6328 1.82704 7.49985 1.82704ZM10.9818 11.9787C10.2839 10.7795 8.9857 9.97499 7.50023 9.97499C6.01458 9.97499 4.71624 10.7797 4.01845 11.9791C4.97952 12.7272 6.18765 13.1727 7.49985 13.1727C8.81227 13.1727 10.0206 12.727 10.9818 11.9787ZM5.14999 6.50487C5.14999 5.207 6.20212 4.15487 7.49999 4.15487C8.79786 4.15487 9.84999 5.207 9.84999 6.50487C9.84999 7.80274 8.79786 8.85487 7.49999 8.85487C6.20212 8.85487 5.14999 7.80274 5.14999 6.50487ZM7.49999 5.10487C6.72679 5.10487 6.09999 5.73167 6.09999 6.50487C6.09999 7.27807 6.72679 7.90487 7.49999 7.90487C8.27319 7.90487 8.89999 7.27807 8.89999 6.50487C8.89999 5.73167 8.27319 5.10487 7.49999 5.10487Z",
-      fill: "currentColor",
-      fillRule: "evenodd",
-      clipRule: "evenodd"
-    }));
-  }
-
-  var __defProp$18 = Object.defineProperty;
-  var __defProps$D = Object.defineProperties;
-  var __getOwnPropDescs$D = Object.getOwnPropertyDescriptors;
-  var __getOwnPropSymbols$18 = Object.getOwnPropertySymbols;
-  var __hasOwnProp$18 = Object.prototype.hasOwnProperty;
-  var __propIsEnum$18 = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$18 = (obj, key, value) => key in obj ? __defProp$18(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$18 = (a, b) => {
-    for (var prop in b || (b = {}))
-      if (__hasOwnProp$18.call(b, prop))
-        __defNormalProp$18(a, prop, b[prop]);
-    if (__getOwnPropSymbols$18)
-      for (var prop of __getOwnPropSymbols$18(b)) {
-        if (__propIsEnum$18.call(b, prop))
-          __defNormalProp$18(a, prop, b[prop]);
-      }
-    return a;
-  };
-  var __spreadProps$D = (a, b) => __defProps$D(a, __getOwnPropDescs$D(b));
   const sizes$d = {
-    xs: 16,
-    sm: 26,
-    md: 38,
-    lg: 56,
-    xl: 84
-  };
-  var useStyles$A = reactJss.createUseStyles({
-    avatar: ({size, radius, theme}) => ({
-      boxSizing: "border-box",
-      position: "relative",
-      userSelect: "none",
-      overflow: "hidden",
-      width: getSizeValue({size, sizes: sizes$d}),
-      height: getSizeValue({size, sizes: sizes$d}),
-      borderRadius: radius ? getSizeValue({size: radius, sizes: theme.radius}) : size
-    }),
-    image: {
-      objectFit: "cover",
-      width: "100%",
-      height: "100%"
-    },
-    placeholder: ({theme, size, color}) => __spreadProps$D(__spreadValues$18({}, getFontStyles(theme)), {
-      fontSize: getSizeValue({size, sizes: sizes$d}) / 2.5,
-      color: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 0 : 6}),
-      fontWeight: 700,
-      backgroundColor: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 9 : 1}),
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      width: "100%",
-      height: "100%",
-      userSelect: "none"
-    }),
-    placeholderIcon: ({theme, color}) => ({
-      width: "70%",
-      height: "70%",
-      color: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 0 : 6})
-    })
-  }, {link: true});
-
-  var __defProp$17 = Object.defineProperty;
-  var __defProps$C = Object.defineProperties;
-  var __getOwnPropDescs$C = Object.getOwnPropertyDescriptors;
-  var __getOwnPropSymbols$17 = Object.getOwnPropertySymbols;
-  var __hasOwnProp$17 = Object.prototype.hasOwnProperty;
-  var __propIsEnum$17 = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$17 = (obj, key, value) => key in obj ? __defProp$17(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$17 = (a, b) => {
-    for (var prop in b || (b = {}))
-      if (__hasOwnProp$17.call(b, prop))
-        __defNormalProp$17(a, prop, b[prop]);
-    if (__getOwnPropSymbols$17)
-      for (var prop of __getOwnPropSymbols$17(b)) {
-        if (__propIsEnum$17.call(b, prop))
-          __defNormalProp$17(a, prop, b[prop]);
-      }
-    return a;
-  };
-  var __spreadProps$C = (a, b) => __defProps$C(a, __getOwnPropDescs$C(b));
-  var __objRest$K = (source, exclude) => {
-    var target = {};
-    for (var prop in source)
-      if (__hasOwnProp$17.call(source, prop) && exclude.indexOf(prop) < 0)
-        target[prop] = source[prop];
-    if (source != null && __getOwnPropSymbols$17)
-      for (var prop of __getOwnPropSymbols$17(source)) {
-        if (exclude.indexOf(prop) < 0 && __propIsEnum$17.call(source, prop))
-          target[prop] = source[prop];
-      }
-    return target;
-  };
-  const AVATAR_SIZES = sizes$d;
-  function Avatar(_a) {
-    var _b = _a, {
-      className,
-      size = "md",
-      src,
-      alt,
-      radius = "sm",
-      children,
-      color = "gray",
-      themeOverride
-    } = _b, others = __objRest$K(_b, [
-      "className",
-      "size",
-      "src",
-      "alt",
-      "radius",
-      "children",
-      "color",
-      "themeOverride"
-    ]);
-    const theme = useMantineTheme(themeOverride);
-    const classes = useStyles$A({color, radius, size, theme});
-    const [error, setError] = React.useState(!src);
-    React.useEffect(() => {
-      !src ? setError(true) : setError(false);
-    }, [src]);
-    return /* @__PURE__ */ React__default['default'].createElement("div", __spreadProps$C(__spreadValues$17({}, others), {
-      "data-mantine-composable": true,
-      className: cx(classes.avatar, className)
-    }), error ? /* @__PURE__ */ React__default['default'].createElement("div", {
-      "data-mantine-placeholder": true,
-      className: classes.placeholder,
-      title: alt
-    }, children || /* @__PURE__ */ React__default['default'].createElement(PlaceholderIcon, {
-      className: classes.placeholderIcon
-    })) : /* @__PURE__ */ React__default['default'].createElement("img", {
-      className: classes.image,
-      src,
-      alt,
-      onError: () => setError(true)
-    }));
-  }
-  Avatar.displayName = "@mantine/core/Avatar";
-
-  var __defProp$16 = Object.defineProperty;
-  var __defProps$B = Object.defineProperties;
-  var __getOwnPropDescs$B = Object.getOwnPropertyDescriptors;
-  var __getOwnPropSymbols$16 = Object.getOwnPropertySymbols;
-  var __hasOwnProp$16 = Object.prototype.hasOwnProperty;
-  var __propIsEnum$16 = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$16 = (obj, key, value) => key in obj ? __defProp$16(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$16 = (a, b) => {
-    for (var prop in b || (b = {}))
-      if (__hasOwnProp$16.call(b, prop))
-        __defNormalProp$16(a, prop, b[prop]);
-    if (__getOwnPropSymbols$16)
-      for (var prop of __getOwnPropSymbols$16(b)) {
-        if (__propIsEnum$16.call(b, prop))
-          __defNormalProp$16(a, prop, b[prop]);
-      }
-    return a;
-  };
-  var __spreadProps$B = (a, b) => __defProps$B(a, __getOwnPropDescs$B(b));
-  const sizes$c = {
     xs: {
       fontSize: 9,
       height: 16
@@ -1095,11 +1126,11 @@
       height: 32
     }
   };
-  const heights$1 = Object.keys(sizes$c).reduce((acc, key) => {
-    acc[key] = sizes$c[key].height;
+  const heights$1 = Object.keys(sizes$d).reduce((acc, key) => {
+    acc[key] = sizes$d[key].height;
     return acc;
   }, {});
-  var useStyles$z = reactJss.createUseStyles({
+  var useStyles$B = createMemoStyles({
     leftSection: ({theme}) => ({
       marginRight: theme.spacing.xs / 2
     }),
@@ -1112,8 +1143,8 @@
       textOverflow: "ellipsis"
     },
     badge: ({theme, size, fullWidth, radius}) => {
-      const {fontSize, height} = size in sizes$c ? sizes$c[size] : sizes$c.md;
-      return __spreadProps$B(__spreadValues$16(__spreadValues$16({}, getFocusStyles(theme)), getFontStyles(theme)), {
+      const {fontSize, height} = size in sizes$d ? sizes$d[size] : sizes$d.md;
+      return __spreadProps$F(__spreadValues$1c(__spreadValues$1c({}, getFocusStyles(theme)), getFontStyles(theme)), {
         fontSize,
         height,
         WebkitTapHighlightColor: "transparent",
@@ -1136,48 +1167,48 @@
       });
     },
     light: ({theme, color}) => ({
-      backgroundColor: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 3 : 0}),
-      color: theme.colorScheme === "dark" ? theme.colors.dark[9] : getThemeColor({theme, color, shade: 9})
+      backgroundColor: hexToRgba(getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 9 : 0}), theme.colorScheme === "dark" ? 0.3 : 1),
+      color: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 3 : 9})
     }),
     filled: ({theme, color}) => ({
-      backgroundColor: getThemeColor({theme, color, shade: 7}),
+      backgroundColor: hexToRgba(getThemeColor({theme, color, shade: 7}), theme.colorScheme === "dark" ? 0.65 : 1),
       color: theme.white,
-      textShadow: `1px 1px 0 ${getThemeColor({theme, color, shade: 9})}`
+      textShadow: theme.colorScheme === "dark" ? "none" : `1px 1px 0 ${getThemeColor({theme, color, shade: 9})}`
     }),
     outline: ({theme, color}) => ({
       backgroundColor: "transparent",
-      color: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 4 : 6}),
-      borderColor: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 4 : 6})
+      color: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 3 : 8}),
+      borderColor: hexToRgba(getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 3 : 8}), 0.55)
     })
-  }, {link: true});
+  });
 
-  var __defProp$15 = Object.defineProperty;
-  var __defProps$A = Object.defineProperties;
-  var __getOwnPropDescs$A = Object.getOwnPropertyDescriptors;
-  var __getOwnPropSymbols$15 = Object.getOwnPropertySymbols;
-  var __hasOwnProp$15 = Object.prototype.hasOwnProperty;
-  var __propIsEnum$15 = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$15 = (obj, key, value) => key in obj ? __defProp$15(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$15 = (a, b) => {
+  var __defProp$1b = Object.defineProperty;
+  var __defProps$E = Object.defineProperties;
+  var __getOwnPropDescs$E = Object.getOwnPropertyDescriptors;
+  var __getOwnPropSymbols$1b = Object.getOwnPropertySymbols;
+  var __hasOwnProp$1b = Object.prototype.hasOwnProperty;
+  var __propIsEnum$1b = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$1b = (obj, key, value) => key in obj ? __defProp$1b(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$1b = (a, b) => {
     for (var prop in b || (b = {}))
-      if (__hasOwnProp$15.call(b, prop))
-        __defNormalProp$15(a, prop, b[prop]);
-    if (__getOwnPropSymbols$15)
-      for (var prop of __getOwnPropSymbols$15(b)) {
-        if (__propIsEnum$15.call(b, prop))
-          __defNormalProp$15(a, prop, b[prop]);
+      if (__hasOwnProp$1b.call(b, prop))
+        __defNormalProp$1b(a, prop, b[prop]);
+    if (__getOwnPropSymbols$1b)
+      for (var prop of __getOwnPropSymbols$1b(b)) {
+        if (__propIsEnum$1b.call(b, prop))
+          __defNormalProp$1b(a, prop, b[prop]);
       }
     return a;
   };
-  var __spreadProps$A = (a, b) => __defProps$A(a, __getOwnPropDescs$A(b));
-  var __objRest$J = (source, exclude) => {
+  var __spreadProps$E = (a, b) => __defProps$E(a, __getOwnPropDescs$E(b));
+  var __objRest$N = (source, exclude) => {
     var target = {};
     for (var prop in source)
-      if (__hasOwnProp$15.call(source, prop) && exclude.indexOf(prop) < 0)
+      if (__hasOwnProp$1b.call(source, prop) && exclude.indexOf(prop) < 0)
         target[prop] = source[prop];
-    if (source != null && __getOwnPropSymbols$15)
-      for (var prop of __getOwnPropSymbols$15(source)) {
-        if (exclude.indexOf(prop) < 0 && __propIsEnum$15.call(source, prop))
+    if (source != null && __getOwnPropSymbols$1b)
+      for (var prop of __getOwnPropSymbols$1b(source)) {
+        if (exclude.indexOf(prop) < 0 && __propIsEnum$1b.call(source, prop))
           target[prop] = source[prop];
       }
     return target;
@@ -1196,7 +1227,7 @@
       leftSection,
       rightSection,
       radius = "xl"
-    } = _b, others = __objRest$J(_b, [
+    } = _b, others = __objRest$N(_b, [
       "component",
       "className",
       "color",
@@ -1209,52 +1240,51 @@
       "rightSection",
       "radius"
     ]);
-    const classes = useStyles$z({
+    const classes = useStyles$B({
       size,
       fullWidth,
       color,
       radius,
       theme: useMantineTheme(themeOverride)
     });
-    return /* @__PURE__ */ React__default['default'].createElement(Component, __spreadProps$A(__spreadValues$15({}, others), {
-      "data-mantine-composable": true,
+    return /* @__PURE__ */ React__default.createElement(Component, __spreadProps$E(__spreadValues$1b({}, others), {
       className: cx(classes.badge, classes[variant], className)
-    }), leftSection && /* @__PURE__ */ React__default['default'].createElement("span", {
+    }), leftSection && /* @__PURE__ */ React__default.createElement("span", {
       "data-mantine-badge-left": true,
       className: classes.leftSection
-    }, leftSection), /* @__PURE__ */ React__default['default'].createElement("span", {
+    }, leftSection), /* @__PURE__ */ React__default.createElement("span", {
       className: classes.inner
-    }, children), rightSection && /* @__PURE__ */ React__default['default'].createElement("span", {
+    }, children), rightSection && /* @__PURE__ */ React__default.createElement("span", {
       "data-mantine-badge-right": true,
       className: classes.rightSection
     }, rightSection));
   }
   Badge.displayName = "@mantine/core/Badge";
 
-  var __defProp$14 = Object.defineProperty;
-  var __getOwnPropSymbols$14 = Object.getOwnPropertySymbols;
-  var __hasOwnProp$14 = Object.prototype.hasOwnProperty;
-  var __propIsEnum$14 = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$14 = (obj, key, value) => key in obj ? __defProp$14(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$14 = (a, b) => {
+  var __defProp$1a = Object.defineProperty;
+  var __getOwnPropSymbols$1a = Object.getOwnPropertySymbols;
+  var __hasOwnProp$1a = Object.prototype.hasOwnProperty;
+  var __propIsEnum$1a = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$1a = (obj, key, value) => key in obj ? __defProp$1a(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$1a = (a, b) => {
     for (var prop in b || (b = {}))
-      if (__hasOwnProp$14.call(b, prop))
-        __defNormalProp$14(a, prop, b[prop]);
-    if (__getOwnPropSymbols$14)
-      for (var prop of __getOwnPropSymbols$14(b)) {
-        if (__propIsEnum$14.call(b, prop))
-          __defNormalProp$14(a, prop, b[prop]);
+      if (__hasOwnProp$1a.call(b, prop))
+        __defNormalProp$1a(a, prop, b[prop]);
+    if (__getOwnPropSymbols$1a)
+      for (var prop of __getOwnPropSymbols$1a(b)) {
+        if (__propIsEnum$1a.call(b, prop))
+          __defNormalProp$1a(a, prop, b[prop]);
       }
     return a;
   };
   function QuoteIcon(props) {
-    return /* @__PURE__ */ React__default['default'].createElement("svg", __spreadValues$14({
+    return /* @__PURE__ */ React__default.createElement("svg", __spreadValues$1a({
       width: "20",
       height: "20",
       viewBox: "0 0 15 15",
       fill: "none",
       xmlns: "http://www.w3.org/2000/svg"
-    }, props), /* @__PURE__ */ React__default['default'].createElement("path", {
+    }, props), /* @__PURE__ */ React__default.createElement("path", {
       d: "M9.42503 3.44136C10.0561 3.23654 10.7837 3.2402 11.3792 3.54623C12.7532 4.25224 13.3477 6.07191 12.7946 8C12.5465 8.8649 12.1102 9.70472 11.1861 10.5524C10.262 11.4 8.98034 11.9 8.38571 11.9C8.17269 11.9 8 11.7321 8 11.525C8 11.3179 8.17644 11.15 8.38571 11.15C9.06497 11.15 9.67189 10.7804 10.3906 10.236C10.9406 9.8193 11.3701 9.28633 11.608 8.82191C12.0628 7.93367 12.0782 6.68174 11.3433 6.34901C10.9904 6.73455 10.5295 6.95946 9.97725 6.95946C8.7773 6.95946 8.0701 5.99412 8.10051 5.12009C8.12957 4.28474 8.66032 3.68954 9.42503 3.44136ZM3.42503 3.44136C4.05614 3.23654 4.78366 3.2402 5.37923 3.54623C6.7532 4.25224 7.34766 6.07191 6.79462 8C6.54654 8.8649 6.11019 9.70472 5.1861 10.5524C4.26201 11.4 2.98034 11.9 2.38571 11.9C2.17269 11.9 2 11.7321 2 11.525C2 11.3179 2.17644 11.15 2.38571 11.15C3.06497 11.15 3.67189 10.7804 4.39058 10.236C4.94065 9.8193 5.37014 9.28633 5.60797 8.82191C6.06282 7.93367 6.07821 6.68174 5.3433 6.34901C4.99037 6.73455 4.52948 6.95946 3.97725 6.95946C2.7773 6.95946 2.0701 5.99412 2.10051 5.12009C2.12957 4.28474 2.66032 3.68954 3.42503 3.44136Z",
       fill: "currentColor",
       fillRule: "evenodd",
@@ -1262,30 +1292,30 @@
     }));
   }
 
-  var __defProp$13 = Object.defineProperty;
-  var __defProps$z = Object.defineProperties;
-  var __getOwnPropDescs$z = Object.getOwnPropertyDescriptors;
-  var __getOwnPropSymbols$13 = Object.getOwnPropertySymbols;
-  var __hasOwnProp$13 = Object.prototype.hasOwnProperty;
-  var __propIsEnum$13 = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$13 = (obj, key, value) => key in obj ? __defProp$13(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$13 = (a, b) => {
+  var __defProp$19 = Object.defineProperty;
+  var __defProps$D = Object.defineProperties;
+  var __getOwnPropDescs$D = Object.getOwnPropertyDescriptors;
+  var __getOwnPropSymbols$19 = Object.getOwnPropertySymbols;
+  var __hasOwnProp$19 = Object.prototype.hasOwnProperty;
+  var __propIsEnum$19 = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$19 = (obj, key, value) => key in obj ? __defProp$19(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$19 = (a, b) => {
     for (var prop in b || (b = {}))
-      if (__hasOwnProp$13.call(b, prop))
-        __defNormalProp$13(a, prop, b[prop]);
-    if (__getOwnPropSymbols$13)
-      for (var prop of __getOwnPropSymbols$13(b)) {
-        if (__propIsEnum$13.call(b, prop))
-          __defNormalProp$13(a, prop, b[prop]);
+      if (__hasOwnProp$19.call(b, prop))
+        __defNormalProp$19(a, prop, b[prop]);
+    if (__getOwnPropSymbols$19)
+      for (var prop of __getOwnPropSymbols$19(b)) {
+        if (__propIsEnum$19.call(b, prop))
+          __defNormalProp$19(a, prop, b[prop]);
       }
     return a;
   };
-  var __spreadProps$z = (a, b) => __defProps$z(a, __getOwnPropDescs$z(b));
-  var useStyles$y = reactJss.createUseStyles({
-    blockquote: ({theme, color}) => __spreadProps$z(__spreadValues$13({}, getFontStyles(theme)), {
+  var __spreadProps$D = (a, b) => __defProps$D(a, __getOwnPropDescs$D(b));
+  var useStyles$A = createMemoStyles({
+    blockquote: ({theme, color}) => __spreadProps$D(__spreadValues$19({}, getFontStyles(theme)), {
       fontSize: theme.fontSizes.lg,
       lineHeight: theme.lineHeight,
-      backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[9] : theme.colors.gray[0],
+      backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.colors.gray[0],
       color: theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black,
       margin: 0,
       borderTopRightRadius: theme.radius.sm,
@@ -1319,37 +1349,37 @@
       overflow: "hidden",
       textOverflow: "ellipsis"
     })
-  }, {link: true});
+  });
 
-  var __defProp$12 = Object.defineProperty;
-  var __getOwnPropSymbols$12 = Object.getOwnPropertySymbols;
-  var __hasOwnProp$12 = Object.prototype.hasOwnProperty;
-  var __propIsEnum$12 = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$12 = (obj, key, value) => key in obj ? __defProp$12(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$12 = (a, b) => {
+  var __defProp$18 = Object.defineProperty;
+  var __getOwnPropSymbols$18 = Object.getOwnPropertySymbols;
+  var __hasOwnProp$18 = Object.prototype.hasOwnProperty;
+  var __propIsEnum$18 = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$18 = (obj, key, value) => key in obj ? __defProp$18(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$18 = (a, b) => {
     for (var prop in b || (b = {}))
-      if (__hasOwnProp$12.call(b, prop))
-        __defNormalProp$12(a, prop, b[prop]);
-    if (__getOwnPropSymbols$12)
-      for (var prop of __getOwnPropSymbols$12(b)) {
-        if (__propIsEnum$12.call(b, prop))
-          __defNormalProp$12(a, prop, b[prop]);
+      if (__hasOwnProp$18.call(b, prop))
+        __defNormalProp$18(a, prop, b[prop]);
+    if (__getOwnPropSymbols$18)
+      for (var prop of __getOwnPropSymbols$18(b)) {
+        if (__propIsEnum$18.call(b, prop))
+          __defNormalProp$18(a, prop, b[prop]);
       }
     return a;
   };
-  var __objRest$I = (source, exclude) => {
+  var __objRest$M = (source, exclude) => {
     var target = {};
     for (var prop in source)
-      if (__hasOwnProp$12.call(source, prop) && exclude.indexOf(prop) < 0)
+      if (__hasOwnProp$18.call(source, prop) && exclude.indexOf(prop) < 0)
         target[prop] = source[prop];
-    if (source != null && __getOwnPropSymbols$12)
-      for (var prop of __getOwnPropSymbols$12(source)) {
-        if (exclude.indexOf(prop) < 0 && __propIsEnum$12.call(source, prop))
+    if (source != null && __getOwnPropSymbols$18)
+      for (var prop of __getOwnPropSymbols$18(source)) {
+        if (exclude.indexOf(prop) < 0 && __propIsEnum$18.call(source, prop))
           target[prop] = source[prop];
       }
     return target;
   };
-  const defaultIcon = /* @__PURE__ */ React__default['default'].createElement(QuoteIcon, null);
+  const defaultIcon = /* @__PURE__ */ React__default.createElement(QuoteIcon, null);
   function Blockquote(_a) {
     var _b = _a, {
       className,
@@ -1358,7 +1388,7 @@
       cite,
       children,
       themeOverride
-    } = _b, others = __objRest$I(_b, [
+    } = _b, others = __objRest$M(_b, [
       "className",
       "color",
       "icon",
@@ -1366,23 +1396,23 @@
       "children",
       "themeOverride"
     ]);
-    const classes = useStyles$y({color, theme: useMantineTheme(themeOverride)});
-    return /* @__PURE__ */ React__default['default'].createElement("blockquote", __spreadValues$12({
+    const classes = useStyles$A({color, theme: useMantineTheme(themeOverride)});
+    return /* @__PURE__ */ React__default.createElement("blockquote", __spreadValues$18({
       className: cx(classes.blockquote, className)
-    }, others), /* @__PURE__ */ React__default['default'].createElement("div", {
+    }, others), /* @__PURE__ */ React__default.createElement("div", {
       className: classes.inner
-    }, icon && /* @__PURE__ */ React__default['default'].createElement("div", {
+    }, icon && /* @__PURE__ */ React__default.createElement("div", {
       "data-mantine-icon": true,
       className: classes.icon
-    }, icon), /* @__PURE__ */ React__default['default'].createElement("div", {
+    }, icon), /* @__PURE__ */ React__default.createElement("div", {
       className: classes.body
-    }, children, cite && /* @__PURE__ */ React__default['default'].createElement("cite", {
+    }, children, cite && /* @__PURE__ */ React__default.createElement("cite", {
       className: classes.cite
     }, cite))));
   }
   Blockquote.displayName = "@mantine/core/Blockquote";
 
-  var useStyles$x = reactJss.createUseStyles({
+  var useStyles$z = createMemoStyles({
     breadcrumbs: {
       display: "flex"
     },
@@ -1400,32 +1430,32 @@
       alignItems: "center",
       justifyContent: "center"
     })
-  }, {link: true});
+  });
 
-  var __defProp$11 = Object.defineProperty;
-  var __getOwnPropSymbols$11 = Object.getOwnPropertySymbols;
-  var __hasOwnProp$11 = Object.prototype.hasOwnProperty;
-  var __propIsEnum$11 = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$11 = (obj, key, value) => key in obj ? __defProp$11(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$11 = (a, b) => {
+  var __defProp$17 = Object.defineProperty;
+  var __getOwnPropSymbols$17 = Object.getOwnPropertySymbols;
+  var __hasOwnProp$17 = Object.prototype.hasOwnProperty;
+  var __propIsEnum$17 = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$17 = (obj, key, value) => key in obj ? __defProp$17(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$17 = (a, b) => {
     for (var prop in b || (b = {}))
-      if (__hasOwnProp$11.call(b, prop))
-        __defNormalProp$11(a, prop, b[prop]);
-    if (__getOwnPropSymbols$11)
-      for (var prop of __getOwnPropSymbols$11(b)) {
-        if (__propIsEnum$11.call(b, prop))
-          __defNormalProp$11(a, prop, b[prop]);
+      if (__hasOwnProp$17.call(b, prop))
+        __defNormalProp$17(a, prop, b[prop]);
+    if (__getOwnPropSymbols$17)
+      for (var prop of __getOwnPropSymbols$17(b)) {
+        if (__propIsEnum$17.call(b, prop))
+          __defNormalProp$17(a, prop, b[prop]);
       }
     return a;
   };
-  var __objRest$H = (source, exclude) => {
+  var __objRest$L = (source, exclude) => {
     var target = {};
     for (var prop in source)
-      if (__hasOwnProp$11.call(source, prop) && exclude.indexOf(prop) < 0)
+      if (__hasOwnProp$17.call(source, prop) && exclude.indexOf(prop) < 0)
         target[prop] = source[prop];
-    if (source != null && __getOwnPropSymbols$11)
-      for (var prop of __getOwnPropSymbols$11(source)) {
-        if (exclude.indexOf(prop) < 0 && __propIsEnum$11.call(source, prop))
+    if (source != null && __getOwnPropSymbols$17)
+      for (var prop of __getOwnPropSymbols$17(source)) {
+        if (exclude.indexOf(prop) < 0 && __propIsEnum$17.call(source, prop))
           target[prop] = source[prop];
       }
     return target;
@@ -1436,21 +1466,21 @@
       themeOverride,
       children,
       separator = "/"
-    } = _b, others = __objRest$H(_b, [
+    } = _b, others = __objRest$L(_b, [
       "className",
       "themeOverride",
       "children",
       "separator"
     ]);
-    const classes = useStyles$x({theme: useMantineTheme(themeOverride)});
-    const items = React__default['default'].Children.toArray(children).reduce((acc, child, index, array) => {
-      acc.push(React__default['default'].cloneElement(child, {
+    const classes = useStyles$z({theme: useMantineTheme(themeOverride)});
+    const items = React__default.Children.toArray(children).reduce((acc, child, index, array) => {
+      acc.push(React__default.cloneElement(child, {
         className: classes.breadcrumb,
         key: index,
         "data-mantine-breadcrumb": true
       }));
       if (index !== array.length - 1) {
-        acc.push(/* @__PURE__ */ React__default['default'].createElement(Text, {
+        acc.push(/* @__PURE__ */ React__default.createElement(Text, {
           size: "sm",
           "data-mantine-separator": true,
           className: classes.separator,
@@ -1460,52 +1490,52 @@
       }
       return acc;
     }, []);
-    return /* @__PURE__ */ React__default['default'].createElement("div", __spreadValues$11({
+    return /* @__PURE__ */ React__default.createElement("div", __spreadValues$17({
       className: cx(classes.breadcrumbs, className)
     }, others), items);
   }
   Breadcrumbs.displayName = "@mantine/core/Breadcrumbs";
 
-  var __defProp$10 = Object.defineProperty;
-  var __defProps$y = Object.defineProperties;
-  var __getOwnPropDescs$y = Object.getOwnPropertyDescriptors;
-  var __getOwnPropSymbols$10 = Object.getOwnPropertySymbols;
-  var __hasOwnProp$10 = Object.prototype.hasOwnProperty;
-  var __propIsEnum$10 = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$10 = (obj, key, value) => key in obj ? __defProp$10(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$10 = (a, b) => {
+  var __defProp$16 = Object.defineProperty;
+  var __defProps$C = Object.defineProperties;
+  var __getOwnPropDescs$C = Object.getOwnPropertyDescriptors;
+  var __getOwnPropSymbols$16 = Object.getOwnPropertySymbols;
+  var __hasOwnProp$16 = Object.prototype.hasOwnProperty;
+  var __propIsEnum$16 = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$16 = (obj, key, value) => key in obj ? __defProp$16(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$16 = (a, b) => {
     for (var prop in b || (b = {}))
-      if (__hasOwnProp$10.call(b, prop))
-        __defNormalProp$10(a, prop, b[prop]);
-    if (__getOwnPropSymbols$10)
-      for (var prop of __getOwnPropSymbols$10(b)) {
-        if (__propIsEnum$10.call(b, prop))
-          __defNormalProp$10(a, prop, b[prop]);
+      if (__hasOwnProp$16.call(b, prop))
+        __defNormalProp$16(a, prop, b[prop]);
+    if (__getOwnPropSymbols$16)
+      for (var prop of __getOwnPropSymbols$16(b)) {
+        if (__propIsEnum$16.call(b, prop))
+          __defNormalProp$16(a, prop, b[prop]);
       }
     return a;
   };
-  var __spreadProps$y = (a, b) => __defProps$y(a, __getOwnPropDescs$y(b));
-  const sizes$b = {
+  var __spreadProps$C = (a, b) => __defProps$C(a, __getOwnPropDescs$C(b));
+  const sizes$c = {
     xs: 12,
     sm: 18,
     md: 24,
     lg: 34,
     xl: 42
   };
-  var useStyles$w = reactJss.createUseStyles({
+  var useStyles$y = createMemoStyles({
     opened: {},
-    wrapper: ({size, theme}) => __spreadProps$y(__spreadValues$10({}, getFocusStyles(theme)), {
+    wrapper: ({size, theme}) => __spreadProps$C(__spreadValues$16({}, getFocusStyles(theme)), {
       WebkitTapHighlightColor: "transparent",
       borderRadius: theme.radius.sm,
-      width: getSizeValue({size, sizes: sizes$b}) + theme.spacing.xs,
-      height: getSizeValue({size, sizes: sizes$b}) + theme.spacing.xs,
+      width: getSizeValue({size, sizes: sizes$c}) + theme.spacing.xs,
+      height: getSizeValue({size, sizes: sizes$c}) + theme.spacing.xs,
       padding: theme.spacing.xs / 2,
       backgroundColor: "transparent",
       border: 0,
       cursor: "pointer"
     }),
     burger: ({size, theme, color, reduceMotion}) => {
-      const sizeValue = getSizeValue({size, sizes: sizes$b});
+      const sizeValue = getSizeValue({size, sizes: sizes$c});
       return {
         position: "relative",
         userSelect: "none",
@@ -1545,37 +1575,37 @@
         }
       };
     }
-  }, {link: true});
+  });
 
-  var __defProp$$ = Object.defineProperty;
-  var __getOwnPropSymbols$$ = Object.getOwnPropertySymbols;
-  var __hasOwnProp$$ = Object.prototype.hasOwnProperty;
-  var __propIsEnum$$ = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$$ = (obj, key, value) => key in obj ? __defProp$$(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$$ = (a, b) => {
+  var __defProp$15 = Object.defineProperty;
+  var __getOwnPropSymbols$15 = Object.getOwnPropertySymbols;
+  var __hasOwnProp$15 = Object.prototype.hasOwnProperty;
+  var __propIsEnum$15 = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$15 = (obj, key, value) => key in obj ? __defProp$15(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$15 = (a, b) => {
     for (var prop in b || (b = {}))
-      if (__hasOwnProp$$.call(b, prop))
-        __defNormalProp$$(a, prop, b[prop]);
-    if (__getOwnPropSymbols$$)
-      for (var prop of __getOwnPropSymbols$$(b)) {
-        if (__propIsEnum$$.call(b, prop))
-          __defNormalProp$$(a, prop, b[prop]);
+      if (__hasOwnProp$15.call(b, prop))
+        __defNormalProp$15(a, prop, b[prop]);
+    if (__getOwnPropSymbols$15)
+      for (var prop of __getOwnPropSymbols$15(b)) {
+        if (__propIsEnum$15.call(b, prop))
+          __defNormalProp$15(a, prop, b[prop]);
       }
     return a;
   };
-  var __objRest$G = (source, exclude) => {
+  var __objRest$K = (source, exclude) => {
     var target = {};
     for (var prop in source)
-      if (__hasOwnProp$$.call(source, prop) && exclude.indexOf(prop) < 0)
+      if (__hasOwnProp$15.call(source, prop) && exclude.indexOf(prop) < 0)
         target[prop] = source[prop];
-    if (source != null && __getOwnPropSymbols$$)
-      for (var prop of __getOwnPropSymbols$$(source)) {
-        if (exclude.indexOf(prop) < 0 && __propIsEnum$$.call(source, prop))
+    if (source != null && __getOwnPropSymbols$15)
+      for (var prop of __getOwnPropSymbols$15(source)) {
+        if (exclude.indexOf(prop) < 0 && __propIsEnum$15.call(source, prop))
           target[prop] = source[prop];
       }
     return target;
   };
-  const BURGER_SIZES = sizes$b;
+  const BURGER_SIZES = sizes$c;
   function Burger(_a) {
     var _b = _a, {
       className,
@@ -1584,7 +1614,7 @@
       size = "md",
       themeOverride,
       elementRef
-    } = _b, others = __objRest$G(_b, [
+    } = _b, others = __objRest$K(_b, [
       "className",
       "opened",
       "color",
@@ -1592,42 +1622,42 @@
       "themeOverride",
       "elementRef"
     ]);
-    const classes = useStyles$w({
+    const classes = useStyles$y({
       color,
       size,
       theme: useMantineTheme(themeOverride),
       reduceMotion: hooks.useReducedMotion()
     });
-    return /* @__PURE__ */ React__default['default'].createElement("button", __spreadValues$$({
+    return /* @__PURE__ */ React__default.createElement("button", __spreadValues$15({
       type: "button",
       className: cx(classes.wrapper, className),
       ref: elementRef
-    }, others), /* @__PURE__ */ React__default['default'].createElement("div", {
+    }, others), /* @__PURE__ */ React__default.createElement("div", {
       className: cx(classes.burger, {[classes.opened]: opened})
     }));
   }
   Burger.displayName = "@mantine/core/Burger";
 
-  var __defProp$_ = Object.defineProperty;
-  var __defProps$x = Object.defineProperties;
-  var __getOwnPropDescs$x = Object.getOwnPropertyDescriptors;
-  var __getOwnPropSymbols$_ = Object.getOwnPropertySymbols;
-  var __hasOwnProp$_ = Object.prototype.hasOwnProperty;
-  var __propIsEnum$_ = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$_ = (obj, key, value) => key in obj ? __defProp$_(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$_ = (a, b) => {
+  var __defProp$14 = Object.defineProperty;
+  var __defProps$B = Object.defineProperties;
+  var __getOwnPropDescs$B = Object.getOwnPropertyDescriptors;
+  var __getOwnPropSymbols$14 = Object.getOwnPropertySymbols;
+  var __hasOwnProp$14 = Object.prototype.hasOwnProperty;
+  var __propIsEnum$14 = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$14 = (obj, key, value) => key in obj ? __defProp$14(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$14 = (a, b) => {
     for (var prop in b || (b = {}))
-      if (__hasOwnProp$_.call(b, prop))
-        __defNormalProp$_(a, prop, b[prop]);
-    if (__getOwnPropSymbols$_)
-      for (var prop of __getOwnPropSymbols$_(b)) {
-        if (__propIsEnum$_.call(b, prop))
-          __defNormalProp$_(a, prop, b[prop]);
+      if (__hasOwnProp$14.call(b, prop))
+        __defNormalProp$14(a, prop, b[prop]);
+    if (__getOwnPropSymbols$14)
+      for (var prop of __getOwnPropSymbols$14(b)) {
+        if (__propIsEnum$14.call(b, prop))
+          __defNormalProp$14(a, prop, b[prop]);
       }
     return a;
   };
-  var __spreadProps$x = (a, b) => __defProps$x(a, __getOwnPropDescs$x(b));
-  const sizes$a = {
+  var __spreadProps$B = (a, b) => __defProps$B(a, __getOwnPropDescs$B(b));
+  const sizes$b = {
     xs: {
       fontSize: 10,
       height: 22,
@@ -1654,15 +1684,15 @@
       padding: [0, 22]
     }
   };
-  const heights = Object.keys(sizes$a).reduce((acc, size) => {
-    acc[size] = sizes$a[size].height;
+  const heights = Object.keys(sizes$b).reduce((acc, size) => {
+    acc[size] = sizes$b[size].height;
     return acc;
   }, {});
   const getWidthStyles = (fullWidth) => ({
     display: fullWidth ? "block" : "inline-block",
     width: fullWidth ? "100%" : "auto"
   });
-  var useStyles$v = reactJss.createUseStyles({
+  var useStyles$x = createMemoStyles({
     icon: {
       display: "flex",
       alignItems: "center"
@@ -1685,7 +1715,7 @@
       overflow: "hidden",
       textOverflow: "ellipsis"
     },
-    shared: (props) => __spreadProps$x(__spreadValues$_(__spreadValues$_(__spreadValues$_(__spreadValues$_({}, sizes$a[props.size]), getFontStyles(props.theme)), getFocusStyles(props.theme)), getWidthStyles(props.fullWidth)), {
+    shared: (props) => __spreadProps$B(__spreadValues$14(__spreadValues$14(__spreadValues$14(__spreadValues$14({}, sizes$b[props.size]), getFontStyles(props.theme)), getFocusStyles(props.theme)), getWidthStyles(props.fullWidth)), {
       WebkitTapHighlightColor: "transparent",
       userSelect: "none",
       boxSizing: "border-box",
@@ -1700,11 +1730,7 @@
       textTransform: "uppercase",
       fontWeight: "bold",
       color: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 4 : 8}),
-      border: `1px solid ${getThemeColor({
-      theme,
-      color,
-      shade: theme.colorScheme === "dark" ? 4 : 8
-    })}`,
+      border: `1px solid ${hexToRgba(getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 3 : 4}), theme.colorScheme === "dark" ? 0.45 : 1)}`,
       "&:not(:disabled):active": {
         transform: "translateY(1px)"
       },
@@ -1720,17 +1746,13 @@
       borderRadius: getSizeValue({size: radius, sizes: theme.radius}),
       textTransform: "uppercase",
       fontWeight: "bold",
-      backgroundColor: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 4 : 0}),
-      color: theme.colorScheme === "dark" ? theme.colors.dark[9] : getThemeColor({theme, color, shade: 9}),
+      backgroundColor: hexToRgba(getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 9 : 0}), theme.colorScheme === "dark" ? 0.3 : 1),
+      color: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 3 : 9}),
       "& $inner": {
-        height: sizes$a[size].height - 2
+        height: sizes$b[size].height - 2
       },
       "&:hover": {
-        backgroundColor: getThemeColor({
-          theme,
-          color,
-          shade: theme.colorScheme === "dark" ? 5 : 1
-        })
+        backgroundColor: hexToRgba(getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 8 : 1}), theme.colorScheme === "dark" ? 0.35 : 1)
       },
       "&:not(:disabled):active": {
         transform: "translateY(1px)"
@@ -1748,14 +1770,14 @@
       borderRadius: getSizeValue({size: radius, sizes: theme.radius}),
       textTransform: "uppercase",
       fontWeight: "bold",
-      backgroundColor: getThemeColor({theme, color, shade: 6}),
-      textShadow: `1px 1px 0 ${getThemeColor({theme, color, shade: 8})}`,
+      backgroundColor: hexToRgba(getThemeColor({theme, color, shade: 7}), theme.colorScheme === "dark" ? 0.65 : 1),
+      textShadow: theme.colorScheme === "dark" ? "none" : `1px 1px 0 ${getThemeColor({theme, color, shade: 8})}`,
       color: theme.white,
       "& $inner": {
-        height: sizes$a[size].height - 2
+        height: sizes$b[size].height - 2
       },
       "&:hover": {
-        backgroundColor: getThemeColor({theme, color, shade: 7})
+        backgroundColor: hexToRgba(getThemeColor({theme, color, shade: 8}), theme.colorScheme === "dark" ? 0.95 : 1)
       },
       "&:not(:disabled):active": {
         transform: "translateY(1px)"
@@ -1776,6 +1798,7 @@
       display: "inline-block",
       color: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 4 : 6}),
       cursor: "pointer",
+      lineHeight: theme.lineHeight,
       "&:hover": {
         textDecoration: "underline"
       },
@@ -1787,35 +1810,35 @@
         }
       }
     })
-  }, {link: true});
+  });
 
-  var __defProp$Z = Object.defineProperty;
-  var __defProps$w = Object.defineProperties;
-  var __getOwnPropDescs$w = Object.getOwnPropertyDescriptors;
-  var __getOwnPropSymbols$Z = Object.getOwnPropertySymbols;
-  var __hasOwnProp$Z = Object.prototype.hasOwnProperty;
-  var __propIsEnum$Z = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$Z = (obj, key, value) => key in obj ? __defProp$Z(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$Z = (a, b) => {
+  var __defProp$13 = Object.defineProperty;
+  var __defProps$A = Object.defineProperties;
+  var __getOwnPropDescs$A = Object.getOwnPropertyDescriptors;
+  var __getOwnPropSymbols$13 = Object.getOwnPropertySymbols;
+  var __hasOwnProp$13 = Object.prototype.hasOwnProperty;
+  var __propIsEnum$13 = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$13 = (obj, key, value) => key in obj ? __defProp$13(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$13 = (a, b) => {
     for (var prop in b || (b = {}))
-      if (__hasOwnProp$Z.call(b, prop))
-        __defNormalProp$Z(a, prop, b[prop]);
-    if (__getOwnPropSymbols$Z)
-      for (var prop of __getOwnPropSymbols$Z(b)) {
-        if (__propIsEnum$Z.call(b, prop))
-          __defNormalProp$Z(a, prop, b[prop]);
+      if (__hasOwnProp$13.call(b, prop))
+        __defNormalProp$13(a, prop, b[prop]);
+    if (__getOwnPropSymbols$13)
+      for (var prop of __getOwnPropSymbols$13(b)) {
+        if (__propIsEnum$13.call(b, prop))
+          __defNormalProp$13(a, prop, b[prop]);
       }
     return a;
   };
-  var __spreadProps$w = (a, b) => __defProps$w(a, __getOwnPropDescs$w(b));
-  var __objRest$F = (source, exclude) => {
+  var __spreadProps$A = (a, b) => __defProps$A(a, __getOwnPropDescs$A(b));
+  var __objRest$J = (source, exclude) => {
     var target = {};
     for (var prop in source)
-      if (__hasOwnProp$Z.call(source, prop) && exclude.indexOf(prop) < 0)
+      if (__hasOwnProp$13.call(source, prop) && exclude.indexOf(prop) < 0)
         target[prop] = source[prop];
-    if (source != null && __getOwnPropSymbols$Z)
-      for (var prop of __getOwnPropSymbols$Z(source)) {
-        if (exclude.indexOf(prop) < 0 && __propIsEnum$Z.call(source, prop))
+    if (source != null && __getOwnPropSymbols$13)
+      for (var prop of __getOwnPropSymbols$13(source)) {
+        if (exclude.indexOf(prop) < 0 && __propIsEnum$13.call(source, prop))
           target[prop] = source[prop];
       }
     return target;
@@ -1837,7 +1860,7 @@
       component: Element = "button",
       elementRef,
       themeOverride
-    } = _b, others = __objRest$F(_b, [
+    } = _b, others = __objRest$J(_b, [
       "className",
       "size",
       "color",
@@ -1853,42 +1876,42 @@
       "elementRef",
       "themeOverride"
     ]);
-    const classes = useStyles$v({
+    const classes = useStyles$x({
       radius,
       color,
       size,
       fullWidth,
       theme: useMantineTheme(themeOverride)
     });
-    return /* @__PURE__ */ React__default['default'].createElement(Element, __spreadProps$w(__spreadValues$Z({}, others), {
+    return /* @__PURE__ */ React__default.createElement(Element, __spreadProps$A(__spreadValues$13({}, others), {
       className: cx(classes.shared, classes[variant], className),
       type,
       disabled,
-      "data-mantine-composable": true,
       ref: elementRef,
       onTouchStart: () => {
       }
-    }), /* @__PURE__ */ React__default['default'].createElement("div", {
+    }), /* @__PURE__ */ React__default.createElement("div", {
       className: classes.inner
-    }, leftIcon && /* @__PURE__ */ React__default['default'].createElement("span", {
+    }, leftIcon && /* @__PURE__ */ React__default.createElement("span", {
       "data-mantine-left-icon": true,
       className: cx(classes.icon, classes.leftIcon)
-    }, leftIcon), /* @__PURE__ */ React__default['default'].createElement("span", {
+    }, leftIcon), /* @__PURE__ */ React__default.createElement("span", {
       className: classes.label,
       "data-mantine-label": true
-    }, children), rightIcon && /* @__PURE__ */ React__default['default'].createElement("span", {
+    }, children), rightIcon && /* @__PURE__ */ React__default.createElement("span", {
       "data-mantine-right-icon": true,
       className: cx(classes.icon, classes.rightIcon)
     }, rightIcon)));
   }
   Button.displayName = "@mantine/core/Button";
 
-  var useStyles$u = reactJss.createUseStyles({
+  var useStyles$w = createMemoStyles({
     card: ({theme, radius, padding}) => {
       const spacing = getSizeValue({size: padding, sizes: theme.spacing});
       const borderRadius = getSizeValue({size: radius, sizes: theme.radius});
       return {
         position: "relative",
+        backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.white,
         "& [data-mantine-image]": {
           width: `calc(100% + ${spacing * 2}px) !important`,
           marginLeft: -spacing,
@@ -1919,9 +1942,9 @@
         }
       };
     }
-  }, {link: true});
+  });
 
-  var useStyles$t = reactJss.createUseStyles({
+  var useStyles$v = createMemoStyles({
     grid: ({theme, gutter, cardsPerRow, grow}) => {
       const gutterSize = getSizeValue({size: gutter, sizes: theme.spacing});
       const getCardFlex = (perRow) => `${grow ? 1 : 0} 0 calc(${100 / perRow}% - ${gutterSize}px)`;
@@ -1935,32 +1958,32 @@
         }
       };
     }
-  }, {link: true});
+  });
 
-  var __defProp$Y = Object.defineProperty;
-  var __getOwnPropSymbols$Y = Object.getOwnPropertySymbols;
-  var __hasOwnProp$Y = Object.prototype.hasOwnProperty;
-  var __propIsEnum$Y = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$Y = (obj, key, value) => key in obj ? __defProp$Y(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$Y = (a, b) => {
+  var __defProp$12 = Object.defineProperty;
+  var __getOwnPropSymbols$12 = Object.getOwnPropertySymbols;
+  var __hasOwnProp$12 = Object.prototype.hasOwnProperty;
+  var __propIsEnum$12 = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$12 = (obj, key, value) => key in obj ? __defProp$12(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$12 = (a, b) => {
     for (var prop in b || (b = {}))
-      if (__hasOwnProp$Y.call(b, prop))
-        __defNormalProp$Y(a, prop, b[prop]);
-    if (__getOwnPropSymbols$Y)
-      for (var prop of __getOwnPropSymbols$Y(b)) {
-        if (__propIsEnum$Y.call(b, prop))
-          __defNormalProp$Y(a, prop, b[prop]);
+      if (__hasOwnProp$12.call(b, prop))
+        __defNormalProp$12(a, prop, b[prop]);
+    if (__getOwnPropSymbols$12)
+      for (var prop of __getOwnPropSymbols$12(b)) {
+        if (__propIsEnum$12.call(b, prop))
+          __defNormalProp$12(a, prop, b[prop]);
       }
     return a;
   };
-  var __objRest$E = (source, exclude) => {
+  var __objRest$I = (source, exclude) => {
     var target = {};
     for (var prop in source)
-      if (__hasOwnProp$Y.call(source, prop) && exclude.indexOf(prop) < 0)
+      if (__hasOwnProp$12.call(source, prop) && exclude.indexOf(prop) < 0)
         target[prop] = source[prop];
-    if (source != null && __getOwnPropSymbols$Y)
-      for (var prop of __getOwnPropSymbols$Y(source)) {
-        if (exclude.indexOf(prop) < 0 && __propIsEnum$Y.call(source, prop))
+    if (source != null && __getOwnPropSymbols$12)
+      for (var prop of __getOwnPropSymbols$12(source)) {
+        if (exclude.indexOf(prop) < 0 && __propIsEnum$12.call(source, prop))
           target[prop] = source[prop];
       }
     return target;
@@ -1973,7 +1996,7 @@
       children,
       className,
       themeOverride
-    } = _b, others = __objRest$E(_b, [
+    } = _b, others = __objRest$I(_b, [
       "gutter",
       "cardsPerRow",
       "grow",
@@ -1981,42 +2004,42 @@
       "className",
       "themeOverride"
     ]);
-    const classes = useStyles$t({
+    const classes = useStyles$v({
       cardsPerRow,
       gutter,
       grow,
       theme: useMantineTheme(themeOverride)
     });
-    return /* @__PURE__ */ React__default['default'].createElement("div", __spreadValues$Y({
+    return /* @__PURE__ */ React__default.createElement("div", __spreadValues$12({
       className: cx(classes.grid, className)
     }, others), children);
   }
   CardsGrid.displayName = "@mantine/core/CardsGrid";
 
-  var __defProp$X = Object.defineProperty;
-  var __getOwnPropSymbols$X = Object.getOwnPropertySymbols;
-  var __hasOwnProp$X = Object.prototype.hasOwnProperty;
-  var __propIsEnum$X = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$X = (obj, key, value) => key in obj ? __defProp$X(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$X = (a, b) => {
+  var __defProp$11 = Object.defineProperty;
+  var __getOwnPropSymbols$11 = Object.getOwnPropertySymbols;
+  var __hasOwnProp$11 = Object.prototype.hasOwnProperty;
+  var __propIsEnum$11 = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$11 = (obj, key, value) => key in obj ? __defProp$11(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$11 = (a, b) => {
     for (var prop in b || (b = {}))
-      if (__hasOwnProp$X.call(b, prop))
-        __defNormalProp$X(a, prop, b[prop]);
-    if (__getOwnPropSymbols$X)
-      for (var prop of __getOwnPropSymbols$X(b)) {
-        if (__propIsEnum$X.call(b, prop))
-          __defNormalProp$X(a, prop, b[prop]);
+      if (__hasOwnProp$11.call(b, prop))
+        __defNormalProp$11(a, prop, b[prop]);
+    if (__getOwnPropSymbols$11)
+      for (var prop of __getOwnPropSymbols$11(b)) {
+        if (__propIsEnum$11.call(b, prop))
+          __defNormalProp$11(a, prop, b[prop]);
       }
     return a;
   };
-  var __objRest$D = (source, exclude) => {
+  var __objRest$H = (source, exclude) => {
     var target = {};
     for (var prop in source)
-      if (__hasOwnProp$X.call(source, prop) && exclude.indexOf(prop) < 0)
+      if (__hasOwnProp$11.call(source, prop) && exclude.indexOf(prop) < 0)
         target[prop] = source[prop];
-    if (source != null && __getOwnPropSymbols$X)
-      for (var prop of __getOwnPropSymbols$X(source)) {
-        if (exclude.indexOf(prop) < 0 && __propIsEnum$X.call(source, prop))
+    if (source != null && __getOwnPropSymbols$11)
+      for (var prop of __getOwnPropSymbols$11(source)) {
+        if (exclude.indexOf(prop) < 0 && __propIsEnum$11.call(source, prop))
           target[prop] = source[prop];
       }
     return target;
@@ -2027,14 +2050,14 @@
       themeOverride,
       padding = "md",
       radius = "sm"
-    } = _b, others = __objRest$D(_b, [
+    } = _b, others = __objRest$H(_b, [
       "className",
       "themeOverride",
       "padding",
       "radius"
     ]);
-    const classes = useStyles$u({radius, padding, theme: useMantineTheme(themeOverride)});
-    return /* @__PURE__ */ React__default['default'].createElement(Paper, __spreadValues$X({
+    const classes = useStyles$w({radius, padding, theme: useMantineTheme(themeOverride)});
+    return /* @__PURE__ */ React__default.createElement(Paper, __spreadValues$11({
       "data-mantine-card": true,
       className: cx(classes.card, className),
       radius,
@@ -2043,99 +2066,99 @@
   }
   Card.displayName = "@mantine/core/Card";
 
-  var __defProp$W = Object.defineProperty;
-  var __getOwnPropSymbols$W = Object.getOwnPropertySymbols;
-  var __hasOwnProp$W = Object.prototype.hasOwnProperty;
-  var __propIsEnum$W = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$W = (obj, key, value) => key in obj ? __defProp$W(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$W = (a, b) => {
+  var __defProp$10 = Object.defineProperty;
+  var __getOwnPropSymbols$10 = Object.getOwnPropertySymbols;
+  var __hasOwnProp$10 = Object.prototype.hasOwnProperty;
+  var __propIsEnum$10 = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$10 = (obj, key, value) => key in obj ? __defProp$10(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$10 = (a, b) => {
     for (var prop in b || (b = {}))
-      if (__hasOwnProp$W.call(b, prop))
-        __defNormalProp$W(a, prop, b[prop]);
-    if (__getOwnPropSymbols$W)
-      for (var prop of __getOwnPropSymbols$W(b)) {
-        if (__propIsEnum$W.call(b, prop))
-          __defNormalProp$W(a, prop, b[prop]);
+      if (__hasOwnProp$10.call(b, prop))
+        __defNormalProp$10(a, prop, b[prop]);
+    if (__getOwnPropSymbols$10)
+      for (var prop of __getOwnPropSymbols$10(b)) {
+        if (__propIsEnum$10.call(b, prop))
+          __defNormalProp$10(a, prop, b[prop]);
       }
     return a;
   };
-  var __objRest$C = (source, exclude) => {
+  var __objRest$G = (source, exclude) => {
     var target = {};
     for (var prop in source)
-      if (__hasOwnProp$W.call(source, prop) && exclude.indexOf(prop) < 0)
+      if (__hasOwnProp$10.call(source, prop) && exclude.indexOf(prop) < 0)
         target[prop] = source[prop];
-    if (source != null && __getOwnPropSymbols$W)
-      for (var prop of __getOwnPropSymbols$W(source)) {
-        if (exclude.indexOf(prop) < 0 && __propIsEnum$W.call(source, prop))
+    if (source != null && __getOwnPropSymbols$10)
+      for (var prop of __getOwnPropSymbols$10(source)) {
+        if (exclude.indexOf(prop) < 0 && __propIsEnum$10.call(source, prop))
           target[prop] = source[prop];
       }
     return target;
   };
   function CheckboxIcon(_a) {
-    var _b = _a, {intermediate} = _b, others = __objRest$C(_b, ["intermediate"]);
-    return /* @__PURE__ */ React__default['default'].createElement("svg", __spreadValues$W({
+    var _b = _a, {indeterminate} = _b, others = __objRest$G(_b, ["indeterminate"]);
+    return /* @__PURE__ */ React__default.createElement("svg", __spreadValues$10({
       width: "15",
       height: "15",
       viewBox: "0 0 15 15",
       fill: "none",
       xmlns: "http://www.w3.org/2000/svg"
-    }, others), /* @__PURE__ */ React__default['default'].createElement("path", {
-      d: intermediate ? "M2 7.5C2 7.22386 2.22386 7 2.5 7H12.5C12.7761 7 13 7.22386 13 7.5C13 7.77614 12.7761 8 12.5 8H2.5C2.22386 8 2 7.77614 2 7.5Z" : "M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z",
+    }, others), /* @__PURE__ */ React__default.createElement("path", {
+      d: indeterminate ? "M2 7.5C2 7.22386 2.22386 7 2.5 7H12.5C12.7761 7 13 7.22386 13 7.5C13 7.77614 12.7761 8 12.5 8H2.5C2.22386 8 2 7.77614 2 7.5Z" : "M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z",
       fill: "currentColor",
       fillRule: "evenodd",
       clipRule: "evenodd"
     }));
   }
 
-  var __defProp$V = Object.defineProperty;
-  var __defProps$v = Object.defineProperties;
-  var __getOwnPropDescs$v = Object.getOwnPropertyDescriptors;
-  var __getOwnPropSymbols$V = Object.getOwnPropertySymbols;
-  var __hasOwnProp$V = Object.prototype.hasOwnProperty;
-  var __propIsEnum$V = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$V = (obj, key, value) => key in obj ? __defProp$V(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$V = (a, b) => {
+  var __defProp$$ = Object.defineProperty;
+  var __defProps$z = Object.defineProperties;
+  var __getOwnPropDescs$z = Object.getOwnPropertyDescriptors;
+  var __getOwnPropSymbols$$ = Object.getOwnPropertySymbols;
+  var __hasOwnProp$$ = Object.prototype.hasOwnProperty;
+  var __propIsEnum$$ = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$$ = (obj, key, value) => key in obj ? __defProp$$(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$$ = (a, b) => {
     for (var prop in b || (b = {}))
-      if (__hasOwnProp$V.call(b, prop))
-        __defNormalProp$V(a, prop, b[prop]);
-    if (__getOwnPropSymbols$V)
-      for (var prop of __getOwnPropSymbols$V(b)) {
-        if (__propIsEnum$V.call(b, prop))
-          __defNormalProp$V(a, prop, b[prop]);
+      if (__hasOwnProp$$.call(b, prop))
+        __defNormalProp$$(a, prop, b[prop]);
+    if (__getOwnPropSymbols$$)
+      for (var prop of __getOwnPropSymbols$$(b)) {
+        if (__propIsEnum$$.call(b, prop))
+          __defNormalProp$$(a, prop, b[prop]);
       }
     return a;
   };
-  var __spreadProps$v = (a, b) => __defProps$v(a, __getOwnPropDescs$v(b));
-  const sizes$9 = {
+  var __spreadProps$z = (a, b) => __defProps$z(a, __getOwnPropDescs$z(b));
+  const sizes$a = {
     xs: 12,
     sm: 16,
     md: 20,
     lg: 26,
     xl: 36
   };
-  var useStyles$s = reactJss.createUseStyles({
+  var useStyles$u = createMemoStyles({
     wrapper: {
       display: "flex",
       alignItems: "center"
     },
     checkboxWrapper: ({size}) => ({
       position: "relative",
-      width: getSizeValue({size, sizes: sizes$9}),
-      height: getSizeValue({size, sizes: sizes$9})
+      width: getSizeValue({size, sizes: sizes$a}),
+      height: getSizeValue({size, sizes: sizes$a})
     }),
-    label: ({theme, size}) => __spreadProps$v(__spreadValues$V({}, getFontStyles(theme)), {
+    label: ({theme, size}) => __spreadProps$z(__spreadValues$$({}, getFontStyles(theme)), {
       WebkitTapHighlightColor: "transparent",
       paddingLeft: theme.spacing.sm,
       fontSize: getSizeValue({size, sizes: theme.fontSizes}),
-      lineHeight: `${getSizeValue({size, sizes: sizes$9})}px`,
+      lineHeight: `${getSizeValue({size, sizes: sizes$a})}px`,
       color: theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black
     }),
-    checkbox: ({size, theme, color}) => __spreadProps$v(__spreadValues$V({}, getFocusStyles(theme)), {
+    checkbox: ({size, theme, color}) => __spreadProps$z(__spreadValues$$({}, getFocusStyles(theme)), {
       appearance: "none",
-      backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[0],
+      backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[0],
       border: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[4]}`,
-      width: getSizeValue({size, sizes: sizes$9}),
-      height: getSizeValue({size, sizes: sizes$9}),
+      width: getSizeValue({size, sizes: sizes$a}),
+      height: getSizeValue({size, sizes: sizes$a}),
       borderRadius: theme.radius.sm,
       padding: 0,
       outline: 0,
@@ -2176,11 +2199,347 @@
       right: 0,
       margin: "auto"
     }
-  }, {link: true});
+  });
+
+  var __defProp$_ = Object.defineProperty;
+  var __getOwnPropSymbols$_ = Object.getOwnPropertySymbols;
+  var __hasOwnProp$_ = Object.prototype.hasOwnProperty;
+  var __propIsEnum$_ = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$_ = (obj, key, value) => key in obj ? __defProp$_(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$_ = (a, b) => {
+    for (var prop in b || (b = {}))
+      if (__hasOwnProp$_.call(b, prop))
+        __defNormalProp$_(a, prop, b[prop]);
+    if (__getOwnPropSymbols$_)
+      for (var prop of __getOwnPropSymbols$_(b)) {
+        if (__propIsEnum$_.call(b, prop))
+          __defNormalProp$_(a, prop, b[prop]);
+      }
+    return a;
+  };
+  var __objRest$F = (source, exclude) => {
+    var target = {};
+    for (var prop in source)
+      if (__hasOwnProp$_.call(source, prop) && exclude.indexOf(prop) < 0)
+        target[prop] = source[prop];
+    if (source != null && __getOwnPropSymbols$_)
+      for (var prop of __getOwnPropSymbols$_(source)) {
+        if (exclude.indexOf(prop) < 0 && __propIsEnum$_.call(source, prop))
+          target[prop] = source[prop];
+      }
+    return target;
+  };
+  const CHECKBOX_SIZES = sizes$a;
+  function Checkbox(_a) {
+    var _b = _a, {
+      className,
+      checked,
+      onChange,
+      color,
+      themeOverride,
+      label,
+      disabled,
+      indeterminate,
+      id,
+      size,
+      wrapperProps,
+      style,
+      inputStyle,
+      inputClassName,
+      elementRef,
+      children
+    } = _b, others = __objRest$F(_b, [
+      "className",
+      "checked",
+      "onChange",
+      "color",
+      "themeOverride",
+      "label",
+      "disabled",
+      "indeterminate",
+      "id",
+      "size",
+      "wrapperProps",
+      "style",
+      "inputStyle",
+      "inputClassName",
+      "elementRef",
+      "children"
+    ]);
+    const uuid = hooks.useId(id);
+    const classes = useStyles$u({size, color, theme: useMantineTheme(themeOverride)});
+    return /* @__PURE__ */ React__default.createElement("div", __spreadValues$_({
+      className: cx(classes.wrapper, className),
+      style
+    }, wrapperProps), /* @__PURE__ */ React__default.createElement("div", {
+      className: classes.checkboxWrapper
+    }, /* @__PURE__ */ React__default.createElement("input", __spreadValues$_({
+      id: uuid,
+      ref: elementRef,
+      type: "checkbox",
+      className: cx(classes.checkbox, inputClassName),
+      checked: indeterminate || checked,
+      onChange,
+      disabled,
+      style: inputStyle
+    }, others)), /* @__PURE__ */ React__default.createElement(CheckboxIcon, {
+      indeterminate,
+      className: classes.icon
+    })), label && /* @__PURE__ */ React__default.createElement("label", {
+      className: classes.label,
+      htmlFor: uuid
+    }, label));
+  }
+  Checkbox.displayName = "@mantine/core/Checkbox";
+
+  var __defProp$Z = Object.defineProperty;
+  var __defProps$y = Object.defineProperties;
+  var __getOwnPropDescs$y = Object.getOwnPropertyDescriptors;
+  var __getOwnPropSymbols$Z = Object.getOwnPropertySymbols;
+  var __hasOwnProp$Z = Object.prototype.hasOwnProperty;
+  var __propIsEnum$Z = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$Z = (obj, key, value) => key in obj ? __defProp$Z(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$Z = (a, b) => {
+    for (var prop in b || (b = {}))
+      if (__hasOwnProp$Z.call(b, prop))
+        __defNormalProp$Z(a, prop, b[prop]);
+    if (__getOwnPropSymbols$Z)
+      for (var prop of __getOwnPropSymbols$Z(b)) {
+        if (__propIsEnum$Z.call(b, prop))
+          __defNormalProp$Z(a, prop, b[prop]);
+      }
+    return a;
+  };
+  var __spreadProps$y = (a, b) => __defProps$y(a, __getOwnPropDescs$y(b));
+  var useStyles$t = createMemoStyles({
+    code: ({theme, color}) => __spreadProps$y(__spreadValues$Z({}, getFontStyles(theme)), {
+      lineHeight: theme.lineHeight,
+      padding: [1, theme.spacing.xs / 2],
+      borderRadius: theme.radius.sm,
+      color: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 1 : 9}),
+      backgroundColor: hexToRgba(getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 9 : 0}), theme.colorScheme === "dark" ? 0.45 : 1),
+      fontFamily: theme.fontFamilyMonospace,
+      fontSize: theme.fontSizes.xs,
+      border: `1px solid ${theme.colorScheme === "dark" ? "transparent" : getThemeColor({
+      theme,
+      color,
+      shade: 2
+    })}`
+    }),
+    pre: ({theme}) => ({
+      padding: theme.spacing.xs,
+      margin: 0,
+      overflowX: "auto"
+    })
+  });
+
+  var __defProp$Y = Object.defineProperty;
+  var __getOwnPropSymbols$Y = Object.getOwnPropertySymbols;
+  var __hasOwnProp$Y = Object.prototype.hasOwnProperty;
+  var __propIsEnum$Y = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$Y = (obj, key, value) => key in obj ? __defProp$Y(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$Y = (a, b) => {
+    for (var prop in b || (b = {}))
+      if (__hasOwnProp$Y.call(b, prop))
+        __defNormalProp$Y(a, prop, b[prop]);
+    if (__getOwnPropSymbols$Y)
+      for (var prop of __getOwnPropSymbols$Y(b)) {
+        if (__propIsEnum$Y.call(b, prop))
+          __defNormalProp$Y(a, prop, b[prop]);
+      }
+    return a;
+  };
+  var __objRest$E = (source, exclude) => {
+    var target = {};
+    for (var prop in source)
+      if (__hasOwnProp$Y.call(source, prop) && exclude.indexOf(prop) < 0)
+        target[prop] = source[prop];
+    if (source != null && __getOwnPropSymbols$Y)
+      for (var prop of __getOwnPropSymbols$Y(source)) {
+        if (exclude.indexOf(prop) < 0 && __propIsEnum$Y.call(source, prop))
+          target[prop] = source[prop];
+      }
+    return target;
+  };
+  function Code(_a) {
+    var _b = _a, {
+      children,
+      themeOverride,
+      block = false,
+      className,
+      color
+    } = _b, others = __objRest$E(_b, [
+      "children",
+      "themeOverride",
+      "block",
+      "className",
+      "color"
+    ]);
+    const theme = useMantineTheme(themeOverride);
+    const themeColor = color || (theme.colorScheme === "dark" ? "dark" : "gray");
+    const classes = useStyles$t({color: themeColor, theme: useMantineTheme(themeOverride)});
+    if (block) {
+      return /* @__PURE__ */ React__default.createElement("pre", __spreadValues$Y({
+        className: cx(classes.code, classes.pre, className)
+      }, others), children);
+    }
+    return /* @__PURE__ */ React__default.createElement("code", __spreadValues$Y({
+      className: cx(classes.code, className)
+    }, others), children);
+  }
+  Code.displayName = "@mantine/core/Code";
+
+  var __defProp$X = Object.defineProperty;
+  var __defProps$x = Object.defineProperties;
+  var __getOwnPropDescs$x = Object.getOwnPropertyDescriptors;
+  var __getOwnPropSymbols$X = Object.getOwnPropertySymbols;
+  var __hasOwnProp$X = Object.prototype.hasOwnProperty;
+  var __propIsEnum$X = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$X = (obj, key, value) => key in obj ? __defProp$X(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$X = (a, b) => {
+    for (var prop in b || (b = {}))
+      if (__hasOwnProp$X.call(b, prop))
+        __defNormalProp$X(a, prop, b[prop]);
+    if (__getOwnPropSymbols$X)
+      for (var prop of __getOwnPropSymbols$X(b)) {
+        if (__propIsEnum$X.call(b, prop))
+          __defNormalProp$X(a, prop, b[prop]);
+      }
+    return a;
+  };
+  var __spreadProps$x = (a, b) => __defProps$x(a, __getOwnPropDescs$x(b));
+  var useStyles$s = createMemoStyles({
+    colorSwatch: ({theme, radius}) => __spreadProps$x(__spreadValues$X({}, getFocusStyles(theme)), {
+      border: 0,
+      borderRadius: getSizeValue({size: radius, sizes: theme.radius}),
+      appearance: "none",
+      WebkitAppearance: "none",
+      padding: 0
+    })
+  });
+
+  var __defProp$W = Object.defineProperty;
+  var __getOwnPropSymbols$W = Object.getOwnPropertySymbols;
+  var __hasOwnProp$W = Object.prototype.hasOwnProperty;
+  var __propIsEnum$W = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$W = (obj, key, value) => key in obj ? __defProp$W(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$W = (a, b) => {
+    for (var prop in b || (b = {}))
+      if (__hasOwnProp$W.call(b, prop))
+        __defNormalProp$W(a, prop, b[prop]);
+    if (__getOwnPropSymbols$W)
+      for (var prop of __getOwnPropSymbols$W(b)) {
+        if (__propIsEnum$W.call(b, prop))
+          __defNormalProp$W(a, prop, b[prop]);
+      }
+    return a;
+  };
+  var __objRest$D = (source, exclude) => {
+    var target = {};
+    for (var prop in source)
+      if (__hasOwnProp$W.call(source, prop) && exclude.indexOf(prop) < 0)
+        target[prop] = source[prop];
+    if (source != null && __getOwnPropSymbols$W)
+      for (var prop of __getOwnPropSymbols$W(source)) {
+        if (exclude.indexOf(prop) < 0 && __propIsEnum$W.call(source, prop))
+          target[prop] = source[prop];
+      }
+    return target;
+  };
+  function ColorSwatch(_a) {
+    var _b = _a, {
+      component: Element = "div",
+      color,
+      size = 25,
+      style,
+      radius = 25,
+      className,
+      themeOverride
+    } = _b, others = __objRest$D(_b, [
+      "component",
+      "color",
+      "size",
+      "style",
+      "radius",
+      "className",
+      "themeOverride"
+    ]);
+    const classes = useStyles$s({radius, theme: useMantineTheme(themeOverride)});
+    return /* @__PURE__ */ React__default.createElement(Element, __spreadValues$W({
+      className: cx(classes.colorSwatch, className),
+      style: __spreadValues$W({width: size, height: size, backgroundColor: color}, style)
+    }, others));
+  }
+  ColorSwatch.displayName = "@mantine/core/ColorSwatch";
+
+  const sizes$9 = {
+    xs: 570,
+    sm: 770,
+    md: 970,
+    lg: 1170,
+    xl: 1370
+  };
+  var useStyles$r = createMemoStyles({
+    container: ({fluid, size, padding, theme}) => ({
+      maxWidth: fluid ? "100%" : getSizeValue({size, sizes: sizes$9}),
+      marginLeft: "auto",
+      marginRight: "auto",
+      paddingLeft: getSizeValue({size: padding, sizes: theme.spacing}),
+      paddingRight: getSizeValue({size: padding, sizes: theme.spacing})
+    })
+  });
+
+  var __defProp$V = Object.defineProperty;
+  var __getOwnPropSymbols$V = Object.getOwnPropertySymbols;
+  var __hasOwnProp$V = Object.prototype.hasOwnProperty;
+  var __propIsEnum$V = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$V = (obj, key, value) => key in obj ? __defProp$V(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$V = (a, b) => {
+    for (var prop in b || (b = {}))
+      if (__hasOwnProp$V.call(b, prop))
+        __defNormalProp$V(a, prop, b[prop]);
+    if (__getOwnPropSymbols$V)
+      for (var prop of __getOwnPropSymbols$V(b)) {
+        if (__propIsEnum$V.call(b, prop))
+          __defNormalProp$V(a, prop, b[prop]);
+      }
+    return a;
+  };
+  var __objRest$C = (source, exclude) => {
+    var target = {};
+    for (var prop in source)
+      if (__hasOwnProp$V.call(source, prop) && exclude.indexOf(prop) < 0)
+        target[prop] = source[prop];
+    if (source != null && __getOwnPropSymbols$V)
+      for (var prop of __getOwnPropSymbols$V(source)) {
+        if (exclude.indexOf(prop) < 0 && __propIsEnum$V.call(source, prop))
+          target[prop] = source[prop];
+      }
+    return target;
+  };
+  const CONTAINER_SIZES = sizes$9;
+  function Container(_a) {
+    var _b = _a, {
+      className,
+      padding = "md",
+      fluid,
+      size,
+      themeOverride
+    } = _b, others = __objRest$C(_b, [
+      "className",
+      "padding",
+      "fluid",
+      "size",
+      "themeOverride"
+    ]);
+    const classes = useStyles$r({padding, fluid, size, theme: useMantineTheme(themeOverride)});
+    return /* @__PURE__ */ React__default.createElement("div", __spreadValues$V({
+      className: cx(classes.container, className)
+    }, others));
+  }
+  Container.displayName = "@mantine/core/Container";
 
   var __defProp$U = Object.defineProperty;
-  var __defProps$u = Object.defineProperties;
-  var __getOwnPropDescs$u = Object.getOwnPropertyDescriptors;
   var __getOwnPropSymbols$U = Object.getOwnPropertySymbols;
   var __hasOwnProp$U = Object.prototype.hasOwnProperty;
   var __propIsEnum$U = Object.prototype.propertyIsEnumerable;
@@ -2196,7 +2555,6 @@
       }
     return a;
   };
-  var __spreadProps$u = (a, b) => __defProps$u(a, __getOwnPropDescs$u(b));
   var __objRest$B = (source, exclude) => {
     var target = {};
     for (var prop in source)
@@ -2209,343 +2567,6 @@
       }
     return target;
   };
-  const CHECKBOX_SIZES = sizes$9;
-  function Checkbox(_a) {
-    var _b = _a, {
-      className,
-      checked,
-      onChange,
-      color,
-      themeOverride,
-      label,
-      disabled,
-      intermediate,
-      id,
-      size,
-      wrapperProps,
-      style,
-      inputStyle,
-      inputClassName,
-      elementRef
-    } = _b, others = __objRest$B(_b, [
-      "className",
-      "checked",
-      "onChange",
-      "color",
-      "themeOverride",
-      "label",
-      "disabled",
-      "intermediate",
-      "id",
-      "size",
-      "wrapperProps",
-      "style",
-      "inputStyle",
-      "inputClassName",
-      "elementRef"
-    ]);
-    const uuid = hooks.useId(id);
-    const classes = useStyles$s({size, color, theme: useMantineTheme(themeOverride)});
-    return /* @__PURE__ */ React__default['default'].createElement("div", __spreadValues$U({
-      className: cx(classes.wrapper, className),
-      style
-    }, wrapperProps), /* @__PURE__ */ React__default['default'].createElement("div", {
-      className: classes.checkboxWrapper
-    }, /* @__PURE__ */ React__default['default'].createElement("input", __spreadProps$u(__spreadValues$U({}, others), {
-      id: uuid,
-      ref: elementRef,
-      type: "checkbox",
-      className: cx(classes.checkbox, inputClassName),
-      checked: intermediate || checked,
-      onChange,
-      disabled,
-      style: inputStyle
-    })), /* @__PURE__ */ React__default['default'].createElement(CheckboxIcon, {
-      intermediate,
-      className: classes.icon
-    })), label && /* @__PURE__ */ React__default['default'].createElement("label", {
-      className: classes.label,
-      htmlFor: uuid
-    }, label));
-  }
-  Checkbox.displayName = "@mantine/core/Checkbox";
-
-  var __defProp$T = Object.defineProperty;
-  var __defProps$t = Object.defineProperties;
-  var __getOwnPropDescs$t = Object.getOwnPropertyDescriptors;
-  var __getOwnPropSymbols$T = Object.getOwnPropertySymbols;
-  var __hasOwnProp$T = Object.prototype.hasOwnProperty;
-  var __propIsEnum$T = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$T = (obj, key, value) => key in obj ? __defProp$T(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$T = (a, b) => {
-    for (var prop in b || (b = {}))
-      if (__hasOwnProp$T.call(b, prop))
-        __defNormalProp$T(a, prop, b[prop]);
-    if (__getOwnPropSymbols$T)
-      for (var prop of __getOwnPropSymbols$T(b)) {
-        if (__propIsEnum$T.call(b, prop))
-          __defNormalProp$T(a, prop, b[prop]);
-      }
-    return a;
-  };
-  var __spreadProps$t = (a, b) => __defProps$t(a, __getOwnPropDescs$t(b));
-  var useStyles$r = reactJss.createUseStyles({
-    code: ({theme, color}) => __spreadProps$t(__spreadValues$T({}, getFontStyles(theme)), {
-      lineHeight: theme.lineHeight,
-      padding: [1, theme.spacing.xs / 2],
-      borderRadius: theme.radius.sm,
-      color: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 1 : 9}),
-      backgroundColor: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 9 : 0}),
-      fontFamily: theme.fontFamilyMonospace,
-      fontSize: theme.fontSizes.xs,
-      border: `1px solid ${getThemeColor({
-      theme,
-      color,
-      shade: theme.colorScheme === "dark" ? 9 : 3
-    })}`
-    }),
-    pre: ({theme}) => ({
-      padding: theme.spacing.xs,
-      margin: 0,
-      overflowX: "auto"
-    })
-  }, {link: true});
-
-  var __defProp$S = Object.defineProperty;
-  var __getOwnPropSymbols$S = Object.getOwnPropertySymbols;
-  var __hasOwnProp$S = Object.prototype.hasOwnProperty;
-  var __propIsEnum$S = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$S = (obj, key, value) => key in obj ? __defProp$S(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$S = (a, b) => {
-    for (var prop in b || (b = {}))
-      if (__hasOwnProp$S.call(b, prop))
-        __defNormalProp$S(a, prop, b[prop]);
-    if (__getOwnPropSymbols$S)
-      for (var prop of __getOwnPropSymbols$S(b)) {
-        if (__propIsEnum$S.call(b, prop))
-          __defNormalProp$S(a, prop, b[prop]);
-      }
-    return a;
-  };
-  var __objRest$A = (source, exclude) => {
-    var target = {};
-    for (var prop in source)
-      if (__hasOwnProp$S.call(source, prop) && exclude.indexOf(prop) < 0)
-        target[prop] = source[prop];
-    if (source != null && __getOwnPropSymbols$S)
-      for (var prop of __getOwnPropSymbols$S(source)) {
-        if (exclude.indexOf(prop) < 0 && __propIsEnum$S.call(source, prop))
-          target[prop] = source[prop];
-      }
-    return target;
-  };
-  function Code(_a) {
-    var _b = _a, {
-      children,
-      themeOverride,
-      block = false,
-      className,
-      color
-    } = _b, others = __objRest$A(_b, [
-      "children",
-      "themeOverride",
-      "block",
-      "className",
-      "color"
-    ]);
-    const theme = useMantineTheme(themeOverride);
-    const themeColor = color || (theme.colorScheme === "dark" ? "dark" : "gray");
-    const classes = useStyles$r({color: themeColor, theme: useMantineTheme(themeOverride)});
-    if (block) {
-      return /* @__PURE__ */ React__default['default'].createElement("pre", __spreadValues$S({
-        className: cx(classes.code, classes.pre, className)
-      }, others), children);
-    }
-    return /* @__PURE__ */ React__default['default'].createElement("code", __spreadValues$S({
-      className: cx(classes.code, className)
-    }, others), children);
-  }
-  Code.displayName = "@mantine/core/Code";
-
-  var __defProp$R = Object.defineProperty;
-  var __defProps$s = Object.defineProperties;
-  var __getOwnPropDescs$s = Object.getOwnPropertyDescriptors;
-  var __getOwnPropSymbols$R = Object.getOwnPropertySymbols;
-  var __hasOwnProp$R = Object.prototype.hasOwnProperty;
-  var __propIsEnum$R = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$R = (obj, key, value) => key in obj ? __defProp$R(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$R = (a, b) => {
-    for (var prop in b || (b = {}))
-      if (__hasOwnProp$R.call(b, prop))
-        __defNormalProp$R(a, prop, b[prop]);
-    if (__getOwnPropSymbols$R)
-      for (var prop of __getOwnPropSymbols$R(b)) {
-        if (__propIsEnum$R.call(b, prop))
-          __defNormalProp$R(a, prop, b[prop]);
-      }
-    return a;
-  };
-  var __spreadProps$s = (a, b) => __defProps$s(a, __getOwnPropDescs$s(b));
-  var useStyles$q = reactJss.createUseStyles({
-    colorSwatch: ({theme, radius}) => __spreadProps$s(__spreadValues$R({}, getFocusStyles(theme)), {
-      border: 0,
-      borderRadius: getSizeValue({size: radius, sizes: theme.radius}),
-      appearance: "none",
-      WebkitAppearance: "none",
-      padding: 0
-    })
-  }, {link: true});
-
-  var __defProp$Q = Object.defineProperty;
-  var __getOwnPropSymbols$Q = Object.getOwnPropertySymbols;
-  var __hasOwnProp$Q = Object.prototype.hasOwnProperty;
-  var __propIsEnum$Q = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$Q = (obj, key, value) => key in obj ? __defProp$Q(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$Q = (a, b) => {
-    for (var prop in b || (b = {}))
-      if (__hasOwnProp$Q.call(b, prop))
-        __defNormalProp$Q(a, prop, b[prop]);
-    if (__getOwnPropSymbols$Q)
-      for (var prop of __getOwnPropSymbols$Q(b)) {
-        if (__propIsEnum$Q.call(b, prop))
-          __defNormalProp$Q(a, prop, b[prop]);
-      }
-    return a;
-  };
-  var __objRest$z = (source, exclude) => {
-    var target = {};
-    for (var prop in source)
-      if (__hasOwnProp$Q.call(source, prop) && exclude.indexOf(prop) < 0)
-        target[prop] = source[prop];
-    if (source != null && __getOwnPropSymbols$Q)
-      for (var prop of __getOwnPropSymbols$Q(source)) {
-        if (exclude.indexOf(prop) < 0 && __propIsEnum$Q.call(source, prop))
-          target[prop] = source[prop];
-      }
-    return target;
-  };
-  function ColorSwatch(_a) {
-    var _b = _a, {
-      component: Element = "div",
-      color,
-      size = 25,
-      style,
-      radius = 25,
-      className,
-      themeOverride
-    } = _b, others = __objRest$z(_b, [
-      "component",
-      "color",
-      "size",
-      "style",
-      "radius",
-      "className",
-      "themeOverride"
-    ]);
-    const classes = useStyles$q({radius, theme: useMantineTheme(themeOverride)});
-    return /* @__PURE__ */ React__default['default'].createElement(Element, __spreadValues$Q({
-      className: cx(classes.colorSwatch, className),
-      style: __spreadValues$Q({width: size, height: size, backgroundColor: color}, style),
-      "data-mantine-composable": true
-    }, others));
-  }
-  ColorSwatch.displayName = "@mantine/core/ColorSwatch";
-
-  const sizes$8 = {
-    xs: 570,
-    sm: 770,
-    md: 970,
-    lg: 1170,
-    xl: 1370
-  };
-  var useStyles$p = reactJss.createUseStyles({
-    container: ({fluid, size, padding, theme}) => ({
-      maxWidth: fluid ? "100%" : getSizeValue({size, sizes: sizes$8}),
-      marginLeft: "auto",
-      marginRight: "auto",
-      paddingLeft: getSizeValue({size: padding, sizes: theme.spacing}),
-      paddingRight: getSizeValue({size: padding, sizes: theme.spacing})
-    })
-  }, {link: true});
-
-  var __defProp$P = Object.defineProperty;
-  var __getOwnPropSymbols$P = Object.getOwnPropertySymbols;
-  var __hasOwnProp$P = Object.prototype.hasOwnProperty;
-  var __propIsEnum$P = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$P = (obj, key, value) => key in obj ? __defProp$P(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$P = (a, b) => {
-    for (var prop in b || (b = {}))
-      if (__hasOwnProp$P.call(b, prop))
-        __defNormalProp$P(a, prop, b[prop]);
-    if (__getOwnPropSymbols$P)
-      for (var prop of __getOwnPropSymbols$P(b)) {
-        if (__propIsEnum$P.call(b, prop))
-          __defNormalProp$P(a, prop, b[prop]);
-      }
-    return a;
-  };
-  var __objRest$y = (source, exclude) => {
-    var target = {};
-    for (var prop in source)
-      if (__hasOwnProp$P.call(source, prop) && exclude.indexOf(prop) < 0)
-        target[prop] = source[prop];
-    if (source != null && __getOwnPropSymbols$P)
-      for (var prop of __getOwnPropSymbols$P(source)) {
-        if (exclude.indexOf(prop) < 0 && __propIsEnum$P.call(source, prop))
-          target[prop] = source[prop];
-      }
-    return target;
-  };
-  const CONTAINER_SIZES = sizes$8;
-  function Container(_a) {
-    var _b = _a, {
-      className,
-      padding = "md",
-      fluid,
-      size,
-      themeOverride
-    } = _b, others = __objRest$y(_b, [
-      "className",
-      "padding",
-      "fluid",
-      "size",
-      "themeOverride"
-    ]);
-    const classes = useStyles$p({padding, fluid, size, theme: useMantineTheme(themeOverride)});
-    return /* @__PURE__ */ React__default['default'].createElement("div", __spreadValues$P({
-      className: cx(classes.container, className)
-    }, others));
-  }
-  Container.displayName = "@mantine/core/Container";
-
-  var __defProp$O = Object.defineProperty;
-  var __getOwnPropSymbols$O = Object.getOwnPropertySymbols;
-  var __hasOwnProp$O = Object.prototype.hasOwnProperty;
-  var __propIsEnum$O = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$O = (obj, key, value) => key in obj ? __defProp$O(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$O = (a, b) => {
-    for (var prop in b || (b = {}))
-      if (__hasOwnProp$O.call(b, prop))
-        __defNormalProp$O(a, prop, b[prop]);
-    if (__getOwnPropSymbols$O)
-      for (var prop of __getOwnPropSymbols$O(b)) {
-        if (__propIsEnum$O.call(b, prop))
-          __defNormalProp$O(a, prop, b[prop]);
-      }
-    return a;
-  };
-  var __objRest$x = (source, exclude) => {
-    var target = {};
-    for (var prop in source)
-      if (__hasOwnProp$O.call(source, prop) && exclude.indexOf(prop) < 0)
-        target[prop] = source[prop];
-    if (source != null && __getOwnPropSymbols$O)
-      for (var prop of __getOwnPropSymbols$O(source)) {
-        if (exclude.indexOf(prop) < 0 && __propIsEnum$O.call(source, prop))
-          target[prop] = source[prop];
-      }
-    return target;
-  };
   function Overlay(_a) {
     var _b = _a, {
       opacity = 0.6,
@@ -2553,15 +2574,15 @@
       zIndex = 1e3,
       style,
       component: Element = "div"
-    } = _b, others = __objRest$x(_b, [
+    } = _b, others = __objRest$B(_b, [
       "opacity",
       "color",
       "zIndex",
       "style",
       "component"
     ]);
-    return /* @__PURE__ */ React__default['default'].createElement(Element, __spreadValues$O({
-      style: __spreadValues$O({
+    return /* @__PURE__ */ React__default.createElement(Element, __spreadValues$U({
+      style: __spreadValues$U({
         opacity,
         backgroundColor: color,
         position: "absolute",
@@ -2574,6 +2595,30 @@
     }, others));
   }
   Overlay.displayName = "@mantine/core/Overlay";
+
+  function Portal({children, zIndex = 1, target, className}) {
+    const [mounted, setMounted] = React.useState(false);
+    const elementRef = React.useRef();
+    hooks.useIsomorphicEffect(() => {
+      setMounted(true);
+      elementRef.current = target || document.createElement("div");
+      if (!target) {
+        document.body.appendChild(elementRef.current);
+      }
+      return () => {
+        !target && document.body.removeChild(elementRef.current);
+      };
+    }, [target]);
+    if (!mounted) {
+      return null;
+    }
+    return ReactDOM.createPortal(/* @__PURE__ */ React__default.createElement("div", {
+      className,
+      style: {position: "relative", zIndex},
+      "data-mantine-portal": true
+    }, children), elementRef.current);
+  }
+  Portal.displayName = "@mantine/core/Portal";
 
   function _extends() {
     _extends = Object.assign || function (target) {
@@ -3727,7 +3772,7 @@
     exitActive: PropTypes.string
   })]) : null;
 
-  var TransitionGroupContext = React__default['default'].createContext(null);
+  var TransitionGroupContext = React__default.createContext(null);
 
   var UNMOUNTED = 'unmounted';
   var EXITED = 'exited';
@@ -3965,7 +4010,7 @@
       var enter = this.props.enter;
       var appearing = this.context ? this.context.isMounting : mounting;
 
-      var _ref2 = this.props.nodeRef ? [appearing] : [ReactDOM__default['default'].findDOMNode(this), appearing],
+      var _ref2 = this.props.nodeRef ? [appearing] : [ReactDOM__default.findDOMNode(this), appearing],
           maybeNode = _ref2[0],
           maybeAppearing = _ref2[1];
 
@@ -4003,7 +4048,7 @@
 
       var exit = this.props.exit;
       var timeouts = this.getTimeouts();
-      var maybeNode = this.props.nodeRef ? undefined : ReactDOM__default['default'].findDOMNode(this); // no exit animation skip right to EXITED
+      var maybeNode = this.props.nodeRef ? undefined : ReactDOM__default.findDOMNode(this); // no exit animation skip right to EXITED
 
       if (!exit || config.disabled) {
         this.safeSetState({
@@ -4067,7 +4112,7 @@
 
     _proto.onTransitionEnd = function onTransitionEnd(timeout, handler) {
       this.setNextCallback(handler);
-      var node = this.props.nodeRef ? this.props.nodeRef.current : ReactDOM__default['default'].findDOMNode(this);
+      var node = this.props.nodeRef ? this.props.nodeRef.current : ReactDOM__default.findDOMNode(this);
       var doesNotHaveTimeoutOrListener = timeout == null && !this.props.addEndListener;
 
       if (!node || doesNotHaveTimeoutOrListener) {
@@ -4117,14 +4162,14 @@
       return (
         /*#__PURE__*/
         // allows for nested Transitions
-        React__default['default'].createElement(TransitionGroupContext.Provider, {
+        React__default.createElement(TransitionGroupContext.Provider, {
           value: null
-        }, typeof children === 'function' ? children(status, childProps) : React__default['default'].cloneElement(React__default['default'].Children.only(children), childProps))
+        }, typeof children === 'function' ? children(status, childProps) : React__default.cloneElement(React__default.Children.only(children), childProps))
       );
     };
 
     return Transition;
-  }(React__default['default'].Component);
+  }(React__default.Component);
 
   Transition$1.contextType = TransitionGroupContext;
   Transition$1.propTypes = process.env.NODE_ENV !== "production" ? {
@@ -4390,19 +4435,19 @@
     }
   };
 
-  var __defProp$N = Object.defineProperty;
-  var __getOwnPropSymbols$N = Object.getOwnPropertySymbols;
-  var __hasOwnProp$N = Object.prototype.hasOwnProperty;
-  var __propIsEnum$N = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$N = (obj, key, value) => key in obj ? __defProp$N(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$N = (a, b) => {
+  var __defProp$T = Object.defineProperty;
+  var __getOwnPropSymbols$T = Object.getOwnPropertySymbols;
+  var __hasOwnProp$T = Object.prototype.hasOwnProperty;
+  var __propIsEnum$T = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$T = (obj, key, value) => key in obj ? __defProp$T(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$T = (a, b) => {
     for (var prop in b || (b = {}))
-      if (__hasOwnProp$N.call(b, prop))
-        __defNormalProp$N(a, prop, b[prop]);
-    if (__getOwnPropSymbols$N)
-      for (var prop of __getOwnPropSymbols$N(b)) {
-        if (__propIsEnum$N.call(b, prop))
-          __defNormalProp$N(a, prop, b[prop]);
+      if (__hasOwnProp$T.call(b, prop))
+        __defNormalProp$T(a, prop, b[prop]);
+    if (__getOwnPropSymbols$T)
+      for (var prop of __getOwnPropSymbols$T(b)) {
+        if (__propIsEnum$T.call(b, prop))
+          __defNormalProp$T(a, prop, b[prop]);
       }
     return a;
   };
@@ -4426,11 +4471,11 @@
       if (!(transition in transitions$1)) {
         return null;
       }
-      return __spreadValues$N(__spreadValues$N(__spreadValues$N({
+      return __spreadValues$T(__spreadValues$T(__spreadValues$T({
         transitionProperty: transitions$1[transition].transitionProperty
       }, shared), transitions$1[transition].common), transitions$1[transition][transitionStatuses[state]]);
     }
-    return __spreadValues$N(__spreadValues$N(__spreadValues$N({
+    return __spreadValues$T(__spreadValues$T(__spreadValues$T({
       transitionProperty: transition.transitionProperty
     }, shared), transition.common), transition[transitionStatuses[state]]);
   }
@@ -4443,7 +4488,7 @@
   }) {
     const theme = useMantineTheme(themeOverride);
     const duration = Math.max(...Object.keys(transitions).map((transition) => transitions[transition].duration));
-    return /* @__PURE__ */ React__default['default'].createElement(Transition$1, {
+    return /* @__PURE__ */ React__default.createElement(Transition$1, {
       in: mounted,
       timeout: duration,
       unmountOnExit: true,
@@ -4479,7 +4524,7 @@
   }) {
     const theme = useMantineTheme(themeOverride);
     const reduceMotion = hooks.useReducedMotion();
-    return /* @__PURE__ */ React__default['default'].createElement(Transition$1, {
+    return /* @__PURE__ */ React__default.createElement(Transition$1, {
       in: mounted,
       timeout: duration,
       unmountOnExit: true,
@@ -4500,26 +4545,26 @@
   }
   Transition.displayName = "@mantine/core/Transition";
 
-  var __defProp$M = Object.defineProperty;
-  var __defProps$r = Object.defineProperties;
-  var __getOwnPropDescs$r = Object.getOwnPropertyDescriptors;
-  var __getOwnPropSymbols$M = Object.getOwnPropertySymbols;
-  var __hasOwnProp$M = Object.prototype.hasOwnProperty;
-  var __propIsEnum$M = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$M = (obj, key, value) => key in obj ? __defProp$M(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$M = (a, b) => {
+  var __defProp$S = Object.defineProperty;
+  var __defProps$w = Object.defineProperties;
+  var __getOwnPropDescs$w = Object.getOwnPropertyDescriptors;
+  var __getOwnPropSymbols$S = Object.getOwnPropertySymbols;
+  var __hasOwnProp$S = Object.prototype.hasOwnProperty;
+  var __propIsEnum$S = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$S = (obj, key, value) => key in obj ? __defProp$S(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$S = (a, b) => {
     for (var prop in b || (b = {}))
-      if (__hasOwnProp$M.call(b, prop))
-        __defNormalProp$M(a, prop, b[prop]);
-    if (__getOwnPropSymbols$M)
-      for (var prop of __getOwnPropSymbols$M(b)) {
-        if (__propIsEnum$M.call(b, prop))
-          __defNormalProp$M(a, prop, b[prop]);
+      if (__hasOwnProp$S.call(b, prop))
+        __defNormalProp$S(a, prop, b[prop]);
+    if (__getOwnPropSymbols$S)
+      for (var prop of __getOwnPropSymbols$S(b)) {
+        if (__propIsEnum$S.call(b, prop))
+          __defNormalProp$S(a, prop, b[prop]);
       }
     return a;
   };
-  var __spreadProps$r = (a, b) => __defProps$r(a, __getOwnPropDescs$r(b));
-  const sizes$7 = {
+  var __spreadProps$w = (a, b) => __defProps$w(a, __getOwnPropDescs$w(b));
+  const sizes$8 = {
     xs: 180,
     sm: 240,
     md: 320,
@@ -4533,18 +4578,18 @@
   }) {
     switch (position) {
       case "top":
-        return {top: 0, left: 0, right: 0, height: getSizeValue({size, sizes: sizes$7})};
+        return {top: 0, left: 0, right: 0, height: getSizeValue({size, sizes: sizes$8})};
       case "bottom":
-        return {bottom: 0, left: 0, right: 0, height: getSizeValue({size, sizes: sizes$7})};
+        return {bottom: 0, left: 0, right: 0, height: getSizeValue({size, sizes: sizes$8})};
       case "right":
-        return {bottom: 0, top: 0, right: 0, width: getSizeValue({size, sizes: sizes$7})};
+        return {bottom: 0, top: 0, right: 0, width: getSizeValue({size, sizes: sizes$8})};
       case "left":
-        return {bottom: 0, top: 0, left: 0, width: getSizeValue({size, sizes: sizes$7})};
+        return {bottom: 0, top: 0, left: 0, width: getSizeValue({size, sizes: sizes$8})};
       default:
         return null;
     }
   }
-  var useStyles$o = reactJss.createUseStyles({
+  var useStyles$q = createMemoStyles({
     noOverlay: {},
     wrapper: {
       "&:not($noOverlay)": {
@@ -4555,53 +4600,53 @@
         bottom: 0
       }
     },
-    drawer: ({size, position}) => __spreadProps$r(__spreadValues$M({}, getPositionStyles({position, size})), {
+    drawer: ({size, position}) => __spreadProps$w(__spreadValues$S({}, getPositionStyles({position, size})), {
       maxWidth: "100%",
       maxHeight: "100vh",
       position: "fixed",
       outline: 0
     })
-  }, {link: true});
+  });
 
-  var __defProp$L = Object.defineProperty;
-  var __defProps$q = Object.defineProperties;
-  var __getOwnPropDescs$q = Object.getOwnPropertyDescriptors;
-  var __getOwnPropSymbols$L = Object.getOwnPropertySymbols;
-  var __hasOwnProp$L = Object.prototype.hasOwnProperty;
-  var __propIsEnum$L = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$L = (obj, key, value) => key in obj ? __defProp$L(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$L = (a, b) => {
+  var __defProp$R = Object.defineProperty;
+  var __defProps$v = Object.defineProperties;
+  var __getOwnPropDescs$v = Object.getOwnPropertyDescriptors;
+  var __getOwnPropSymbols$R = Object.getOwnPropertySymbols;
+  var __hasOwnProp$R = Object.prototype.hasOwnProperty;
+  var __propIsEnum$R = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$R = (obj, key, value) => key in obj ? __defProp$R(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$R = (a, b) => {
     for (var prop in b || (b = {}))
-      if (__hasOwnProp$L.call(b, prop))
-        __defNormalProp$L(a, prop, b[prop]);
-    if (__getOwnPropSymbols$L)
-      for (var prop of __getOwnPropSymbols$L(b)) {
-        if (__propIsEnum$L.call(b, prop))
-          __defNormalProp$L(a, prop, b[prop]);
+      if (__hasOwnProp$R.call(b, prop))
+        __defNormalProp$R(a, prop, b[prop]);
+    if (__getOwnPropSymbols$R)
+      for (var prop of __getOwnPropSymbols$R(b)) {
+        if (__propIsEnum$R.call(b, prop))
+          __defNormalProp$R(a, prop, b[prop]);
       }
     return a;
   };
-  var __spreadProps$q = (a, b) => __defProps$q(a, __getOwnPropDescs$q(b));
-  var __objRest$w = (source, exclude) => {
+  var __spreadProps$v = (a, b) => __defProps$v(a, __getOwnPropDescs$v(b));
+  var __objRest$A = (source, exclude) => {
     var target = {};
     for (var prop in source)
-      if (__hasOwnProp$L.call(source, prop) && exclude.indexOf(prop) < 0)
+      if (__hasOwnProp$R.call(source, prop) && exclude.indexOf(prop) < 0)
         target[prop] = source[prop];
-    if (source != null && __getOwnPropSymbols$L)
-      for (var prop of __getOwnPropSymbols$L(source)) {
-        if (exclude.indexOf(prop) < 0 && __propIsEnum$L.call(source, prop))
+    if (source != null && __getOwnPropSymbols$R)
+      for (var prop of __getOwnPropSymbols$R(source)) {
+        if (exclude.indexOf(prop) < 0 && __propIsEnum$R.call(source, prop))
           target[prop] = source[prop];
       }
     return target;
   };
-  const DRAWER_SIZES = sizes$7;
+  const DRAWER_SIZES = sizes$8;
   const transitions = {
     top: "slide-down",
     bottom: "slide-up",
     left: "slide-right",
     right: "slide-left"
   };
-  function Drawer(_a) {
+  function MantineDrawer(_a) {
     var _b = _a, {
       opened,
       onClose,
@@ -4623,7 +4668,7 @@
       noOverlay = false,
       shadow = "md",
       padding = 0
-    } = _b, others = __objRest$w(_b, [
+    } = _b, others = __objRest$A(_b, [
       "opened",
       "onClose",
       "className",
@@ -4647,7 +4692,7 @@
     ]);
     const theme = useMantineTheme(themeOverride);
     const duration = hooks.useReducedMotion() ? 1 : transitionDuration;
-    const classes = useStyles$o({theme, size, position});
+    const classes = useStyles$q({theme, size, position});
     const focusTrapRef = hooks.useFocusTrap(!noFocusTrap);
     hooks.useScrollLock(opened && !noScrollLock);
     const clickOutsideRef = hooks.useClickOutside(() => opened && !noCloseOnClickOutside && onClose());
@@ -4664,7 +4709,7 @@
         return () => window.removeEventListener("keydown", closeOnEscape);
       }
     }, [noFocusTrap]);
-    return /* @__PURE__ */ React__default['default'].createElement(GroupedTransition, {
+    return /* @__PURE__ */ React__default.createElement(GroupedTransition, {
       mounted: opened,
       transitions: {
         overlay: {duration: duration / 2, transition: "fade", timingFunction: "ease"},
@@ -4674,79 +4719,370 @@
           timingFunction: transitionTimingFunction
         }
       }
-    }, (styles) => /* @__PURE__ */ React__default['default'].createElement("div", __spreadValues$L({
+    }, (styles) => /* @__PURE__ */ React__default.createElement("div", __spreadValues$R({
       className: cx(classes.wrapper, {[classes.noOverlay]: noOverlay}, className),
       role: "dialog",
       "aria-modal": true
-    }, others), /* @__PURE__ */ React__default['default'].createElement(Paper, {
+    }, others), /* @__PURE__ */ React__default.createElement(Paper, {
       className: cx(classes.drawer, className),
       elementRef: hooks.useMergedRef(focusTrapRef, clickOutsideRef),
-      style: __spreadProps$q(__spreadValues$L({}, styles.drawer), {zIndex: zIndex + 1}),
+      style: __spreadProps$v(__spreadValues$R({}, styles.drawer), {zIndex: zIndex + 1}),
       radius: 0,
       tabIndex: -1,
       onKeyDownCapture: (event) => event.nativeEvent.code === "Escape" && !noCloseOnEscape && onClose(),
       shadow,
       padding,
       themeOverride
-    }, children), !noOverlay && /* @__PURE__ */ React__default['default'].createElement("div", {
+    }, children), !noOverlay && /* @__PURE__ */ React__default.createElement("div", {
       style: styles.overlay
-    }, /* @__PURE__ */ React__default['default'].createElement(Overlay, {
+    }, /* @__PURE__ */ React__default.createElement(Overlay, {
       opacity: _overlayOpacity,
       zIndex,
       color: overlayColor || (theme.colorScheme === "dark" ? theme.colors.dark[9] : theme.black)
     }))));
   }
+  function Drawer(props) {
+    return /* @__PURE__ */ React__default.createElement(Portal, {
+      zIndex: props.zIndex || 1e3
+    }, /* @__PURE__ */ React__default.createElement(MantineDrawer, __spreadValues$R({}, props)));
+  }
   Drawer.displayName = "@mantine/core/Drawer";
 
-  const JUSTIFY_CONTENT = {
+  const sizes$7 = {
+    xs: 1,
+    sm: 2,
+    md: 3,
+    lg: 4,
+    xl: 5
+  };
+  var useStyles$p = createMemoStyles({
+    withLabel: {
+      borderTop: "0 !important"
+    },
+    left: {
+      "&::before": {
+        display: "none"
+      }
+    },
+    right: {
+      "&::after": {
+        display: "none"
+      }
+    },
+    label: ({theme, color, variant}) => ({
+      display: "flex",
+      alignItems: "center",
+      color: color === "dark" ? theme.colors.dark[1] : getThemeColor({theme, color, shade: 6}),
+      "&::before": {
+        content: '""',
+        flex: 1,
+        height: 1,
+        borderTop: `1px ${variant} ${getThemeColor({
+        theme,
+        color,
+        shade: theme.colorScheme === "dark" ? 3 : 4
+      })}`,
+        marginRight: theme.spacing.xs
+      },
+      "&::after": {
+        content: '""',
+        flex: 1,
+        borderTop: `1px ${variant} ${getThemeColor({
+        theme,
+        color,
+        shade: theme.colorScheme === "dark" ? 3 : 4
+      })}`,
+        marginLeft: theme.spacing.xs
+      }
+    }),
+    horizontal: ({theme, size, variant, color, margins}) => ({
+      border: 0,
+      borderTopWidth: getSizeValue({size, sizes: sizes$7}),
+      borderTopColor: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 3 : 4}),
+      borderTopStyle: variant,
+      margin: 0,
+      marginTop: getSizeValue({size: margins, sizes: theme.spacing}),
+      marginBottom: getSizeValue({size: margins, sizes: theme.spacing})
+    }),
+    vertical: ({theme, size, variant, color, margins}) => ({
+      border: 0,
+      borderLeftWidth: getSizeValue({size, sizes: sizes$7}),
+      borderLeftColor: getThemeColor({theme, color, shade: 4}),
+      borderLeftStyle: variant,
+      marginLeft: getSizeValue({size: margins, sizes: theme.spacing}),
+      marginRight: getSizeValue({size: margins, sizes: theme.spacing})
+    })
+  });
+
+  var __defProp$Q = Object.defineProperty;
+  var __defProps$u = Object.defineProperties;
+  var __getOwnPropDescs$u = Object.getOwnPropertyDescriptors;
+  var __getOwnPropSymbols$Q = Object.getOwnPropertySymbols;
+  var __hasOwnProp$Q = Object.prototype.hasOwnProperty;
+  var __propIsEnum$Q = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$Q = (obj, key, value) => key in obj ? __defProp$Q(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$Q = (a, b) => {
+    for (var prop in b || (b = {}))
+      if (__hasOwnProp$Q.call(b, prop))
+        __defNormalProp$Q(a, prop, b[prop]);
+    if (__getOwnPropSymbols$Q)
+      for (var prop of __getOwnPropSymbols$Q(b)) {
+        if (__propIsEnum$Q.call(b, prop))
+          __defNormalProp$Q(a, prop, b[prop]);
+      }
+    return a;
+  };
+  var __spreadProps$u = (a, b) => __defProps$u(a, __getOwnPropDescs$u(b));
+  var __objRest$z = (source, exclude) => {
+    var target = {};
+    for (var prop in source)
+      if (__hasOwnProp$Q.call(source, prop) && exclude.indexOf(prop) < 0)
+        target[prop] = source[prop];
+    if (source != null && __getOwnPropSymbols$Q)
+      for (var prop of __getOwnPropSymbols$Q(source)) {
+        if (exclude.indexOf(prop) < 0 && __propIsEnum$Q.call(source, prop))
+          target[prop] = source[prop];
+      }
+    return target;
+  };
+  const DIVIDER_SIZES = sizes$7;
+  function Divider(_a) {
+    var _b = _a, {
+      color,
+      className,
+      orientation = "horizontal",
+      size = "xs",
+      label,
+      labelPosition = "left",
+      labelProps,
+      themeOverride,
+      variant = "solid",
+      margins = 0
+    } = _b, others = __objRest$z(_b, [
+      "color",
+      "className",
+      "orientation",
+      "size",
+      "label",
+      "labelPosition",
+      "labelProps",
+      "themeOverride",
+      "variant",
+      "margins"
+    ]);
+    const theme = useMantineTheme(themeOverride);
+    const _color = color || (theme.colorScheme === "dark" ? "dark" : "gray");
+    const classes = useStyles$p({
+      color: _color,
+      theme,
+      margins,
+      size,
+      variant
+    });
+    return /* @__PURE__ */ React__default.createElement("div", __spreadValues$Q({
+      "data-mantine-hr": true,
+      className: cx({
+        [classes.vertical]: orientation === "vertical",
+        [classes.horizontal]: orientation === "horizontal",
+        [classes.withLabel]: !!label && orientation === "horizontal"
+      }, className)
+    }, others), !!label && orientation === "horizontal" && /* @__PURE__ */ React__default.createElement(Text, __spreadProps$u(__spreadValues$Q({
+      "data-mantine-label": true
+    }, labelProps), {
+      color: _color,
+      size: (labelProps == null ? void 0 : labelProps.size) || "xs",
+      style: {marginTop: 2},
+      className: cx(classes.label, classes[labelPosition])
+    }), label));
+  }
+  Divider.displayName = "@mantine/core/Divider";
+
+  var __defProp$P = Object.defineProperty;
+  var __defProps$t = Object.defineProperties;
+  var __getOwnPropDescs$t = Object.getOwnPropertyDescriptors;
+  var __getOwnPropSymbols$P = Object.getOwnPropertySymbols;
+  var __hasOwnProp$P = Object.prototype.hasOwnProperty;
+  var __propIsEnum$P = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$P = (obj, key, value) => key in obj ? __defProp$P(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$P = (a, b) => {
+    for (var prop in b || (b = {}))
+      if (__hasOwnProp$P.call(b, prop))
+        __defNormalProp$P(a, prop, b[prop]);
+    if (__getOwnPropSymbols$P)
+      for (var prop of __getOwnPropSymbols$P(b)) {
+        if (__propIsEnum$P.call(b, prop))
+          __defNormalProp$P(a, prop, b[prop]);
+      }
+    return a;
+  };
+  var __spreadProps$t = (a, b) => __defProps$t(a, __getOwnPropDescs$t(b));
+  var __objRest$y = (source, exclude) => {
+    var target = {};
+    for (var prop in source)
+      if (__hasOwnProp$P.call(source, prop) && exclude.indexOf(prop) < 0)
+        target[prop] = source[prop];
+    if (source != null && __getOwnPropSymbols$P)
+      for (var prop of __getOwnPropSymbols$P(source)) {
+        if (exclude.indexOf(prop) < 0 && __propIsEnum$P.call(source, prop))
+          target[prop] = source[prop];
+      }
+    return target;
+  };
+  function isValidSpan(span) {
+    return typeof span === "number" && span > 0 && span % 1 === 0;
+  }
+  function Col(_a) {
+    var _b = _a, {
+      themeOverride,
+      children,
+      span,
+      gutter,
+      offset = 0,
+      grow,
+      style,
+      columns
+    } = _b, others = __objRest$y(_b, [
+      "themeOverride",
+      "children",
+      "span",
+      "gutter",
+      "offset",
+      "grow",
+      "style",
+      "columns"
+    ]);
+    const theme = useMantineTheme(themeOverride);
+    const spacing = getSizeValue({size: gutter, sizes: theme.spacing});
+    if (!isValidSpan(span) || span > columns) {
+      return null;
+    }
+    const styles = __spreadProps$t(__spreadValues$P({}, style), {
+      boxSizing: "border-box",
+      flex: `${grow ? "1" : "0"} 0 calc(${100 / (columns / span)}% - ${spacing}px)`,
+      margin: spacing / 2
+    });
+    if (isValidSpan(offset)) {
+      styles.marginLeft = `calc(${100 / (columns / offset)}% + ${spacing / 2}px)`;
+    }
+    return /* @__PURE__ */ React__default.createElement("div", __spreadValues$P({
+      style: styles
+    }, others), children);
+  }
+  Col.displayName = "@mantine/core/Col";
+
+  var __defProp$O = Object.defineProperty;
+  var __getOwnPropSymbols$O = Object.getOwnPropertySymbols;
+  var __hasOwnProp$O = Object.prototype.hasOwnProperty;
+  var __propIsEnum$O = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$O = (obj, key, value) => key in obj ? __defProp$O(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$O = (a, b) => {
+    for (var prop in b || (b = {}))
+      if (__hasOwnProp$O.call(b, prop))
+        __defNormalProp$O(a, prop, b[prop]);
+    if (__getOwnPropSymbols$O)
+      for (var prop of __getOwnPropSymbols$O(b)) {
+        if (__propIsEnum$O.call(b, prop))
+          __defNormalProp$O(a, prop, b[prop]);
+      }
+    return a;
+  };
+  var __objRest$x = (source, exclude) => {
+    var target = {};
+    for (var prop in source)
+      if (__hasOwnProp$O.call(source, prop) && exclude.indexOf(prop) < 0)
+        target[prop] = source[prop];
+    if (source != null && __getOwnPropSymbols$O)
+      for (var prop of __getOwnPropSymbols$O(source)) {
+        if (exclude.indexOf(prop) < 0 && __propIsEnum$O.call(source, prop))
+          target[prop] = source[prop];
+      }
+    return target;
+  };
+  function Grid(_a) {
+    var _b = _a, {
+      themeOverride,
+      gutter = "md",
+      children,
+      grow = false,
+      justify = "flex-start",
+      align = "stretch",
+      style,
+      columns = 12
+    } = _b, others = __objRest$x(_b, [
+      "themeOverride",
+      "gutter",
+      "children",
+      "grow",
+      "justify",
+      "align",
+      "style",
+      "columns"
+    ]);
+    const theme = useMantineTheme(themeOverride);
+    const spacing = getSizeValue({size: gutter, sizes: theme.spacing});
+    const cols = React.Children.toArray(children).map((col, index) => React__default.cloneElement(col, {gutter, grow, columns, key: index}));
+    return /* @__PURE__ */ React__default.createElement("div", __spreadValues$O({
+      style: __spreadValues$O({
+        margin: -spacing / 2,
+        display: "flex",
+        flexWrap: "wrap",
+        justifyContent: justify,
+        alignItems: align
+      }, style)
+    }, others), cols);
+  }
+  Grid.displayName = "@mantine/core/Grid";
+
+  const POSITIONS = {
     left: "flex-start",
     center: "center",
     right: "flex-end",
     apart: "space-between"
   };
-  var useStyles$n = reactJss.createUseStyles({
-    elementsGroup: ({spacing, position, noWrap, theme}) => ({
+  var useStyles$o = createMemoStyles({
+    group: ({spacing, position, noWrap, direction, theme, grow}) => ({
       display: "flex",
-      alignItems: "center",
+      flexDirection: direction,
+      alignItems: direction === "row" ? "center" : grow ? "stretch" : POSITIONS[position],
       flexWrap: noWrap ? "nowrap" : "wrap",
-      justifyContent: JUSTIFY_CONTENT[position],
+      justifyContent: direction === "row" && POSITIONS[position],
       margin: -1 * getSizeValue({size: spacing, sizes: theme.spacing}) / 2
     }),
     child: ({grow, spacing, theme}) => ({
       flexGrow: grow ? 1 : 0,
       margin: getSizeValue({size: spacing, sizes: theme.spacing}) / 2
     })
-  }, {link: true});
+  });
 
-  var __defProp$K = Object.defineProperty;
-  var __getOwnPropSymbols$K = Object.getOwnPropertySymbols;
-  var __hasOwnProp$K = Object.prototype.hasOwnProperty;
-  var __propIsEnum$K = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$K = (obj, key, value) => key in obj ? __defProp$K(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$K = (a, b) => {
+  var __defProp$N = Object.defineProperty;
+  var __getOwnPropSymbols$N = Object.getOwnPropertySymbols;
+  var __hasOwnProp$N = Object.prototype.hasOwnProperty;
+  var __propIsEnum$N = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$N = (obj, key, value) => key in obj ? __defProp$N(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$N = (a, b) => {
     for (var prop in b || (b = {}))
-      if (__hasOwnProp$K.call(b, prop))
-        __defNormalProp$K(a, prop, b[prop]);
-    if (__getOwnPropSymbols$K)
-      for (var prop of __getOwnPropSymbols$K(b)) {
-        if (__propIsEnum$K.call(b, prop))
-          __defNormalProp$K(a, prop, b[prop]);
+      if (__hasOwnProp$N.call(b, prop))
+        __defNormalProp$N(a, prop, b[prop]);
+    if (__getOwnPropSymbols$N)
+      for (var prop of __getOwnPropSymbols$N(b)) {
+        if (__propIsEnum$N.call(b, prop))
+          __defNormalProp$N(a, prop, b[prop]);
       }
     return a;
   };
-  var __objRest$v = (source, exclude) => {
+  var __objRest$w = (source, exclude) => {
     var target = {};
     for (var prop in source)
-      if (__hasOwnProp$K.call(source, prop) && exclude.indexOf(prop) < 0)
+      if (__hasOwnProp$N.call(source, prop) && exclude.indexOf(prop) < 0)
         target[prop] = source[prop];
-    if (source != null && __getOwnPropSymbols$K)
-      for (var prop of __getOwnPropSymbols$K(source)) {
-        if (exclude.indexOf(prop) < 0 && __propIsEnum$K.call(source, prop))
+    if (source != null && __getOwnPropSymbols$N)
+      for (var prop of __getOwnPropSymbols$N(source)) {
+        if (exclude.indexOf(prop) < 0 && __propIsEnum$N.call(source, prop))
           target[prop] = source[prop];
       }
     return target;
   };
-  function ElementsGroup(_a) {
+  function Group(_a) {
     var _b = _a, {
       className,
       position = "left",
@@ -4754,56 +5090,59 @@
       noWrap = false,
       grow = false,
       spacing = "md",
+      direction = "row",
       themeOverride
-    } = _b, others = __objRest$v(_b, [
+    } = _b, others = __objRest$w(_b, [
       "className",
       "position",
       "children",
       "noWrap",
       "grow",
       "spacing",
+      "direction",
       "themeOverride"
     ]);
-    const classes = useStyles$n({
+    const classes = useStyles$o({
+      theme: useMantineTheme(themeOverride),
       grow,
       noWrap,
       spacing,
       position,
-      theme: useMantineTheme(themeOverride)
+      direction
     });
-    const items = React.Children.toArray(children).map((child) => React__default['default'].cloneElement(child, {className: cx(classes.child, child.props.className)}));
-    return /* @__PURE__ */ React__default['default'].createElement("div", __spreadValues$K({
+    const items = React.Children.toArray(children).map((child) => React__default.cloneElement(child, {className: cx(classes.child, child.props.className)}));
+    return /* @__PURE__ */ React__default.createElement("div", __spreadValues$N({
       className
-    }, others), /* @__PURE__ */ React__default['default'].createElement("div", {
-      className: classes.elementsGroup
+    }, others), /* @__PURE__ */ React__default.createElement("div", {
+      className: classes.group
     }, items));
   }
-  ElementsGroup.displayName = "@mantine/core/ElementsGroup";
+  Group.displayName = "@mantine/core/Group";
 
-  var __defProp$J = Object.defineProperty;
-  var __getOwnPropSymbols$J = Object.getOwnPropertySymbols;
-  var __hasOwnProp$J = Object.prototype.hasOwnProperty;
-  var __propIsEnum$J = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$J = (obj, key, value) => key in obj ? __defProp$J(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$J = (a, b) => {
+  var __defProp$M = Object.defineProperty;
+  var __getOwnPropSymbols$M = Object.getOwnPropertySymbols;
+  var __hasOwnProp$M = Object.prototype.hasOwnProperty;
+  var __propIsEnum$M = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$M = (obj, key, value) => key in obj ? __defProp$M(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$M = (a, b) => {
     for (var prop in b || (b = {}))
-      if (__hasOwnProp$J.call(b, prop))
-        __defNormalProp$J(a, prop, b[prop]);
-    if (__getOwnPropSymbols$J)
-      for (var prop of __getOwnPropSymbols$J(b)) {
-        if (__propIsEnum$J.call(b, prop))
-          __defNormalProp$J(a, prop, b[prop]);
+      if (__hasOwnProp$M.call(b, prop))
+        __defNormalProp$M(a, prop, b[prop]);
+    if (__getOwnPropSymbols$M)
+      for (var prop of __getOwnPropSymbols$M(b)) {
+        if (__propIsEnum$M.call(b, prop))
+          __defNormalProp$M(a, prop, b[prop]);
       }
     return a;
   };
-  var __objRest$u = (source, exclude) => {
+  var __objRest$v = (source, exclude) => {
     var target = {};
     for (var prop in source)
-      if (__hasOwnProp$J.call(source, prop) && exclude.indexOf(prop) < 0)
+      if (__hasOwnProp$M.call(source, prop) && exclude.indexOf(prop) < 0)
         target[prop] = source[prop];
-    if (source != null && __getOwnPropSymbols$J)
-      for (var prop of __getOwnPropSymbols$J(source)) {
-        if (exclude.indexOf(prop) < 0 && __propIsEnum$J.call(source, prop))
+    if (source != null && __getOwnPropSymbols$M)
+      for (var prop of __getOwnPropSymbols$M(source)) {
+        if (exclude.indexOf(prop) < 0 && __propIsEnum$M.call(source, prop))
           target[prop] = source[prop];
       }
     return target;
@@ -4829,7 +5168,7 @@
       component,
       themeOverride,
       highlightColor = "yellow"
-    } = _b, others = __objRest$u(_b, [
+    } = _b, others = __objRest$v(_b, [
       "children",
       "highlight",
       "component",
@@ -4837,16 +5176,16 @@
       "highlightColor"
     ]);
     const theme = useMantineTheme(themeOverride);
-    const color = getThemeColor({
+    const color = hexToRgba(getThemeColor({
       theme,
       color: highlightColor,
-      shade: 2
-    });
+      shade: theme.colorScheme === "dark" ? 4 : 2
+    }), theme.colorScheme === "dark" ? 0.7 : 1);
     const {start, end, highlighted} = highlighter(children, highlight);
-    return /* @__PURE__ */ React__default['default'].createElement(Text, __spreadValues$J({
+    return /* @__PURE__ */ React__default.createElement(Text, __spreadValues$M({
       component,
       themeOverride
-    }, others), !!start && start, !!highlighted && /* @__PURE__ */ React__default['default'].createElement("mark", {
+    }, others), !!start && start, !!highlighted && /* @__PURE__ */ React__default.createElement("mark", {
       style: {
         backgroundColor: color,
         color: theme.colorScheme === "dark" ? theme.colors.dark[9] : "inherit"
@@ -4855,98 +5194,30 @@
   }
   Highlight.displayName = "@mantine/core/Highlight";
 
-  const sizes$6 = {
-    xs: 1,
-    sm: 2,
-    md: 3,
-    lg: 4,
-    xl: 5
-  };
-  var useStyles$m = reactJss.createUseStyles({
-    hr: ({theme, size, variant, color}) => ({
-      border: 0,
-      borderTopWidth: getSizeValue({size, sizes: sizes$6}),
-      borderTopColor: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 4 : 6}),
-      borderTopStyle: variant,
-      margin: 0
-    })
-  }, {link: true});
-
-  var __defProp$I = Object.defineProperty;
-  var __getOwnPropSymbols$I = Object.getOwnPropertySymbols;
-  var __hasOwnProp$I = Object.prototype.hasOwnProperty;
-  var __propIsEnum$I = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$I = (obj, key, value) => key in obj ? __defProp$I(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$I = (a, b) => {
+  var __defProp$L = Object.defineProperty;
+  var __getOwnPropSymbols$L = Object.getOwnPropertySymbols;
+  var __hasOwnProp$L = Object.prototype.hasOwnProperty;
+  var __propIsEnum$L = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$L = (obj, key, value) => key in obj ? __defProp$L(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$L = (a, b) => {
     for (var prop in b || (b = {}))
-      if (__hasOwnProp$I.call(b, prop))
-        __defNormalProp$I(a, prop, b[prop]);
-    if (__getOwnPropSymbols$I)
-      for (var prop of __getOwnPropSymbols$I(b)) {
-        if (__propIsEnum$I.call(b, prop))
-          __defNormalProp$I(a, prop, b[prop]);
-      }
-    return a;
-  };
-  var __objRest$t = (source, exclude) => {
-    var target = {};
-    for (var prop in source)
-      if (__hasOwnProp$I.call(source, prop) && exclude.indexOf(prop) < 0)
-        target[prop] = source[prop];
-    if (source != null && __getOwnPropSymbols$I)
-      for (var prop of __getOwnPropSymbols$I(source)) {
-        if (exclude.indexOf(prop) < 0 && __propIsEnum$I.call(source, prop))
-          target[prop] = source[prop];
-      }
-    return target;
-  };
-  const HR_SIZES = sizes$6;
-  function Hr(_a) {
-    var _b = _a, {
-      size = "xs",
-      className,
-      variant = "dashed",
-      themeOverride,
-      color = "gray"
-    } = _b, others = __objRest$t(_b, [
-      "size",
-      "className",
-      "variant",
-      "themeOverride",
-      "color"
-    ]);
-    const classes = useStyles$m({color, variant, size, theme: useMantineTheme(themeOverride)});
-    return /* @__PURE__ */ React__default['default'].createElement("hr", __spreadValues$I({
-      "data-mantine-hr": true,
-      className: cx(classes.hr, className)
-    }, others));
-  }
-  Hr.displayName = "@mantine/core/Hr";
-
-  var __defProp$H = Object.defineProperty;
-  var __getOwnPropSymbols$H = Object.getOwnPropertySymbols;
-  var __hasOwnProp$H = Object.prototype.hasOwnProperty;
-  var __propIsEnum$H = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$H = (obj, key, value) => key in obj ? __defProp$H(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$H = (a, b) => {
-    for (var prop in b || (b = {}))
-      if (__hasOwnProp$H.call(b, prop))
-        __defNormalProp$H(a, prop, b[prop]);
-    if (__getOwnPropSymbols$H)
-      for (var prop of __getOwnPropSymbols$H(b)) {
-        if (__propIsEnum$H.call(b, prop))
-          __defNormalProp$H(a, prop, b[prop]);
+      if (__hasOwnProp$L.call(b, prop))
+        __defNormalProp$L(a, prop, b[prop]);
+    if (__getOwnPropSymbols$L)
+      for (var prop of __getOwnPropSymbols$L(b)) {
+        if (__propIsEnum$L.call(b, prop))
+          __defNormalProp$L(a, prop, b[prop]);
       }
     return a;
   };
   function ImageIcon(props) {
-    return /* @__PURE__ */ React__default['default'].createElement("svg", __spreadValues$H({
+    return /* @__PURE__ */ React__default.createElement("svg", __spreadValues$L({
       width: "15",
       height: "15",
       viewBox: "0 0 15 15",
       fill: "none",
       xmlns: "http://www.w3.org/2000/svg"
-    }, props), /* @__PURE__ */ React__default['default'].createElement("path", {
+    }, props), /* @__PURE__ */ React__default.createElement("path", {
       d: "M2.5 1H12.5C13.3284 1 14 1.67157 14 2.5V12.5C14 13.3284 13.3284 14 12.5 14H2.5C1.67157 14 1 13.3284 1 12.5V2.5C1 1.67157 1.67157 1 2.5 1ZM2.5 2C2.22386 2 2 2.22386 2 2.5V8.3636L3.6818 6.6818C3.76809 6.59551 3.88572 6.54797 4.00774 6.55007C4.12975 6.55216 4.24568 6.60372 4.32895 6.69293L7.87355 10.4901L10.6818 7.6818C10.8575 7.50607 11.1425 7.50607 11.3182 7.6818L13 9.3636V2.5C13 2.22386 12.7761 2 12.5 2H2.5ZM2 12.5V9.6364L3.98887 7.64753L7.5311 11.4421L8.94113 13H2.5C2.22386 13 2 12.7761 2 12.5ZM12.5 13H10.155L8.48336 11.153L11 8.6364L13 10.6364V12.5C13 12.7761 12.7761 13 12.5 13ZM6.64922 5.5C6.64922 5.03013 7.03013 4.64922 7.5 4.64922C7.96987 4.64922 8.35078 5.03013 8.35078 5.5C8.35078 5.96987 7.96987 6.35078 7.5 6.35078C7.03013 6.35078 6.64922 5.96987 6.64922 5.5ZM7.5 3.74922C6.53307 3.74922 5.74922 4.53307 5.74922 5.5C5.74922 6.46693 6.53307 7.25078 7.5 7.25078C8.46693 7.25078 9.25078 6.46693 9.25078 5.5C9.25078 4.53307 8.46693 3.74922 7.5 3.74922Z",
       fill: "currentColor",
       fillRule: "evenodd",
@@ -4954,31 +5225,31 @@
     }));
   }
 
-  var __defProp$G = Object.defineProperty;
-  var __defProps$p = Object.defineProperties;
-  var __getOwnPropDescs$p = Object.getOwnPropertyDescriptors;
-  var __getOwnPropSymbols$G = Object.getOwnPropertySymbols;
-  var __hasOwnProp$G = Object.prototype.hasOwnProperty;
-  var __propIsEnum$G = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$G = (obj, key, value) => key in obj ? __defProp$G(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$G = (a, b) => {
+  var __defProp$K = Object.defineProperty;
+  var __defProps$s = Object.defineProperties;
+  var __getOwnPropDescs$s = Object.getOwnPropertyDescriptors;
+  var __getOwnPropSymbols$K = Object.getOwnPropertySymbols;
+  var __hasOwnProp$K = Object.prototype.hasOwnProperty;
+  var __propIsEnum$K = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$K = (obj, key, value) => key in obj ? __defProp$K(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$K = (a, b) => {
     for (var prop in b || (b = {}))
-      if (__hasOwnProp$G.call(b, prop))
-        __defNormalProp$G(a, prop, b[prop]);
-    if (__getOwnPropSymbols$G)
-      for (var prop of __getOwnPropSymbols$G(b)) {
-        if (__propIsEnum$G.call(b, prop))
-          __defNormalProp$G(a, prop, b[prop]);
+      if (__hasOwnProp$K.call(b, prop))
+        __defNormalProp$K(a, prop, b[prop]);
+    if (__getOwnPropSymbols$K)
+      for (var prop of __getOwnPropSymbols$K(b)) {
+        if (__propIsEnum$K.call(b, prop))
+          __defNormalProp$K(a, prop, b[prop]);
       }
     return a;
   };
-  var __spreadProps$p = (a, b) => __defProps$p(a, __getOwnPropDescs$p(b));
-  var useStyles$l = reactJss.createUseStyles({
+  var __spreadProps$s = (a, b) => __defProps$s(a, __getOwnPropDescs$s(b));
+  var useStyles$n = createMemoStyles({
     wrapper: {
       position: "relative",
       overflow: "hidden"
     },
-    image: ({theme, radius}) => __spreadProps$p(__spreadValues$G({}, getFontStyles(theme)), {
+    image: ({theme, radius}) => __spreadProps$s(__spreadValues$K({}, getFontStyles(theme)), {
       display: "block",
       width: "100%",
       height: "100%",
@@ -5000,35 +5271,35 @@
       right: 0,
       bottom: 0
     })
-  }, {link: true});
+  });
 
-  var __defProp$F = Object.defineProperty;
-  var __defProps$o = Object.defineProperties;
-  var __getOwnPropDescs$o = Object.getOwnPropertyDescriptors;
-  var __getOwnPropSymbols$F = Object.getOwnPropertySymbols;
-  var __hasOwnProp$F = Object.prototype.hasOwnProperty;
-  var __propIsEnum$F = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$F = (obj, key, value) => key in obj ? __defProp$F(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$F = (a, b) => {
+  var __defProp$J = Object.defineProperty;
+  var __defProps$r = Object.defineProperties;
+  var __getOwnPropDescs$r = Object.getOwnPropertyDescriptors;
+  var __getOwnPropSymbols$J = Object.getOwnPropertySymbols;
+  var __hasOwnProp$J = Object.prototype.hasOwnProperty;
+  var __propIsEnum$J = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$J = (obj, key, value) => key in obj ? __defProp$J(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$J = (a, b) => {
     for (var prop in b || (b = {}))
-      if (__hasOwnProp$F.call(b, prop))
-        __defNormalProp$F(a, prop, b[prop]);
-    if (__getOwnPropSymbols$F)
-      for (var prop of __getOwnPropSymbols$F(b)) {
-        if (__propIsEnum$F.call(b, prop))
-          __defNormalProp$F(a, prop, b[prop]);
+      if (__hasOwnProp$J.call(b, prop))
+        __defNormalProp$J(a, prop, b[prop]);
+    if (__getOwnPropSymbols$J)
+      for (var prop of __getOwnPropSymbols$J(b)) {
+        if (__propIsEnum$J.call(b, prop))
+          __defNormalProp$J(a, prop, b[prop]);
       }
     return a;
   };
-  var __spreadProps$o = (a, b) => __defProps$o(a, __getOwnPropDescs$o(b));
-  var __objRest$s = (source, exclude) => {
+  var __spreadProps$r = (a, b) => __defProps$r(a, __getOwnPropDescs$r(b));
+  var __objRest$u = (source, exclude) => {
     var target = {};
     for (var prop in source)
-      if (__hasOwnProp$F.call(source, prop) && exclude.indexOf(prop) < 0)
+      if (__hasOwnProp$J.call(source, prop) && exclude.indexOf(prop) < 0)
         target[prop] = source[prop];
-    if (source != null && __getOwnPropSymbols$F)
-      for (var prop of __getOwnPropSymbols$F(source)) {
-        if (exclude.indexOf(prop) < 0 && __propIsEnum$F.call(source, prop))
+    if (source != null && __getOwnPropSymbols$J)
+      for (var prop of __getOwnPropSymbols$J(source)) {
+        if (exclude.indexOf(prop) < 0 && __propIsEnum$J.call(source, prop))
           target[prop] = source[prop];
       }
     return target;
@@ -5049,7 +5320,7 @@
       placeholder,
       imageRef,
       elementRef
-    } = _b, others = __objRest$s(_b, [
+    } = _b, others = __objRest$u(_b, [
       "className",
       "themeOverride",
       "alt",
@@ -5065,7 +5336,7 @@
       "imageRef",
       "elementRef"
     ]);
-    const classes = useStyles$l({radius, theme: useMantineTheme(themeOverride)});
+    const classes = useStyles$n({radius, theme: useMantineTheme(themeOverride)});
     const [loaded, setLoaded] = React.useState(false);
     const [error, setError] = React.useState(!src);
     const isPlaceholder = withPlaceholder && (!loaded || error);
@@ -5078,22 +5349,22 @@
         setError(false);
       }
     }, [src]);
-    return /* @__PURE__ */ React__default['default'].createElement("div", __spreadValues$F({
+    return /* @__PURE__ */ React__default.createElement("div", __spreadValues$J({
       "data-mantine-image": true,
       className: cx(classes.wrapper, className),
-      style: __spreadValues$F({width, height}, style),
+      style: __spreadValues$J({width, height}, style),
       ref: elementRef
-    }, others), isPlaceholder && /* @__PURE__ */ React__default['default'].createElement("div", {
+    }, others), isPlaceholder && /* @__PURE__ */ React__default.createElement("div", {
       "data-mantine-image-placeholder": true,
       className: classes.placeholderIcon,
       title: alt
-    }, placeholder || /* @__PURE__ */ React__default['default'].createElement(ImageIcon, {
+    }, placeholder || /* @__PURE__ */ React__default.createElement(ImageIcon, {
       style: {width: 40, height: 40}
-    })), /* @__PURE__ */ React__default['default'].createElement("img", __spreadValues$F({
+    })), /* @__PURE__ */ React__default.createElement("img", __spreadValues$J({
       className: cx(classes.image, imageProps == null ? void 0 : imageProps.className),
       src,
       alt,
-      style: __spreadProps$o(__spreadValues$F({}, imageProps == null ? void 0 : imageProps.style), {objectFit: fit}),
+      style: __spreadProps$r(__spreadValues$J({}, imageProps == null ? void 0 : imageProps.style), {objectFit: fit}),
       ref: imageRef,
       onLoad: (event) => {
         setLoaded(true);
@@ -5107,26 +5378,26 @@
   }
   Image.displayName = "@mantine/core/Image";
 
-  var __defProp$E = Object.defineProperty;
-  var __defProps$n = Object.defineProperties;
-  var __getOwnPropDescs$n = Object.getOwnPropertyDescriptors;
-  var __getOwnPropSymbols$E = Object.getOwnPropertySymbols;
-  var __hasOwnProp$E = Object.prototype.hasOwnProperty;
-  var __propIsEnum$E = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$E = (obj, key, value) => key in obj ? __defProp$E(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$E = (a, b) => {
+  var __defProp$I = Object.defineProperty;
+  var __defProps$q = Object.defineProperties;
+  var __getOwnPropDescs$q = Object.getOwnPropertyDescriptors;
+  var __getOwnPropSymbols$I = Object.getOwnPropertySymbols;
+  var __hasOwnProp$I = Object.prototype.hasOwnProperty;
+  var __propIsEnum$I = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$I = (obj, key, value) => key in obj ? __defProp$I(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$I = (a, b) => {
     for (var prop in b || (b = {}))
-      if (__hasOwnProp$E.call(b, prop))
-        __defNormalProp$E(a, prop, b[prop]);
-    if (__getOwnPropSymbols$E)
-      for (var prop of __getOwnPropSymbols$E(b)) {
-        if (__propIsEnum$E.call(b, prop))
-          __defNormalProp$E(a, prop, b[prop]);
+      if (__hasOwnProp$I.call(b, prop))
+        __defNormalProp$I(a, prop, b[prop]);
+    if (__getOwnPropSymbols$I)
+      for (var prop of __getOwnPropSymbols$I(b)) {
+        if (__propIsEnum$I.call(b, prop))
+          __defNormalProp$I(a, prop, b[prop]);
       }
     return a;
   };
-  var __spreadProps$n = (a, b) => __defProps$n(a, __getOwnPropDescs$n(b));
-  var useStyles$k = reactJss.createUseStyles({
+  var __spreadProps$q = (a, b) => __defProps$q(a, __getOwnPropDescs$q(b));
+  var useStyles$m = createMemoStyles({
     withIcon: {},
     inputWrapper: ({radius, theme}) => ({
       position: "relative",
@@ -5135,17 +5406,17 @@
     }),
     defaultVariant: ({theme, radius}) => ({
       "& $input": {
-        backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.white,
+        backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
         minHeight: 36,
-        padding: [7, theme.spacing.sm],
+        paddingLeft: theme.spacing.md,
+        paddingRight: theme.spacing.md,
         borderRadius: getSizeValue({size: radius, sizes: theme.radius}),
         border: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[4]}`,
         transition: "border-color 100ms ease, box-shadow 100ms ease",
         color: theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black,
         "&:focus": {
           outline: "none",
-          borderColor: theme.colors[theme.primaryColor][6],
-          boxShadow: `0 0 4px ${theme.colors.gray[3]}`
+          borderColor: theme.colors[theme.primaryColor][theme.colorScheme === "dark" ? 8 : 6]
         }
       },
       "&$invalid $input": {
@@ -5165,12 +5436,11 @@
         paddingRight: theme.spacing.md,
         borderRadius: getSizeValue({size: radius, sizes: theme.radius}),
         border: "1px solid transparent",
-        backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[9] : theme.colors.gray[1],
+        backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[1],
         color: theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black,
         "&:focus": {
           outline: "none",
-          borderColor: `${theme.colors[theme.primaryColor][theme.colorScheme === "dark" ? 4 : 6]} !important`,
-          boxShadow: `0 0 4px ${theme.colors.gray[3]}`
+          borderColor: `${theme.colors[theme.primaryColor][theme.colorScheme === "dark" ? 8 : 6]} !important`
         },
         "&::placeholder": {
           color: theme.colorScheme === "dark" ? theme.colors.dark[2] : theme.colors.gray[6]
@@ -5183,7 +5453,7 @@
       },
       "&$invalid $input": {
         borderColor: theme.colorScheme === "dark" ? theme.colors.red[4] : "transparent",
-        backgroundColor: theme.colorScheme !== "dark" && theme.colors.red[0]
+        backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.red[0]
       },
       "& $withIcon": {
         paddingLeft: 35
@@ -5211,13 +5481,13 @@
         paddingLeft: 34
       }
     }),
-    input: ({theme}) => __spreadProps$n(__spreadValues$E({}, getFontStyles(theme)), {
+    input: ({theme}) => __spreadProps$q(__spreadValues$I({}, getFontStyles(theme)), {
       WebkitTapHighlightColor: "transparent",
       lineHeight: theme.lineHeight,
       appearance: "none",
       resize: "none",
       boxSizing: "border-box",
-      fontSize: 14,
+      fontSize: theme.fontSizes.sm,
       width: "100%",
       color: theme.black,
       display: "block",
@@ -5244,7 +5514,7 @@
       left: 0,
       top: 0,
       bottom: 0,
-      color: theme.colorScheme === "dark" ? theme.colors.dark[3] : theme.colors.gray[5],
+      color: theme.colorScheme === "dark" ? theme.colors.dark[2] : theme.colors.gray[5],
       display: "flex",
       alignItems: "center",
       justifyContent: "center"
@@ -5270,35 +5540,35 @@
       alignItems: "center",
       justifyContent: "center"
     }
-  }, {link: true});
+  });
 
-  var __defProp$D = Object.defineProperty;
-  var __defProps$m = Object.defineProperties;
-  var __getOwnPropDescs$m = Object.getOwnPropertyDescriptors;
-  var __getOwnPropSymbols$D = Object.getOwnPropertySymbols;
-  var __hasOwnProp$D = Object.prototype.hasOwnProperty;
-  var __propIsEnum$D = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$D = (obj, key, value) => key in obj ? __defProp$D(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$D = (a, b) => {
+  var __defProp$H = Object.defineProperty;
+  var __defProps$p = Object.defineProperties;
+  var __getOwnPropDescs$p = Object.getOwnPropertyDescriptors;
+  var __getOwnPropSymbols$H = Object.getOwnPropertySymbols;
+  var __hasOwnProp$H = Object.prototype.hasOwnProperty;
+  var __propIsEnum$H = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$H = (obj, key, value) => key in obj ? __defProp$H(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$H = (a, b) => {
     for (var prop in b || (b = {}))
-      if (__hasOwnProp$D.call(b, prop))
-        __defNormalProp$D(a, prop, b[prop]);
-    if (__getOwnPropSymbols$D)
-      for (var prop of __getOwnPropSymbols$D(b)) {
-        if (__propIsEnum$D.call(b, prop))
-          __defNormalProp$D(a, prop, b[prop]);
+      if (__hasOwnProp$H.call(b, prop))
+        __defNormalProp$H(a, prop, b[prop]);
+    if (__getOwnPropSymbols$H)
+      for (var prop of __getOwnPropSymbols$H(b)) {
+        if (__propIsEnum$H.call(b, prop))
+          __defNormalProp$H(a, prop, b[prop]);
       }
     return a;
   };
-  var __spreadProps$m = (a, b) => __defProps$m(a, __getOwnPropDescs$m(b));
-  var __objRest$r = (source, exclude) => {
+  var __spreadProps$p = (a, b) => __defProps$p(a, __getOwnPropDescs$p(b));
+  var __objRest$t = (source, exclude) => {
     var target = {};
     for (var prop in source)
-      if (__hasOwnProp$D.call(source, prop) && exclude.indexOf(prop) < 0)
+      if (__hasOwnProp$H.call(source, prop) && exclude.indexOf(prop) < 0)
         target[prop] = source[prop];
-    if (source != null && __getOwnPropSymbols$D)
-      for (var prop of __getOwnPropSymbols$D(source)) {
-        if (exclude.indexOf(prop) < 0 && __propIsEnum$D.call(source, prop))
+    if (source != null && __getOwnPropSymbols$H)
+      for (var prop of __getOwnPropSymbols$H(source)) {
+        if (exclude.indexOf(prop) < 0 && __propIsEnum$H.call(source, prop))
           target[prop] = source[prop];
       }
     return target;
@@ -5321,7 +5591,7 @@
       themeOverride,
       wrapperProps,
       elementRef
-    } = _b, others = __objRest$r(_b, [
+    } = _b, others = __objRest$t(_b, [
       "component",
       "className",
       "invalid",
@@ -5340,51 +5610,51 @@
       "elementRef"
     ]);
     const theme = useMantineTheme(themeOverride);
-    const classes = useStyles$k({radius, theme});
-    return /* @__PURE__ */ React__default['default'].createElement("div", __spreadValues$D({
+    const classes = useStyles$m({radius, theme});
+    return /* @__PURE__ */ React__default.createElement("div", __spreadValues$H({
       className: cx(classes.inputWrapper, {[classes.invalid]: invalid}, classes[`${variant}Variant`], className),
       style
-    }, wrapperProps), icon && /* @__PURE__ */ React__default['default'].createElement("div", {
+    }, wrapperProps), icon && /* @__PURE__ */ React__default.createElement("div", {
       "data-mantine-icon": true,
       className: classes.icon
-    }, icon), /* @__PURE__ */ React__default['default'].createElement(Element, __spreadProps$m(__spreadValues$D({}, others), {
+    }, icon), /* @__PURE__ */ React__default.createElement(Element, __spreadProps$p(__spreadValues$H({}, others), {
       "data-mantine-input": true,
       ref: elementRef,
       "aria-required": required,
       "aria-invalid": invalid,
       className: cx({[classes.withIcon]: icon}, classes.input, inputClassName),
-      style: __spreadValues$D({
+      style: __spreadValues$H({
         paddingRight: rightSection ? rightSectionWidth : theme.spacing.md
       }, inputStyle)
-    })), rightSection && /* @__PURE__ */ React__default['default'].createElement("div", __spreadProps$m(__spreadValues$D({}, rightSectionProps), {
+    })), rightSection && /* @__PURE__ */ React__default.createElement("div", __spreadProps$p(__spreadValues$H({}, rightSectionProps), {
       "data-mantine-input-section": true,
-      style: __spreadProps$m(__spreadValues$D({}, rightSectionProps.style), {width: rightSectionWidth}),
+      style: __spreadProps$p(__spreadValues$H({}, rightSectionProps.style), {width: rightSectionWidth}),
       className: cx(classes.rightSection, rightSectionProps.className)
     }), rightSection));
   }
   Input.displayName = "@mantine/core/Input";
 
-  var __defProp$C = Object.defineProperty;
-  var __defProps$l = Object.defineProperties;
-  var __getOwnPropDescs$l = Object.getOwnPropertyDescriptors;
-  var __getOwnPropSymbols$C = Object.getOwnPropertySymbols;
-  var __hasOwnProp$C = Object.prototype.hasOwnProperty;
-  var __propIsEnum$C = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$C = (obj, key, value) => key in obj ? __defProp$C(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$C = (a, b) => {
+  var __defProp$G = Object.defineProperty;
+  var __defProps$o = Object.defineProperties;
+  var __getOwnPropDescs$o = Object.getOwnPropertyDescriptors;
+  var __getOwnPropSymbols$G = Object.getOwnPropertySymbols;
+  var __hasOwnProp$G = Object.prototype.hasOwnProperty;
+  var __propIsEnum$G = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$G = (obj, key, value) => key in obj ? __defProp$G(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$G = (a, b) => {
     for (var prop in b || (b = {}))
-      if (__hasOwnProp$C.call(b, prop))
-        __defNormalProp$C(a, prop, b[prop]);
-    if (__getOwnPropSymbols$C)
-      for (var prop of __getOwnPropSymbols$C(b)) {
-        if (__propIsEnum$C.call(b, prop))
-          __defNormalProp$C(a, prop, b[prop]);
+      if (__hasOwnProp$G.call(b, prop))
+        __defNormalProp$G(a, prop, b[prop]);
+    if (__getOwnPropSymbols$G)
+      for (var prop of __getOwnPropSymbols$G(b)) {
+        if (__propIsEnum$G.call(b, prop))
+          __defNormalProp$G(a, prop, b[prop]);
       }
     return a;
   };
-  var __spreadProps$l = (a, b) => __defProps$l(a, __getOwnPropDescs$l(b));
-  var useStyles$j = reactJss.createUseStyles({
-    inputWrapper: ({theme}) => __spreadProps$l(__spreadValues$C({}, getFontStyles(theme)), {
+  var __spreadProps$o = (a, b) => __defProps$o(a, __getOwnPropDescs$o(b));
+  var useStyles$l = createMemoStyles({
+    inputWrapper: ({theme}) => __spreadProps$o(__spreadValues$G({}, getFontStyles(theme)), {
       lineHeight: theme.lineHeight
     }),
     label: ({theme}) => ({
@@ -5407,35 +5677,35 @@
     required: ({theme}) => ({
       color: theme.colorScheme === "dark" ? theme.colors.red[5] : theme.colors.red[7]
     })
-  }, {link: true});
+  });
 
-  var __defProp$B = Object.defineProperty;
-  var __defProps$k = Object.defineProperties;
-  var __getOwnPropDescs$k = Object.getOwnPropertyDescriptors;
-  var __getOwnPropSymbols$B = Object.getOwnPropertySymbols;
-  var __hasOwnProp$B = Object.prototype.hasOwnProperty;
-  var __propIsEnum$B = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$B = (obj, key, value) => key in obj ? __defProp$B(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$B = (a, b) => {
+  var __defProp$F = Object.defineProperty;
+  var __defProps$n = Object.defineProperties;
+  var __getOwnPropDescs$n = Object.getOwnPropertyDescriptors;
+  var __getOwnPropSymbols$F = Object.getOwnPropertySymbols;
+  var __hasOwnProp$F = Object.prototype.hasOwnProperty;
+  var __propIsEnum$F = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$F = (obj, key, value) => key in obj ? __defProp$F(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$F = (a, b) => {
     for (var prop in b || (b = {}))
-      if (__hasOwnProp$B.call(b, prop))
-        __defNormalProp$B(a, prop, b[prop]);
-    if (__getOwnPropSymbols$B)
-      for (var prop of __getOwnPropSymbols$B(b)) {
-        if (__propIsEnum$B.call(b, prop))
-          __defNormalProp$B(a, prop, b[prop]);
+      if (__hasOwnProp$F.call(b, prop))
+        __defNormalProp$F(a, prop, b[prop]);
+    if (__getOwnPropSymbols$F)
+      for (var prop of __getOwnPropSymbols$F(b)) {
+        if (__propIsEnum$F.call(b, prop))
+          __defNormalProp$F(a, prop, b[prop]);
       }
     return a;
   };
-  var __spreadProps$k = (a, b) => __defProps$k(a, __getOwnPropDescs$k(b));
-  var __objRest$q = (source, exclude) => {
+  var __spreadProps$n = (a, b) => __defProps$n(a, __getOwnPropDescs$n(b));
+  var __objRest$s = (source, exclude) => {
     var target = {};
     for (var prop in source)
-      if (__hasOwnProp$B.call(source, prop) && exclude.indexOf(prop) < 0)
+      if (__hasOwnProp$F.call(source, prop) && exclude.indexOf(prop) < 0)
         target[prop] = source[prop];
-    if (source != null && __getOwnPropSymbols$B)
-      for (var prop of __getOwnPropSymbols$B(source)) {
-        if (exclude.indexOf(prop) < 0 && __propIsEnum$B.call(source, prop))
+    if (source != null && __getOwnPropSymbols$F)
+      for (var prop of __getOwnPropSymbols$F(source)) {
+        if (exclude.indexOf(prop) < 0 && __propIsEnum$F.call(source, prop))
           target[prop] = source[prop];
       }
     return target;
@@ -5451,7 +5721,7 @@
       description,
       themeOverride,
       labelElement = "label"
-    } = _b, others = __objRest$q(_b, [
+    } = _b, others = __objRest$s(_b, [
       "className",
       "label",
       "children",
@@ -5462,21 +5732,21 @@
       "themeOverride",
       "labelElement"
     ]);
-    const classes = useStyles$j({theme: useMantineTheme(themeOverride)});
+    const classes = useStyles$l({theme: useMantineTheme(themeOverride)});
     const labelProps = labelElement === "label" ? {htmlFor: id} : {};
-    const inputLabel = React.createElement(labelElement, __spreadProps$k(__spreadValues$B({}, labelProps), {className: classes.label}), /* @__PURE__ */ React__default['default'].createElement(React__default['default'].Fragment, null, label, required && /* @__PURE__ */ React__default['default'].createElement("span", {
+    const inputLabel = React.createElement(labelElement, __spreadProps$n(__spreadValues$F({}, labelProps), {className: classes.label}), /* @__PURE__ */ React__default.createElement(React__default.Fragment, null, label, required && /* @__PURE__ */ React__default.createElement("span", {
       "data-mantine-required": true,
       className: classes.required
     }, " ", "*")));
-    return /* @__PURE__ */ React__default['default'].createElement("div", __spreadValues$B({
+    return /* @__PURE__ */ React__default.createElement("div", __spreadValues$F({
       className: cx(classes.inputWrapper, className)
-    }, others), label && inputLabel, description && /* @__PURE__ */ React__default['default'].createElement(Text, {
+    }, others), label && inputLabel, description && /* @__PURE__ */ React__default.createElement(Text, {
       themeOverride,
       "data-mantine-description": true,
       color: "gray",
       size: "xs",
       className: classes.description
-    }, description), children, typeof error !== "boolean" && error && /* @__PURE__ */ React__default['default'].createElement(Text, {
+    }, description), children, typeof error !== "boolean" && error && /* @__PURE__ */ React__default.createElement(Text, {
       themeOverride,
       "data-mantine-error": true,
       color: "red",
@@ -5486,7 +5756,7 @@
   }
   InputWrapper.displayName = "@mantine/core/InputWrapper";
 
-  var useStyles$i = reactJss.createUseStyles({
+  var useStyles$k = createMemoStyles({
     kbd: ({theme}) => ({
       lineHeight: theme.lineHeight,
       fontFamily: theme.fontFamilyMonospace,
@@ -5497,11 +5767,326 @@
       padding: [3, theme.spacing.xs / 2],
       borderRadius: theme.radius.sm,
       border: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[9] : theme.colors.gray[3]}`,
-      borderBottomWidth: 3
+      borderBottom: `3px solid ${theme.colorScheme === "dark" ? theme.colors.dark[9] : theme.colors.gray[3]}`
     })
-  }, {link: true});
+  });
+
+  var __defProp$E = Object.defineProperty;
+  var __getOwnPropSymbols$E = Object.getOwnPropertySymbols;
+  var __hasOwnProp$E = Object.prototype.hasOwnProperty;
+  var __propIsEnum$E = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$E = (obj, key, value) => key in obj ? __defProp$E(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$E = (a, b) => {
+    for (var prop in b || (b = {}))
+      if (__hasOwnProp$E.call(b, prop))
+        __defNormalProp$E(a, prop, b[prop]);
+    if (__getOwnPropSymbols$E)
+      for (var prop of __getOwnPropSymbols$E(b)) {
+        if (__propIsEnum$E.call(b, prop))
+          __defNormalProp$E(a, prop, b[prop]);
+      }
+    return a;
+  };
+  var __objRest$r = (source, exclude) => {
+    var target = {};
+    for (var prop in source)
+      if (__hasOwnProp$E.call(source, prop) && exclude.indexOf(prop) < 0)
+        target[prop] = source[prop];
+    if (source != null && __getOwnPropSymbols$E)
+      for (var prop of __getOwnPropSymbols$E(source)) {
+        if (exclude.indexOf(prop) < 0 && __propIsEnum$E.call(source, prop))
+          target[prop] = source[prop];
+      }
+    return target;
+  };
+  function Kbd(_a) {
+    var _b = _a, {className, children, themeOverride} = _b, others = __objRest$r(_b, ["className", "children", "themeOverride"]);
+    const classes = useStyles$k({theme: useMantineTheme(themeOverride)});
+    return /* @__PURE__ */ React__default.createElement("kbd", __spreadValues$E({
+      className: cx(classes.kbd, className)
+    }, others), children);
+  }
+  Kbd.displayName = "@mantine/core/Kbd";
+
+  var __defProp$D = Object.defineProperty;
+  var __getOwnPropSymbols$D = Object.getOwnPropertySymbols;
+  var __hasOwnProp$D = Object.prototype.hasOwnProperty;
+  var __propIsEnum$D = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$D = (obj, key, value) => key in obj ? __defProp$D(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$D = (a, b) => {
+    for (var prop in b || (b = {}))
+      if (__hasOwnProp$D.call(b, prop))
+        __defNormalProp$D(a, prop, b[prop]);
+    if (__getOwnPropSymbols$D)
+      for (var prop of __getOwnPropSymbols$D(b)) {
+        if (__propIsEnum$D.call(b, prop))
+          __defNormalProp$D(a, prop, b[prop]);
+      }
+    return a;
+  };
+  var __objRest$q = (source, exclude) => {
+    var target = {};
+    for (var prop in source)
+      if (__hasOwnProp$D.call(source, prop) && exclude.indexOf(prop) < 0)
+        target[prop] = source[prop];
+    if (source != null && __getOwnPropSymbols$D)
+      for (var prop of __getOwnPropSymbols$D(source)) {
+        if (exclude.indexOf(prop) < 0 && __propIsEnum$D.call(source, prop))
+          target[prop] = source[prop];
+      }
+    return target;
+  };
+  const LOADER_SIZES = {
+    xs: 18,
+    sm: 22,
+    md: 36,
+    lg: 44,
+    xl: 58
+  };
+  function Loader(_a) {
+    var _b = _a, {size = "md", color, themeOverride} = _b, others = __objRest$q(_b, ["size", "color", "themeOverride"]);
+    const theme = useMantineTheme(themeOverride);
+    return /* @__PURE__ */ React__default.createElement("svg", __spreadValues$D({
+      width: `${getSizeValue({size, sizes: LOADER_SIZES})}px`,
+      fill: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 4 : 6}),
+      viewBox: "0 0 135 140",
+      xmlns: "http://www.w3.org/2000/svg",
+      role: "presentation"
+    }, others), /* @__PURE__ */ React__default.createElement("rect", {
+      y: "10",
+      width: "15",
+      height: "120",
+      rx: "6"
+    }, /* @__PURE__ */ React__default.createElement("animate", {
+      attributeName: "height",
+      begin: "0.5s",
+      dur: "1s",
+      values: "120;110;100;90;80;70;60;50;40;140;120",
+      calcMode: "linear",
+      repeatCount: "indefinite"
+    }), /* @__PURE__ */ React__default.createElement("animate", {
+      attributeName: "y",
+      begin: "0.5s",
+      dur: "1s",
+      values: "10;15;20;25;30;35;40;45;50;0;10",
+      calcMode: "linear",
+      repeatCount: "indefinite"
+    })), /* @__PURE__ */ React__default.createElement("rect", {
+      x: "30",
+      y: "10",
+      width: "15",
+      height: "120",
+      rx: "6"
+    }, /* @__PURE__ */ React__default.createElement("animate", {
+      attributeName: "height",
+      begin: "0.25s",
+      dur: "1s",
+      values: "120;110;100;90;80;70;60;50;40;140;120",
+      calcMode: "linear",
+      repeatCount: "indefinite"
+    }), /* @__PURE__ */ React__default.createElement("animate", {
+      attributeName: "y",
+      begin: "0.25s",
+      dur: "1s",
+      values: "10;15;20;25;30;35;40;45;50;0;10",
+      calcMode: "linear",
+      repeatCount: "indefinite"
+    })), /* @__PURE__ */ React__default.createElement("rect", {
+      x: "60",
+      width: "15",
+      height: "140",
+      rx: "6"
+    }, /* @__PURE__ */ React__default.createElement("animate", {
+      attributeName: "height",
+      begin: "0s",
+      dur: "1s",
+      values: "120;110;100;90;80;70;60;50;40;140;120",
+      calcMode: "linear",
+      repeatCount: "indefinite"
+    }), /* @__PURE__ */ React__default.createElement("animate", {
+      attributeName: "y",
+      begin: "0s",
+      dur: "1s",
+      values: "10;15;20;25;30;35;40;45;50;0;10",
+      calcMode: "linear",
+      repeatCount: "indefinite"
+    })), /* @__PURE__ */ React__default.createElement("rect", {
+      x: "90",
+      y: "10",
+      width: "15",
+      height: "120",
+      rx: "6"
+    }, /* @__PURE__ */ React__default.createElement("animate", {
+      attributeName: "height",
+      begin: "0.25s",
+      dur: "1s",
+      values: "120;110;100;90;80;70;60;50;40;140;120",
+      calcMode: "linear",
+      repeatCount: "indefinite"
+    }), /* @__PURE__ */ React__default.createElement("animate", {
+      attributeName: "y",
+      begin: "0.25s",
+      dur: "1s",
+      values: "10;15;20;25;30;35;40;45;50;0;10",
+      calcMode: "linear",
+      repeatCount: "indefinite"
+    })), /* @__PURE__ */ React__default.createElement("rect", {
+      x: "120",
+      y: "10",
+      width: "15",
+      height: "120",
+      rx: "6"
+    }, /* @__PURE__ */ React__default.createElement("animate", {
+      attributeName: "height",
+      begin: "0.5s",
+      dur: "1s",
+      values: "120;110;100;90;80;70;60;50;40;140;120",
+      calcMode: "linear",
+      repeatCount: "indefinite"
+    }), /* @__PURE__ */ React__default.createElement("animate", {
+      attributeName: "y",
+      begin: "0.5s",
+      dur: "1s",
+      values: "10;15;20;25;30;35;40;45;50;0;10",
+      calcMode: "linear",
+      repeatCount: "indefinite"
+    })));
+  }
+  Loader.displayName = "@mantine/core/Loader";
+
+  var useStyles$j = reactJss.createUseStyles({
+    loadingOverlay: {
+      position: "absolute",
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      overflow: "hidden"
+    }
+  });
+
+  var __defProp$C = Object.defineProperty;
+  var __defProps$m = Object.defineProperties;
+  var __getOwnPropDescs$m = Object.getOwnPropertyDescriptors;
+  var __getOwnPropSymbols$C = Object.getOwnPropertySymbols;
+  var __hasOwnProp$C = Object.prototype.hasOwnProperty;
+  var __propIsEnum$C = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$C = (obj, key, value) => key in obj ? __defProp$C(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$C = (a, b) => {
+    for (var prop in b || (b = {}))
+      if (__hasOwnProp$C.call(b, prop))
+        __defNormalProp$C(a, prop, b[prop]);
+    if (__getOwnPropSymbols$C)
+      for (var prop of __getOwnPropSymbols$C(b)) {
+        if (__propIsEnum$C.call(b, prop))
+          __defNormalProp$C(a, prop, b[prop]);
+      }
+    return a;
+  };
+  var __spreadProps$m = (a, b) => __defProps$m(a, __getOwnPropDescs$m(b));
+  var __objRest$p = (source, exclude) => {
+    var target = {};
+    for (var prop in source)
+      if (__hasOwnProp$C.call(source, prop) && exclude.indexOf(prop) < 0)
+        target[prop] = source[prop];
+    if (source != null && __getOwnPropSymbols$C)
+      for (var prop of __getOwnPropSymbols$C(source)) {
+        if (exclude.indexOf(prop) < 0 && __propIsEnum$C.call(source, prop))
+          target[prop] = source[prop];
+      }
+    return target;
+  };
+  function LoadingOverlay(_a) {
+    var _b = _a, {
+      className,
+      visible,
+      loaderProps = {},
+      overlayOpacity = 0.75,
+      overlayColor,
+      themeOverride,
+      transitionDuration = 200,
+      zIndex = 1e3,
+      style,
+      loader
+    } = _b, others = __objRest$p(_b, [
+      "className",
+      "visible",
+      "loaderProps",
+      "overlayOpacity",
+      "overlayColor",
+      "themeOverride",
+      "transitionDuration",
+      "zIndex",
+      "style",
+      "loader"
+    ]);
+    const theme = useMantineTheme(themeOverride);
+    const classes = useStyles$j();
+    const reduceMotion = hooks.useReducedMotion();
+    const duration = reduceMotion ? 1 : transitionDuration;
+    return /* @__PURE__ */ React__default.createElement(Transition, {
+      duration,
+      mounted: visible,
+      transition: "fade",
+      themeOverride
+    }, (transitionStyles) => /* @__PURE__ */ React__default.createElement("div", __spreadValues$C({
+      className: cx(classes.loadingOverlay, className),
+      style: __spreadProps$m(__spreadValues$C(__spreadValues$C({}, transitionStyles), style), {zIndex})
+    }, others), loader ? /* @__PURE__ */ React__default.createElement("div", {
+      style: {zIndex: zIndex + 1}
+    }, loader) : /* @__PURE__ */ React__default.createElement(Loader, __spreadValues$C({
+      themeOverride,
+      style: {zIndex: zIndex + 1}
+    }, loaderProps)), /* @__PURE__ */ React__default.createElement(Overlay, {
+      opacity: overlayOpacity,
+      zIndex,
+      color: overlayColor || (theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.white)
+    })));
+  }
+  LoadingOverlay.displayName = "@mantine/core/LoadingOverlay";
+
+  var __defProp$B = Object.defineProperty;
+  var __getOwnPropSymbols$B = Object.getOwnPropertySymbols;
+  var __hasOwnProp$B = Object.prototype.hasOwnProperty;
+  var __propIsEnum$B = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$B = (obj, key, value) => key in obj ? __defProp$B(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$B = (a, b) => {
+    for (var prop in b || (b = {}))
+      if (__hasOwnProp$B.call(b, prop))
+        __defNormalProp$B(a, prop, b[prop]);
+    if (__getOwnPropSymbols$B)
+      for (var prop of __getOwnPropSymbols$B(b)) {
+        if (__propIsEnum$B.call(b, prop))
+          __defNormalProp$B(a, prop, b[prop]);
+      }
+    return a;
+  };
+  function MenuIcon(props) {
+    return /* @__PURE__ */ React__default.createElement("svg", __spreadValues$B({
+      width: "15",
+      height: "15",
+      viewBox: "0 0 15 15",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg"
+    }, props), /* @__PURE__ */ React__default.createElement("path", {
+      d: "M3.625 7.5C3.625 8.12132 3.12132 8.625 2.5 8.625C1.87868 8.625 1.375 8.12132 1.375 7.5C1.375 6.87868 1.87868 6.375 2.5 6.375C3.12132 6.375 3.625 6.87868 3.625 7.5ZM8.625 7.5C8.625 8.12132 8.12132 8.625 7.5 8.625C6.87868 8.625 6.375 8.12132 6.375 7.5C6.375 6.87868 6.87868 6.375 7.5 6.375C8.12132 6.375 8.625 6.87868 8.625 7.5ZM12.5 8.625C13.1213 8.625 13.625 8.12132 13.625 7.5C13.625 6.87868 13.1213 6.375 12.5 6.375C11.8787 6.375 11.375 6.87868 11.375 7.5C11.375 8.12132 11.8787 8.625 12.5 8.625Z",
+      fill: "currentColor",
+      fillRule: "evenodd",
+      clipRule: "evenodd"
+    }));
+  }
+
+  function MenuItem(props) {
+    return null;
+  }
+  MenuItem.displayName = "@mantine/core/MenuItem";
 
   var __defProp$A = Object.defineProperty;
+  var __defProps$l = Object.defineProperties;
+  var __getOwnPropDescs$l = Object.getOwnPropertyDescriptors;
   var __getOwnPropSymbols$A = Object.getOwnPropertySymbols;
   var __hasOwnProp$A = Object.prototype.hasOwnProperty;
   var __propIsEnum$A = Object.prototype.propertyIsEnumerable;
@@ -5517,26 +6102,56 @@
       }
     return a;
   };
-  var __objRest$p = (source, exclude) => {
-    var target = {};
-    for (var prop in source)
-      if (__hasOwnProp$A.call(source, prop) && exclude.indexOf(prop) < 0)
-        target[prop] = source[prop];
-    if (source != null && __getOwnPropSymbols$A)
-      for (var prop of __getOwnPropSymbols$A(source)) {
-        if (exclude.indexOf(prop) < 0 && __propIsEnum$A.call(source, prop))
-          target[prop] = source[prop];
+  var __spreadProps$l = (a, b) => __defProps$l(a, __getOwnPropDescs$l(b));
+  var useStyles$i = createMemoStyles({
+    hovered: {},
+    item: ({theme, color}) => __spreadProps$l(__spreadValues$A({}, getFontStyles(theme)), {
+      WebkitTapHighlightColor: "transparent",
+      fontSize: theme.fontSizes.sm,
+      border: 0,
+      backgroundColor: "transparent",
+      outline: 0,
+      width: "100%",
+      textAlign: "left",
+      display: "inline-block",
+      textDecoration: "none",
+      height: 32,
+      boxSizing: "border-box",
+      padding: [0, theme.spacing.sm],
+      cursor: "pointer",
+      color: color ? getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 4 : 6}) : theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.colors.gray[9],
+      "&:disabled": {
+        color: theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[5],
+        cursor: "not-allowed"
+      },
+      "&$hovered:not(:disabled), &:not(:disabled):hover": {
+        backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[1],
+        "&:not(:disabled):active": {
+          backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[2]
+        }
       }
-    return target;
-  };
-  function Kbd(_a) {
-    var _b = _a, {className, children, themeOverride} = _b, others = __objRest$p(_b, ["className", "children", "themeOverride"]);
-    const classes = useStyles$i({theme: useMantineTheme(themeOverride)});
-    return /* @__PURE__ */ React__default['default'].createElement("kbd", __spreadValues$A({
-      className: cx(classes.kbd, className)
-    }, others), children);
-  }
-  Kbd.displayName = "@mantine/core/Kbd";
+    }),
+    inner: {
+      display: "flex",
+      alignItems: "center",
+      height: "100%"
+    },
+    body: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+      flex: 1
+    },
+    icon: ({theme}) => ({
+      marginRight: theme.spacing.xs,
+      "& *": {
+        display: "block"
+      }
+    }),
+    label: {
+      lineHeight: 1
+    }
+  });
 
   var __defProp$z = Object.defineProperty;
   var __getOwnPropSymbols$z = Object.getOwnPropertySymbols;
@@ -5566,140 +6181,80 @@
       }
     return target;
   };
-  const LOADER_SIZES = {
-    xs: 18,
-    sm: 22,
-    md: 36,
-    lg: 44,
-    xl: 58
-  };
-  function Loader(_a) {
-    var _b = _a, {size = "md", color, themeOverride} = _b, others = __objRest$o(_b, ["size", "color", "themeOverride"]);
-    const theme = useMantineTheme(themeOverride);
-    return /* @__PURE__ */ React__default['default'].createElement("svg", __spreadValues$z({
-      width: `${getSizeValue({size, sizes: LOADER_SIZES})}px`,
-      fill: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 4 : 6}),
-      viewBox: "0 0 135 140",
-      xmlns: "http://www.w3.org/2000/svg",
-      role: "presentation"
-    }, others), /* @__PURE__ */ React__default['default'].createElement("rect", {
-      y: "10",
-      width: "15",
-      height: "120",
-      rx: "6"
-    }, /* @__PURE__ */ React__default['default'].createElement("animate", {
-      attributeName: "height",
-      begin: "0.5s",
-      dur: "1s",
-      values: "120;110;100;90;80;70;60;50;40;140;120",
-      calcMode: "linear",
-      repeatCount: "indefinite"
-    }), /* @__PURE__ */ React__default['default'].createElement("animate", {
-      attributeName: "y",
-      begin: "0.5s",
-      dur: "1s",
-      values: "10;15;20;25;30;35;40;45;50;0;10",
-      calcMode: "linear",
-      repeatCount: "indefinite"
-    })), /* @__PURE__ */ React__default['default'].createElement("rect", {
-      x: "30",
-      y: "10",
-      width: "15",
-      height: "120",
-      rx: "6"
-    }, /* @__PURE__ */ React__default['default'].createElement("animate", {
-      attributeName: "height",
-      begin: "0.25s",
-      dur: "1s",
-      values: "120;110;100;90;80;70;60;50;40;140;120",
-      calcMode: "linear",
-      repeatCount: "indefinite"
-    }), /* @__PURE__ */ React__default['default'].createElement("animate", {
-      attributeName: "y",
-      begin: "0.25s",
-      dur: "1s",
-      values: "10;15;20;25;30;35;40;45;50;0;10",
-      calcMode: "linear",
-      repeatCount: "indefinite"
-    })), /* @__PURE__ */ React__default['default'].createElement("rect", {
-      x: "60",
-      width: "15",
-      height: "140",
-      rx: "6"
-    }, /* @__PURE__ */ React__default['default'].createElement("animate", {
-      attributeName: "height",
-      begin: "0s",
-      dur: "1s",
-      values: "120;110;100;90;80;70;60;50;40;140;120",
-      calcMode: "linear",
-      repeatCount: "indefinite"
-    }), /* @__PURE__ */ React__default['default'].createElement("animate", {
-      attributeName: "y",
-      begin: "0s",
-      dur: "1s",
-      values: "10;15;20;25;30;35;40;45;50;0;10",
-      calcMode: "linear",
-      repeatCount: "indefinite"
-    })), /* @__PURE__ */ React__default['default'].createElement("rect", {
-      x: "90",
-      y: "10",
-      width: "15",
-      height: "120",
-      rx: "6"
-    }, /* @__PURE__ */ React__default['default'].createElement("animate", {
-      attributeName: "height",
-      begin: "0.25s",
-      dur: "1s",
-      values: "120;110;100;90;80;70;60;50;40;140;120",
-      calcMode: "linear",
-      repeatCount: "indefinite"
-    }), /* @__PURE__ */ React__default['default'].createElement("animate", {
-      attributeName: "y",
-      begin: "0.25s",
-      dur: "1s",
-      values: "10;15;20;25;30;35;40;45;50;0;10",
-      calcMode: "linear",
-      repeatCount: "indefinite"
-    })), /* @__PURE__ */ React__default['default'].createElement("rect", {
-      x: "120",
-      y: "10",
-      width: "15",
-      height: "120",
-      rx: "6"
-    }, /* @__PURE__ */ React__default['default'].createElement("animate", {
-      attributeName: "height",
-      begin: "0.5s",
-      dur: "1s",
-      values: "120;110;100;90;80;70;60;50;40;140;120",
-      calcMode: "linear",
-      repeatCount: "indefinite"
-    }), /* @__PURE__ */ React__default['default'].createElement("animate", {
-      attributeName: "y",
-      begin: "0.5s",
-      dur: "1s",
-      values: "10;15;20;25;30;35;40;45;50;0;10",
-      calcMode: "linear",
-      repeatCount: "indefinite"
-    })));
+  function MenuButton(_a) {
+    var _b = _a, {
+      children,
+      onHover,
+      hovered,
+      themeOverride,
+      elementRef,
+      icon,
+      color,
+      disabled,
+      rightSection,
+      className,
+      component: Element = "button"
+    } = _b, others = __objRest$o(_b, [
+      "children",
+      "onHover",
+      "hovered",
+      "themeOverride",
+      "elementRef",
+      "icon",
+      "color",
+      "disabled",
+      "rightSection",
+      "className",
+      "component"
+    ]);
+    const classes = useStyles$i({color, theme: useMantineTheme(themeOverride)});
+    return /* @__PURE__ */ React__default.createElement(Element, __spreadValues$z({
+      type: "button",
+      role: "menuitem",
+      className: cx(classes.item, {[classes.hovered]: hovered}, className),
+      onMouseEnter: () => !disabled && onHover(),
+      ref: elementRef,
+      disabled
+    }, others), /* @__PURE__ */ React__default.createElement("div", {
+      className: classes.inner
+    }, icon && /* @__PURE__ */ React__default.createElement("div", {
+      "data-mantine-icon": true,
+      className: classes.icon
+    }, icon), /* @__PURE__ */ React__default.createElement("div", {
+      className: classes.body
+    }, /* @__PURE__ */ React__default.createElement("div", {
+      className: classes.label
+    }, children), rightSection)));
   }
-  Loader.displayName = "@mantine/core/Loader";
+  MenuButton.displayName = "@mantine/core/MenuButton";
 
-  var useStyles$h = reactJss.createUseStyles({
-    loadingOverlay: {
+  const sizes$6 = {
+    xs: 120,
+    sm: 160,
+    md: 200,
+    lg: 240,
+    xl: 300
+  };
+  var useStyles$h = createMemoStyles({
+    menu: ({theme, size}) => ({
       position: "absolute",
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center"
-    }
-  }, {link: true});
+      width: getSizeValue({size, sizes: sizes$6}),
+      overflow: "hidden",
+      backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.white,
+      border: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.colors.gray[2]}`,
+      paddingTop: theme.spacing.xs / 2,
+      paddingBottom: theme.spacing.xs / 2
+    }),
+    hr: ({theme}) => ({
+      borderTopColor: theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[2],
+      marginTop: theme.spacing.xs / 2,
+      marginBottom: theme.spacing.xs / 2
+    })
+  });
 
   var __defProp$y = Object.defineProperty;
-  var __defProps$j = Object.defineProperties;
-  var __getOwnPropDescs$j = Object.getOwnPropertyDescriptors;
+  var __defProps$k = Object.defineProperties;
+  var __getOwnPropDescs$k = Object.getOwnPropertyDescriptors;
   var __getOwnPropSymbols$y = Object.getOwnPropertySymbols;
   var __hasOwnProp$y = Object.prototype.hasOwnProperty;
   var __propIsEnum$y = Object.prototype.propertyIsEnumerable;
@@ -5715,7 +6270,7 @@
       }
     return a;
   };
-  var __spreadProps$j = (a, b) => __defProps$j(a, __getOwnPropDescs$j(b));
+  var __spreadProps$k = (a, b) => __defProps$k(a, __getOwnPropDescs$k(b));
   var __objRest$n = (source, exclude) => {
     var target = {};
     for (var prop in source)
@@ -5724,280 +6279,6 @@
     if (source != null && __getOwnPropSymbols$y)
       for (var prop of __getOwnPropSymbols$y(source)) {
         if (exclude.indexOf(prop) < 0 && __propIsEnum$y.call(source, prop))
-          target[prop] = source[prop];
-      }
-    return target;
-  };
-  function LoadingOverlay(_a) {
-    var _b = _a, {
-      className,
-      visible,
-      loaderProps = {},
-      overlayOpacity = 0.75,
-      overlayColor,
-      themeOverride,
-      transitionDuration = 200,
-      zIndex = 1e3,
-      style
-    } = _b, others = __objRest$n(_b, [
-      "className",
-      "visible",
-      "loaderProps",
-      "overlayOpacity",
-      "overlayColor",
-      "themeOverride",
-      "transitionDuration",
-      "zIndex",
-      "style"
-    ]);
-    const theme = useMantineTheme(themeOverride);
-    const classes = useStyles$h();
-    const reduceMotion = hooks.useReducedMotion();
-    const duration = reduceMotion ? 1 : transitionDuration;
-    return /* @__PURE__ */ React__default['default'].createElement(Transition, {
-      duration,
-      mounted: visible,
-      transition: "fade",
-      themeOverride
-    }, (transitionStyles) => /* @__PURE__ */ React__default['default'].createElement("div", __spreadValues$y({
-      className: cx(classes.loadingOverlay, className),
-      style: __spreadProps$j(__spreadValues$y(__spreadValues$y({}, transitionStyles), style), {zIndex})
-    }, others), /* @__PURE__ */ React__default['default'].createElement(Loader, __spreadValues$y({
-      themeOverride,
-      style: {zIndex: zIndex + 1}
-    }, loaderProps)), /* @__PURE__ */ React__default['default'].createElement(Overlay, {
-      opacity: overlayOpacity,
-      color: overlayColor || (theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.white),
-      zIndex
-    })));
-  }
-  LoadingOverlay.displayName = "@mantine/core/LoadingOverlay";
-
-  var __defProp$x = Object.defineProperty;
-  var __getOwnPropSymbols$x = Object.getOwnPropertySymbols;
-  var __hasOwnProp$x = Object.prototype.hasOwnProperty;
-  var __propIsEnum$x = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$x = (obj, key, value) => key in obj ? __defProp$x(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$x = (a, b) => {
-    for (var prop in b || (b = {}))
-      if (__hasOwnProp$x.call(b, prop))
-        __defNormalProp$x(a, prop, b[prop]);
-    if (__getOwnPropSymbols$x)
-      for (var prop of __getOwnPropSymbols$x(b)) {
-        if (__propIsEnum$x.call(b, prop))
-          __defNormalProp$x(a, prop, b[prop]);
-      }
-    return a;
-  };
-  function MenuIcon(props) {
-    return /* @__PURE__ */ React__default['default'].createElement("svg", __spreadValues$x({
-      width: "15",
-      height: "15",
-      viewBox: "0 0 15 15",
-      fill: "none",
-      xmlns: "http://www.w3.org/2000/svg"
-    }, props), /* @__PURE__ */ React__default['default'].createElement("path", {
-      d: "M3.625 7.5C3.625 8.12132 3.12132 8.625 2.5 8.625C1.87868 8.625 1.375 8.12132 1.375 7.5C1.375 6.87868 1.87868 6.375 2.5 6.375C3.12132 6.375 3.625 6.87868 3.625 7.5ZM8.625 7.5C8.625 8.12132 8.12132 8.625 7.5 8.625C6.87868 8.625 6.375 8.12132 6.375 7.5C6.375 6.87868 6.87868 6.375 7.5 6.375C8.12132 6.375 8.625 6.87868 8.625 7.5ZM12.5 8.625C13.1213 8.625 13.625 8.12132 13.625 7.5C13.625 6.87868 13.1213 6.375 12.5 6.375C11.8787 6.375 11.375 6.87868 11.375 7.5C11.375 8.12132 11.8787 8.625 12.5 8.625Z",
-      fill: "currentColor",
-      fillRule: "evenodd",
-      clipRule: "evenodd"
-    }));
-  }
-
-  function MenuItem(props) {
-    return null;
-  }
-  MenuItem.displayName = "@mantine/core/MenuItem";
-
-  var __defProp$w = Object.defineProperty;
-  var __defProps$i = Object.defineProperties;
-  var __getOwnPropDescs$i = Object.getOwnPropertyDescriptors;
-  var __getOwnPropSymbols$w = Object.getOwnPropertySymbols;
-  var __hasOwnProp$w = Object.prototype.hasOwnProperty;
-  var __propIsEnum$w = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$w = (obj, key, value) => key in obj ? __defProp$w(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$w = (a, b) => {
-    for (var prop in b || (b = {}))
-      if (__hasOwnProp$w.call(b, prop))
-        __defNormalProp$w(a, prop, b[prop]);
-    if (__getOwnPropSymbols$w)
-      for (var prop of __getOwnPropSymbols$w(b)) {
-        if (__propIsEnum$w.call(b, prop))
-          __defNormalProp$w(a, prop, b[prop]);
-      }
-    return a;
-  };
-  var __spreadProps$i = (a, b) => __defProps$i(a, __getOwnPropDescs$i(b));
-  var useStyles$g = reactJss.createUseStyles({
-    hovered: {},
-    item: ({theme, color}) => __spreadProps$i(__spreadValues$w({}, getFontStyles(theme)), {
-      WebkitTapHighlightColor: "transparent",
-      fontSize: theme.fontSizes.sm,
-      border: 0,
-      backgroundColor: "transparent",
-      outline: 0,
-      width: "100%",
-      textAlign: "left",
-      height: 32,
-      padding: [0, theme.spacing.sm],
-      cursor: "pointer",
-      color: color ? getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 4 : 6}) : theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.colors.gray[9],
-      "&:disabled": {
-        color: theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[5],
-        cursor: "not-allowed"
-      },
-      "&$hovered:not(:disabled), &:not(:disabled):hover": {
-        backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[1],
-        "&:not(:disabled):active": {
-          backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.colors.gray[2]
-        }
-      }
-    }),
-    inner: {
-      display: "flex",
-      alignItems: "center"
-    },
-    body: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "space-between",
-      flex: 1
-    },
-    icon: ({theme}) => ({
-      marginRight: theme.spacing.xs,
-      "& > *": {
-        display: "block"
-      }
-    }),
-    label: {
-      lineHeight: 1
-    }
-  }, {link: true});
-
-  var __defProp$v = Object.defineProperty;
-  var __getOwnPropSymbols$v = Object.getOwnPropertySymbols;
-  var __hasOwnProp$v = Object.prototype.hasOwnProperty;
-  var __propIsEnum$v = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$v = (obj, key, value) => key in obj ? __defProp$v(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$v = (a, b) => {
-    for (var prop in b || (b = {}))
-      if (__hasOwnProp$v.call(b, prop))
-        __defNormalProp$v(a, prop, b[prop]);
-    if (__getOwnPropSymbols$v)
-      for (var prop of __getOwnPropSymbols$v(b)) {
-        if (__propIsEnum$v.call(b, prop))
-          __defNormalProp$v(a, prop, b[prop]);
-      }
-    return a;
-  };
-  var __objRest$m = (source, exclude) => {
-    var target = {};
-    for (var prop in source)
-      if (__hasOwnProp$v.call(source, prop) && exclude.indexOf(prop) < 0)
-        target[prop] = source[prop];
-    if (source != null && __getOwnPropSymbols$v)
-      for (var prop of __getOwnPropSymbols$v(source)) {
-        if (exclude.indexOf(prop) < 0 && __propIsEnum$v.call(source, prop))
-          target[prop] = source[prop];
-      }
-    return target;
-  };
-  function MenuButton(_a) {
-    var _b = _a, {
-      children,
-      onHover,
-      hovered,
-      themeOverride,
-      elementRef,
-      icon,
-      color,
-      disabled,
-      rightSection,
-      className
-    } = _b, others = __objRest$m(_b, [
-      "children",
-      "onHover",
-      "hovered",
-      "themeOverride",
-      "elementRef",
-      "icon",
-      "color",
-      "disabled",
-      "rightSection",
-      "className"
-    ]);
-    const classes = useStyles$g({color, theme: useMantineTheme(themeOverride)});
-    return /* @__PURE__ */ React__default['default'].createElement("button", __spreadValues$v({
-      type: "button",
-      role: "menuitem",
-      className: cx(classes.item, {[classes.hovered]: hovered}, className),
-      onMouseEnter: () => !disabled && onHover(),
-      ref: elementRef,
-      disabled
-    }, others), /* @__PURE__ */ React__default['default'].createElement("div", {
-      className: classes.inner
-    }, icon && /* @__PURE__ */ React__default['default'].createElement("div", {
-      "data-mantine-icon": true,
-      className: classes.icon
-    }, icon), /* @__PURE__ */ React__default['default'].createElement("div", {
-      className: classes.body
-    }, /* @__PURE__ */ React__default['default'].createElement("div", {
-      className: classes.label
-    }, children), rightSection)));
-  }
-  MenuButton.displayName = "@mantine/core/MenuButton";
-
-  const sizes$5 = {
-    xs: 120,
-    sm: 160,
-    md: 200,
-    lg: 240,
-    xl: 300
-  };
-  var useStyles$f = reactJss.createUseStyles({
-    menu: ({theme, size}) => ({
-      position: "absolute",
-      width: getSizeValue({size, sizes: sizes$5}),
-      overflow: "hidden",
-      backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[9] : theme.white,
-      border: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[9] : theme.colors.gray[2]}`,
-      paddingTop: theme.spacing.xs / 2,
-      paddingBottom: theme.spacing.xs / 2
-    }),
-    hr: ({theme}) => ({
-      borderTopColor: theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[2],
-      marginTop: theme.spacing.xs / 2,
-      marginBottom: theme.spacing.xs / 2
-    })
-  }, {link: true});
-
-  var __defProp$u = Object.defineProperty;
-  var __defProps$h = Object.defineProperties;
-  var __getOwnPropDescs$h = Object.getOwnPropertyDescriptors;
-  var __getOwnPropSymbols$u = Object.getOwnPropertySymbols;
-  var __hasOwnProp$u = Object.prototype.hasOwnProperty;
-  var __propIsEnum$u = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$u = (obj, key, value) => key in obj ? __defProp$u(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$u = (a, b) => {
-    for (var prop in b || (b = {}))
-      if (__hasOwnProp$u.call(b, prop))
-        __defNormalProp$u(a, prop, b[prop]);
-    if (__getOwnPropSymbols$u)
-      for (var prop of __getOwnPropSymbols$u(b)) {
-        if (__propIsEnum$u.call(b, prop))
-          __defNormalProp$u(a, prop, b[prop]);
-      }
-    return a;
-  };
-  var __spreadProps$h = (a, b) => __defProps$h(a, __getOwnPropDescs$h(b));
-  var __objRest$l = (source, exclude) => {
-    var target = {};
-    for (var prop in source)
-      if (__hasOwnProp$u.call(source, prop) && exclude.indexOf(prop) < 0)
-        target[prop] = source[prop];
-    if (source != null && __getOwnPropSymbols$u)
-      for (var prop of __getOwnPropSymbols$u(source)) {
-        if (exclude.indexOf(prop) < 0 && __propIsEnum$u.call(source, prop))
           target[prop] = source[prop];
       }
     return target;
@@ -6042,7 +6323,7 @@
       closeOnClickOutside = true,
       closeOnItemClick = true,
       zIndex = 1e3
-    } = _b, others = __objRest$l(_b, [
+    } = _b, others = __objRest$n(_b, [
       "className",
       "themeOverride",
       "opened",
@@ -6058,11 +6339,11 @@
       "closeOnItemClick",
       "zIndex"
     ]);
-    const items = React__default['default'].Children.toArray(children).filter((item) => item.type === MenuItem || item.type === Hr);
+    const items = React__default.Children.toArray(children).filter((item) => item.type === MenuItem || item.type === Divider);
     const hoveredTimeout = React.useRef();
     const buttonsRefs = React.useRef({});
     const theme = useMantineTheme(themeOverride);
-    const classes = useStyles$f({size, theme});
+    const classes = useStyles$h({size, theme});
     const reduceMotion = hooks.useReducedMotion();
     const duration = reduceMotion ? 0 : transitionDuration;
     const [hovered, setHovered] = React.useState(findInitialItem(items));
@@ -6103,7 +6384,7 @@
     }
     const buttons = items.map((item, index) => {
       if (item.type === MenuItem) {
-        return /* @__PURE__ */ React__default['default'].createElement(MenuButton, __spreadProps$h(__spreadValues$u({}, item.props), {
+        return /* @__PURE__ */ React__default.createElement(MenuButton, __spreadProps$k(__spreadValues$y({}, item.props), {
           key: index,
           hovered: hovered === index,
           onHover: () => setHovered(-1),
@@ -6120,8 +6401,8 @@
           }
         }));
       }
-      if (item.type === Hr) {
-        return /* @__PURE__ */ React__default['default'].createElement(Hr, {
+      if (item.type === Divider) {
+        return /* @__PURE__ */ React__default.createElement(Divider, {
           key: index,
           variant: "solid",
           className: classes.hr
@@ -6129,59 +6410,59 @@
       }
       return null;
     });
-    return /* @__PURE__ */ React__default['default'].createElement(Transition, {
+    return /* @__PURE__ */ React__default.createElement(Transition, {
       mounted: opened,
       duration,
       transition,
       timingFunction: transitionTimingFunction,
       themeOverride
-    }, (transitionStyles) => /* @__PURE__ */ React__default['default'].createElement(Paper, __spreadValues$u({
+    }, (transitionStyles) => /* @__PURE__ */ React__default.createElement(Paper, __spreadValues$y({
       shadow,
       className: cx(classes.menu, className),
-      style: __spreadProps$h(__spreadValues$u(__spreadValues$u({}, style), transitionStyles), {zIndex}),
+      style: __spreadProps$k(__spreadValues$y(__spreadValues$y({}, style), transitionStyles), {zIndex}),
       onKeyDownCapture: handleKeyDown,
       elementRef: menuRef,
       role: "menu",
       "aria-orientation": "vertical"
-    }, others), /* @__PURE__ */ React__default['default'].createElement("div", {
+    }, others), /* @__PURE__ */ React__default.createElement("div", {
       ref: focusTrapRef
     }, buttons)));
   }
   MenuBody.displayName = "@mantine/core/MenuBody";
 
-  var __defProp$t = Object.defineProperty;
-  var __defProps$g = Object.defineProperties;
-  var __getOwnPropDescs$g = Object.getOwnPropertyDescriptors;
-  var __getOwnPropSymbols$t = Object.getOwnPropertySymbols;
-  var __hasOwnProp$t = Object.prototype.hasOwnProperty;
-  var __propIsEnum$t = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$t = (obj, key, value) => key in obj ? __defProp$t(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$t = (a, b) => {
+  var __defProp$x = Object.defineProperty;
+  var __defProps$j = Object.defineProperties;
+  var __getOwnPropDescs$j = Object.getOwnPropertyDescriptors;
+  var __getOwnPropSymbols$x = Object.getOwnPropertySymbols;
+  var __hasOwnProp$x = Object.prototype.hasOwnProperty;
+  var __propIsEnum$x = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$x = (obj, key, value) => key in obj ? __defProp$x(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$x = (a, b) => {
     for (var prop in b || (b = {}))
-      if (__hasOwnProp$t.call(b, prop))
-        __defNormalProp$t(a, prop, b[prop]);
-    if (__getOwnPropSymbols$t)
-      for (var prop of __getOwnPropSymbols$t(b)) {
-        if (__propIsEnum$t.call(b, prop))
-          __defNormalProp$t(a, prop, b[prop]);
+      if (__hasOwnProp$x.call(b, prop))
+        __defNormalProp$x(a, prop, b[prop]);
+    if (__getOwnPropSymbols$x)
+      for (var prop of __getOwnPropSymbols$x(b)) {
+        if (__propIsEnum$x.call(b, prop))
+          __defNormalProp$x(a, prop, b[prop]);
       }
     return a;
   };
-  var __spreadProps$g = (a, b) => __defProps$g(a, __getOwnPropDescs$g(b));
-  var __objRest$k = (source, exclude) => {
+  var __spreadProps$j = (a, b) => __defProps$j(a, __getOwnPropDescs$j(b));
+  var __objRest$m = (source, exclude) => {
     var target = {};
     for (var prop in source)
-      if (__hasOwnProp$t.call(source, prop) && exclude.indexOf(prop) < 0)
+      if (__hasOwnProp$x.call(source, prop) && exclude.indexOf(prop) < 0)
         target[prop] = source[prop];
-    if (source != null && __getOwnPropSymbols$t)
-      for (var prop of __getOwnPropSymbols$t(source)) {
-        if (exclude.indexOf(prop) < 0 && __propIsEnum$t.call(source, prop))
+    if (source != null && __getOwnPropSymbols$x)
+      for (var prop of __getOwnPropSymbols$x(source)) {
+        if (exclude.indexOf(prop) < 0 && __propIsEnum$x.call(source, prop))
           target[prop] = source[prop];
       }
     return target;
   };
-  const MENU_SIZES = sizes$5;
-  const defaultControl = /* @__PURE__ */ React__default['default'].createElement(ActionIcon, null, /* @__PURE__ */ React__default['default'].createElement(MenuIcon, null));
+  const MENU_SIZES = sizes$6;
+  const defaultControl = /* @__PURE__ */ React__default.createElement(ActionIcon, null, /* @__PURE__ */ React__default.createElement(MenuIcon, null));
   function Menu(_a) {
     var _b = _a, {
       control = defaultControl,
@@ -6204,7 +6485,7 @@
       controlRefProp = "elementRef",
       zIndex = 1e3,
       elementRef
-    } = _b, others = __objRest$k(_b, [
+    } = _b, others = __objRest$m(_b, [
       "control",
       "children",
       "onClose",
@@ -6258,18 +6539,17 @@
       title: menuButtonLabel,
       [controlRefProp]: hooks.useMergedRef(controlRef, elementRef)
     });
-    return /* @__PURE__ */ React__default['default'].createElement("div", __spreadValues$t({
-      "data-mantine-composable": true,
+    return /* @__PURE__ */ React__default.createElement("div", __spreadValues$x({
       ref: wrapperRef,
-      style: __spreadValues$t({display: "inline-block", position: "relative"}, style)
-    }, others), menuControl, /* @__PURE__ */ React__default['default'].createElement(MenuBody, __spreadProps$g(__spreadValues$t({}, menuBodyProps), {
+      style: __spreadValues$x({display: "inline-block", position: "relative"}, style)
+    }, others), menuControl, /* @__PURE__ */ React__default.createElement(MenuBody, __spreadProps$j(__spreadValues$x({}, menuBodyProps), {
       opened: menuOpened,
       onClose: handleClose,
       id: uuid,
       themeOverride,
       closeOnClickOutside: false,
       closeOnItemClick,
-      style: __spreadValues$t(__spreadValues$t({}, menuBodyProps.style), menuPosition),
+      style: __spreadValues$x(__spreadValues$x({}, menuBodyProps.style), menuPosition),
       transitionDuration,
       transition,
       transitionTimingFunction,
@@ -6280,30 +6560,30 @@
   }
   Menu.displayName = "@mantine/core/Menu";
 
-  var __defProp$s = Object.defineProperty;
-  var __getOwnPropSymbols$s = Object.getOwnPropertySymbols;
-  var __hasOwnProp$s = Object.prototype.hasOwnProperty;
-  var __propIsEnum$s = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$s = (obj, key, value) => key in obj ? __defProp$s(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$s = (a, b) => {
+  var __defProp$w = Object.defineProperty;
+  var __getOwnPropSymbols$w = Object.getOwnPropertySymbols;
+  var __hasOwnProp$w = Object.prototype.hasOwnProperty;
+  var __propIsEnum$w = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$w = (obj, key, value) => key in obj ? __defProp$w(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$w = (a, b) => {
     for (var prop in b || (b = {}))
-      if (__hasOwnProp$s.call(b, prop))
-        __defNormalProp$s(a, prop, b[prop]);
-    if (__getOwnPropSymbols$s)
-      for (var prop of __getOwnPropSymbols$s(b)) {
-        if (__propIsEnum$s.call(b, prop))
-          __defNormalProp$s(a, prop, b[prop]);
+      if (__hasOwnProp$w.call(b, prop))
+        __defNormalProp$w(a, prop, b[prop]);
+    if (__getOwnPropSymbols$w)
+      for (var prop of __getOwnPropSymbols$w(b)) {
+        if (__propIsEnum$w.call(b, prop))
+          __defNormalProp$w(a, prop, b[prop]);
       }
     return a;
   };
   function CloseIcon(props) {
-    return /* @__PURE__ */ React__default['default'].createElement("svg", __spreadValues$s({
+    return /* @__PURE__ */ React__default.createElement("svg", __spreadValues$w({
       width: "20",
       height: "20",
       viewBox: "0 0 15 15",
       fill: "none",
       xmlns: "http://www.w3.org/2000/svg"
-    }, props), /* @__PURE__ */ React__default['default'].createElement("path", {
+    }, props), /* @__PURE__ */ React__default.createElement("path", {
       d: "M11.7816 4.03157C12.0062 3.80702 12.0062 3.44295 11.7816 3.2184C11.5571 2.99385 11.193 2.99385 10.9685 3.2184L7.50005 6.68682L4.03164 3.2184C3.80708 2.99385 3.44301 2.99385 3.21846 3.2184C2.99391 3.44295 2.99391 3.80702 3.21846 4.03157L6.68688 7.49999L3.21846 10.9684C2.99391 11.193 2.99391 11.557 3.21846 11.7816C3.44301 12.0061 3.80708 12.0061 4.03164 11.7816L7.50005 8.31316L10.9685 11.7816C11.193 12.0061 11.5571 12.0061 11.7816 11.7816C12.0062 11.557 12.0062 11.193 11.7816 10.9684L8.31322 7.49999L11.7816 4.03157Z",
       fill: "currentColor",
       fillRule: "evenodd",
@@ -6311,7 +6591,7 @@
     }));
   }
 
-  const sizes$4 = {
+  const sizes$5 = {
     xs: 320,
     sm: 380,
     md: 440,
@@ -6319,7 +6599,7 @@
     xl: 780,
     full: "100%"
   };
-  var useStyles$e = reactJss.createUseStyles({
+  var useStyles$g = createMemoStyles({
     wrapper: {
       position: "fixed",
       top: 0,
@@ -6346,9 +6626,10 @@
       wordBreak: "break-word"
     }),
     modal: ({theme, size}) => ({
-      width: getSizeValue({sizes: sizes$4, size}),
+      width: getSizeValue({sizes: sizes$5, size}),
       padding: theme.spacing.lg,
-      outline: 0
+      outline: 0,
+      backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white
     }),
     header: ({theme}) => ({
       display: "flex",
@@ -6361,38 +6642,38 @@
       overflowY: overflow === "inside" && "auto",
       wordBreak: "break-word"
     })
-  }, {link: true});
+  });
 
-  var __defProp$r = Object.defineProperty;
-  var __getOwnPropSymbols$r = Object.getOwnPropertySymbols;
-  var __hasOwnProp$r = Object.prototype.hasOwnProperty;
-  var __propIsEnum$r = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$r = (obj, key, value) => key in obj ? __defProp$r(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$r = (a, b) => {
+  var __defProp$v = Object.defineProperty;
+  var __getOwnPropSymbols$v = Object.getOwnPropertySymbols;
+  var __hasOwnProp$v = Object.prototype.hasOwnProperty;
+  var __propIsEnum$v = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$v = (obj, key, value) => key in obj ? __defProp$v(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$v = (a, b) => {
     for (var prop in b || (b = {}))
-      if (__hasOwnProp$r.call(b, prop))
-        __defNormalProp$r(a, prop, b[prop]);
-    if (__getOwnPropSymbols$r)
-      for (var prop of __getOwnPropSymbols$r(b)) {
-        if (__propIsEnum$r.call(b, prop))
-          __defNormalProp$r(a, prop, b[prop]);
+      if (__hasOwnProp$v.call(b, prop))
+        __defNormalProp$v(a, prop, b[prop]);
+    if (__getOwnPropSymbols$v)
+      for (var prop of __getOwnPropSymbols$v(b)) {
+        if (__propIsEnum$v.call(b, prop))
+          __defNormalProp$v(a, prop, b[prop]);
       }
     return a;
   };
-  var __objRest$j = (source, exclude) => {
+  var __objRest$l = (source, exclude) => {
     var target = {};
     for (var prop in source)
-      if (__hasOwnProp$r.call(source, prop) && exclude.indexOf(prop) < 0)
+      if (__hasOwnProp$v.call(source, prop) && exclude.indexOf(prop) < 0)
         target[prop] = source[prop];
-    if (source != null && __getOwnPropSymbols$r)
-      for (var prop of __getOwnPropSymbols$r(source)) {
-        if (exclude.indexOf(prop) < 0 && __propIsEnum$r.call(source, prop))
+    if (source != null && __getOwnPropSymbols$v)
+      for (var prop of __getOwnPropSymbols$v(source)) {
+        if (exclude.indexOf(prop) < 0 && __propIsEnum$v.call(source, prop))
           target[prop] = source[prop];
       }
     return target;
   };
-  const MODAL_SIZES = sizes$4;
-  function Modal(_a) {
+  const MODAL_SIZES = sizes$5;
+  function MantineModal(_a) {
     var _b = _a, {
       className,
       opened,
@@ -6410,7 +6691,7 @@
       overflow = "outside",
       transition = "slide-down",
       id
-    } = _b, others = __objRest$j(_b, [
+    } = _b, others = __objRest$l(_b, [
       "className",
       "opened",
       "themeOverride",
@@ -6433,27 +6714,27 @@
     const bodyId = `${baseId}-body`;
     const reduceMotion = hooks.useReducedMotion();
     const theme = useMantineTheme(themeOverride);
-    const classes = useStyles$e({size, overflow, theme});
+    const classes = useStyles$g({size, overflow, theme});
     const clickOutsideRef = hooks.useClickOutside(onClose);
     const focusTrapRef = hooks.useFocusTrap();
     const duration = reduceMotion ? 1 : transitionDuration;
     const _overlayOpacity = typeof overlayOpacity === "number" ? overlayOpacity : theme.colorScheme === "dark" ? 0.85 : 0.75;
     hooks.useScrollLock(opened);
-    return /* @__PURE__ */ React__default['default'].createElement(GroupedTransition, {
+    return /* @__PURE__ */ React__default.createElement(GroupedTransition, {
       mounted: opened,
       transitions: {
         modal: {duration, transition},
         overlay: {duration: duration / 2, transition: "fade", timingFunction: "ease"}
       }
-    }, (styles) => /* @__PURE__ */ React__default['default'].createElement("div", __spreadValues$r({
+    }, (styles) => /* @__PURE__ */ React__default.createElement("div", __spreadValues$v({
       className: cx(classes.wrapper, className)
-    }, others), /* @__PURE__ */ React__default['default'].createElement("div", {
+    }, others), /* @__PURE__ */ React__default.createElement("div", {
       "data-mantine-modal-inner": true,
       className: classes.inner,
       onKeyDownCapture: (event) => event.nativeEvent.code === "Escape" && onClose(),
       style: {zIndex: zIndex + 1},
       ref: focusTrapRef
-    }, /* @__PURE__ */ React__default['default'].createElement(Paper, {
+    }, /* @__PURE__ */ React__default.createElement(Paper, {
       className: classes.modal,
       shadow: "lg",
       role: "dialog",
@@ -6463,30 +6744,35 @@
       style: styles.modal,
       elementRef: clickOutsideRef,
       tabIndex: -1
-    }, (title || !hideCloseButton) && /* @__PURE__ */ React__default['default'].createElement("div", {
+    }, (title || !hideCloseButton) && /* @__PURE__ */ React__default.createElement("div", {
       "data-mantine-modal-header": true,
       className: classes.header
-    }, /* @__PURE__ */ React__default['default'].createElement(Text, {
+    }, /* @__PURE__ */ React__default.createElement(Text, {
       id: titleId,
       "data-mantine-modal-title": true,
       className: classes.title
-    }, title), !hideCloseButton && /* @__PURE__ */ React__default['default'].createElement(ActionIcon, {
+    }, title), !hideCloseButton && /* @__PURE__ */ React__default.createElement(ActionIcon, {
       onClick: onClose,
       "aria-label": closeButtonLabel
-    }, /* @__PURE__ */ React__default['default'].createElement(CloseIcon, null))), /* @__PURE__ */ React__default['default'].createElement("div", {
+    }, /* @__PURE__ */ React__default.createElement(CloseIcon, null))), /* @__PURE__ */ React__default.createElement("div", {
       id: bodyId,
       className: classes.body
-    }, children))), /* @__PURE__ */ React__default['default'].createElement("div", {
+    }, children))), /* @__PURE__ */ React__default.createElement("div", {
       style: styles.overlay
-    }, /* @__PURE__ */ React__default['default'].createElement(Overlay, {
+    }, /* @__PURE__ */ React__default.createElement(Overlay, {
       color: overlayColor || (theme.colorScheme === "dark" ? theme.colors.dark[9] : theme.black),
       opacity: _overlayOpacity,
       zIndex
     }))));
   }
+  function Modal(props) {
+    return /* @__PURE__ */ React__default.createElement(Portal, {
+      zIndex: props.zIndex || 1e3
+    }, /* @__PURE__ */ React__default.createElement(MantineModal, __spreadValues$v({}, props)));
+  }
   Modal.displayName = "@mantine/core/Modal";
 
-  var useStyles$d = reactJss.createUseStyles({
+  var useStyles$f = createMemoStyles({
     withIcon: {
       paddingLeft: "10px !important",
       "&::before": {
@@ -6503,8 +6789,8 @@
       paddingTop: 10,
       paddingBottom: 10,
       borderRadius: 4,
-      backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[9] : theme.white,
-      border: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[2]}`,
+      backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.white,
+      border: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.colors.gray[2]}`,
       "&::before": {
         content: "''",
         display: "block",
@@ -6514,10 +6800,14 @@
         bottom: 4,
         left: 4,
         borderRadius: 4,
-        backgroundColor: getThemeColor({theme, color, shade: 6})
+        backgroundColor: getThemeColor({
+          theme,
+          color,
+          shade: theme.colorScheme === "dark" ? 7 : 6
+        })
       },
       "& $icon": {
-        backgroundColor: getThemeColor({theme, color, shade: 6}),
+        backgroundColor: hexToRgba(getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 7 : 6}), theme.colorScheme === "dark" ? 0.7 : 1),
         color: theme.white
       }
     }),
@@ -6556,35 +6846,35 @@
         color: theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black
       }
     })
-  }, {link: true});
+  });
 
-  var __defProp$q = Object.defineProperty;
-  var __defProps$f = Object.defineProperties;
-  var __getOwnPropDescs$f = Object.getOwnPropertyDescriptors;
-  var __getOwnPropSymbols$q = Object.getOwnPropertySymbols;
-  var __hasOwnProp$q = Object.prototype.hasOwnProperty;
-  var __propIsEnum$q = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$q = (obj, key, value) => key in obj ? __defProp$q(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$q = (a, b) => {
+  var __defProp$u = Object.defineProperty;
+  var __defProps$i = Object.defineProperties;
+  var __getOwnPropDescs$i = Object.getOwnPropertyDescriptors;
+  var __getOwnPropSymbols$u = Object.getOwnPropertySymbols;
+  var __hasOwnProp$u = Object.prototype.hasOwnProperty;
+  var __propIsEnum$u = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$u = (obj, key, value) => key in obj ? __defProp$u(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$u = (a, b) => {
     for (var prop in b || (b = {}))
-      if (__hasOwnProp$q.call(b, prop))
-        __defNormalProp$q(a, prop, b[prop]);
-    if (__getOwnPropSymbols$q)
-      for (var prop of __getOwnPropSymbols$q(b)) {
-        if (__propIsEnum$q.call(b, prop))
-          __defNormalProp$q(a, prop, b[prop]);
+      if (__hasOwnProp$u.call(b, prop))
+        __defNormalProp$u(a, prop, b[prop]);
+    if (__getOwnPropSymbols$u)
+      for (var prop of __getOwnPropSymbols$u(b)) {
+        if (__propIsEnum$u.call(b, prop))
+          __defNormalProp$u(a, prop, b[prop]);
       }
     return a;
   };
-  var __spreadProps$f = (a, b) => __defProps$f(a, __getOwnPropDescs$f(b));
-  var __objRest$i = (source, exclude) => {
+  var __spreadProps$i = (a, b) => __defProps$i(a, __getOwnPropDescs$i(b));
+  var __objRest$k = (source, exclude) => {
     var target = {};
     for (var prop in source)
-      if (__hasOwnProp$q.call(source, prop) && exclude.indexOf(prop) < 0)
+      if (__hasOwnProp$u.call(source, prop) && exclude.indexOf(prop) < 0)
         target[prop] = source[prop];
-    if (source != null && __getOwnPropSymbols$q)
-      for (var prop of __getOwnPropSymbols$q(source)) {
-        if (exclude.indexOf(prop) < 0 && __propIsEnum$q.call(source, prop))
+    if (source != null && __getOwnPropSymbols$u)
+      for (var prop of __getOwnPropSymbols$u(source)) {
+        if (exclude.indexOf(prop) < 0 && __propIsEnum$u.call(source, prop))
           target[prop] = source[prop];
       }
     return target;
@@ -6601,7 +6891,7 @@
       onClose,
       closeButtonProps,
       themeOverride
-    } = _b, others = __objRest$i(_b, [
+    } = _b, others = __objRest$k(_b, [
       "className",
       "color",
       "loading",
@@ -6613,68 +6903,68 @@
       "closeButtonProps",
       "themeOverride"
     ]);
-    const classes = useStyles$d({color, disallowClose, theme: useMantineTheme(themeOverride)});
-    return /* @__PURE__ */ React__default['default'].createElement(Paper, __spreadValues$q({
+    const classes = useStyles$f({color, disallowClose, theme: useMantineTheme(themeOverride)});
+    return /* @__PURE__ */ React__default.createElement(Paper, __spreadValues$u({
       shadow: "lg",
       padding: "sm",
       className: cx(classes.notification, {[classes.withIcon]: icon || loading}, className),
       role: "alert",
       themeOverride
-    }, others), icon && !loading && /* @__PURE__ */ React__default['default'].createElement("div", {
+    }, others), icon && !loading && /* @__PURE__ */ React__default.createElement("div", {
       "data-mantine-icon": true,
       className: classes.icon
-    }, icon), loading && /* @__PURE__ */ React__default['default'].createElement(Loader, {
+    }, icon), loading && /* @__PURE__ */ React__default.createElement(Loader, {
       size: 28,
       color,
       className: classes.loader
-    }), /* @__PURE__ */ React__default['default'].createElement("div", {
+    }), /* @__PURE__ */ React__default.createElement("div", {
       className: classes.body
-    }, title && /* @__PURE__ */ React__default['default'].createElement(Text, {
+    }, title && /* @__PURE__ */ React__default.createElement(Text, {
       "data-mantine-title": true,
       className: classes.title,
       size: "sm",
       weight: 500,
       themeOverride
-    }, title), /* @__PURE__ */ React__default['default'].createElement(Text, {
+    }, title), /* @__PURE__ */ React__default.createElement(Text, {
       "data-mantine-body": true,
       className: classes.description,
       size: "sm",
       themeOverride
-    }, children)), !disallowClose && /* @__PURE__ */ React__default['default'].createElement(ActionIcon, __spreadProps$f(__spreadValues$q({}, closeButtonProps), {
+    }, children)), !disallowClose && /* @__PURE__ */ React__default.createElement(ActionIcon, __spreadProps$i(__spreadValues$u({}, closeButtonProps), {
       color: "gray",
       onClick: onClose,
       themeOverride
-    }), /* @__PURE__ */ React__default['default'].createElement(CloseIcon, null)));
+    }), /* @__PURE__ */ React__default.createElement(CloseIcon, null)));
   }
   Notification.displayName = "@mantine/core/Notification";
 
-  var __defProp$p = Object.defineProperty;
-  var __defProps$e = Object.defineProperties;
-  var __getOwnPropDescs$e = Object.getOwnPropertyDescriptors;
-  var __getOwnPropSymbols$p = Object.getOwnPropertySymbols;
-  var __hasOwnProp$p = Object.prototype.hasOwnProperty;
-  var __propIsEnum$p = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$p = (obj, key, value) => key in obj ? __defProp$p(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$p = (a, b) => {
+  var __defProp$t = Object.defineProperty;
+  var __defProps$h = Object.defineProperties;
+  var __getOwnPropDescs$h = Object.getOwnPropertyDescriptors;
+  var __getOwnPropSymbols$t = Object.getOwnPropertySymbols;
+  var __hasOwnProp$t = Object.prototype.hasOwnProperty;
+  var __propIsEnum$t = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$t = (obj, key, value) => key in obj ? __defProp$t(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$t = (a, b) => {
     for (var prop in b || (b = {}))
-      if (__hasOwnProp$p.call(b, prop))
-        __defNormalProp$p(a, prop, b[prop]);
-    if (__getOwnPropSymbols$p)
-      for (var prop of __getOwnPropSymbols$p(b)) {
-        if (__propIsEnum$p.call(b, prop))
-          __defNormalProp$p(a, prop, b[prop]);
+      if (__hasOwnProp$t.call(b, prop))
+        __defNormalProp$t(a, prop, b[prop]);
+    if (__getOwnPropSymbols$t)
+      for (var prop of __getOwnPropSymbols$t(b)) {
+        if (__propIsEnum$t.call(b, prop))
+          __defNormalProp$t(a, prop, b[prop]);
       }
     return a;
   };
-  var __spreadProps$e = (a, b) => __defProps$e(a, __getOwnPropDescs$e(b));
-  var __objRest$h = (source, exclude) => {
+  var __spreadProps$h = (a, b) => __defProps$h(a, __getOwnPropDescs$h(b));
+  var __objRest$j = (source, exclude) => {
     var target = {};
     for (var prop in source)
-      if (__hasOwnProp$p.call(source, prop) && exclude.indexOf(prop) < 0)
+      if (__hasOwnProp$t.call(source, prop) && exclude.indexOf(prop) < 0)
         target[prop] = source[prop];
-    if (source != null && __getOwnPropSymbols$p)
-      for (var prop of __getOwnPropSymbols$p(source)) {
-        if (exclude.indexOf(prop) < 0 && __propIsEnum$p.call(source, prop))
+    if (source != null && __getOwnPropSymbols$t)
+      for (var prop of __getOwnPropSymbols$t(source)) {
+        if (exclude.indexOf(prop) < 0 && __propIsEnum$t.call(source, prop))
           target[prop] = source[prop];
       }
     return target;
@@ -6693,7 +6983,7 @@
       themeOverride,
       wrapperProps,
       elementRef
-    } = _b, others = __objRest$h(_b, [
+    } = _b, others = __objRest$j(_b, [
       "className",
       "id",
       "label",
@@ -6708,7 +6998,7 @@
       "elementRef"
     ]);
     const uuid = hooks.useId(id);
-    return /* @__PURE__ */ React__default['default'].createElement(InputWrapper, __spreadValues$p({
+    return /* @__PURE__ */ React__default.createElement(InputWrapper, __spreadValues$t({
       required,
       id: uuid,
       label,
@@ -6717,7 +7007,7 @@
       className,
       style,
       themeOverride
-    }, wrapperProps), /* @__PURE__ */ React__default['default'].createElement(Input, __spreadProps$e(__spreadValues$p({}, others), {
+    }, wrapperProps), /* @__PURE__ */ React__default.createElement(Input, __spreadProps$h(__spreadValues$t({}, others), {
       required,
       elementRef,
       id: uuid,
@@ -6730,7 +7020,7 @@
   TextInput.displayName = "@mantine/core/TextInput";
 
   const CONTROL_WIDTH = 24;
-  var useStyles$c = reactJss.createUseStyles({
+  var useStyles$e = createMemoStyles({
     rightSection: {
       display: "flex",
       flexDirection: "column",
@@ -6743,7 +7033,8 @@
       flex: "0 0 50%",
       boxSizing: "border-box",
       width: CONTROL_WIDTH,
-      border: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[4]}`,
+      borderBottom: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[4]}`,
+      borderLeft: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[4]}`,
       borderTop: 0,
       borderRight: 0,
       backgroundColor: "transparent",
@@ -6793,35 +7084,35 @@
         borderTopColor: theme.colorScheme === "dark" ? theme.colors.dark[2] : theme.colors.gray[5]
       }
     })
-  }, {link: true});
+  });
 
-  var __defProp$o = Object.defineProperty;
-  var __defProps$d = Object.defineProperties;
-  var __getOwnPropDescs$d = Object.getOwnPropertyDescriptors;
-  var __getOwnPropSymbols$o = Object.getOwnPropertySymbols;
-  var __hasOwnProp$o = Object.prototype.hasOwnProperty;
-  var __propIsEnum$o = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$o = (obj, key, value) => key in obj ? __defProp$o(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$o = (a, b) => {
+  var __defProp$s = Object.defineProperty;
+  var __defProps$g = Object.defineProperties;
+  var __getOwnPropDescs$g = Object.getOwnPropertyDescriptors;
+  var __getOwnPropSymbols$s = Object.getOwnPropertySymbols;
+  var __hasOwnProp$s = Object.prototype.hasOwnProperty;
+  var __propIsEnum$s = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$s = (obj, key, value) => key in obj ? __defProp$s(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$s = (a, b) => {
     for (var prop in b || (b = {}))
-      if (__hasOwnProp$o.call(b, prop))
-        __defNormalProp$o(a, prop, b[prop]);
-    if (__getOwnPropSymbols$o)
-      for (var prop of __getOwnPropSymbols$o(b)) {
-        if (__propIsEnum$o.call(b, prop))
-          __defNormalProp$o(a, prop, b[prop]);
+      if (__hasOwnProp$s.call(b, prop))
+        __defNormalProp$s(a, prop, b[prop]);
+    if (__getOwnPropSymbols$s)
+      for (var prop of __getOwnPropSymbols$s(b)) {
+        if (__propIsEnum$s.call(b, prop))
+          __defNormalProp$s(a, prop, b[prop]);
       }
     return a;
   };
-  var __spreadProps$d = (a, b) => __defProps$d(a, __getOwnPropDescs$d(b));
-  var __objRest$g = (source, exclude) => {
+  var __spreadProps$g = (a, b) => __defProps$g(a, __getOwnPropDescs$g(b));
+  var __objRest$i = (source, exclude) => {
     var target = {};
     for (var prop in source)
-      if (__hasOwnProp$o.call(source, prop) && exclude.indexOf(prop) < 0)
+      if (__hasOwnProp$s.call(source, prop) && exclude.indexOf(prop) < 0)
         target[prop] = source[prop];
-    if (source != null && __getOwnPropSymbols$o)
-      for (var prop of __getOwnPropSymbols$o(source)) {
-        if (exclude.indexOf(prop) < 0 && __propIsEnum$o.call(source, prop))
+    if (source != null && __getOwnPropSymbols$s)
+      for (var prop of __getOwnPropSymbols$s(source)) {
+        if (exclude.indexOf(prop) < 0 && __propIsEnum$s.call(source, prop))
           target[prop] = source[prop];
       }
     return target;
@@ -6844,7 +7135,7 @@
       precision = 0,
       defaultValue,
       noClampOnBlur = false
-    } = _b, others = __objRest$g(_b, [
+    } = _b, others = __objRest$i(_b, [
       "disabled",
       "themeOverride",
       "elementRef",
@@ -6863,7 +7154,7 @@
       "noClampOnBlur"
     ]);
     const theme = useMantineTheme(themeOverride);
-    const classes = useStyles$c({theme, radius});
+    const classes = useStyles$e({theme, radius});
     const [focused, setFocused] = React.useState(false);
     const [_value, setValue] = React.useState(typeof value === "number" ? value : typeof defaultValue === "number" ? defaultValue : 0);
     const finalValue = typeof value === "number" ? value : _value;
@@ -6885,9 +7176,9 @@
         setTempValue(value.toFixed(precision));
       }
     }, [value]);
-    const rightSection = /* @__PURE__ */ React__default['default'].createElement("div", {
+    const rightSection = /* @__PURE__ */ React__default.createElement("div", {
       className: classes.rightSection
-    }, /* @__PURE__ */ React__default['default'].createElement("button", {
+    }, /* @__PURE__ */ React__default.createElement("button", {
       type: "button",
       tabIndex: -1,
       "aria-hidden": true,
@@ -6901,7 +7192,7 @@
       },
       disabled: finalValue >= max,
       className: cx(classes.control, classes.controlUp)
-    }), /* @__PURE__ */ React__default['default'].createElement("button", {
+    }), /* @__PURE__ */ React__default.createElement("button", {
       type: "button",
       tabIndex: -1,
       "aria-hidden": true,
@@ -6939,7 +7230,7 @@
       setFocused(true);
       typeof onFocus === "function" && onBlur(event);
     };
-    return /* @__PURE__ */ React__default['default'].createElement(TextInput, __spreadProps$d(__spreadValues$o({}, others), {
+    return /* @__PURE__ */ React__default.createElement(TextInput, __spreadProps$g(__spreadValues$s({}, others), {
       variant,
       value: tempValue,
       disabled,
@@ -6959,43 +7250,43 @@
   }
   NumberInput.displayName = "@mantine/core/NumberInput";
 
-  var __defProp$n = Object.defineProperty;
-  var __getOwnPropSymbols$n = Object.getOwnPropertySymbols;
-  var __hasOwnProp$n = Object.prototype.hasOwnProperty;
-  var __propIsEnum$n = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$n = (obj, key, value) => key in obj ? __defProp$n(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$n = (a, b) => {
+  var __defProp$r = Object.defineProperty;
+  var __getOwnPropSymbols$r = Object.getOwnPropertySymbols;
+  var __hasOwnProp$r = Object.prototype.hasOwnProperty;
+  var __propIsEnum$r = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$r = (obj, key, value) => key in obj ? __defProp$r(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$r = (a, b) => {
     for (var prop in b || (b = {}))
-      if (__hasOwnProp$n.call(b, prop))
-        __defNormalProp$n(a, prop, b[prop]);
-    if (__getOwnPropSymbols$n)
-      for (var prop of __getOwnPropSymbols$n(b)) {
-        if (__propIsEnum$n.call(b, prop))
-          __defNormalProp$n(a, prop, b[prop]);
+      if (__hasOwnProp$r.call(b, prop))
+        __defNormalProp$r(a, prop, b[prop]);
+    if (__getOwnPropSymbols$r)
+      for (var prop of __getOwnPropSymbols$r(b)) {
+        if (__propIsEnum$r.call(b, prop))
+          __defNormalProp$r(a, prop, b[prop]);
       }
     return a;
   };
-  var __objRest$f = (source, exclude) => {
+  var __objRest$h = (source, exclude) => {
     var target = {};
     for (var prop in source)
-      if (__hasOwnProp$n.call(source, prop) && exclude.indexOf(prop) < 0)
+      if (__hasOwnProp$r.call(source, prop) && exclude.indexOf(prop) < 0)
         target[prop] = source[prop];
-    if (source != null && __getOwnPropSymbols$n)
-      for (var prop of __getOwnPropSymbols$n(source)) {
-        if (exclude.indexOf(prop) < 0 && __propIsEnum$n.call(source, prop))
+    if (source != null && __getOwnPropSymbols$r)
+      for (var prop of __getOwnPropSymbols$r(source)) {
+        if (exclude.indexOf(prop) < 0 && __propIsEnum$r.call(source, prop))
           target[prop] = source[prop];
       }
     return target;
   };
   function PasswordToggleIcon(_a) {
-    var _b = _a, {reveal} = _b, others = __objRest$f(_b, ["reveal"]);
-    return /* @__PURE__ */ React__default['default'].createElement("svg", __spreadValues$n({
+    var _b = _a, {reveal} = _b, others = __objRest$h(_b, ["reveal"]);
+    return /* @__PURE__ */ React__default.createElement("svg", __spreadValues$r({
       width: "15",
       height: "15",
       viewBox: "0 0 15 15",
       fill: "none",
       xmlns: "http://www.w3.org/2000/svg"
-    }, others), /* @__PURE__ */ React__default['default'].createElement("path", {
+    }, others), /* @__PURE__ */ React__default.createElement("path", {
       d: reveal ? "M13.3536 2.35355C13.5488 2.15829 13.5488 1.84171 13.3536 1.64645C13.1583 1.45118 12.8417 1.45118 12.6464 1.64645L10.6828 3.61012C9.70652 3.21671 8.63759 3 7.5 3C4.30786 3 1.65639 4.70638 0.0760002 7.23501C-0.0253338 7.39715 -0.0253334 7.60288 0.0760014 7.76501C0.902945 9.08812 2.02314 10.1861 3.36061 10.9323L1.64645 12.6464C1.45118 12.8417 1.45118 13.1583 1.64645 13.3536C1.84171 13.5488 2.15829 13.5488 2.35355 13.3536L4.31723 11.3899C5.29348 11.7833 6.36241 12 7.5 12C10.6921 12 13.3436 10.2936 14.924 7.76501C15.0253 7.60288 15.0253 7.39715 14.924 7.23501C14.0971 5.9119 12.9769 4.81391 11.6394 4.06771L13.3536 2.35355ZM9.90428 4.38861C9.15332 4.1361 8.34759 4 7.5 4C4.80285 4 2.52952 5.37816 1.09622 7.50001C1.87284 8.6497 2.89609 9.58106 4.09974 10.1931L9.90428 4.38861ZM5.09572 10.6114L10.9003 4.80685C12.1039 5.41894 13.1272 6.35031 13.9038 7.50001C12.4705 9.62183 10.1971 11 7.5 11C6.65241 11 5.84668 10.8639 5.09572 10.6114Z" : "M7.5 11C4.80285 11 2.52952 9.62184 1.09622 7.50001C2.52952 5.37816 4.80285 4 7.5 4C10.1971 4 12.4705 5.37816 13.9038 7.50001C12.4705 9.62183 10.1971 11 7.5 11ZM7.5 3C4.30786 3 1.65639 4.70638 0.0760002 7.23501C-0.0253338 7.39715 -0.0253334 7.60288 0.0760014 7.76501C1.65639 10.2936 4.30786 12 7.5 12C10.6921 12 13.3436 10.2936 14.924 7.76501C15.0253 7.60288 15.0253 7.39715 14.924 7.23501C13.3436 4.70638 10.6921 3 7.5 3ZM7.5 9.5C8.60457 9.5 9.5 8.60457 9.5 7.5C9.5 6.39543 8.60457 5.5 7.5 5.5C6.39543 5.5 5.5 6.39543 5.5 7.5C5.5 8.60457 6.39543 9.5 7.5 9.5Z",
       fill: "currentColor",
       fillRule: "evenodd",
@@ -7003,33 +7294,33 @@
     }));
   }
 
-  var __defProp$m = Object.defineProperty;
-  var __defProps$c = Object.defineProperties;
-  var __getOwnPropDescs$c = Object.getOwnPropertyDescriptors;
-  var __getOwnPropSymbols$m = Object.getOwnPropertySymbols;
-  var __hasOwnProp$m = Object.prototype.hasOwnProperty;
-  var __propIsEnum$m = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp$m = (obj, key, value) => key in obj ? __defProp$m(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues$m = (a, b) => {
+  var __defProp$q = Object.defineProperty;
+  var __defProps$f = Object.defineProperties;
+  var __getOwnPropDescs$f = Object.getOwnPropertyDescriptors;
+  var __getOwnPropSymbols$q = Object.getOwnPropertySymbols;
+  var __hasOwnProp$q = Object.prototype.hasOwnProperty;
+  var __propIsEnum$q = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$q = (obj, key, value) => key in obj ? __defProp$q(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$q = (a, b) => {
     for (var prop in b || (b = {}))
-      if (__hasOwnProp$m.call(b, prop))
-        __defNormalProp$m(a, prop, b[prop]);
-    if (__getOwnPropSymbols$m)
-      for (var prop of __getOwnPropSymbols$m(b)) {
-        if (__propIsEnum$m.call(b, prop))
-          __defNormalProp$m(a, prop, b[prop]);
+      if (__hasOwnProp$q.call(b, prop))
+        __defNormalProp$q(a, prop, b[prop]);
+    if (__getOwnPropSymbols$q)
+      for (var prop of __getOwnPropSymbols$q(b)) {
+        if (__propIsEnum$q.call(b, prop))
+          __defNormalProp$q(a, prop, b[prop]);
       }
     return a;
   };
-  var __spreadProps$c = (a, b) => __defProps$c(a, __getOwnPropDescs$c(b));
-  var __objRest$e = (source, exclude) => {
+  var __spreadProps$f = (a, b) => __defProps$f(a, __getOwnPropDescs$f(b));
+  var __objRest$g = (source, exclude) => {
     var target = {};
     for (var prop in source)
-      if (__hasOwnProp$m.call(source, prop) && exclude.indexOf(prop) < 0)
+      if (__hasOwnProp$q.call(source, prop) && exclude.indexOf(prop) < 0)
         target[prop] = source[prop];
-    if (source != null && __getOwnPropSymbols$m)
-      for (var prop of __getOwnPropSymbols$m(source)) {
-        if (exclude.indexOf(prop) < 0 && __propIsEnum$m.call(source, prop))
+    if (source != null && __getOwnPropSymbols$q)
+      for (var prop of __getOwnPropSymbols$q(source)) {
+        if (exclude.indexOf(prop) < 0 && __propIsEnum$q.call(source, prop))
           target[prop] = source[prop];
       }
     return target;
@@ -7043,7 +7334,7 @@
       themeOverride,
       focusInputOnToggle = false,
       elementRef
-    } = _b, others = __objRest$e(_b, [
+    } = _b, others = __objRest$g(_b, [
       "radius",
       "disabled",
       "hidePasswordLabel",
@@ -7060,16 +7351,16 @@
         inputRef.current.focus();
       }
     };
-    const rightSection = /* @__PURE__ */ React__default['default'].createElement(ActionIcon, {
+    const rightSection = /* @__PURE__ */ React__default.createElement(ActionIcon, {
       onClick: toggleReveal,
       themeOverride,
       title: reveal ? hidePasswordLabel : showPasswordLabel,
       "aria-label": reveal ? hidePasswordLabel : showPasswordLabel,
       radius
-    }, /* @__PURE__ */ React__default['default'].createElement(PasswordToggleIcon, {
+    }, /* @__PURE__ */ React__default.createElement(PasswordToggleIcon, {
       reveal
     }));
-    return /* @__PURE__ */ React__default['default'].createElement(TextInput, __spreadProps$c(__spreadValues$m({}, others), {
+    return /* @__PURE__ */ React__default.createElement(TextInput, __spreadProps$f(__spreadValues$q({}, others), {
       disabled,
       themeOverride,
       elementRef: hooks.useMergedRef(inputRef, elementRef),
@@ -7080,42 +7371,323 @@
   }
   PasswordInput.displayName = "@mantine/core/PasswordInput";
 
-  const useIsomorphicEffect = typeof document !== "undefined" ? React.useLayoutEffect : React.useEffect;
-  function Portal({children, zIndex = 1, target, className}) {
-    const [mounted, setMounted] = React.useState(false);
-    const elementRef = React.useRef();
-    useIsomorphicEffect(() => {
-      setMounted(true);
-      elementRef.current = target || document.createElement("div");
-      if (!target) {
-        document.body.appendChild(elementRef.current);
+  var __defProp$p = Object.defineProperty;
+  var __defProps$e = Object.defineProperties;
+  var __getOwnPropDescs$e = Object.getOwnPropertyDescriptors;
+  var __getOwnPropSymbols$p = Object.getOwnPropertySymbols;
+  var __hasOwnProp$p = Object.prototype.hasOwnProperty;
+  var __propIsEnum$p = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$p = (obj, key, value) => key in obj ? __defProp$p(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$p = (a, b) => {
+    for (var prop in b || (b = {}))
+      if (__hasOwnProp$p.call(b, prop))
+        __defNormalProp$p(a, prop, b[prop]);
+    if (__getOwnPropSymbols$p)
+      for (var prop of __getOwnPropSymbols$p(b)) {
+        if (__propIsEnum$p.call(b, prop))
+          __defNormalProp$p(a, prop, b[prop]);
       }
-      return () => {
-        !target && document.body.removeChild(elementRef.current);
-      };
-    }, [target]);
-    if (!mounted) {
-      return null;
+    return a;
+  };
+  var __spreadProps$e = (a, b) => __defProps$e(a, __getOwnPropDescs$e(b));
+  const horizontalPlacement$1 = (arrowSize) => ({
+    "&$center": {
+      top: "50%",
+      transform: "translateY(-50%)",
+      "& $arrow": {
+        top: `calc(50% - ${arrowSize}px)`
+      }
+    },
+    "&$end": {
+      bottom: 0,
+      "& $arrow": {
+        bottom: arrowSize * 2
+      }
+    },
+    "&$start": {
+      top: 0,
+      "& $arrow": {
+        top: arrowSize * 2
+      }
     }
-    return ReactDOM.createPortal(/* @__PURE__ */ React__default['default'].createElement("div", {
-      className,
-      style: {position: "relative", zIndex},
-      "data-mantine-portal": true
-    }, children), elementRef.current);
-  }
-  Portal.displayName = "@mantine/core/Portal";
+  });
+  const verticalPlacement$1 = (arrowSize) => ({
+    "&$center": {
+      left: "50%",
+      transform: "translateX(-50%)",
+      "& $arrow": {
+        left: `calc(50% - ${arrowSize}px)`
+      }
+    },
+    "&$end": {
+      right: 0,
+      "& $arrow": {
+        right: arrowSize * 2
+      }
+    },
+    "&$start": {
+      left: 0,
+      "& $arrow": {
+        left: arrowSize * 2
+      }
+    }
+  });
+  var useStyles$d = createMemoStyles({
+    center: {},
+    start: {},
+    end: {},
+    wrapper: {
+      position: "relative",
+      display: "inline-block"
+    },
+    popoverWrapper: {
+      background: "transparent",
+      position: "absolute",
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      pointerEvents: "none"
+    },
+    popover: ({theme, radius}) => ({
+      position: "absolute",
+      background: theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.white,
+      pointerEvents: "all",
+      borderRadius: getSizeValue({size: radius, sizes: theme.radius})
+    }),
+    arrow: ({theme, arrowSize}) => ({
+      width: arrowSize * 2,
+      height: arrowSize * 2,
+      position: "absolute",
+      transform: "rotate(45deg)",
+      border: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.colors.gray[2]}`,
+      background: theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.white,
+      zIndex: 1
+    }),
+    body: ({theme, radius, shadow}) => ({
+      border: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.colors.gray[2]}`,
+      boxShadow: shadow in theme.shadows ? theme.shadows[shadow] : shadow,
+      borderRadius: getSizeValue({size: radius, sizes: theme.radius})
+    }),
+    inner: ({theme, spacing}) => ({
+      padding: getSizeValue({size: spacing, sizes: theme.spacing})
+    }),
+    header: ({theme, spacing}) => ({
+      borderBottom: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.colors.gray[2]}`,
+      padding: [theme.spacing.xs / 1.5, getSizeValue({size: spacing, sizes: theme.spacing})],
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between"
+    }),
+    target: {
+      zIndex: 1
+    },
+    closeButton: {
+      position: "absolute",
+      top: 7,
+      zIndex: 2,
+      right: 10
+    },
+    left: ({gutter, arrowSize}) => __spreadProps$e(__spreadValues$p({}, horizontalPlacement$1(arrowSize)), {
+      right: `calc(100% + ${gutter}px)`,
+      "& $arrow": {
+        right: -arrowSize,
+        borderLeft: 0,
+        borderBottom: 0
+      }
+    }),
+    right: ({gutter, arrowSize}) => __spreadProps$e(__spreadValues$p({}, horizontalPlacement$1(arrowSize)), {
+      left: `calc(100% + ${gutter}px)`,
+      "& $arrow": {
+        left: -arrowSize,
+        borderRight: 0,
+        borderTop: 0
+      }
+    }),
+    top: ({gutter, arrowSize}) => __spreadProps$e(__spreadValues$p({}, verticalPlacement$1(arrowSize)), {
+      bottom: `calc(100% + ${gutter}px)`,
+      "& $arrow": {
+        bottom: -arrowSize,
+        borderLeft: 0,
+        borderTop: 0
+      }
+    }),
+    bottom: ({gutter, arrowSize}) => __spreadProps$e(__spreadValues$p({}, verticalPlacement$1(arrowSize)), {
+      top: `calc(100% + ${gutter}px)`,
+      "& $arrow": {
+        top: -arrowSize,
+        borderRight: 0,
+        borderBottom: 0
+      }
+    })
+  });
 
-  const sizes$3 = {
+  var __defProp$o = Object.defineProperty;
+  var __getOwnPropSymbols$o = Object.getOwnPropertySymbols;
+  var __hasOwnProp$o = Object.prototype.hasOwnProperty;
+  var __propIsEnum$o = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$o = (obj, key, value) => key in obj ? __defProp$o(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$o = (a, b) => {
+    for (var prop in b || (b = {}))
+      if (__hasOwnProp$o.call(b, prop))
+        __defNormalProp$o(a, prop, b[prop]);
+    if (__getOwnPropSymbols$o)
+      for (var prop of __getOwnPropSymbols$o(b)) {
+        if (__propIsEnum$o.call(b, prop))
+          __defNormalProp$o(a, prop, b[prop]);
+      }
+    return a;
+  };
+  var __objRest$f = (source, exclude) => {
+    var target = {};
+    for (var prop in source)
+      if (__hasOwnProp$o.call(source, prop) && exclude.indexOf(prop) < 0)
+        target[prop] = source[prop];
+    if (source != null && __getOwnPropSymbols$o)
+      for (var prop of __getOwnPropSymbols$o(source)) {
+        if (exclude.indexOf(prop) < 0 && __propIsEnum$o.call(source, prop))
+          target[prop] = source[prop];
+      }
+    return target;
+  };
+  function Popover(_a) {
+    var _b = _a, {
+      className,
+      themeOverride,
+      children,
+      target,
+      title,
+      onClose,
+      opened,
+      zIndex = 1e3,
+      arrowSize = 4,
+      withArrow = false,
+      transition = "fade",
+      transitionDuration = 200,
+      transitionTimingFunction,
+      gutter = 10,
+      position = "left",
+      placement = "center",
+      disabled = false,
+      noClickOutside = false,
+      noFocusTrap = false,
+      noEscape = false,
+      withCloseButton = false,
+      radius = "sm",
+      spacing = "md",
+      shadow = "sm",
+      bodyStyle,
+      bodyClassName,
+      closeButtonLabel,
+      id
+    } = _b, others = __objRest$f(_b, [
+      "className",
+      "themeOverride",
+      "children",
+      "target",
+      "title",
+      "onClose",
+      "opened",
+      "zIndex",
+      "arrowSize",
+      "withArrow",
+      "transition",
+      "transitionDuration",
+      "transitionTimingFunction",
+      "gutter",
+      "position",
+      "placement",
+      "disabled",
+      "noClickOutside",
+      "noFocusTrap",
+      "noEscape",
+      "withCloseButton",
+      "radius",
+      "spacing",
+      "shadow",
+      "bodyStyle",
+      "bodyClassName",
+      "closeButtonLabel",
+      "id"
+    ]);
+    const theme = useMantineTheme(themeOverride);
+    const classes = useStyles$d({theme, gutter, arrowSize, radius, spacing, shadow});
+    const handleClose = () => typeof onClose === "function" && onClose();
+    const useClickOutsideRef = hooks.useClickOutside(() => !noClickOutside && handleClose());
+    const focusTrapRef = hooks.useFocusTrap(!noFocusTrap);
+    const reduceMotion = hooks.useReducedMotion();
+    const handleKeydown = (event) => {
+      if (!noEscape && event.nativeEvent.code === "Escape") {
+        handleClose();
+      }
+    };
+    const uuid = hooks.useId(id);
+    const titleId = `${uuid}-title`;
+    const bodyId = `${uuid}-body`;
+    return /* @__PURE__ */ React__default.createElement("div", __spreadValues$o({
+      className: cx(classes.wrapper, className),
+      ref: useClickOutsideRef,
+      id
+    }, others), /* @__PURE__ */ React__default.createElement(Transition, {
+      mounted: opened && !disabled,
+      transition,
+      duration: reduceMotion ? 0 : transitionDuration,
+      timingFunction: transitionTimingFunction || theme.transitionTimingFunction
+    }, (transitionStyles) => /* @__PURE__ */ React__default.createElement("div", {
+      style: transitionStyles,
+      role: "dialog",
+      tabIndex: -1,
+      "data-mantine-popover": true,
+      "aria-labelledby": titleId,
+      "aria-describedby": bodyId,
+      className: classes.popoverWrapper,
+      ref: focusTrapRef,
+      onKeyDownCapture: handleKeydown
+    }, /* @__PURE__ */ React__default.createElement("div", {
+      className: cx(classes.popover, classes[position], classes[placement], bodyClassName),
+      style: __spreadValues$o({zIndex}, bodyStyle)
+    }, withArrow && /* @__PURE__ */ React__default.createElement("div", {
+      "data-mantine-popover-arrow": true,
+      className: classes.arrow
+    }), /* @__PURE__ */ React__default.createElement("div", {
+      className: classes.body
+    }, !!title && /* @__PURE__ */ React__default.createElement("div", {
+      className: classes.header,
+      "data-mantine-popover-header": true
+    }, /* @__PURE__ */ React__default.createElement(Text, {
+      size: "sm",
+      id: titleId,
+      "data-mantine-popover-title": true
+    }, title)), withCloseButton && /* @__PURE__ */ React__default.createElement(ActionIcon, {
+      size: "sm",
+      "data-mantine-popover-close": true,
+      onClick: handleClose,
+      "aria-label": closeButtonLabel,
+      className: cx(classes.closeButton)
+    }, /* @__PURE__ */ React__default.createElement(CloseIcon, {
+      style: {width: 14, height: 14}
+    })), /* @__PURE__ */ React__default.createElement("div", {
+      className: classes.inner,
+      id: bodyId,
+      "data-mantine-popover-body": true
+    }, children))))), /* @__PURE__ */ React__default.createElement("div", {
+      "data-mantine-popover-target": true,
+      className: classes.target
+    }, target));
+  }
+  Popover.displayName = "@mantine/core/Popover";
+
+  const sizes$4 = {
     xs: 3,
     sm: 5,
     md: 8,
     lg: 12,
     xl: 16
   };
-  var useStyles$b = reactJss.createUseStyles({
+  var useStyles$c = createMemoStyles({
     progress: ({radius, size, theme}) => ({
-      height: getSizeValue({size, sizes: sizes$3}),
-      backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[3] : theme.colors.gray[2],
+      height: getSizeValue({size, sizes: sizes$4}),
+      backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[2],
       borderRadius: getSizeValue({size: radius, sizes: theme.radius}),
       overflow: "hidden"
     }),
@@ -7127,7 +7699,157 @@
       backgroundSize: [theme.spacing.md, theme.spacing.md],
       backgroundImage: striped ? "linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)" : "none"
     })
-  }, {link: true});
+  });
+
+  var __defProp$n = Object.defineProperty;
+  var __getOwnPropSymbols$n = Object.getOwnPropertySymbols;
+  var __hasOwnProp$n = Object.prototype.hasOwnProperty;
+  var __propIsEnum$n = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$n = (obj, key, value) => key in obj ? __defProp$n(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$n = (a, b) => {
+    for (var prop in b || (b = {}))
+      if (__hasOwnProp$n.call(b, prop))
+        __defNormalProp$n(a, prop, b[prop]);
+    if (__getOwnPropSymbols$n)
+      for (var prop of __getOwnPropSymbols$n(b)) {
+        if (__propIsEnum$n.call(b, prop))
+          __defNormalProp$n(a, prop, b[prop]);
+      }
+    return a;
+  };
+  var __objRest$e = (source, exclude) => {
+    var target = {};
+    for (var prop in source)
+      if (__hasOwnProp$n.call(source, prop) && exclude.indexOf(prop) < 0)
+        target[prop] = source[prop];
+    if (source != null && __getOwnPropSymbols$n)
+      for (var prop of __getOwnPropSymbols$n(source)) {
+        if (exclude.indexOf(prop) < 0 && __propIsEnum$n.call(source, prop))
+          target[prop] = source[prop];
+      }
+    return target;
+  };
+  const PROGRESS_SIZES = sizes$4;
+  function Progress(_a) {
+    var _b = _a, {
+      className,
+      value,
+      color,
+      size = "md",
+      radius = "sm",
+      striped = false,
+      themeOverride,
+      "aria-label": ariaLabel
+    } = _b, others = __objRest$e(_b, [
+      "className",
+      "value",
+      "color",
+      "size",
+      "radius",
+      "striped",
+      "themeOverride",
+      "aria-label"
+    ]);
+    const classes = useStyles$c({
+      color,
+      size,
+      radius,
+      striped,
+      reduceMotion: hooks.useReducedMotion(),
+      theme: useMantineTheme(themeOverride)
+    });
+    return /* @__PURE__ */ React__default.createElement("div", __spreadValues$n({
+      className: cx(classes.progress, className)
+    }, others), /* @__PURE__ */ React__default.createElement("div", {
+      role: "progressbar",
+      "aria-valuemax": 100,
+      "aria-valuemin": 0,
+      "aria-valuenow": value,
+      "aria-label": ariaLabel,
+      className: classes.bar,
+      style: {width: `${value}%`}
+    }));
+  }
+  Progress.displayName = "@mantine/core/Progress";
+
+  var __defProp$m = Object.defineProperty;
+  var __defProps$d = Object.defineProperties;
+  var __getOwnPropDescs$d = Object.getOwnPropertyDescriptors;
+  var __getOwnPropSymbols$m = Object.getOwnPropertySymbols;
+  var __hasOwnProp$m = Object.prototype.hasOwnProperty;
+  var __propIsEnum$m = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$m = (obj, key, value) => key in obj ? __defProp$m(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
+  var __spreadValues$m = (a, b) => {
+    for (var prop in b || (b = {}))
+      if (__hasOwnProp$m.call(b, prop))
+        __defNormalProp$m(a, prop, b[prop]);
+    if (__getOwnPropSymbols$m)
+      for (var prop of __getOwnPropSymbols$m(b)) {
+        if (__propIsEnum$m.call(b, prop))
+          __defNormalProp$m(a, prop, b[prop]);
+      }
+    return a;
+  };
+  var __spreadProps$d = (a, b) => __defProps$d(a, __getOwnPropDescs$d(b));
+  const sizes$3 = {
+    xs: 12,
+    sm: 16,
+    md: 20,
+    lg: 26,
+    xl: 36
+  };
+  var useStyles$b = createMemoStyles({
+    labelDisabled: {},
+    wrapper: {
+      display: "flex",
+      alignItems: "center",
+      WebkitTapHighlightColor: "transparent"
+    },
+    radio: ({theme, size, color}) => __spreadProps$d(__spreadValues$m({}, getFocusStyles(theme)), {
+      backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[0],
+      border: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[4]}`,
+      position: "relative",
+      appearance: "none",
+      width: getSizeValue({sizes: sizes$3, size}),
+      height: getSizeValue({sizes: sizes$3, size}),
+      borderRadius: getSizeValue({sizes: sizes$3, size}),
+      margin: 0,
+      marginRight: theme.spacing.sm,
+      background: "red",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      "&:checked": {
+        background: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 4 : 6}),
+        borderColor: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 4 : 6}),
+        "&::before": {
+          content: '""',
+          display: "block",
+          backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
+          width: getSizeValue({sizes: sizes$3, size}) / 2,
+          height: getSizeValue({sizes: sizes$3, size}) / 2,
+          borderRadius: getSizeValue({sizes: sizes$3, size}) / 2
+        }
+      },
+      "&:disabled": {
+        borderColor: theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[4],
+        backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[1],
+        "&::before": {
+          backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.colors.gray[4]
+        }
+      }
+    }),
+    label: ({theme, size}) => __spreadProps$d(__spreadValues$m({}, getFontStyles(theme)), {
+      display: "flex",
+      alignItems: "center",
+      fontSize: theme.fontSizes[size] || theme.fontSizes.md,
+      lineHeight: `${getSizeValue({sizes: sizes$3, size})}px`,
+      color: theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black,
+      "&$labelDisabled": {
+        color: theme.colorScheme === "dark" ? theme.colors.dark[3] : theme.colors.gray[5]
+      }
+    })
+  });
 
   var __defProp$l = Object.defineProperty;
   var __getOwnPropSymbols$l = Object.getOwnPropertySymbols;
@@ -7157,52 +7879,66 @@
       }
     return target;
   };
-  const PROGRESS_SIZES = sizes$3;
-  function Progress(_a) {
+  function Radio(_a) {
     var _b = _a, {
       className,
-      value,
-      color,
-      size = "md",
-      radius = "sm",
-      striped = false,
       themeOverride,
-      "aria-label": ariaLabel
+      id,
+      children,
+      style,
+      size,
+      elementRef,
+      title,
+      disabled,
+      color
     } = _b, others = __objRest$d(_b, [
       "className",
-      "value",
-      "color",
-      "size",
-      "radius",
-      "striped",
       "themeOverride",
-      "aria-label"
+      "id",
+      "children",
+      "style",
+      "size",
+      "elementRef",
+      "title",
+      "disabled",
+      "color"
     ]);
-    const classes = useStyles$b({
-      color,
-      size,
-      radius,
-      striped,
-      reduceMotion: hooks.useReducedMotion(),
-      theme: useMantineTheme(themeOverride)
-    });
-    return /* @__PURE__ */ React__default['default'].createElement("div", __spreadValues$l({
-      className: cx(classes.progress, className)
-    }, others), /* @__PURE__ */ React__default['default'].createElement("div", {
-      role: "progressbar",
-      "aria-valuemax": 100,
-      "aria-valuemin": 0,
-      "aria-valuenow": value,
-      "aria-label": ariaLabel,
-      className: classes.bar,
-      style: {width: `${value}%`}
-    }));
+    const classes = useStyles$b({color, size, theme: useMantineTheme(themeOverride)});
+    const uuid = hooks.useId(id);
+    return /* @__PURE__ */ React__default.createElement("div", {
+      "data-mantine-radio": true,
+      className: cx(classes.wrapper, className),
+      style,
+      title
+    }, /* @__PURE__ */ React__default.createElement("label", {
+      className: cx(classes.label, {[classes.labelDisabled]: disabled}),
+      htmlFor: uuid
+    }, /* @__PURE__ */ React__default.createElement("input", __spreadValues$l({
+      ref: elementRef,
+      className: classes.radio,
+      type: "radio",
+      id: uuid,
+      disabled
+    }, others)), /* @__PURE__ */ React__default.createElement("span", null, children)));
   }
-  Progress.displayName = "@mantine/core/Progress";
+  Radio.displayName = "@mantine/core/Radio";
+
+  var useStyles$a = createMemoStyles({
+    wrapper: ({theme, spacing, variant}) => ({
+      display: "flex",
+      flexWrap: "wrap",
+      flexDirection: variant === "vertical" ? "column" : "row",
+      margin: getSizeValue({sizes: theme.spacing, size: spacing}) / 2 * -1,
+      marginTop: getSizeValue({sizes: theme.spacing, size: spacing}) / 4 * (variant === "vertical" ? 1 : -1),
+      "& [data-mantine-radio]": {
+        margin: getSizeValue({sizes: theme.spacing, size: spacing}) / 2,
+        marginTop: variant === "vertical" && getSizeValue({sizes: theme.spacing, size: spacing}) / 4,
+        marginBottom: variant === "vertical" && getSizeValue({sizes: theme.spacing, size: spacing}) / 4
+      }
+    })
+  });
 
   var __defProp$k = Object.defineProperty;
-  var __defProps$b = Object.defineProperties;
-  var __getOwnPropDescs$b = Object.getOwnPropertyDescriptors;
   var __getOwnPropSymbols$k = Object.getOwnPropertySymbols;
   var __hasOwnProp$k = Object.prototype.hasOwnProperty;
   var __propIsEnum$k = Object.prototype.propertyIsEnumerable;
@@ -7218,68 +7954,73 @@
       }
     return a;
   };
-  var __spreadProps$b = (a, b) => __defProps$b(a, __getOwnPropDescs$b(b));
-  const sizes$2 = {
-    xs: 12,
-    sm: 16,
-    md: 20,
-    lg: 26,
-    xl: 36
+  var __objRest$c = (source, exclude) => {
+    var target = {};
+    for (var prop in source)
+      if (__hasOwnProp$k.call(source, prop) && exclude.indexOf(prop) < 0)
+        target[prop] = source[prop];
+    if (source != null && __getOwnPropSymbols$k)
+      for (var prop of __getOwnPropSymbols$k(source)) {
+        if (exclude.indexOf(prop) < 0 && __propIsEnum$k.call(source, prop))
+          target[prop] = source[prop];
+      }
+    return target;
   };
-  var useStyles$a = reactJss.createUseStyles({
-    labelDisabled: {},
-    wrapper: {
-      display: "flex",
-      alignItems: "center",
-      WebkitTapHighlightColor: "transparent"
-    },
-    radio: ({theme, size, color}) => __spreadProps$b(__spreadValues$k({}, getFocusStyles(theme)), {
-      backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[3] : theme.colors.gray[0],
-      border: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[3] : theme.colors.gray[4]}`,
-      position: "relative",
-      appearance: "none",
-      width: getSizeValue({sizes: sizes$2, size}),
-      height: getSizeValue({sizes: sizes$2, size}),
-      borderRadius: getSizeValue({sizes: sizes$2, size}),
-      margin: 0,
-      marginRight: theme.spacing.sm,
-      background: "red",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      "&:checked": {
-        background: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 4 : 6}),
-        borderColor: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 4 : 6}),
-        "&::before": {
-          content: '""',
-          display: "block",
-          backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
-          width: getSizeValue({sizes: sizes$2, size}) / 2,
-          height: getSizeValue({sizes: sizes$2, size}) / 2,
-          borderRadius: getSizeValue({sizes: sizes$2, size}) / 2
-        }
-      },
-      "&:disabled": {
-        borderColor: theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[4],
-        backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[1],
-        "&::before": {
-          backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.colors.gray[4]
-        }
-      }
-    }),
-    label: ({theme, size}) => __spreadProps$b(__spreadValues$k({}, getFontStyles(theme)), {
-      display: "flex",
-      alignItems: "center",
-      fontSize: theme.fontSizes[size] || theme.fontSizes.md,
-      lineHeight: `${getSizeValue({sizes: sizes$2, size})}px`,
-      color: theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black,
-      "&$labelDisabled": {
-        color: theme.colorScheme === "dark" ? theme.colors.dark[3] : theme.colors.gray[5]
-      }
-    })
-  }, {link: true});
+  const RADIO_SIZES = sizes$3;
+  function RadioGroup(_a) {
+    var _b = _a, {
+      className,
+      themeOverride,
+      name,
+      children,
+      value,
+      defaultValue,
+      onChange,
+      variant = "horizontal",
+      spacing = "md",
+      color,
+      size
+    } = _b, others = __objRest$c(_b, [
+      "className",
+      "themeOverride",
+      "name",
+      "children",
+      "value",
+      "defaultValue",
+      "onChange",
+      "variant",
+      "spacing",
+      "color",
+      "size"
+    ]);
+    const [_value, setValue] = React.useState(value || defaultValue || "");
+    const finalValue = typeof value === "string" ? value : _value;
+    const classes = useStyles$a({spacing, variant, theme: useMantineTheme(themeOverride)});
+    const uuid = hooks.useId(name);
+    const handleChange = (v) => {
+      setValue(v);
+      typeof onChange === "function" && onChange(v);
+    };
+    const radios = React.Children.toArray(children).filter((item) => item.type === Radio).map((radio, index) => React.cloneElement(radio, {
+      key: index,
+      checked: finalValue === radio.props.value,
+      name: uuid,
+      color,
+      size,
+      onChange: (event) => handleChange(event.currentTarget.value)
+    }));
+    return /* @__PURE__ */ React__default.createElement(InputWrapper, __spreadValues$k({
+      labelElement: "div"
+    }, others), /* @__PURE__ */ React__default.createElement("div", {
+      role: "radiogroup",
+      className: classes.wrapper
+    }, radios));
+  }
+  RadioGroup.displayName = "@mantine/core/RadioGroup";
 
   var __defProp$j = Object.defineProperty;
+  var __defProps$c = Object.defineProperties;
+  var __getOwnPropDescs$c = Object.getOwnPropertyDescriptors;
   var __getOwnPropSymbols$j = Object.getOwnPropertySymbols;
   var __hasOwnProp$j = Object.prototype.hasOwnProperty;
   var __propIsEnum$j = Object.prototype.propertyIsEnumerable;
@@ -7295,76 +8036,114 @@
       }
     return a;
   };
-  var __objRest$c = (source, exclude) => {
-    var target = {};
-    for (var prop in source)
-      if (__hasOwnProp$j.call(source, prop) && exclude.indexOf(prop) < 0)
-        target[prop] = source[prop];
-    if (source != null && __getOwnPropSymbols$j)
-      for (var prop of __getOwnPropSymbols$j(source)) {
-        if (exclude.indexOf(prop) < 0 && __propIsEnum$j.call(source, prop))
-          target[prop] = source[prop];
-      }
-    return target;
+  var __spreadProps$c = (a, b) => __defProps$c(a, __getOwnPropDescs$c(b));
+  const WRAPPER_PADDING = 4;
+  const sizes$2 = {
+    xs: [3, 6],
+    sm: [5, 10],
+    md: [7, 14],
+    lg: [9, 16],
+    xl: [12, 20]
   };
-  function Radio(_a) {
-    var _b = _a, {
-      className,
-      themeOverride,
-      id,
-      children,
-      style,
-      size,
-      elementRef,
-      title,
-      disabled,
-      color
-    } = _b, others = __objRest$c(_b, [
-      "className",
-      "themeOverride",
-      "id",
-      "children",
-      "style",
-      "size",
-      "elementRef",
-      "title",
-      "disabled",
-      "color"
-    ]);
-    const classes = useStyles$a({color, size, theme: useMantineTheme(themeOverride)});
-    const uuid = hooks.useId(id);
-    return /* @__PURE__ */ React__default['default'].createElement("div", {
-      "data-mantine-radio": true,
-      className: cx(classes.wrapper, className),
-      style,
-      title
-    }, /* @__PURE__ */ React__default['default'].createElement("label", {
-      className: cx(classes.label, {[classes.labelDisabled]: disabled}),
-      htmlFor: uuid
-    }, /* @__PURE__ */ React__default['default'].createElement("input", __spreadValues$j({
-      ref: elementRef,
-      className: classes.radio,
-      type: "radio",
-      id: uuid,
-      disabled
-    }, others)), /* @__PURE__ */ React__default['default'].createElement("span", null, children)));
-  }
-  Radio.displayName = "@mantine/core/Radio";
-
-  var useStyles$9 = reactJss.createUseStyles({
-    wrapper: ({theme, spacing, variant}) => ({
-      display: "flex",
-      flexWrap: "wrap",
-      flexDirection: variant === "vertical" ? "column" : "row",
-      margin: getSizeValue({sizes: theme.spacing, size: spacing}) / 2 * -1,
-      marginTop: getSizeValue({sizes: theme.spacing, size: spacing}) / 4 * (variant === "vertical" ? 1 : -1),
-      "& [data-mantine-radio]": {
-        margin: getSizeValue({sizes: theme.spacing, size: spacing}) / 2,
-        marginTop: variant === "vertical" && getSizeValue({sizes: theme.spacing, size: spacing}) / 4,
-        marginBottom: variant === "vertical" && getSizeValue({sizes: theme.spacing, size: spacing}) / 4
+  var useStyles$9 = createMemoStyles({
+    input: ({theme}) => ({
+      height: 0,
+      width: 0,
+      position: "absolute",
+      overflow: "hidden",
+      whiteSpace: "nowrap",
+      opacity: 0,
+      "&:focus": {
+        outline: "none",
+        "& + $label": {
+          outline: "none",
+          boxShadow: `0 0 0 2px ${theme.colorScheme === "dark" ? theme.colors.dark[9] : theme.white}, 0 0 0 4px ${theme.colors[theme.primaryColor][5]}`
+        },
+        "&:focus:not(:focus-visible)": {
+          "& + $label": {
+            boxShadow: "none"
+          }
+        }
       }
+    }),
+    wrapper: ({theme, fullWidth, radius}) => ({
+      position: "relative",
+      display: fullWidth ? "flex" : "inline-flex",
+      backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[8] : theme.colors.gray[1],
+      borderRadius: getSizeValue({size: radius, sizes: theme.radius}),
+      overflow: "hidden",
+      padding: WRAPPER_PADDING
+    }),
+    controlActive: {
+      borderLeftColor: "transparent !important",
+      "& + $control": {
+        borderLeftColor: "transparent !important"
+      }
+    },
+    control: ({
+      theme,
+      reduceMotion,
+      transitionDuration,
+      transitionTimingFunction
+    }) => ({
+      position: "relative",
+      boxSizing: "border-box",
+      flex: 1,
+      zIndex: 2,
+      transition: `border-left-color ${reduceMotion ? 0 : transitionDuration}ms ${transitionTimingFunction || theme.transitionTimingFunction}`,
+      "&:not(:first-of-type)": {
+        borderLeft: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[3]}`
+      }
+    }),
+    label: ({
+      theme,
+      radius,
+      reduceMotion,
+      transitionDuration,
+      transitionTimingFunction,
+      size
+    }) => __spreadProps$c(__spreadValues$j(__spreadValues$j({}, getFocusStyles(theme)), getFontStyles(theme)), {
+      WebkitTapHighlightColor: "transparent",
+      borderRadius: getSizeValue({size: radius, sizes: theme.radius}),
+      fontWeight: 500,
+      fontSize: size in theme.fontSizes ? theme.fontSizes[size] : theme.fontSizes.sm,
+      cursor: "pointer",
+      display: "block",
+      textAlign: "center",
+      padding: sizes$2[size in sizes$2 ? size : "sm"],
+      whiteSpace: "nowrap",
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      color: theme.colorScheme === "dark" ? theme.colors.dark[1] : theme.colors.gray[7],
+      transition: `color ${reduceMotion ? 0 : transitionDuration}ms ${transitionTimingFunction || theme.transitionTimingFunction}`,
+      "&:hover": {
+        color: theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black
+      }
+    }),
+    labelActive: ({theme, color}) => ({
+      "&, &:hover": {
+        color: color in theme.colors || theme.colorScheme === "dark" ? theme.white : theme.black
+      }
+    }),
+    active: ({
+      theme,
+      color,
+      radius,
+      reduceMotion,
+      transitionDuration,
+      transitionTimingFunction
+    }) => ({
+      boxSizing: "border-box",
+      borderRadius: getSizeValue({size: radius, sizes: theme.radius}),
+      position: "absolute",
+      top: 4,
+      bottom: 4,
+      zIndex: 1,
+      boxShadow: color || theme.colorScheme === "dark" ? "none" : theme.shadows.xs,
+      transition: `transform ${reduceMotion ? 0 : transitionDuration}ms ${theme.transitionTimingFunction}, width ${reduceMotion ? 0 : transitionDuration / 2}ms ${transitionTimingFunction || theme.transitionTimingFunction}`,
+      backgroundColor: color in theme.colors ? hexToRgba(getThemeColor({theme, color, shade: 6}), theme.colorScheme === "dark" ? 0.55 : 1) : theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.white
     })
-  }, {link: true});
+  });
 
   var __defProp$i = Object.defineProperty;
   var __getOwnPropSymbols$i = Object.getOwnPropertySymbols;
@@ -7394,57 +8173,103 @@
       }
     return target;
   };
-  const RADIO_SIZES = sizes$2;
-  function RadioGroup(_a) {
+  function SegmentedControl(_a) {
     var _b = _a, {
       className,
       themeOverride,
+      data,
       name,
-      children,
       value,
-      defaultValue,
       onChange,
-      variant = "horizontal",
-      spacing = "md",
       color,
-      size
+      fullWidth,
+      radius = "sm",
+      size = "sm",
+      transitionDuration = 200,
+      transitionTimingFunction
     } = _b, others = __objRest$b(_b, [
       "className",
       "themeOverride",
+      "data",
       "name",
-      "children",
       "value",
-      "defaultValue",
       "onChange",
-      "variant",
-      "spacing",
       "color",
-      "size"
+      "fullWidth",
+      "radius",
+      "size",
+      "transitionDuration",
+      "transitionTimingFunction"
     ]);
-    const [_value, setValue] = React.useState(value || defaultValue || "");
-    const finalValue = typeof value === "string" ? value : _value;
-    const classes = useStyles$9({spacing, variant, theme: useMantineTheme(themeOverride)});
-    const uuid = hooks.useId(name);
-    const handleChange = (v) => {
-      setValue(v);
-      typeof onChange === "function" && onChange(v);
-    };
-    const radios = React.Children.toArray(children).filter((item) => item.type === Radio).map((radio, index) => React.cloneElement(radio, {
-      key: index,
-      checked: finalValue === radio.props.value,
-      name: uuid,
-      color,
+    const reduceMotion = hooks.useReducedMotion();
+    const theme = useMantineTheme(themeOverride);
+    const [shouldAnimate, setShouldAnimate] = React.useState(false);
+    const classes = useStyles$9({
+      theme,
       size,
-      onChange: (event) => handleChange(event.currentTarget.value)
-    }));
-    return /* @__PURE__ */ React__default['default'].createElement(InputWrapper, __spreadValues$i({
-      labelElement: "div"
-    }, others), /* @__PURE__ */ React__default['default'].createElement("div", {
-      role: "radiogroup",
-      className: classes.wrapper
-    }, radios));
+      fullWidth,
+      color,
+      radius,
+      reduceMotion: reduceMotion || !shouldAnimate,
+      transitionDuration,
+      transitionTimingFunction
+    });
+    const [activePosition, setActivePosition] = React.useState({width: 0, translate: 0});
+    const uuid = hooks.useId(name);
+    const refs = React.useRef({});
+    const wrapperRef = React.useRef(null);
+    React.useEffect(() => {
+      const observer = new ResizeObserver(() => {
+        if (value in refs.current && wrapperRef.current) {
+          const element = refs.current[value];
+          const rect = element.getBoundingClientRect();
+          setActivePosition({
+            width: rect.width,
+            translate: rect.x - wrapperRef.current.getBoundingClientRect().x - WRAPPER_PADDING
+          });
+          if (!shouldAnimate) {
+            setTimeout(() => {
+              setShouldAnimate(true);
+            }, 4);
+          }
+        }
+      });
+      observer.observe(wrapperRef.current);
+      return () => observer.disconnect();
+    }, [value]);
+    const controls = data.map((item) => /* @__PURE__ */ React__default.createElement("div", {
+      className: cx(classes.control, {[classes.controlActive]: value === item.value}),
+      key: item.value
+    }, /* @__PURE__ */ React__default.createElement("input", {
+      "data-mantine-radio": true,
+      className: classes.input,
+      type: "radio",
+      name: uuid,
+      value: item.value,
+      id: `${uuid}-${item.value}`,
+      checked: value === item.value,
+      onChange: () => onChange(item.value)
+    }), /* @__PURE__ */ React__default.createElement("label", {
+      "data-mantine-label": true,
+      className: cx(classes.label, {[classes.labelActive]: value === item.value}),
+      htmlFor: `${uuid}-${item.value}`,
+      ref: (node) => {
+        refs.current[item.value] = node;
+      }
+    }, item.label)));
+    return /* @__PURE__ */ React__default.createElement("div", __spreadValues$i({
+      className: cx(classes.wrapper, className),
+      ref: wrapperRef
+    }, others), !!value && /* @__PURE__ */ React__default.createElement("span", {
+      "data-mantine-active": true,
+      className: classes.active,
+      style: {
+        width: activePosition.width,
+        transform: `translateX(${activePosition.translate}px)`
+      }
+    }), controls);
   }
-  RadioGroup.displayName = "@mantine/core/RadioGroup";
+  SegmentedControl.displayName = "@mantine/core/SegmentedControl";
 
   var __defProp$h = Object.defineProperty;
   var __getOwnPropSymbols$h = Object.getOwnPropertySymbols;
@@ -7463,13 +8288,13 @@
     return a;
   };
   function ChevronIcon(props) {
-    return /* @__PURE__ */ React__default['default'].createElement("svg", __spreadValues$h({
+    return /* @__PURE__ */ React__default.createElement("svg", __spreadValues$h({
       width: "20",
       height: "20",
       viewBox: "0 0 15 15",
       fill: "none",
       xmlns: "http://www.w3.org/2000/svg"
-    }, props), /* @__PURE__ */ React__default['default'].createElement("path", {
+    }, props), /* @__PURE__ */ React__default.createElement("path", {
       d: "M3.13523 6.15803C3.3241 5.95657 3.64052 5.94637 3.84197 6.13523L7.5 9.56464L11.158 6.13523C11.3595 5.94637 11.6759 5.95657 11.8648 6.15803C12.0536 6.35949 12.0434 6.67591 11.842 6.86477L7.84197 10.6148C7.64964 10.7951 7.35036 10.7951 7.15803 10.6148L3.15803 6.86477C2.95657 6.67591 2.94637 6.35949 3.13523 6.15803Z",
       fill: "currentColor",
       fillRule: "evenodd",
@@ -7478,8 +8303,8 @@
   }
 
   var __defProp$g = Object.defineProperty;
-  var __defProps$a = Object.defineProperties;
-  var __getOwnPropDescs$a = Object.getOwnPropertyDescriptors;
+  var __defProps$b = Object.defineProperties;
+  var __getOwnPropDescs$b = Object.getOwnPropertyDescriptors;
   var __getOwnPropSymbols$g = Object.getOwnPropertySymbols;
   var __hasOwnProp$g = Object.prototype.hasOwnProperty;
   var __propIsEnum$g = Object.prototype.propertyIsEnumerable;
@@ -7495,7 +8320,7 @@
       }
     return a;
   };
-  var __spreadProps$a = (a, b) => __defProps$a(a, __getOwnPropDescs$a(b));
+  var __spreadProps$b = (a, b) => __defProps$b(a, __getOwnPropDescs$b(b));
   var __objRest$a = (source, exclude) => {
     var target = {};
     for (var prop in source)
@@ -7540,13 +8365,13 @@
     ]);
     const theme = useMantineTheme(themeOverride);
     const uuid = hooks.useId(id);
-    const options = data.map((item) => /* @__PURE__ */ React__default['default'].createElement("option", {
+    const options = data.map((item) => /* @__PURE__ */ React__default.createElement("option", {
       key: item.value,
       value: item.value,
       disabled: item.disabled
     }, item.label));
     if (placeholder) {
-      options.unshift(/* @__PURE__ */ React__default['default'].createElement("option", {
+      options.unshift(/* @__PURE__ */ React__default.createElement("option", {
         key: "placeholder",
         value: "",
         selected: true,
@@ -7554,10 +8379,10 @@
         hidden: true
       }, placeholder));
     }
-    const chevron = /* @__PURE__ */ React__default['default'].createElement(ChevronIcon, {
+    const chevron = /* @__PURE__ */ React__default.createElement(ChevronIcon, {
       style: {color: error ? theme.colors.red[6] : theme.colors.gray[6]}
     });
-    return /* @__PURE__ */ React__default['default'].createElement(InputWrapper, __spreadProps$a(__spreadValues$g({}, wrapperProps), {
+    return /* @__PURE__ */ React__default.createElement(InputWrapper, __spreadProps$b(__spreadValues$g({}, wrapperProps), {
       required,
       id: uuid,
       label,
@@ -7566,7 +8391,7 @@
       style,
       themeOverride,
       description
-    }), /* @__PURE__ */ React__default['default'].createElement(Input, __spreadProps$a(__spreadValues$g({}, others), {
+    }), /* @__PURE__ */ React__default.createElement(Input, __spreadProps$b(__spreadValues$g({}, others), {
       component: "select",
       invalid: !!error,
       style: inputStyle,
@@ -7582,7 +8407,7 @@
   }
   Select.displayName = "@mantine/core/Select";
 
-  var useStyles$8 = reactJss.createUseStyles({
+  var useStyles$8 = createMemoStyles({
     spoiler: {
       position: "relative"
     },
@@ -7592,7 +8417,7 @@
       transitionTimingFunction: "ease",
       transitionDuration: transitionDuration || 0
     })
-  }, {link: true});
+  });
 
   var __defProp$f = Object.defineProperty;
   var __getOwnPropSymbols$f = Object.getOwnPropertySymbols;
@@ -7653,16 +8478,16 @@
     React.useEffect(() => {
       setSpoilerState(maxHeight < contentRef.current.clientHeight);
     }, [maxHeight, children]);
-    return /* @__PURE__ */ React__default['default'].createElement("div", __spreadValues$f({
+    return /* @__PURE__ */ React__default.createElement("div", __spreadValues$f({
       className: cx(classes.spoiler, className)
-    }, others), /* @__PURE__ */ React__default['default'].createElement("div", {
+    }, others), /* @__PURE__ */ React__default.createElement("div", {
       className: classes.content,
       style: {
         maxHeight: !show ? maxHeight : contentRef.current && contentRef.current.clientHeight
       }
-    }, /* @__PURE__ */ React__default['default'].createElement("div", {
+    }, /* @__PURE__ */ React__default.createElement("div", {
       ref: contentRef
-    }, children)), spoiler && /* @__PURE__ */ React__default['default'].createElement(Button, {
+    }, children)), spoiler && /* @__PURE__ */ React__default.createElement(Button, {
       variant: "link",
       elementRef: controlRef,
       onClick: () => setShowState((opened) => !opened),
@@ -7672,8 +8497,8 @@
   Spoiler.displayName = "@mantine/core/Spoiler";
 
   var __defProp$e = Object.defineProperty;
-  var __defProps$9 = Object.defineProperties;
-  var __getOwnPropDescs$9 = Object.getOwnPropertyDescriptors;
+  var __defProps$a = Object.defineProperties;
+  var __getOwnPropDescs$a = Object.getOwnPropertyDescriptors;
   var __getOwnPropSymbols$e = Object.getOwnPropertySymbols;
   var __hasOwnProp$e = Object.prototype.hasOwnProperty;
   var __propIsEnum$e = Object.prototype.propertyIsEnumerable;
@@ -7689,7 +8514,7 @@
       }
     return a;
   };
-  var __spreadProps$9 = (a, b) => __defProps$9(a, __getOwnPropDescs$9(b));
+  var __spreadProps$a = (a, b) => __defProps$a(a, __getOwnPropDescs$a(b));
   const switchHeight = {
     xs: 14,
     sm: 18,
@@ -7715,7 +8540,7 @@
     acc[size] = {width: switchWidth[size], height: switchHeight[size]};
     return acc;
   }, {});
-  var useStyles$7 = reactJss.createUseStyles({
+  var useStyles$7 = createMemoStyles({
     wrapper: {
       display: "flex",
       alignItems: "center"
@@ -7723,12 +8548,12 @@
     switch: ({size, radius, theme, reduceMotion, color}) => {
       const handleSize = getSizeValue({size, sizes: handleSizes});
       const borderRadius = getSizeValue({size: radius, sizes: theme.radius});
-      return __spreadProps$9(__spreadValues$e({}, getFocusStyles(theme)), {
+      return __spreadProps$a(__spreadValues$e({}, getFocusStyles(theme)), {
         WebkitTapHighlightColor: "transparent",
         position: "relative",
         borderRadius,
-        backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[3] : theme.colors.gray[2],
-        border: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[3] : theme.colors.gray[3]}`,
+        backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[2],
+        border: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[3]}`,
         height: getSizeValue({size, sizes: switchHeight}),
         width: getSizeValue({size, sizes: switchWidth}),
         minWidth: getSizeValue({size, sizes: switchWidth}),
@@ -7749,7 +8574,7 @@
           backgroundColor: theme.white,
           height: handleSize,
           width: handleSize,
-          border: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[3] : theme.colors.gray[3]}`,
+          border: `1px solid ${theme.colorScheme === "dark" ? theme.white : theme.colors.gray[3]}`,
           transition: reduceMotion ? "none" : `transform 150ms ${theme.transitionTimingFunction}`
         },
         "&:checked": {
@@ -7757,7 +8582,7 @@
           borderColor: getThemeColor({theme, color, shade: 6}),
           "&::before": {
             transform: `translateX(${getSizeValue({size, sizes: switchWidth}) - getSizeValue({size, sizes: handleSizes}) - 6}px)`,
-            borderColor: getThemeColor({theme, color, shade: 6})
+            borderColor: theme.white
           }
         },
         "&:disabled": {
@@ -7771,16 +8596,18 @@
         }
       });
     },
-    label: ({theme, size}) => __spreadProps$9(__spreadValues$e({}, getFontStyles(theme)), {
+    label: ({theme, size}) => __spreadProps$a(__spreadValues$e({}, getFontStyles(theme)), {
       WebkitTapHighlightColor: "transparent",
       fontSize: getSizeValue({size, sizes: theme.fontSizes}),
       fontFamily: theme.fontFamily,
       paddingLeft: theme.spacing.sm,
       color: theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black
     })
-  }, {link: true});
+  });
 
   var __defProp$d = Object.defineProperty;
+  var __defProps$9 = Object.defineProperties;
+  var __getOwnPropDescs$9 = Object.getOwnPropertyDescriptors;
   var __getOwnPropSymbols$d = Object.getOwnPropertySymbols;
   var __hasOwnProp$d = Object.prototype.hasOwnProperty;
   var __propIsEnum$d = Object.prototype.propertyIsEnumerable;
@@ -7796,6 +8623,7 @@
       }
     return a;
   };
+  var __spreadProps$9 = (a, b) => __defProps$9(a, __getOwnPropDescs$9(b));
   var __objRest$8 = (source, exclude) => {
     var target = {};
     for (var prop in source)
@@ -7822,7 +8650,8 @@
       wrapperProps,
       inputStyle,
       inputClassName,
-      elementRef
+      elementRef,
+      children
     } = _b, others = __objRest$8(_b, [
       "className",
       "color",
@@ -7835,7 +8664,8 @@
       "wrapperProps",
       "inputStyle",
       "inputClassName",
-      "elementRef"
+      "elementRef",
+      "children"
     ]);
     const classes = useStyles$7({
       size,
@@ -7845,16 +8675,16 @@
       theme: useMantineTheme(themeOverride)
     });
     const uuid = hooks.useId(id);
-    return /* @__PURE__ */ React__default['default'].createElement("div", __spreadValues$d({
+    return /* @__PURE__ */ React__default.createElement("div", __spreadValues$d({
       className: cx(classes.wrapper, className),
       style
-    }, wrapperProps), /* @__PURE__ */ React__default['default'].createElement("input", __spreadValues$d({
+    }, wrapperProps), /* @__PURE__ */ React__default.createElement("input", __spreadProps$9(__spreadValues$d({}, others), {
       id: uuid,
       ref: elementRef,
       type: "checkbox",
       className: cx(classes.switch, inputClassName),
       style: inputStyle
-    }, others)), label && /* @__PURE__ */ React__default['default'].createElement("label", {
+    })), label && /* @__PURE__ */ React__default.createElement("label", {
       className: classes.label,
       htmlFor: uuid
     }, label));
@@ -7880,7 +8710,7 @@
     return a;
   };
   var __spreadProps$8 = (a, b) => __defProps$8(a, __getOwnPropDescs$8(b));
-  var useStyles$6 = reactJss.createUseStyles({
+  var useStyles$6 = createMemoStyles({
     striped: {},
     hover: {},
     table: ({theme, captionSide}) => __spreadProps$8(__spreadValues$c({}, getFontStyles(theme)), {
@@ -7917,13 +8747,13 @@
         borderBottom: "none"
       },
       "&$striped tbody tr:nth-of-type(odd)": {
-        backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[8] : theme.colors.gray[0]
+        backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.colors.gray[0]
       },
       "&$hover tbody tr:hover": {
-        backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[1]
+        backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[1]
       }
     })
-  }, {link: true});
+  });
 
   var __defProp$b = Object.defineProperty;
   var __defProps$7 = Object.defineProperties;
@@ -7973,7 +8803,7 @@
       "captionSide"
     ]);
     const classes = useStyles$6({captionSide, theme: useMantineTheme(themeOverride)});
-    return /* @__PURE__ */ React__default['default'].createElement("table", __spreadProps$7(__spreadValues$b({}, others), {
+    return /* @__PURE__ */ React__default.createElement("table", __spreadProps$7(__spreadValues$b({}, others), {
       className: cx(classes.table, {[classes.striped]: striped, [classes.hover]: highlightOnHover}, className)
     }), children);
   }
@@ -8003,7 +8833,7 @@
     return a;
   };
   var __spreadProps$6 = (a, b) => __defProps$6(a, __getOwnPropDescs$6(b));
-  var useStyles$5 = reactJss.createUseStyles({
+  var useStyles$5 = createMemoStyles({
     tab: ({theme, reduceMotion}) => __spreadProps$6(__spreadValues$a(__spreadValues$a({}, getFontStyles(theme)), getFocusStyles(theme)), {
       WebkitTapHighlightColor: "transparent",
       boxSizing: "border-box",
@@ -8097,27 +8927,26 @@
       color: overrideColor || color,
       theme: useMantineTheme(themeOverride)
     });
-    return /* @__PURE__ */ React__default['default'].createElement("button", __spreadProps$5(__spreadValues$9(__spreadValues$9({}, others), props), {
+    return /* @__PURE__ */ React__default.createElement("button", __spreadProps$5(__spreadValues$9(__spreadValues$9({}, others), props), {
       "data-mantine-tab": true,
-      "data-mantine-composable": true,
       tabIndex: active ? 0 : -1,
       className: cx(classes.tab, {[classes.tabActive]: active}, className),
       type: "button",
       role: "tab",
       "aria-selected": active,
       ref: hooks.useMergedRef(elementRef, tabProps.elementRef)
-    }), /* @__PURE__ */ React__default['default'].createElement("div", {
+    }), /* @__PURE__ */ React__default.createElement("div", {
       className: classes.tabInner
-    }, icon && /* @__PURE__ */ React__default['default'].createElement("div", {
+    }, icon && /* @__PURE__ */ React__default.createElement("div", {
       "data-mantine-icon": true,
       className: classes.tabIcon
-    }, icon), label && /* @__PURE__ */ React__default['default'].createElement("div", {
+    }, icon), label && /* @__PURE__ */ React__default.createElement("div", {
       "data-mantine-label": true
     }, label)));
   }
   TabControl.displayName = "@mantine/core/TabControl";
 
-  var useStyles$4 = reactJss.createUseStyles({
+  var useStyles$4 = createMemoStyles({
     tabs: ({theme}) => ({
       borderBottom: `2px solid ${theme.colorScheme === "dark" ? theme.colors.dark[3] : theme.colors.gray[3]}`
     }),
@@ -8127,7 +8956,7 @@
     body: ({theme}) => ({
       paddingTop: theme.spacing.sm
     })
-  }, {link: true});
+  });
 
   var __defProp$8 = Object.defineProperty;
   var __getOwnPropSymbols$8 = Object.getOwnPropertySymbols;
@@ -8206,7 +9035,7 @@
     ]);
     const classes = useStyles$4({theme: useMantineTheme(themeOverride)});
     const controlRefs = React.useRef({});
-    const tabs = React__default['default'].Children.toArray(children).filter((item) => item.type === Tab);
+    const tabs = React__default.Children.toArray(children).filter((item) => item.type === Tab);
     const [_activeTab, _setActiveTab] = React.useState(typeof initialTab === "number" ? initialTab : findInitialTab(tabs));
     const activeTab = clamp(typeof active === "number" ? active : _activeTab, 0, tabs.length - 1);
     const setActiveTab = (tabIndex) => {
@@ -8227,7 +9056,7 @@
         controlRefs.current[previousTab].focus();
       }
     };
-    const panes = tabs.map((tab, index) => /* @__PURE__ */ React__default['default'].createElement(TabControl, {
+    const panes = tabs.map((tab, index) => /* @__PURE__ */ React__default.createElement(TabControl, {
       key: index,
       active: activeTab === index,
       tabProps: tab.props,
@@ -8239,16 +9068,16 @@
       onClick: () => activeTab !== index && setActiveTab(index)
     }));
     const content = tabs[activeTab].props.children;
-    return /* @__PURE__ */ React__default['default'].createElement("div", __spreadValues$8({}, others), /* @__PURE__ */ React__default['default'].createElement("div", {
+    return /* @__PURE__ */ React__default.createElement("div", __spreadValues$8({}, others), /* @__PURE__ */ React__default.createElement("div", {
       className: classes.tabs
-    }, /* @__PURE__ */ React__default['default'].createElement(ElementsGroup, {
+    }, /* @__PURE__ */ React__default.createElement(Group, {
       className: classes.tabsInner,
       role: "tablist",
       "aria-orientation": "horizontal",
       spacing: 0,
       position,
       grow
-    }, panes)), content && /* @__PURE__ */ React__default['default'].createElement("div", {
+    }, panes)), content && /* @__PURE__ */ React__default.createElement("div", {
       "data-mantine-tab-content": true,
       className: classes.body,
       role: "tabpanel"
@@ -8570,7 +9399,7 @@
     ]);
     const uuid = hooks.useId(id);
     const theme = useMantineTheme(themeOverride);
-    return /* @__PURE__ */ React__default['default'].createElement(InputWrapper, __spreadValues$7({
+    return /* @__PURE__ */ React__default.createElement(InputWrapper, __spreadValues$7({
       label,
       error,
       id: uuid,
@@ -8578,7 +9407,7 @@
       required,
       style,
       className
-    }, wrapperProps), autosize ? /* @__PURE__ */ React__default['default'].createElement(Input, __spreadValues$7({
+    }, wrapperProps), autosize ? /* @__PURE__ */ React__default.createElement(Input, __spreadValues$7({
       required,
       component: index,
       invalid: !!error,
@@ -8592,7 +9421,7 @@
       }, inputStyle), {
         height: void 0
       })
-    }, others)) : /* @__PURE__ */ React__default['default'].createElement(Input, __spreadValues$7({
+    }, others)) : /* @__PURE__ */ React__default.createElement(Input, __spreadValues$7({
       component: "textarea",
       required,
       id: uuid,
@@ -8614,26 +9443,28 @@
     lg: 32,
     xl: 40
   };
-  var useStyles$3 = reactJss.createUseStyles({
-    themeIcon: ({theme, color, size, radius, variant}) => {
+  var useStyles$3 = createMemoStyles({
+    light: ({theme, color}) => ({
+      color: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 3 : 9}),
+      backgroundColor: hexToRgba(getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 9 : 1}), theme.colorScheme === "dark" ? 0.3 : 1)
+    }),
+    filled: ({theme, color}) => ({
+      color: theme.colorScheme === "dark" ? getThemeColor({theme, color, shade: 0}) : theme.white,
+      backgroundColor: hexToRgba(getThemeColor({theme, color, shade: 7}), theme.colorScheme === "dark" ? 0.65 : 1)
+    }),
+    themeIcon: ({theme, size, radius}) => {
       const iconSize = getSizeValue({size, sizes});
       return {
         display: "inline-flex",
         alignItems: "center",
         justifyContent: "center",
         boxSizing: "border-box",
-        backgroundColor: getThemeColor({
-          theme,
-          color,
-          shade: variant === "filled" ? theme.colorScheme === "dark" ? 4 : 6 : 1
-        }),
-        color: variant === "filled" ? theme.colorScheme === "dark" ? theme.colors.dark[9] : theme.white : getThemeColor({theme, color, shade: 9}),
         width: iconSize,
         height: iconSize,
         borderRadius: getSizeValue({size: radius, sizes: theme.radius})
       };
     }
-  }, {link: true});
+  });
 
   var __defProp$6 = Object.defineProperty;
   var __getOwnPropSymbols$6 = Object.getOwnPropertySymbols;
@@ -8683,15 +9514,13 @@
       "themeOverride"
     ]);
     const classes = useStyles$3({
-      variant,
+      theme: useMantineTheme(themeOverride),
       radius,
       color,
-      size,
-      theme: useMantineTheme(themeOverride)
+      size
     });
-    return /* @__PURE__ */ React__default['default'].createElement("div", __spreadValues$6({
-      "data-mantine-composable": true,
-      className: cx(classes.themeIcon, className)
+    return /* @__PURE__ */ React__default.createElement("div", __spreadValues$6({
+      className: cx(classes.themeIcon, classes[variant], className)
     }, others), children);
   }
   ThemeIcon.displayName = "@mantine/core/ThemeIcon";
@@ -8715,7 +9544,7 @@
     return a;
   };
   var __spreadProps$3 = (a, b) => __defProps$3(a, __getOwnPropDescs$3(b));
-  var useStyles$2 = reactJss.createUseStyles({
+  var useStyles$2 = createMemoStyles({
     title: ({theme, element}) => __spreadProps$3(__spreadValues$5({}, getFontStyles(theme)), {
       fontFamily: theme.headings.fontFamily,
       fontWeight: theme.headings.fontWeight,
@@ -8727,7 +9556,7 @@
         fontSize: typeof theme.headings.sizes[element].fontSize === "number" && theme.headings.sizes[element].fontSize / 1.3
       }
     })
-  }, {link: true});
+  });
 
   var __defProp$4 = Object.defineProperty;
   var __getOwnPropSymbols$4 = Object.getOwnPropertySymbols;
@@ -8764,7 +9593,7 @@
     }
     const element = `h${order}`;
     const classes = useStyles$2({theme: useMantineTheme(themeOverride), element});
-    return React__default['default'].createElement(element, __spreadValues$4({
+    return React__default.createElement(element, __spreadValues$4({
       className: cx(classes.title, className)
     }, others), children);
   }
@@ -8813,7 +9642,7 @@
       top: 0
     }
   };
-  var useStyles$1 = reactJss.createUseStyles({
+  var useStyles$1 = createMemoStyles({
     withArrow: {},
     center: {},
     start: {},
@@ -8927,7 +9756,7 @@
         bottom: arrowSize
       }
     })
-  }, {link: true});
+  });
 
   var __defProp$2 = Object.defineProperty;
   var __defProps$1 = Object.defineProperties;
@@ -9029,28 +9858,28 @@
         setOpened(false);
       }
     };
-    return /* @__PURE__ */ React__default['default'].createElement("div", __spreadValues$2({
+    return /* @__PURE__ */ React__default.createElement("div", __spreadValues$2({
       className: cx(classes.wrapper, className),
       ref: tooltipRef
-    }, others), /* @__PURE__ */ React__default['default'].createElement(Transition, {
+    }, others), /* @__PURE__ */ React__default.createElement(Transition, {
       mounted: visible,
       transition,
       duration,
       timingFunction: transitionTimingFunction
-    }, (transitionStyles) => /* @__PURE__ */ React__default['default'].createElement("div", {
+    }, (transitionStyles) => /* @__PURE__ */ React__default.createElement("div", {
       id: tooltipId,
       role: "tooltip",
       style: {zIndex, width, pointerEvents: allowPointerEvents ? "all" : "none"},
       "data-mantine-tooltip": true,
       className: cx(classes.tooltip, classes[placement], classes[position]),
       ref: tooltipRef
-    }, /* @__PURE__ */ React__default['default'].createElement("div", {
+    }, /* @__PURE__ */ React__default.createElement("div", {
       "data-mantine-tooltip-inner": true,
       className: cx(classes.tooltipInner, {
         [classes.withArrow]: withArrow
       }),
       style: __spreadProps$1(__spreadValues$2({}, transitionStyles), {whiteSpace: wrapLines ? "normal" : "nowrap"})
-    }, label))), /* @__PURE__ */ React__default['default'].createElement("div", {
+    }, label))), /* @__PURE__ */ React__default.createElement("div", {
       onMouseEnter: handleOpen,
       onMouseLeave: handleClose
     }, children));
@@ -9076,7 +9905,7 @@
     return a;
   };
   var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-  var useStyles = reactJss.createUseStyles({
+  var useStyles = createMemoStyles({
     innerHtml: ({theme}) => {
       const headings = Object.keys(theme.headings.sizes).reduce((acc, h) => {
         acc[`& ${h}`] = __spreadProps(__spreadValues$1({
@@ -9130,7 +9959,9 @@
           marginBottom: theme.spacing.md,
           overflowX: "auto",
           fontFamily: theme.fontFamilyMonospace,
-          backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[9] : theme.colors.gray[0]
+          fontSize: theme.fontSizes.sm,
+          borderRadius: theme.radius.sm,
+          backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[8] : theme.colors.gray[0]
         },
         "& code": {
           lineHeight: theme.lineHeight,
@@ -9188,7 +10019,7 @@
           borderTopRightRadius: theme.radius.sm,
           borderBottomRightRadius: theme.radius.sm,
           padding: [theme.spacing.md, theme.spacing.lg],
-          backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[9] : theme.colors.gray[0],
+          backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.colors.gray[0],
           color: theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black,
           borderLeft: `3px solid ${getThemeColor({
           theme,
@@ -9206,7 +10037,7 @@
         }
       });
     }
-  }, {link: true});
+  });
 
   var __defProp = Object.defineProperty;
   var __getOwnPropSymbols = Object.getOwnPropertySymbols;
@@ -9245,7 +10076,7 @@
       "themeOverride"
     ]);
     const classes = useStyles({theme: useMantineTheme(themeOverride)});
-    return /* @__PURE__ */ React__default['default'].createElement("div", __spreadValues({
+    return /* @__PURE__ */ React__default.createElement("div", __spreadValues({
       className: cx(classes.innerHtml, className)
     }, others));
   }
@@ -9272,16 +10103,21 @@
   exports.CardsGrid = CardsGrid;
   exports.Checkbox = Checkbox;
   exports.Code = Code;
+  exports.Col = Col;
   exports.ColorSwatch = ColorSwatch;
   exports.Container = Container;
   exports.DEFAULT_THEME = DEFAULT_THEME;
+  exports.DIVIDER_SIZES = DIVIDER_SIZES;
   exports.DRAWER_SIZES = DRAWER_SIZES;
+  exports.Divider = Divider;
   exports.Drawer = Drawer;
-  exports.ElementsGroup = ElementsGroup;
+  exports.ElementsGroup = Group;
+  exports.Grid = Grid;
+  exports.Group = Group;
   exports.GroupedTransition = GroupedTransition;
-  exports.HR_SIZES = HR_SIZES;
+  exports.HR_SIZES = DIVIDER_SIZES;
   exports.Highlight = Highlight;
-  exports.Hr = Hr;
+  exports.Hr = Divider;
   exports.Image = Image;
   exports.Input = Input;
   exports.InputWrapper = InputWrapper;
@@ -9302,12 +10138,14 @@
   exports.PROGRESS_SIZES = PROGRESS_SIZES;
   exports.Paper = Paper;
   exports.PasswordInput = PasswordInput;
+  exports.Popover = Popover;
   exports.Portal = Portal;
   exports.Progress = Progress;
   exports.RADIO_SIZES = RADIO_SIZES;
   exports.Radio = Radio;
   exports.RadioGroup = RadioGroup;
   exports.SWITCH_SIZES = SWITCH_SIZES;
+  exports.SegmentedControl = SegmentedControl;
   exports.Select = Select;
   exports.Spoiler = Spoiler;
   exports.Switch = Switch;
@@ -9323,11 +10161,15 @@
   exports.Tooltip = Tooltip;
   exports.Transition = Transition;
   exports.TypographyStylesProvider = TypographyStylesProvider;
+  exports.createMemoStyles = createMemoStyles;
   exports.getFocusStyles = getFocusStyles;
   exports.getFontStyles = getFontStyles;
   exports.getSizeValue = getSizeValue;
   exports.getThemeColor = getThemeColor;
+  exports.hexToRgba = hexToRgba;
+  exports.randomId = randomId;
   exports.theming = theming;
+  exports.upperFirst = upperFirst;
   exports.useMantineTheme = useMantineTheme;
 
   Object.defineProperty(exports, '__esModule', { value: true });

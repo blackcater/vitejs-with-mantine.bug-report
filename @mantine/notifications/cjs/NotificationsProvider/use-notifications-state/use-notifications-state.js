@@ -3,6 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var hooks = require('@mantine/hooks');
+var core = require('@mantine/core');
 
 var __defProp = Object.defineProperty;
 var __defProps = Object.defineProperties;
@@ -29,7 +30,7 @@ function useNotificationsState({limit}) {
     limit
   });
   const showNotification = (notification) => {
-    const id = notification.id || hooks.randomId();
+    const id = notification.id || core.randomId();
     update((notifications) => {
       if (notification.id && notifications.some((n) => n.id === notification.id)) {
         return notifications;

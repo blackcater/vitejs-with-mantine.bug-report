@@ -7,7 +7,7 @@ var cx = require('clsx');
 var theme = require('@mantine/theme');
 var Input_styles = require('./Input.styles.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var cx__default = /*#__PURE__*/_interopDefaultLegacy(cx);
@@ -81,25 +81,25 @@ function Input(_a) {
   ]);
   const theme$1 = theme.useMantineTheme(themeOverride);
   const classes = Input_styles['default']({radius, theme: theme$1});
-  return /* @__PURE__ */ React__default['default'].createElement("div", __spreadValues({
-    className: cx__default['default'](classes.inputWrapper, {[classes.invalid]: invalid}, classes[`${variant}Variant`], className),
+  return /* @__PURE__ */ React__default.createElement("div", __spreadValues({
+    className: cx__default(classes.inputWrapper, {[classes.invalid]: invalid}, classes[`${variant}Variant`], className),
     style
-  }, wrapperProps), icon && /* @__PURE__ */ React__default['default'].createElement("div", {
+  }, wrapperProps), icon && /* @__PURE__ */ React__default.createElement("div", {
     "data-mantine-icon": true,
     className: classes.icon
-  }, icon), /* @__PURE__ */ React__default['default'].createElement(Element, __spreadProps(__spreadValues({}, others), {
+  }, icon), /* @__PURE__ */ React__default.createElement(Element, __spreadProps(__spreadValues({}, others), {
     "data-mantine-input": true,
     ref: elementRef,
     "aria-required": required,
     "aria-invalid": invalid,
-    className: cx__default['default']({[classes.withIcon]: icon}, classes.input, inputClassName),
+    className: cx__default({[classes.withIcon]: icon}, classes.input, inputClassName),
     style: __spreadValues({
       paddingRight: rightSection ? rightSectionWidth : theme$1.spacing.md
     }, inputStyle)
-  })), rightSection && /* @__PURE__ */ React__default['default'].createElement("div", __spreadProps(__spreadValues({}, rightSectionProps), {
+  })), rightSection && /* @__PURE__ */ React__default.createElement("div", __spreadProps(__spreadValues({}, rightSectionProps), {
     "data-mantine-input-section": true,
     style: __spreadProps(__spreadValues({}, rightSectionProps.style), {width: rightSectionWidth}),
-    className: cx__default['default'](classes.rightSection, rightSectionProps.className)
+    className: cx__default(classes.rightSection, rightSectionProps.className)
   }), rightSection));
 }
 Input.displayName = "@mantine/core/Input";

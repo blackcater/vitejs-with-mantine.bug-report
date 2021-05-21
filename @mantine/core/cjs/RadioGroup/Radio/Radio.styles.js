@@ -2,7 +2,6 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var reactJss = require('react-jss');
 var theme = require('@mantine/theme');
 
 var __defProp = Object.defineProperty;
@@ -31,7 +30,7 @@ const sizes = {
   lg: 26,
   xl: 36
 };
-var useStyles = reactJss.createUseStyles({
+var useStyles = theme.createMemoStyles({
   labelDisabled: {},
   wrapper: {
     display: "flex",
@@ -39,8 +38,8 @@ var useStyles = reactJss.createUseStyles({
     WebkitTapHighlightColor: "transparent"
   },
   radio: ({theme: theme$1, size, color}) => __spreadProps(__spreadValues({}, theme.getFocusStyles(theme$1)), {
-    backgroundColor: theme$1.colorScheme === "dark" ? theme$1.colors.dark[3] : theme$1.colors.gray[0],
-    border: `1px solid ${theme$1.colorScheme === "dark" ? theme$1.colors.dark[3] : theme$1.colors.gray[4]}`,
+    backgroundColor: theme$1.colorScheme === "dark" ? theme$1.colors.dark[4] : theme$1.colors.gray[0],
+    border: `1px solid ${theme$1.colorScheme === "dark" ? theme$1.colors.dark[4] : theme$1.colors.gray[4]}`,
     position: "relative",
     appearance: "none",
     width: theme.getSizeValue({sizes, size}),
@@ -65,8 +64,8 @@ var useStyles = reactJss.createUseStyles({
       }
     },
     "&:disabled": {
-      borderColor: theme$1.colorScheme === "dark" ? theme$1.colors.dark[4] : theme$1.colors.gray[4],
-      backgroundColor: theme$1.colorScheme === "dark" ? theme$1.colors.dark[4] : theme$1.colors.gray[1],
+      borderColor: theme$1.colorScheme === "dark" ? theme$1.colors.dark[5] : theme$1.colors.gray[4],
+      backgroundColor: theme$1.colorScheme === "dark" ? theme$1.colors.dark[5] : theme$1.colors.gray[1],
       "&::before": {
         backgroundColor: theme$1.colorScheme === "dark" ? theme$1.colors.dark[6] : theme$1.colors.gray[4]
       }
@@ -82,7 +81,7 @@ var useStyles = reactJss.createUseStyles({
       color: theme$1.colorScheme === "dark" ? theme$1.colors.dark[3] : theme$1.colors.gray[5]
     }
   })
-}, {link: true});
+});
 
 exports.default = useStyles;
 exports.sizes = sizes;

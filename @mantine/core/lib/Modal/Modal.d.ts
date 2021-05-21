@@ -39,7 +39,8 @@ export interface ModalProps extends DefaultProps, Omit<React.ComponentPropsWitho
     /** id base, used to generate ids to connect modal title and body with aria- attributes, defaults to random id */
     id?: string;
 }
-export declare function Modal({ className, opened, themeOverride, title, onClose, children, hideCloseButton, overlayOpacity, size, transitionDuration, closeButtonLabel, overlayColor, zIndex, overflow, transition, id, ...others }: ModalProps): JSX.Element;
+export declare function MantineModal({ className, opened, themeOverride, title, onClose, children, hideCloseButton, overlayOpacity, size, transitionDuration, closeButtonLabel, overlayColor, zIndex, overflow, transition, id, ...others }: ModalProps): JSX.Element;
+export declare function Modal(props: React.ComponentPropsWithoutRef<typeof MantineModal>): JSX.Element;
 export declare namespace Modal {
     var displayName: string;
 }

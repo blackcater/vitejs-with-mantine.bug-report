@@ -2,7 +2,6 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var reactJss = require('react-jss');
 var core = require('@mantine/core');
 
 var __defProp = Object.defineProperty;
@@ -24,10 +23,10 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-var useStyles = reactJss.createUseStyles({
+var useStyles = core.createMemoStyles({
   tagEdit: ({theme}) => ({
-    border: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[2]}`,
-    backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[8] : theme.white,
+    border: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.colors.gray[2]}`,
+    backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.white,
     paddingTop: 10,
     paddingBottom: 10,
     position: "absolute",
@@ -62,7 +61,7 @@ var useStyles = reactJss.createUseStyles({
     cursor: "pointer",
     marginTop: 10,
     "&:hover, &:focus": {
-      backgroundColor: theme.colorScheme === "dark" ? theme.colors.red[9] : theme.colors.red[0],
+      backgroundColor: theme.colorScheme === "dark" ? core.hexToRgba(theme.colors.red[9], 0.4) : theme.colors.red[0],
       color: theme.colorScheme === "dark" ? theme.colors.red[0] : theme.colors.red[7]
     }
   }),
@@ -100,7 +99,7 @@ var useStyles = reactJss.createUseStyles({
     alignItems: "center",
     flex: 1
   }
-}, {link: true});
+});
 
 exports.default = useStyles;
 //# sourceMappingURL=TagEdit.styles.js.map

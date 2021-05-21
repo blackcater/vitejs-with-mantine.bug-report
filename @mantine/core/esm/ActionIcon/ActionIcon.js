@@ -44,7 +44,8 @@ function ActionIcon(_a) {
     size = "md",
     variant = "hover",
     themeOverride,
-    elementRef
+    elementRef,
+    component: Element = "button"
   } = _b, others = __objRest(_b, [
     "className",
     "color",
@@ -53,7 +54,8 @@ function ActionIcon(_a) {
     "size",
     "variant",
     "themeOverride",
-    "elementRef"
+    "elementRef",
+    "component"
   ]);
   const classes = useStyles({
     size,
@@ -61,8 +63,7 @@ function ActionIcon(_a) {
     color,
     theme: useMantineTheme(themeOverride)
   });
-  return /* @__PURE__ */ React.createElement("button", __spreadProps(__spreadValues({}, others), {
-    "data-mantine-composable": true,
+  return /* @__PURE__ */ React.createElement(Element, __spreadProps(__spreadValues({}, others), {
     className: cx(classes.actionIcon, classes[variant], className),
     type: "button",
     ref: elementRef

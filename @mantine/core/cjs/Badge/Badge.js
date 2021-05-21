@@ -7,7 +7,7 @@ var cx = require('clsx');
 var theme = require('@mantine/theme');
 var Badge_styles = require('./Badge.styles.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var cx__default = /*#__PURE__*/_interopDefaultLegacy(cx);
@@ -77,15 +77,14 @@ function Badge(_a) {
     radius,
     theme: theme.useMantineTheme(themeOverride)
   });
-  return /* @__PURE__ */ React__default['default'].createElement(Component, __spreadProps(__spreadValues({}, others), {
-    "data-mantine-composable": true,
-    className: cx__default['default'](classes.badge, classes[variant], className)
-  }), leftSection && /* @__PURE__ */ React__default['default'].createElement("span", {
+  return /* @__PURE__ */ React__default.createElement(Component, __spreadProps(__spreadValues({}, others), {
+    className: cx__default(classes.badge, classes[variant], className)
+  }), leftSection && /* @__PURE__ */ React__default.createElement("span", {
     "data-mantine-badge-left": true,
     className: classes.leftSection
-  }, leftSection), /* @__PURE__ */ React__default['default'].createElement("span", {
+  }, leftSection), /* @__PURE__ */ React__default.createElement("span", {
     className: classes.inner
-  }, children), rightSection && /* @__PURE__ */ React__default['default'].createElement("span", {
+  }, children), rightSection && /* @__PURE__ */ React__default.createElement("span", {
     "data-mantine-badge-right": true,
     className: classes.rightSection
   }, rightSection));

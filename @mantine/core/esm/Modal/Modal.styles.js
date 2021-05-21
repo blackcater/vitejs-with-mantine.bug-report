@@ -1,5 +1,4 @@
-import { createUseStyles } from 'react-jss';
-import { getSizeValue } from '@mantine/theme';
+import { createMemoStyles, getSizeValue } from '@mantine/theme';
 
 const sizes = {
   xs: 320,
@@ -9,7 +8,7 @@ const sizes = {
   xl: 780,
   full: "100%"
 };
-var useStyles = createUseStyles({
+var useStyles = createMemoStyles({
   wrapper: {
     position: "fixed",
     top: 0,
@@ -38,7 +37,8 @@ var useStyles = createUseStyles({
   modal: ({theme, size}) => ({
     width: getSizeValue({sizes, size}),
     padding: theme.spacing.lg,
-    outline: 0
+    outline: 0,
+    backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white
   }),
   header: ({theme}) => ({
     display: "flex",
@@ -51,7 +51,7 @@ var useStyles = createUseStyles({
     overflowY: overflow === "inside" && "auto",
     wordBreak: "break-word"
   })
-}, {link: true});
+});
 
 export default useStyles;
 export { sizes };

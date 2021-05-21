@@ -12,7 +12,7 @@ var ActionIcon = require('../ActionIcon/ActionIcon.js');
 var CloseIcon = require('../Modal/CloseIcon.js');
 var Notification_styles = require('./Notification.styles.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var cx__default = /*#__PURE__*/_interopDefaultLegacy(cx);
@@ -73,37 +73,37 @@ function Notification(_a) {
     "themeOverride"
   ]);
   const classes = Notification_styles['default']({color, disallowClose, theme: theme.useMantineTheme(themeOverride)});
-  return /* @__PURE__ */ React__default['default'].createElement(Paper.Paper, __spreadValues({
+  return /* @__PURE__ */ React__default.createElement(Paper.Paper, __spreadValues({
     shadow: "lg",
     padding: "sm",
-    className: cx__default['default'](classes.notification, {[classes.withIcon]: icon || loading}, className),
+    className: cx__default(classes.notification, {[classes.withIcon]: icon || loading}, className),
     role: "alert",
     themeOverride
-  }, others), icon && !loading && /* @__PURE__ */ React__default['default'].createElement("div", {
+  }, others), icon && !loading && /* @__PURE__ */ React__default.createElement("div", {
     "data-mantine-icon": true,
     className: classes.icon
-  }, icon), loading && /* @__PURE__ */ React__default['default'].createElement(Loader.Loader, {
+  }, icon), loading && /* @__PURE__ */ React__default.createElement(Loader.Loader, {
     size: 28,
     color,
     className: classes.loader
-  }), /* @__PURE__ */ React__default['default'].createElement("div", {
+  }), /* @__PURE__ */ React__default.createElement("div", {
     className: classes.body
-  }, title && /* @__PURE__ */ React__default['default'].createElement(Text.Text, {
+  }, title && /* @__PURE__ */ React__default.createElement(Text.Text, {
     "data-mantine-title": true,
     className: classes.title,
     size: "sm",
     weight: 500,
     themeOverride
-  }, title), /* @__PURE__ */ React__default['default'].createElement(Text.Text, {
+  }, title), /* @__PURE__ */ React__default.createElement(Text.Text, {
     "data-mantine-body": true,
     className: classes.description,
     size: "sm",
     themeOverride
-  }, children)), !disallowClose && /* @__PURE__ */ React__default['default'].createElement(ActionIcon.ActionIcon, __spreadProps(__spreadValues({}, closeButtonProps), {
+  }, children)), !disallowClose && /* @__PURE__ */ React__default.createElement(ActionIcon.ActionIcon, __spreadProps(__spreadValues({}, closeButtonProps), {
     color: "gray",
     onClick: onClose,
     themeOverride
-  }), /* @__PURE__ */ React__default['default'].createElement(CloseIcon.CloseIcon, null)));
+  }), /* @__PURE__ */ React__default.createElement(CloseIcon.CloseIcon, null)));
 }
 Notification.displayName = "@mantine/core/Notification";
 

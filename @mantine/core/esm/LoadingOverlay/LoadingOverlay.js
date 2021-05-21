@@ -48,7 +48,8 @@ function LoadingOverlay(_a) {
     themeOverride,
     transitionDuration = 200,
     zIndex = 1e3,
-    style
+    style,
+    loader
   } = _b, others = __objRest(_b, [
     "className",
     "visible",
@@ -58,7 +59,8 @@ function LoadingOverlay(_a) {
     "themeOverride",
     "transitionDuration",
     "zIndex",
-    "style"
+    "style",
+    "loader"
   ]);
   const theme = useMantineTheme(themeOverride);
   const classes = useStyles();
@@ -72,13 +74,15 @@ function LoadingOverlay(_a) {
   }, (transitionStyles) => /* @__PURE__ */ React.createElement("div", __spreadValues({
     className: cx(classes.loadingOverlay, className),
     style: __spreadProps(__spreadValues(__spreadValues({}, transitionStyles), style), {zIndex})
-  }, others), /* @__PURE__ */ React.createElement(Loader, __spreadValues({
+  }, others), loader ? /* @__PURE__ */ React.createElement("div", {
+    style: {zIndex: zIndex + 1}
+  }, loader) : /* @__PURE__ */ React.createElement(Loader, __spreadValues({
     themeOverride,
     style: {zIndex: zIndex + 1}
   }, loaderProps)), /* @__PURE__ */ React.createElement(Overlay, {
     opacity: overlayOpacity,
-    color: overlayColor || (theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.white),
-    zIndex
+    zIndex,
+    color: overlayColor || (theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.white)
   })));
 }
 LoadingOverlay.displayName = "@mantine/core/LoadingOverlay";

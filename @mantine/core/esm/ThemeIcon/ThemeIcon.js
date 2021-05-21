@@ -51,15 +51,13 @@ function ThemeIcon(_a) {
     "themeOverride"
   ]);
   const classes = useStyles({
-    variant,
+    theme: useMantineTheme(themeOverride),
     radius,
     color,
-    size,
-    theme: useMantineTheme(themeOverride)
+    size
   });
   return /* @__PURE__ */ React.createElement("div", __spreadValues({
-    "data-mantine-composable": true,
-    className: cx(classes.themeIcon, className)
+    className: cx(classes.themeIcon, classes[variant], className)
   }, others), children);
 }
 ThemeIcon.displayName = "@mantine/core/ThemeIcon";

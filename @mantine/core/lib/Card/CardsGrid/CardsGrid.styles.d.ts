@@ -5,8 +5,6 @@ interface CardsGridStyles {
     cardsPerRow: number;
     grow: boolean;
 }
-declare const _default: (data?: CardsGridStyles & {
-    theme?: MantineTheme;
-}) => import("jss").Classes<"grid">;
+declare const _default: (args?: CardsGridStyles) => import("jss").Classes<"grid">;
 export default _default;
 //# sourceMappingURL=CardsGrid.styles.d.ts.map

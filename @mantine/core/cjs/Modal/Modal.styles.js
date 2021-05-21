@@ -2,7 +2,6 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var reactJss = require('react-jss');
 var theme = require('@mantine/theme');
 
 const sizes = {
@@ -13,7 +12,7 @@ const sizes = {
   xl: 780,
   full: "100%"
 };
-var useStyles = reactJss.createUseStyles({
+var useStyles = theme.createMemoStyles({
   wrapper: {
     position: "fixed",
     top: 0,
@@ -42,7 +41,8 @@ var useStyles = reactJss.createUseStyles({
   modal: ({theme: theme$1, size}) => ({
     width: theme.getSizeValue({sizes, size}),
     padding: theme$1.spacing.lg,
-    outline: 0
+    outline: 0,
+    backgroundColor: theme$1.colorScheme === "dark" ? theme$1.colors.dark[7] : theme$1.white
   }),
   header: ({theme}) => ({
     display: "flex",
@@ -55,7 +55,7 @@ var useStyles = reactJss.createUseStyles({
     overflowY: overflow === "inside" && "auto",
     wordBreak: "break-word"
   })
-}, {link: true});
+});
 
 exports.default = useStyles;
 exports.sizes = sizes;

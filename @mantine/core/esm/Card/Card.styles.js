@@ -1,12 +1,12 @@
-import { createUseStyles } from 'react-jss';
-import { getSizeValue } from '@mantine/theme';
+import { createMemoStyles, getSizeValue } from '@mantine/theme';
 
-var useStyles = createUseStyles({
+var useStyles = createMemoStyles({
   card: ({theme, radius, padding}) => {
     const spacing = getSizeValue({size: padding, sizes: theme.spacing});
     const borderRadius = getSizeValue({size: radius, sizes: theme.radius});
     return {
       position: "relative",
+      backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.white,
       "& [data-mantine-image]": {
         width: `calc(100% + ${spacing * 2}px) !important`,
         marginLeft: -spacing,
@@ -37,7 +37,7 @@ var useStyles = createUseStyles({
       }
     };
   }
-}, {link: true});
+});
 
 export default useStyles;
 //# sourceMappingURL=Card.styles.js.map

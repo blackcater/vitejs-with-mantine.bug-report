@@ -12,8 +12,6 @@ export declare const sizes: {
     lg: number;
     xl: number;
 };
-declare const _default: (data?: BurgerStylesProps & {
-    theme?: MantineTheme;
-}) => import("jss").Classes<"opened" | "wrapper" | "burger">;
+declare const _default: (args?: BurgerStylesProps) => import("jss").Classes<"opened" | "wrapper" | "burger">;
 export default _default;
 //# sourceMappingURL=Burger.styles.d.ts.map

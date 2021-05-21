@@ -6,6 +6,8 @@ import { ActionIcon } from '../ActionIcon/ActionIcon.js';
 import { Text } from '../Text/Text.js';
 import { Paper } from '../Paper/Paper.js';
 import { Overlay } from '../Overlay/Overlay.js';
+import { Portal } from '../Portal/Portal.js';
+import '../Transition/Transition.js';
 import { CloseIcon } from './CloseIcon.js';
 import useStyles, { sizes } from './Modal.styles.js';
 import { GroupedTransition } from '../Transition/GroupedTransition.js';
@@ -39,7 +41,7 @@ var __objRest = (source, exclude) => {
   return target;
 };
 const MODAL_SIZES = sizes;
-function Modal(_a) {
+function MantineModal(_a) {
   var _b = _a, {
     className,
     opened,
@@ -131,7 +133,12 @@ function Modal(_a) {
     zIndex
   }))));
 }
+function Modal(props) {
+  return /* @__PURE__ */ React.createElement(Portal, {
+    zIndex: props.zIndex || 1e3
+  }, /* @__PURE__ */ React.createElement(MantineModal, __spreadValues({}, props)));
+}
 Modal.displayName = "@mantine/core/Modal";
 
-export { MODAL_SIZES, Modal };
+export { MODAL_SIZES, MantineModal, Modal };
 //# sourceMappingURL=Modal.js.map

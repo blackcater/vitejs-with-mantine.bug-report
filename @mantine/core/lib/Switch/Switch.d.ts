@@ -24,7 +24,7 @@ export interface SwitchProps extends DefaultProps, Omit<React.ComponentPropsWith
     /** Get element ref */
     elementRef?: React.ForwardedRef<HTMLInputElement>;
 }
-export declare function Switch({ className, color, label, id, style, size, radius, themeOverride, wrapperProps, inputStyle, inputClassName, elementRef, ...others }: SwitchProps): JSX.Element;
+export declare function Switch({ className, color, label, id, style, size, radius, themeOverride, wrapperProps, inputStyle, inputClassName, elementRef, children, ...others }: SwitchProps): JSX.Element;
 export declare namespace Switch {
     var displayName: string;
 }

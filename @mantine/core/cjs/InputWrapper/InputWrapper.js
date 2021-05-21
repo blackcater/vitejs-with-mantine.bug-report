@@ -8,7 +8,7 @@ var theme = require('@mantine/theme');
 var Text = require('../Text/Text.js');
 var InputWrapper_styles = require('./InputWrapper.styles.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var cx__default = /*#__PURE__*/_interopDefaultLegacy(cx);
@@ -68,19 +68,19 @@ function InputWrapper(_a) {
   ]);
   const classes = InputWrapper_styles['default']({theme: theme.useMantineTheme(themeOverride)});
   const labelProps = labelElement === "label" ? {htmlFor: id} : {};
-  const inputLabel = React.createElement(labelElement, __spreadProps(__spreadValues({}, labelProps), {className: classes.label}), /* @__PURE__ */ React__default['default'].createElement(React__default['default'].Fragment, null, label, required && /* @__PURE__ */ React__default['default'].createElement("span", {
+  const inputLabel = React.createElement(labelElement, __spreadProps(__spreadValues({}, labelProps), {className: classes.label}), /* @__PURE__ */ React__default.createElement(React__default.Fragment, null, label, required && /* @__PURE__ */ React__default.createElement("span", {
     "data-mantine-required": true,
     className: classes.required
   }, " ", "*")));
-  return /* @__PURE__ */ React__default['default'].createElement("div", __spreadValues({
-    className: cx__default['default'](classes.inputWrapper, className)
-  }, others), label && inputLabel, description && /* @__PURE__ */ React__default['default'].createElement(Text.Text, {
+  return /* @__PURE__ */ React__default.createElement("div", __spreadValues({
+    className: cx__default(classes.inputWrapper, className)
+  }, others), label && inputLabel, description && /* @__PURE__ */ React__default.createElement(Text.Text, {
     themeOverride,
     "data-mantine-description": true,
     color: "gray",
     size: "xs",
     className: classes.description
-  }, description), children, typeof error !== "boolean" && error && /* @__PURE__ */ React__default['default'].createElement(Text.Text, {
+  }, description), children, typeof error !== "boolean" && error && /* @__PURE__ */ React__default.createElement(Text.Text, {
     themeOverride,
     "data-mantine-error": true,
     color: "red",

@@ -1,4 +1,5 @@
-import { useQueue, randomId } from '@mantine/hooks';
+import { useQueue } from '@mantine/hooks';
+import { randomId } from '@mantine/core';
 
 var __defProp = Object.defineProperty;
 var __defProps = Object.defineProperties;

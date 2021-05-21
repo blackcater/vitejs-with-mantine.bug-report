@@ -1,5 +1,4 @@
-import { createUseStyles } from 'react-jss';
-import { getSizeValue, getFontStyles, getThemeColor, getFocusStyles } from '@mantine/theme';
+import { createMemoStyles, getSizeValue, getFontStyles, getThemeColor, getFocusStyles } from '@mantine/theme';
 
 var __defProp = Object.defineProperty;
 var __defProps = Object.defineProperties;
@@ -27,7 +26,7 @@ const sizes = {
   lg: 26,
   xl: 36
 };
-var useStyles = createUseStyles({
+var useStyles = createMemoStyles({
   wrapper: {
     display: "flex",
     alignItems: "center"
@@ -46,7 +45,7 @@ var useStyles = createUseStyles({
   }),
   checkbox: ({size, theme, color}) => __spreadProps(__spreadValues({}, getFocusStyles(theme)), {
     appearance: "none",
-    backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[0],
+    backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[0],
     border: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[4]}`,
     width: getSizeValue({size, sizes}),
     height: getSizeValue({size, sizes}),
@@ -90,7 +89,7 @@ var useStyles = createUseStyles({
     right: 0,
     margin: "auto"
   }
-}, {link: true});
+});
 
 export default useStyles;
 export { sizes };

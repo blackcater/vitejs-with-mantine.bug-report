@@ -8,7 +8,7 @@ var theme = require('@mantine/theme');
 var PlaceholderIcon = require('./PlaceholderIcon.js');
 var Avatar_styles = require('./Avatar.styles.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var cx__default = /*#__PURE__*/_interopDefaultLegacy(cx);
@@ -71,16 +71,15 @@ function Avatar(_a) {
   React.useEffect(() => {
     !src ? setError(true) : setError(false);
   }, [src]);
-  return /* @__PURE__ */ React__default['default'].createElement("div", __spreadProps(__spreadValues({}, others), {
-    "data-mantine-composable": true,
-    className: cx__default['default'](classes.avatar, className)
-  }), error ? /* @__PURE__ */ React__default['default'].createElement("div", {
+  return /* @__PURE__ */ React__default.createElement("div", __spreadProps(__spreadValues({}, others), {
+    className: cx__default(classes.avatar, className)
+  }), error ? /* @__PURE__ */ React__default.createElement("div", {
     "data-mantine-placeholder": true,
     className: classes.placeholder,
     title: alt
-  }, children || /* @__PURE__ */ React__default['default'].createElement(PlaceholderIcon.PlaceholderIcon, {
+  }, children || /* @__PURE__ */ React__default.createElement(PlaceholderIcon.PlaceholderIcon, {
     className: classes.placeholderIcon
-  })) : /* @__PURE__ */ React__default['default'].createElement("img", {
+  })) : /* @__PURE__ */ React__default.createElement("img", {
     className: classes.image,
     src,
     alt,

@@ -7,7 +7,7 @@ var cx = require('clsx');
 var theme = require('@mantine/theme');
 var Code_styles = require('./Code.styles.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var cx__default = /*#__PURE__*/_interopDefaultLegacy(cx);
@@ -58,12 +58,12 @@ function Code(_a) {
   const themeColor = color || (theme$1.colorScheme === "dark" ? "dark" : "gray");
   const classes = Code_styles['default']({color: themeColor, theme: theme.useMantineTheme(themeOverride)});
   if (block) {
-    return /* @__PURE__ */ React__default['default'].createElement("pre", __spreadValues({
-      className: cx__default['default'](classes.code, classes.pre, className)
+    return /* @__PURE__ */ React__default.createElement("pre", __spreadValues({
+      className: cx__default(classes.code, classes.pre, className)
     }, others), children);
   }
-  return /* @__PURE__ */ React__default['default'].createElement("code", __spreadValues({
-    className: cx__default['default'](classes.code, className)
+  return /* @__PURE__ */ React__default.createElement("code", __spreadValues({
+    className: cx__default(classes.code, className)
   }, others), children);
 }
 Code.displayName = "@mantine/core/Code";

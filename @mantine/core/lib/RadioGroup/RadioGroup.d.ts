@@ -2,6 +2,8 @@ import React from 'react';
 import { DefaultProps, MantineNumberSize, MantineSize } from '@mantine/theme';
 import { InputWrapperBaseProps } from '../InputWrapper/InputWrapper';
 import { Radio, RadioProps } from './Radio/Radio';
+export { Radio };
+export type { RadioProps };
 export declare const RADIO_SIZES: {
     xs: number;
     sm: number;
@@ -9,8 +11,6 @@ export declare const RADIO_SIZES: {
     lg: number;
     xl: number;
 };
-export { Radio };
-export type { RadioProps };
 export interface RadioGroupProps extends DefaultProps, InputWrapperBaseProps, Omit<React.ComponentPropsWithoutRef<'div'>, 'onChange'> {
     /** <Radio /> components only */
     children: React.ReactNode;

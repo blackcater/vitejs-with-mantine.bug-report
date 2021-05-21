@@ -9,7 +9,7 @@ var theme = require('@mantine/theme');
 var Transition = require('../Transition/Transition.js');
 var Tooltip_styles = require('./Tooltip.styles.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var cx__default = /*#__PURE__*/_interopDefaultLegacy(cx);
@@ -114,28 +114,28 @@ function Tooltip(_a) {
       setOpened(false);
     }
   };
-  return /* @__PURE__ */ React__default['default'].createElement("div", __spreadValues({
-    className: cx__default['default'](classes.wrapper, className),
+  return /* @__PURE__ */ React__default.createElement("div", __spreadValues({
+    className: cx__default(classes.wrapper, className),
     ref: tooltipRef
-  }, others), /* @__PURE__ */ React__default['default'].createElement(Transition.Transition, {
+  }, others), /* @__PURE__ */ React__default.createElement(Transition.Transition, {
     mounted: visible,
     transition,
     duration,
     timingFunction: transitionTimingFunction
-  }, (transitionStyles) => /* @__PURE__ */ React__default['default'].createElement("div", {
+  }, (transitionStyles) => /* @__PURE__ */ React__default.createElement("div", {
     id: tooltipId,
     role: "tooltip",
     style: {zIndex, width, pointerEvents: allowPointerEvents ? "all" : "none"},
     "data-mantine-tooltip": true,
-    className: cx__default['default'](classes.tooltip, classes[placement], classes[position]),
+    className: cx__default(classes.tooltip, classes[placement], classes[position]),
     ref: tooltipRef
-  }, /* @__PURE__ */ React__default['default'].createElement("div", {
+  }, /* @__PURE__ */ React__default.createElement("div", {
     "data-mantine-tooltip-inner": true,
-    className: cx__default['default'](classes.tooltipInner, {
+    className: cx__default(classes.tooltipInner, {
       [classes.withArrow]: withArrow
     }),
     style: __spreadProps(__spreadValues({}, transitionStyles), {whiteSpace: wrapLines ? "normal" : "nowrap"})
-  }, label))), /* @__PURE__ */ React__default['default'].createElement("div", {
+  }, label))), /* @__PURE__ */ React__default.createElement("div", {
     onMouseEnter: handleOpen,
     onMouseLeave: handleClose
   }, children));

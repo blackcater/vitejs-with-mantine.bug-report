@@ -7,7 +7,7 @@ var defaultTheme = require('../default-theme.js');
 var mergeTheme = require('../utils/merge-theme/merge-theme.js');
 var themeContext = require('./theme-context.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 
@@ -28,7 +28,7 @@ var __spreadValues = (a, b) => {
   return a;
 };
 function MantineProvider({children, theme}) {
-  return /* @__PURE__ */ React__default['default'].createElement(themeContext.ThemeProvider, {
+  return /* @__PURE__ */ React__default.createElement(themeContext.ThemeProvider, {
     theme: mergeTheme.mergeTheme(__spreadValues({__mantine_theme: true}, defaultTheme.DEFAULT_THEME), theme)
   }, children);
 }

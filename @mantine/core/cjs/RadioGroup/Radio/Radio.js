@@ -8,7 +8,7 @@ var hooks = require('@mantine/hooks');
 var theme = require('@mantine/theme');
 var Radio_styles = require('./Radio.styles.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var cx__default = /*#__PURE__*/_interopDefaultLegacy(cx);
@@ -67,21 +67,21 @@ function Radio(_a) {
   ]);
   const classes = Radio_styles['default']({color, size, theme: theme.useMantineTheme(themeOverride)});
   const uuid = hooks.useId(id);
-  return /* @__PURE__ */ React__default['default'].createElement("div", {
+  return /* @__PURE__ */ React__default.createElement("div", {
     "data-mantine-radio": true,
-    className: cx__default['default'](classes.wrapper, className),
+    className: cx__default(classes.wrapper, className),
     style,
     title
-  }, /* @__PURE__ */ React__default['default'].createElement("label", {
-    className: cx__default['default'](classes.label, {[classes.labelDisabled]: disabled}),
+  }, /* @__PURE__ */ React__default.createElement("label", {
+    className: cx__default(classes.label, {[classes.labelDisabled]: disabled}),
     htmlFor: uuid
-  }, /* @__PURE__ */ React__default['default'].createElement("input", __spreadValues({
+  }, /* @__PURE__ */ React__default.createElement("input", __spreadValues({
     ref: elementRef,
     className: classes.radio,
     type: "radio",
     id: uuid,
     disabled
-  }, others)), /* @__PURE__ */ React__default['default'].createElement("span", null, children)));
+  }, others)), /* @__PURE__ */ React__default.createElement("span", null, children)));
 }
 Radio.displayName = "@mantine/core/Radio";
 

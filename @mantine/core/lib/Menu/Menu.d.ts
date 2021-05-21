@@ -19,7 +19,7 @@ interface MenuPosition {
     right?: React.CSSProperties['right'];
 }
 export interface MenuProps extends DefaultProps, React.ComponentPropsWithoutRef<'div'> {
-    /** <MenuItem /> and <Hr /> components only, children are passed to MenuBody component  */
+    /** <MenuItem /> and <Divider /> components only, children are passed to MenuBody component  */
     children: React.ReactNode;
     /** React element that will be used as menu control */
     control?: React.ReactElement;

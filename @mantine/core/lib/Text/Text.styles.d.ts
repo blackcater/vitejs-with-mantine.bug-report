@@ -6,8 +6,6 @@ interface TextStylesProps {
     variant: TextVariant;
     size: MantineSize;
 }
-declare const _default: (data?: TextStylesProps & {
-    theme?: MantineTheme;
-}) => import("jss").Classes<"text">;
+declare const _default: (args?: TextStylesProps) => import("jss").Classes<"text">;
 export default _default;
 //# sourceMappingURL=Text.styles.d.ts.map

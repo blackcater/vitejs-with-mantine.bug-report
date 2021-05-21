@@ -2,7 +2,6 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var reactJss = require('react-jss');
 var theme = require('@mantine/theme');
 
 var __defProp = Object.defineProperty;
@@ -24,7 +23,7 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-var useStyles = reactJss.createUseStyles({
+var useStyles = theme.createMemoStyles({
   innerHtml: ({theme: theme$1}) => {
     const headings = Object.keys(theme$1.headings.sizes).reduce((acc, h) => {
       acc[`& ${h}`] = __spreadProps(__spreadValues({
@@ -78,7 +77,9 @@ var useStyles = reactJss.createUseStyles({
         marginBottom: theme$1.spacing.md,
         overflowX: "auto",
         fontFamily: theme$1.fontFamilyMonospace,
-        backgroundColor: theme$1.colorScheme === "dark" ? theme$1.colors.dark[9] : theme$1.colors.gray[0]
+        fontSize: theme$1.fontSizes.sm,
+        borderRadius: theme$1.radius.sm,
+        backgroundColor: theme$1.colorScheme === "dark" ? theme$1.colors.dark[8] : theme$1.colors.gray[0]
       },
       "& code": {
         lineHeight: theme$1.lineHeight,
@@ -136,7 +137,7 @@ var useStyles = reactJss.createUseStyles({
         borderTopRightRadius: theme$1.radius.sm,
         borderBottomRightRadius: theme$1.radius.sm,
         padding: [theme$1.spacing.md, theme$1.spacing.lg],
-        backgroundColor: theme$1.colorScheme === "dark" ? theme$1.colors.dark[9] : theme$1.colors.gray[0],
+        backgroundColor: theme$1.colorScheme === "dark" ? theme$1.colors.dark[6] : theme$1.colors.gray[0],
         color: theme$1.colorScheme === "dark" ? theme$1.colors.dark[0] : theme$1.black,
         borderLeft: `3px solid ${theme.getThemeColor({
           theme: theme$1,
@@ -154,7 +155,7 @@ var useStyles = reactJss.createUseStyles({
       }
     });
   }
-}, {link: true});
+});
 
 exports.default = useStyles;
 //# sourceMappingURL=TypographyStylesProvider.styles.js.map

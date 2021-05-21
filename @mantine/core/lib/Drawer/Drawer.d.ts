@@ -45,7 +45,8 @@ export interface DrawerProps extends DefaultProps, React.ComponentPropsWithoutRe
     /** Sets overlay color, defaults to theme.black in light theme and to theme.colors.dark[9] in dark theme */
     overlayColor?: string;
 }
-export declare function Drawer({ opened, onClose, className, themeOverride, position, size, noFocusTrap, noScrollLock, noCloseOnClickOutside, noCloseOnEscape, transition, transitionDuration, transitionTimingFunction, zIndex, overlayColor, overlayOpacity, children, noOverlay, shadow, padding, ...others }: DrawerProps): JSX.Element;
+export declare function MantineDrawer({ opened, onClose, className, themeOverride, position, size, noFocusTrap, noScrollLock, noCloseOnClickOutside, noCloseOnEscape, transition, transitionDuration, transitionTimingFunction, zIndex, overlayColor, overlayOpacity, children, noOverlay, shadow, padding, ...others }: DrawerProps): JSX.Element;
+export declare function Drawer(props: React.ComponentPropsWithoutRef<typeof MantineDrawer>): JSX.Element;
 export declare namespace Drawer {
     var displayName: string;
 }

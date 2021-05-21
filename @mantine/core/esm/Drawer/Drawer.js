@@ -4,6 +4,8 @@ import { useReducedMotion, useFocusTrap, useScrollLock, useClickOutside, useMerg
 import { useMantineTheme } from '@mantine/theme';
 import { Paper } from '../Paper/Paper.js';
 import { Overlay } from '../Overlay/Overlay.js';
+import { Portal } from '../Portal/Portal.js';
+import '../Transition/Transition.js';
 import useStyles, { sizes } from './Drawer.styles.js';
 import { GroupedTransition } from '../Transition/GroupedTransition.js';
 
@@ -45,7 +47,7 @@ const transitions = {
   left: "slide-right",
   right: "slide-left"
 };
-function Drawer(_a) {
+function MantineDrawer(_a) {
   var _b = _a, {
     opened,
     onClose,
@@ -140,7 +142,12 @@ function Drawer(_a) {
     color: overlayColor || (theme.colorScheme === "dark" ? theme.colors.dark[9] : theme.black)
   }))));
 }
+function Drawer(props) {
+  return /* @__PURE__ */ React.createElement(Portal, {
+    zIndex: props.zIndex || 1e3
+  }, /* @__PURE__ */ React.createElement(MantineDrawer, __spreadValues({}, props)));
+}
 Drawer.displayName = "@mantine/core/Drawer";
 
-export { DRAWER_SIZES, Drawer };
+export { DRAWER_SIZES, Drawer, MantineDrawer };
 //# sourceMappingURL=Drawer.js.map

@@ -2,7 +2,6 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var reactJss = require('react-jss');
 var theme = require('@mantine/theme');
 
 var __defProp = Object.defineProperty;
@@ -24,7 +23,7 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-var useStyles = reactJss.createUseStyles({
+var useStyles = theme.createMemoStyles({
   colorSwatch: ({theme: theme$1, radius}) => __spreadProps(__spreadValues({}, theme.getFocusStyles(theme$1)), {
     border: 0,
     borderRadius: theme.getSizeValue({size: radius, sizes: theme$1.radius}),
@@ -32,7 +31,7 @@ var useStyles = reactJss.createUseStyles({
     WebkitAppearance: "none",
     padding: 0
   })
-}, {link: true});
+});
 
 exports.default = useStyles;
 //# sourceMappingURL=ColorSwatch.styles.js.map

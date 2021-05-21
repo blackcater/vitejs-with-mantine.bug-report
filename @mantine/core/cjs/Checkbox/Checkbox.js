@@ -9,14 +9,12 @@ var theme = require('@mantine/theme');
 var CheckboxIcon = require('./CheckboxIcon.js');
 var Checkbox_styles = require('./Checkbox.styles.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var cx__default = /*#__PURE__*/_interopDefaultLegacy(cx);
 
 var __defProp = Object.defineProperty;
-var __defProps = Object.defineProperties;
-var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
 var __getOwnPropSymbols = Object.getOwnPropertySymbols;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __propIsEnum = Object.prototype.propertyIsEnumerable;
@@ -32,7 +30,6 @@ var __spreadValues = (a, b) => {
     }
   return a;
 };
-var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 var __objRest = (source, exclude) => {
   var target = {};
   for (var prop in source)
@@ -55,14 +52,15 @@ function Checkbox(_a) {
     themeOverride,
     label,
     disabled,
-    intermediate,
+    indeterminate,
     id,
     size,
     wrapperProps,
     style,
     inputStyle,
     inputClassName,
-    elementRef
+    elementRef,
+    children
   } = _b, others = __objRest(_b, [
     "className",
     "checked",
@@ -71,35 +69,36 @@ function Checkbox(_a) {
     "themeOverride",
     "label",
     "disabled",
-    "intermediate",
+    "indeterminate",
     "id",
     "size",
     "wrapperProps",
     "style",
     "inputStyle",
     "inputClassName",
-    "elementRef"
+    "elementRef",
+    "children"
   ]);
   const uuid = hooks.useId(id);
   const classes = Checkbox_styles['default']({size, color, theme: theme.useMantineTheme(themeOverride)});
-  return /* @__PURE__ */ React__default['default'].createElement("div", __spreadValues({
-    className: cx__default['default'](classes.wrapper, className),
+  return /* @__PURE__ */ React__default.createElement("div", __spreadValues({
+    className: cx__default(classes.wrapper, className),
     style
-  }, wrapperProps), /* @__PURE__ */ React__default['default'].createElement("div", {
+  }, wrapperProps), /* @__PURE__ */ React__default.createElement("div", {
     className: classes.checkboxWrapper
-  }, /* @__PURE__ */ React__default['default'].createElement("input", __spreadProps(__spreadValues({}, others), {
+  }, /* @__PURE__ */ React__default.createElement("input", __spreadValues({
     id: uuid,
     ref: elementRef,
     type: "checkbox",
-    className: cx__default['default'](classes.checkbox, inputClassName),
-    checked: intermediate || checked,
+    className: cx__default(classes.checkbox, inputClassName),
+    checked: indeterminate || checked,
     onChange,
     disabled,
     style: inputStyle
-  })), /* @__PURE__ */ React__default['default'].createElement(CheckboxIcon.CheckboxIcon, {
-    intermediate,
+  }, others)), /* @__PURE__ */ React__default.createElement(CheckboxIcon.CheckboxIcon, {
+    indeterminate,
     className: classes.icon
-  })), label && /* @__PURE__ */ React__default['default'].createElement("label", {
+  })), label && /* @__PURE__ */ React__default.createElement("label", {
     className: classes.label,
     htmlFor: uuid
   }, label));

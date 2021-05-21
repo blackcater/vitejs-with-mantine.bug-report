@@ -52,8 +52,7 @@ function ColorSwatch(_a) {
   const classes = useStyles({radius, theme: useMantineTheme(themeOverride)});
   return /* @__PURE__ */ React.createElement(Element, __spreadValues({
     className: cx(classes.colorSwatch, className),
-    style: __spreadValues({width: size, height: size, backgroundColor: color}, style),
-    "data-mantine-composable": true
+    style: __spreadValues({width: size, height: size, backgroundColor: color}, style)
   }, others));
 }
 ColorSwatch.displayName = "@mantine/core/ColorSwatch";

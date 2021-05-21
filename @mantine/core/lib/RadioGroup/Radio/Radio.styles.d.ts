@@ -11,8 +11,6 @@ export declare const sizes: {
     lg: number;
     xl: number;
 };
-declare const _default: (data?: RadioStylesProps & {
-    theme?: MantineTheme;
-}) => import("jss").Classes<"radio" | "label" | "wrapper" | "labelDisabled">;
+declare const _default: (args?: RadioStylesProps) => import("jss").Classes<"radio" | "label" | "wrapper" | "labelDisabled">;
 export default _default;
 //# sourceMappingURL=Radio.styles.d.ts.map

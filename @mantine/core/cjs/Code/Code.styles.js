@@ -2,7 +2,6 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var reactJss = require('react-jss');
 var theme = require('@mantine/theme');
 
 var __defProp = Object.defineProperty;
@@ -24,19 +23,19 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-var useStyles = reactJss.createUseStyles({
+var useStyles = theme.createMemoStyles({
   code: ({theme: theme$1, color}) => __spreadProps(__spreadValues({}, theme.getFontStyles(theme$1)), {
     lineHeight: theme$1.lineHeight,
     padding: [1, theme$1.spacing.xs / 2],
     borderRadius: theme$1.radius.sm,
     color: theme.getThemeColor({theme: theme$1, color, shade: theme$1.colorScheme === "dark" ? 1 : 9}),
-    backgroundColor: theme.getThemeColor({theme: theme$1, color, shade: theme$1.colorScheme === "dark" ? 9 : 0}),
+    backgroundColor: theme.hexToRgba(theme.getThemeColor({theme: theme$1, color, shade: theme$1.colorScheme === "dark" ? 9 : 0}), theme$1.colorScheme === "dark" ? 0.45 : 1),
     fontFamily: theme$1.fontFamilyMonospace,
     fontSize: theme$1.fontSizes.xs,
-    border: `1px solid ${theme.getThemeColor({
+    border: `1px solid ${theme$1.colorScheme === "dark" ? "transparent" : theme.getThemeColor({
       theme: theme$1,
       color,
-      shade: theme$1.colorScheme === "dark" ? 9 : 3
+      shade: 2
     })}`
   }),
   pre: ({theme}) => ({
@@ -44,7 +43,7 @@ var useStyles = reactJss.createUseStyles({
     margin: 0,
     overflowX: "auto"
   })
-}, {link: true});
+});
 
 exports.default = useStyles;
 //# sourceMappingURL=Code.styles.js.map

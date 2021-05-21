@@ -1,6 +1,6 @@
 import React from 'react';
 import { DefaultProps } from '@mantine/theme';
-import { ElementsGroupPosition } from '../ElementsGroup/ElementsGroup';
+import { GroupPosition } from '../Group/Group';
 import { Tab, TabProps } from './Tab/Tab';
 export { Tab };
 export type { TabProps };
@@ -16,7 +16,7 @@ export interface TabsProps extends DefaultProps, React.ComponentPropsWithoutRef<
     /** true if tabs should take all available space */
     grow?: boolean;
     /** tab controls position */
-    position?: ElementsGroupPosition;
+    position?: GroupPosition;
     /** called when tab control is clicked with tab index */
     onTabChange?(tabIndex: number): void;
 }

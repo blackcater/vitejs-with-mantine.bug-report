@@ -1,5 +1,4 @@
-import { createUseStyles } from 'react-jss';
-import { getSizeValue, getFontStyles, getFocusStyles, getThemeColor } from '@mantine/theme';
+import { createMemoStyles, getSizeValue, getFontStyles, getFocusStyles, hexToRgba, getThemeColor } from '@mantine/theme';
 
 var __defProp = Object.defineProperty;
 var __defProps = Object.defineProperties;
@@ -46,7 +45,7 @@ const heights = Object.keys(sizes).reduce((acc, key) => {
   acc[key] = sizes[key].height;
   return acc;
 }, {});
-var useStyles = createUseStyles({
+var useStyles = createMemoStyles({
   leftSection: ({theme}) => ({
     marginRight: theme.spacing.xs / 2
   }),
@@ -83,20 +82,20 @@ var useStyles = createUseStyles({
     });
   },
   light: ({theme, color}) => ({
-    backgroundColor: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 3 : 0}),
-    color: theme.colorScheme === "dark" ? theme.colors.dark[9] : getThemeColor({theme, color, shade: 9})
+    backgroundColor: hexToRgba(getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 9 : 0}), theme.colorScheme === "dark" ? 0.3 : 1),
+    color: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 3 : 9})
   }),
   filled: ({theme, color}) => ({
-    backgroundColor: getThemeColor({theme, color, shade: 7}),
+    backgroundColor: hexToRgba(getThemeColor({theme, color, shade: 7}), theme.colorScheme === "dark" ? 0.65 : 1),
     color: theme.white,
-    textShadow: `1px 1px 0 ${getThemeColor({theme, color, shade: 9})}`
+    textShadow: theme.colorScheme === "dark" ? "none" : `1px 1px 0 ${getThemeColor({theme, color, shade: 9})}`
   }),
   outline: ({theme, color}) => ({
     backgroundColor: "transparent",
-    color: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 4 : 6}),
-    borderColor: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 4 : 6})
+    color: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 3 : 8}),
+    borderColor: hexToRgba(getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 3 : 8}), 0.55)
   })
-}, {link: true});
+});
 
 export default useStyles;
 export { heights };

@@ -9,7 +9,7 @@ var InputWrapper = require('../InputWrapper/InputWrapper.js');
 var Input = require('../Input/Input.js');
 var ChevronIcon = require('./ChevronIcon.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 
@@ -76,13 +76,13 @@ function Select(_a) {
   ]);
   const theme$1 = theme.useMantineTheme(themeOverride);
   const uuid = hooks.useId(id);
-  const options = data.map((item) => /* @__PURE__ */ React__default['default'].createElement("option", {
+  const options = data.map((item) => /* @__PURE__ */ React__default.createElement("option", {
     key: item.value,
     value: item.value,
     disabled: item.disabled
   }, item.label));
   if (placeholder) {
-    options.unshift(/* @__PURE__ */ React__default['default'].createElement("option", {
+    options.unshift(/* @__PURE__ */ React__default.createElement("option", {
       key: "placeholder",
       value: "",
       selected: true,
@@ -90,10 +90,10 @@ function Select(_a) {
       hidden: true
     }, placeholder));
   }
-  const chevron = /* @__PURE__ */ React__default['default'].createElement(ChevronIcon.ChevronIcon, {
+  const chevron = /* @__PURE__ */ React__default.createElement(ChevronIcon.ChevronIcon, {
     style: {color: error ? theme$1.colors.red[6] : theme$1.colors.gray[6]}
   });
-  return /* @__PURE__ */ React__default['default'].createElement(InputWrapper.InputWrapper, __spreadProps(__spreadValues({}, wrapperProps), {
+  return /* @__PURE__ */ React__default.createElement(InputWrapper.InputWrapper, __spreadProps(__spreadValues({}, wrapperProps), {
     required,
     id: uuid,
     label,
@@ -102,7 +102,7 @@ function Select(_a) {
     style,
     themeOverride,
     description
-  }), /* @__PURE__ */ React__default['default'].createElement(Input.Input, __spreadProps(__spreadValues({}, others), {
+  }), /* @__PURE__ */ React__default.createElement(Input.Input, __spreadProps(__spreadValues({}, others), {
     component: "select",
     invalid: !!error,
     style: inputStyle,

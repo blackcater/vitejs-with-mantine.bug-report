@@ -1,5 +1,4 @@
-import { createUseStyles } from 'react-jss';
-import { getFontStyles, getFocusStyles, getSizeValue, getThemeColor } from '@mantine/theme';
+import { createMemoStyles, getFontStyles, getFocusStyles, getSizeValue, getThemeColor, hexToRgba } from '@mantine/theme';
 
 var __defProp = Object.defineProperty;
 var __defProps = Object.defineProperties;
@@ -55,7 +54,7 @@ const getWidthStyles = (fullWidth) => ({
   display: fullWidth ? "block" : "inline-block",
   width: fullWidth ? "100%" : "auto"
 });
-var useStyles = createUseStyles({
+var useStyles = createMemoStyles({
   icon: {
     display: "flex",
     alignItems: "center"
@@ -93,11 +92,7 @@ var useStyles = createUseStyles({
     textTransform: "uppercase",
     fontWeight: "bold",
     color: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 4 : 8}),
-    border: `1px solid ${getThemeColor({
-      theme,
-      color,
-      shade: theme.colorScheme === "dark" ? 4 : 8
-    })}`,
+    border: `1px solid ${hexToRgba(getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 3 : 4}), theme.colorScheme === "dark" ? 0.45 : 1)}`,
     "&:not(:disabled):active": {
       transform: "translateY(1px)"
     },
@@ -113,17 +108,13 @@ var useStyles = createUseStyles({
     borderRadius: getSizeValue({size: radius, sizes: theme.radius}),
     textTransform: "uppercase",
     fontWeight: "bold",
-    backgroundColor: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 4 : 0}),
-    color: theme.colorScheme === "dark" ? theme.colors.dark[9] : getThemeColor({theme, color, shade: 9}),
+    backgroundColor: hexToRgba(getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 9 : 0}), theme.colorScheme === "dark" ? 0.3 : 1),
+    color: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 3 : 9}),
     "& $inner": {
       height: sizes[size].height - 2
     },
     "&:hover": {
-      backgroundColor: getThemeColor({
-        theme,
-        color,
-        shade: theme.colorScheme === "dark" ? 5 : 1
-      })
+      backgroundColor: hexToRgba(getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 8 : 1}), theme.colorScheme === "dark" ? 0.35 : 1)
     },
     "&:not(:disabled):active": {
       transform: "translateY(1px)"
@@ -141,14 +132,14 @@ var useStyles = createUseStyles({
     borderRadius: getSizeValue({size: radius, sizes: theme.radius}),
     textTransform: "uppercase",
     fontWeight: "bold",
-    backgroundColor: getThemeColor({theme, color, shade: 6}),
-    textShadow: `1px 1px 0 ${getThemeColor({theme, color, shade: 8})}`,
+    backgroundColor: hexToRgba(getThemeColor({theme, color, shade: 7}), theme.colorScheme === "dark" ? 0.65 : 1),
+    textShadow: theme.colorScheme === "dark" ? "none" : `1px 1px 0 ${getThemeColor({theme, color, shade: 8})}`,
     color: theme.white,
     "& $inner": {
       height: sizes[size].height - 2
     },
     "&:hover": {
-      backgroundColor: getThemeColor({theme, color, shade: 7})
+      backgroundColor: hexToRgba(getThemeColor({theme, color, shade: 8}), theme.colorScheme === "dark" ? 0.95 : 1)
     },
     "&:not(:disabled):active": {
       transform: "translateY(1px)"
@@ -169,6 +160,7 @@ var useStyles = createUseStyles({
     display: "inline-block",
     color: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 4 : 6}),
     cursor: "pointer",
+    lineHeight: theme.lineHeight,
     "&:hover": {
       textDecoration: "underline"
     },
@@ -180,7 +172,7 @@ var useStyles = createUseStyles({
       }
     }
   })
-}, {link: true});
+});
 
 export default useStyles;
 export { heights };

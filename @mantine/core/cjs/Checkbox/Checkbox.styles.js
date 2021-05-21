@@ -2,7 +2,6 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var reactJss = require('react-jss');
 var theme = require('@mantine/theme');
 
 var __defProp = Object.defineProperty;
@@ -31,7 +30,7 @@ const sizes = {
   lg: 26,
   xl: 36
 };
-var useStyles = reactJss.createUseStyles({
+var useStyles = theme.createMemoStyles({
   wrapper: {
     display: "flex",
     alignItems: "center"
@@ -50,7 +49,7 @@ var useStyles = reactJss.createUseStyles({
   }),
   checkbox: ({size, theme: theme$1, color}) => __spreadProps(__spreadValues({}, theme.getFocusStyles(theme$1)), {
     appearance: "none",
-    backgroundColor: theme$1.colorScheme === "dark" ? theme$1.colors.dark[5] : theme$1.colors.gray[0],
+    backgroundColor: theme$1.colorScheme === "dark" ? theme$1.colors.dark[4] : theme$1.colors.gray[0],
     border: `1px solid ${theme$1.colorScheme === "dark" ? theme$1.colors.dark[4] : theme$1.colors.gray[4]}`,
     width: theme.getSizeValue({size, sizes}),
     height: theme.getSizeValue({size, sizes}),
@@ -94,7 +93,7 @@ var useStyles = reactJss.createUseStyles({
     right: 0,
     margin: "auto"
   }
-}, {link: true});
+});
 
 exports.default = useStyles;
 exports.sizes = sizes;

@@ -1,9 +1,3 @@
-import { MantineTheme } from '@mantine/theme';
-interface KbdStylesProps {
-    theme: MantineTheme;
-}
-declare const _default: (data?: KbdStylesProps & {
-    theme?: MantineTheme;
-}) => import("jss").Classes<"kbd">;
+declare const _default: (args?: unknown) => import("jss").Classes<"kbd">;
 export default _default;
 //# sourceMappingURL=Kbd.styles.d.ts.map

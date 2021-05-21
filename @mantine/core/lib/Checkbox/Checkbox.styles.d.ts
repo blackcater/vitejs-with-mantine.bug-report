@@ -11,8 +11,6 @@ interface CheckboxStylesProps {
     size: MantineSize;
     color: string;
 }
-declare const _default: (data?: CheckboxStylesProps & {
-    theme?: MantineTheme;
-}) => import("jss").Classes<"icon" | "checkbox" | "label" | "wrapper" | "checkboxWrapper">;
+declare const _default: (args?: CheckboxStylesProps) => import("jss").Classes<"checkbox" | "label" | "icon" | "wrapper" | "checkboxWrapper">;
 export default _default;
 //# sourceMappingURL=Checkbox.styles.d.ts.map

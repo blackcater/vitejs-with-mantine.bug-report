@@ -1,5 +1,4 @@
-import { createUseStyles } from 'react-jss';
-import { getSizeValue, getThemeColor, getFontStyles } from '@mantine/theme';
+import { createMemoStyles, getSizeValue, getThemeColor, hexToRgba, getFontStyles } from '@mantine/theme';
 
 var __defProp = Object.defineProperty;
 var __defProps = Object.defineProperties;
@@ -27,7 +26,7 @@ const sizes = {
   lg: 56,
   xl: 84
 };
-var useStyles = createUseStyles({
+var useStyles = createMemoStyles({
   avatar: ({size, radius, theme}) => ({
     boxSizing: "border-box",
     position: "relative",
@@ -46,7 +45,7 @@ var useStyles = createUseStyles({
     fontSize: getSizeValue({size, sizes}) / 2.5,
     color: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 0 : 6}),
     fontWeight: 700,
-    backgroundColor: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 9 : 1}),
+    backgroundColor: hexToRgba(getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 8 : 1}), theme.colorScheme === "dark" ? 0.5 : 1),
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -59,7 +58,7 @@ var useStyles = createUseStyles({
     height: "70%",
     color: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 0 : 6})
   })
-}, {link: true});
+});
 
 export default useStyles;
 export { sizes };

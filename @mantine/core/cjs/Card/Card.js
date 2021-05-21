@@ -7,8 +7,9 @@ var cx = require('clsx');
 var theme = require('@mantine/theme');
 var Paper = require('../Paper/Paper.js');
 var Card_styles = require('./Card.styles.js');
+var CardsGrid = require('./CardsGrid/CardsGrid.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var cx__default = /*#__PURE__*/_interopDefaultLegacy(cx);
@@ -54,14 +55,15 @@ function Card(_a) {
     "radius"
   ]);
   const classes = Card_styles['default']({radius, padding, theme: theme.useMantineTheme(themeOverride)});
-  return /* @__PURE__ */ React__default['default'].createElement(Paper.Paper, __spreadValues({
+  return /* @__PURE__ */ React__default.createElement(Paper.Paper, __spreadValues({
     "data-mantine-card": true,
-    className: cx__default['default'](classes.card, className),
+    className: cx__default(classes.card, className),
     radius,
     padding
   }, others));
 }
 Card.displayName = "@mantine/core/Card";
 
+exports.CardsGrid = CardsGrid.CardsGrid;
 exports.Card = Card;
 //# sourceMappingURL=Card.js.map

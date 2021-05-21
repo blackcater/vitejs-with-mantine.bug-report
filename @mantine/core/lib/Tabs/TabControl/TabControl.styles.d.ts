@@ -4,8 +4,6 @@ interface TabControlStylesProps {
     reduceMotion: boolean;
     color: string;
 }
-declare const _default: (data?: TabControlStylesProps & {
-    theme?: MantineTheme;
-}) => import("jss").Classes<"tab" | "tabActive" | "tabInner" | "tabIcon">;
+declare const _default: (args?: TabControlStylesProps) => import("jss").Classes<"tab" | "tabActive" | "tabInner" | "tabIcon">;
 export default _default;
 //# sourceMappingURL=TabControl.styles.d.ts.map

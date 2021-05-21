@@ -1,5 +1,4 @@
-import { createUseStyles } from 'react-jss';
-import { getFontStyles } from '@mantine/core';
+import { createMemoStyles, getFontStyles } from '@mantine/core';
 
 var __defProp = Object.defineProperty;
 var __defProps = Object.defineProperties;
@@ -20,7 +19,7 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-var useStyles = createUseStyles({
+var useStyles = createMemoStyles({
   tagsList: ({theme}) => ({
     paddingTop: theme.spacing.xs,
     paddingBottom: theme.spacing.xs
@@ -61,7 +60,7 @@ var useStyles = createUseStyles({
   createControlHovered: ({theme}) => ({
     backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[0]
   })
-}, {link: true});
+});
 
 export default useStyles;
 //# sourceMappingURL=TagsList.styles.js.map

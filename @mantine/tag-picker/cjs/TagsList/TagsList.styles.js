@@ -2,7 +2,6 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var reactJss = require('react-jss');
 var core = require('@mantine/core');
 
 var __defProp = Object.defineProperty;
@@ -24,7 +23,7 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-var useStyles = reactJss.createUseStyles({
+var useStyles = core.createMemoStyles({
   tagsList: ({theme}) => ({
     paddingTop: theme.spacing.xs,
     paddingBottom: theme.spacing.xs
@@ -65,7 +64,7 @@ var useStyles = reactJss.createUseStyles({
   createControlHovered: ({theme}) => ({
     backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[0]
   })
-}, {link: true});
+});
 
 exports.default = useStyles;
 //# sourceMappingURL=TagsList.styles.js.map

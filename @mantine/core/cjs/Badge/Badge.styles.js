@@ -2,7 +2,6 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var reactJss = require('react-jss');
 var theme = require('@mantine/theme');
 
 var __defProp = Object.defineProperty;
@@ -50,7 +49,7 @@ const heights = Object.keys(sizes).reduce((acc, key) => {
   acc[key] = sizes[key].height;
   return acc;
 }, {});
-var useStyles = reactJss.createUseStyles({
+var useStyles = theme.createMemoStyles({
   leftSection: ({theme}) => ({
     marginRight: theme.spacing.xs / 2
   }),
@@ -87,20 +86,20 @@ var useStyles = reactJss.createUseStyles({
     });
   },
   light: ({theme: theme$1, color}) => ({
-    backgroundColor: theme.getThemeColor({theme: theme$1, color, shade: theme$1.colorScheme === "dark" ? 3 : 0}),
-    color: theme$1.colorScheme === "dark" ? theme$1.colors.dark[9] : theme.getThemeColor({theme: theme$1, color, shade: 9})
+    backgroundColor: theme.hexToRgba(theme.getThemeColor({theme: theme$1, color, shade: theme$1.colorScheme === "dark" ? 9 : 0}), theme$1.colorScheme === "dark" ? 0.3 : 1),
+    color: theme.getThemeColor({theme: theme$1, color, shade: theme$1.colorScheme === "dark" ? 3 : 9})
   }),
   filled: ({theme: theme$1, color}) => ({
-    backgroundColor: theme.getThemeColor({theme: theme$1, color, shade: 7}),
+    backgroundColor: theme.hexToRgba(theme.getThemeColor({theme: theme$1, color, shade: 7}), theme$1.colorScheme === "dark" ? 0.65 : 1),
     color: theme$1.white,
-    textShadow: `1px 1px 0 ${theme.getThemeColor({theme: theme$1, color, shade: 9})}`
+    textShadow: theme$1.colorScheme === "dark" ? "none" : `1px 1px 0 ${theme.getThemeColor({theme: theme$1, color, shade: 9})}`
   }),
   outline: ({theme: theme$1, color}) => ({
     backgroundColor: "transparent",
-    color: theme.getThemeColor({theme: theme$1, color, shade: theme$1.colorScheme === "dark" ? 4 : 6}),
-    borderColor: theme.getThemeColor({theme: theme$1, color, shade: theme$1.colorScheme === "dark" ? 4 : 6})
+    color: theme.getThemeColor({theme: theme$1, color, shade: theme$1.colorScheme === "dark" ? 3 : 8}),
+    borderColor: theme.hexToRgba(theme.getThemeColor({theme: theme$1, color, shade: theme$1.colorScheme === "dark" ? 3 : 8}), 0.55)
   })
-}, {link: true});
+});
 
 exports.default = useStyles;
 exports.heights = heights;

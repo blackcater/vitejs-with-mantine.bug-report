@@ -7,7 +7,7 @@ var cx = require('clsx');
 var theme = require('@mantine/theme');
 var TypographyStylesProvider_styles = require('./TypographyStylesProvider.styles.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var cx__default = /*#__PURE__*/_interopDefaultLegacy(cx);
@@ -49,8 +49,8 @@ function TypographyStylesProvider(_a) {
     "themeOverride"
   ]);
   const classes = TypographyStylesProvider_styles['default']({theme: theme.useMantineTheme(themeOverride)});
-  return /* @__PURE__ */ React__default['default'].createElement("div", __spreadValues({
-    className: cx__default['default'](classes.innerHtml, className)
+  return /* @__PURE__ */ React__default.createElement("div", __spreadValues({
+    className: cx__default(classes.innerHtml, className)
   }, others));
 }
 TypographyStylesProvider.displayName = "@mantine/core/TypographyStylesProvider";

@@ -5,8 +5,6 @@ interface PaperStylesProps {
     shadow: string;
     padding: MantineNumberSize;
 }
-declare const _default: (data?: PaperStylesProps & {
-    theme?: MantineTheme;
-}) => import("jss").Classes<"paper">;
+declare const _default: (args?: PaperStylesProps) => import("jss").Classes<"paper">;
 export default _default;
 //# sourceMappingURL=Paper.styles.d.ts.map

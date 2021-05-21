@@ -2,7 +2,6 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var reactJss = require('react-jss');
 var theme = require('@mantine/theme');
 
 var __defProp = Object.defineProperty;
@@ -49,7 +48,7 @@ function getPositionStyles({
       return null;
   }
 }
-var useStyles = reactJss.createUseStyles({
+var useStyles = theme.createMemoStyles({
   noOverlay: {},
   wrapper: {
     "&:not($noOverlay)": {
@@ -66,7 +65,7 @@ var useStyles = reactJss.createUseStyles({
     position: "fixed",
     outline: 0
   })
-}, {link: true});
+});
 
 exports.default = useStyles;
 exports.sizes = sizes;

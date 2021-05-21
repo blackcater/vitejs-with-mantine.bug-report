@@ -8,7 +8,7 @@ var theme = require('@mantine/theme');
 var ImageIcon = require('./ImageIcon.js');
 var Image_styles = require('./Image.styles.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var cx__default = /*#__PURE__*/_interopDefaultLegacy(cx);
@@ -89,19 +89,19 @@ function Image(_a) {
       setError(false);
     }
   }, [src]);
-  return /* @__PURE__ */ React__default['default'].createElement("div", __spreadValues({
+  return /* @__PURE__ */ React__default.createElement("div", __spreadValues({
     "data-mantine-image": true,
-    className: cx__default['default'](classes.wrapper, className),
+    className: cx__default(classes.wrapper, className),
     style: __spreadValues({width, height}, style),
     ref: elementRef
-  }, others), isPlaceholder && /* @__PURE__ */ React__default['default'].createElement("div", {
+  }, others), isPlaceholder && /* @__PURE__ */ React__default.createElement("div", {
     "data-mantine-image-placeholder": true,
     className: classes.placeholderIcon,
     title: alt
-  }, placeholder || /* @__PURE__ */ React__default['default'].createElement(ImageIcon.ImageIcon, {
+  }, placeholder || /* @__PURE__ */ React__default.createElement(ImageIcon.ImageIcon, {
     style: {width: 40, height: 40}
-  })), /* @__PURE__ */ React__default['default'].createElement("img", __spreadValues({
-    className: cx__default['default'](classes.image, imageProps == null ? void 0 : imageProps.className),
+  })), /* @__PURE__ */ React__default.createElement("img", __spreadValues({
+    className: cx__default(classes.image, imageProps == null ? void 0 : imageProps.className),
     src,
     alt,
     style: __spreadProps(__spreadValues({}, imageProps == null ? void 0 : imageProps.style), {objectFit: fit}),

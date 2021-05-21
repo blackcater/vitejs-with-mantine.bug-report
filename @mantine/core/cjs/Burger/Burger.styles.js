@@ -2,7 +2,6 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var reactJss = require('react-jss');
 var theme = require('@mantine/theme');
 
 var __defProp = Object.defineProperty;
@@ -31,7 +30,7 @@ const sizes = {
   lg: 34,
   xl: 42
 };
-var useStyles = reactJss.createUseStyles({
+var useStyles = theme.createMemoStyles({
   opened: {},
   wrapper: ({size, theme: theme$1}) => __spreadProps(__spreadValues({}, theme.getFocusStyles(theme$1)), {
     WebkitTapHighlightColor: "transparent",
@@ -84,7 +83,7 @@ var useStyles = reactJss.createUseStyles({
       }
     };
   }
-}, {link: true});
+});
 
 exports.default = useStyles;
 exports.sizes = sizes;

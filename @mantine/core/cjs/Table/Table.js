@@ -7,7 +7,7 @@ var cx = require('clsx');
 var theme = require('@mantine/theme');
 var Table_styles = require('./Table.styles.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var cx__default = /*#__PURE__*/_interopDefaultLegacy(cx);
@@ -60,8 +60,8 @@ function Table(_a) {
     "captionSide"
   ]);
   const classes = Table_styles['default']({captionSide, theme: theme.useMantineTheme(themeOverride)});
-  return /* @__PURE__ */ React__default['default'].createElement("table", __spreadProps(__spreadValues({}, others), {
-    className: cx__default['default'](classes.table, {[classes.striped]: striped, [classes.hover]: highlightOnHover}, className)
+  return /* @__PURE__ */ React__default.createElement("table", __spreadProps(__spreadValues({}, others), {
+    className: cx__default(classes.table, {[classes.striped]: striped, [classes.hover]: highlightOnHover}, className)
   }), children);
 }
 Table.displayName = "@mantine/core/Table";

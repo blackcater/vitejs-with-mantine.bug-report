@@ -1,10 +1,12 @@
 export { useClickOutside } from './use-click-outside/use-click-outside.js';
 export { useClipboard } from './use-clipboard/use-clipboard.js';
 export { useColorScheme } from './use-color-scheme/use-color-scheme.js';
+export { useDebouncedValue } from './use-debounced-value/use-debounced-value.js';
 export { useDocumentTitle } from './use-document-title/use-document-title.js';
 export { useFocusTrap } from './use-focus-trap/use-focus-trap.js';
 export { useForm } from './use-form/use-form.js';
-export { randomId, useId } from './use-id/use-id.js';
+export { useId } from './use-id/use-id.js';
+export { useIsomorphicEffect } from './use-isomorphic-effect/use-isomorphic-effect.js';
 export { useListState } from './use-list-state/use-list-state.js';
 export { useLocalStorageValue } from './use-local-storage-value/use-local-storage-value.js';
 export { useMediaQuery } from './use-media-query/use-media-query.js';

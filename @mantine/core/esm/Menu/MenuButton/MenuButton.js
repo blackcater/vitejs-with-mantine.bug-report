@@ -42,7 +42,8 @@ function MenuButton(_a) {
     color,
     disabled,
     rightSection,
-    className
+    className,
+    component: Element = "button"
   } = _b, others = __objRest(_b, [
     "children",
     "onHover",
@@ -53,10 +54,11 @@ function MenuButton(_a) {
     "color",
     "disabled",
     "rightSection",
-    "className"
+    "className",
+    "component"
   ]);
   const classes = useStyles({color, theme: useMantineTheme(themeOverride)});
-  return /* @__PURE__ */ React.createElement("button", __spreadValues({
+  return /* @__PURE__ */ React.createElement(Element, __spreadValues({
     type: "button",
     role: "menuitem",
     className: cx(classes.item, {[classes.hovered]: hovered}, className),

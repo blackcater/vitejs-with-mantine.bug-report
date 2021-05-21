@@ -2,9 +2,9 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var reactJss = require('react-jss');
+var theme = require('@mantine/theme');
 
-var useStyles = reactJss.createUseStyles({
+var useStyles = theme.createMemoStyles({
   breadcrumbs: {
     display: "flex"
   },
@@ -22,7 +22,7 @@ var useStyles = reactJss.createUseStyles({
     alignItems: "center",
     justifyContent: "center"
   })
-}, {link: true});
+});
 
 exports.default = useStyles;
 //# sourceMappingURL=Breadcrumbs.styles.js.map

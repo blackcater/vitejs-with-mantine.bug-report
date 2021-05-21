@@ -12,8 +12,6 @@ interface ModalStylesProps {
     overflow: 'outside' | 'inside';
     size: string | number;
 }
-declare const _default: (data?: ModalStylesProps & {
-    theme?: MantineTheme;
-}) => import("jss").Classes<"body" | "header" | "title" | "inner" | "wrapper" | "modal">;
+declare const _default: (args?: ModalStylesProps) => import("jss").Classes<"body" | "header" | "title" | "inner" | "wrapper" | "modal">;
 export default _default;
 //# sourceMappingURL=Modal.styles.d.ts.map

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useMantineTheme, getThemeColor } from '@mantine/theme';
+import { useMantineTheme, hexToRgba, getThemeColor } from '@mantine/theme';
 import { Text } from '../Text/Text.js';
 
 var __defProp = Object.defineProperty;
@@ -59,11 +59,11 @@ function Highlight(_a) {
     "highlightColor"
   ]);
   const theme = useMantineTheme(themeOverride);
-  const color = getThemeColor({
+  const color = hexToRgba(getThemeColor({
     theme,
     color: highlightColor,
-    shade: 2
-  });
+    shade: theme.colorScheme === "dark" ? 4 : 2
+  }), theme.colorScheme === "dark" ? 0.7 : 1);
   const {start, end, highlighted} = highlighter(children, highlight);
   return /* @__PURE__ */ React.createElement(Text, __spreadValues({
     component,

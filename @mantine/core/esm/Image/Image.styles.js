@@ -1,5 +1,4 @@
-import { createUseStyles } from 'react-jss';
-import { getSizeValue, getFontStyles } from '@mantine/theme';
+import { createMemoStyles, getSizeValue, getFontStyles } from '@mantine/theme';
 
 var __defProp = Object.defineProperty;
 var __defProps = Object.defineProperties;
@@ -20,7 +19,7 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-var useStyles = createUseStyles({
+var useStyles = createMemoStyles({
   wrapper: {
     position: "relative",
     overflow: "hidden"
@@ -47,7 +46,7 @@ var useStyles = createUseStyles({
     right: 0,
     bottom: 0
   })
-}, {link: true});
+});
 
 export default useStyles;
 //# sourceMappingURL=Image.styles.js.map

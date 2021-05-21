@@ -7,7 +7,7 @@ var hooks = require('@mantine/hooks');
 var Input = require('../Input/Input.js');
 var InputWrapper = require('../InputWrapper/InputWrapper.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 
@@ -71,7 +71,7 @@ function TextInput(_a) {
     "elementRef"
   ]);
   const uuid = hooks.useId(id);
-  return /* @__PURE__ */ React__default['default'].createElement(InputWrapper.InputWrapper, __spreadValues({
+  return /* @__PURE__ */ React__default.createElement(InputWrapper.InputWrapper, __spreadValues({
     required,
     id: uuid,
     label,
@@ -80,7 +80,7 @@ function TextInput(_a) {
     className,
     style,
     themeOverride
-  }, wrapperProps), /* @__PURE__ */ React__default['default'].createElement(Input.Input, __spreadProps(__spreadValues({}, others), {
+  }, wrapperProps), /* @__PURE__ */ React__default.createElement(Input.Input, __spreadProps(__spreadValues({}, others), {
     required,
     elementRef,
     id: uuid,

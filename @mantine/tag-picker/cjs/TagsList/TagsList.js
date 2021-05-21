@@ -9,7 +9,7 @@ var core = require('@mantine/core');
 var TagItem = require('../TagItem/TagItem.js');
 var TagsList_styles = require('./TagsList.styles.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var cx__default = /*#__PURE__*/_interopDefaultLegacy(cx);
@@ -48,7 +48,7 @@ function TagsList({
 }) {
   const classes = TagsList_styles['default']({theme: core.useMantineTheme(themeOverride)});
   const focusTrapRef = hooks.useFocusTrap();
-  const tags = data.map((tag, index) => /* @__PURE__ */ React__default['default'].createElement(TagItem.TagItem, {
+  const tags = data.map((tag, index) => /* @__PURE__ */ React__default.createElement(TagItem.TagItem, {
     key: tag.id,
     index,
     hovered,
@@ -72,11 +72,11 @@ function TagsList({
     transitionDuration,
     themeOverride
   }));
-  return /* @__PURE__ */ React__default['default'].createElement("div", {
+  return /* @__PURE__ */ React__default.createElement("div", {
     className: classes.tagsList,
     ref: focusTrapRef,
     role: "listbox"
-  }, /* @__PURE__ */ React__default['default'].createElement(core.TextInput, {
+  }, /* @__PURE__ */ React__default.createElement(core.TextInput, {
     themeOverride,
     className: classes.searchInput,
     placeholder: searchPlaceholder,
@@ -87,21 +87,21 @@ function TagsList({
       onHoveredChange(-1);
       onArrowsCaptureChange(false);
     }
-  }), description && /* @__PURE__ */ React__default['default'].createElement(core.Text, {
+  }), description && /* @__PURE__ */ React__default.createElement(core.Text, {
     color: "gray",
     size: "sm",
     className: classes.description,
     themeOverride
-  }, description), /* @__PURE__ */ React__default['default'].createElement("div", null, tags, enableCreate && canCreate && /* @__PURE__ */ React__default['default'].createElement("button", {
-    className: cx__default['default'](classes.createControl, {
+  }, description), /* @__PURE__ */ React__default.createElement("div", null, tags, enableCreate && canCreate && /* @__PURE__ */ React__default.createElement("button", {
+    className: cx__default(classes.createControl, {
       [classes.createControlHovered]: hovered === data.length
     }),
     type: "button",
     onClick: onCreate,
     onMouseEnter: () => onHoveredChange(data.length)
-  }, /* @__PURE__ */ React__default['default'].createElement("span", {
+  }, /* @__PURE__ */ React__default.createElement("span", {
     className: classes.createControlLabel
-  }, createLabel || "+"), /* @__PURE__ */ React__default['default'].createElement(core.Badge, {
+  }, createLabel || "+"), /* @__PURE__ */ React__default.createElement(core.Badge, {
     variant: "light",
     className: classes.createControlBadge,
     color: createColor,

@@ -1,5 +1,4 @@
-import { createUseStyles } from 'react-jss';
-import { getSizeValue } from '@mantine/theme';
+import { createMemoStyles, getSizeValue } from '@mantine/theme';
 
 const sizes = {
   xs: 120,
@@ -8,13 +7,13 @@ const sizes = {
   lg: 240,
   xl: 300
 };
-var useStyles = createUseStyles({
+var useStyles = createMemoStyles({
   menu: ({theme, size}) => ({
     position: "absolute",
     width: getSizeValue({size, sizes}),
     overflow: "hidden",
-    backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[9] : theme.white,
-    border: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[9] : theme.colors.gray[2]}`,
+    backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.white,
+    border: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.colors.gray[2]}`,
     paddingTop: theme.spacing.xs / 2,
     paddingBottom: theme.spacing.xs / 2
   }),
@@ -23,7 +22,7 @@ var useStyles = createUseStyles({
     marginTop: theme.spacing.xs / 2,
     marginBottom: theme.spacing.xs / 2
   })
-}, {link: true});
+});
 
 export default useStyles;
 export { sizes };

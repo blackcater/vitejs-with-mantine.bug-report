@@ -51,7 +51,7 @@ export declare function Title({ className, themeOverride, order, children, ...ot
     is?: string;
     'aria-activedescendant'?: string;
     'aria-atomic'?: boolean | "true" | "false";
-    'aria-autocomplete'?: "inline" | "none" | "both" | "list";
+    'aria-autocomplete'?: "none" | "inline" | "list" | "both";
     'aria-busy'?: boolean | "true" | "false";
     'aria-checked'?: boolean | "true" | "false" | "mixed";
     'aria-colcount'?: number;

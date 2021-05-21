@@ -251,61 +251,6 @@
         "signature": "d5149e879344dc3919910afd96690ca57302cbe55ab31efac161448aefefa6ca",
         "affectsGlobalScope": false
       },
-      "../mantine-theme/lib/utils/get-theme-color/get-theme-color.d.ts": {
-        "version": "d017f3e8dd8562b0c33832b996db2957e005da6bc951a0a861ef896ca7dbaf39",
-        "signature": "d017f3e8dd8562b0c33832b996db2957e005da6bc951a0a861ef896ca7dbaf39",
-        "affectsGlobalScope": false
-      },
-      "../mantine-theme/lib/utils/get-focus-styles/get-focus-styles.d.ts": {
-        "version": "06b667f5cf1071a19b6b7db8d6006ba389f76b22a44afe45704b7485f15b5ac7",
-        "signature": "06b667f5cf1071a19b6b7db8d6006ba389f76b22a44afe45704b7485f15b5ac7",
-        "affectsGlobalScope": false
-      },
-      "../mantine-theme/lib/utils/get-font-styles/get-font-styles.d.ts": {
-        "version": "75e5236b5be8adef61c0231271ecad8a73bf9cef21e965a8460751423c3b7661",
-        "signature": "75e5236b5be8adef61c0231271ecad8a73bf9cef21e965a8460751423c3b7661",
-        "affectsGlobalScope": false
-      },
-      "../mantine-theme/lib/utils/get-size-value/get-size-value.d.ts": {
-        "version": "1a03a84f40da08af9852c3aea87a616fff7077ca29c83d3c9b68a968862c89c0",
-        "signature": "1a03a84f40da08af9852c3aea87a616fff7077ca29c83d3c9b68a968862c89c0",
-        "affectsGlobalScope": false
-      },
-      "../mantine-theme/lib/mantineprovider/mantineprovider.d.ts": {
-        "version": "b3d1eb5373c0a048cf7fe571d0d00e291a2c2cc4793101593ca118245f0947ee",
-        "signature": "b3d1eb5373c0a048cf7fe571d0d00e291a2c2cc4793101593ca118245f0947ee",
-        "affectsGlobalScope": false
-      },
-      "../mantine-theme/lib/use-mantine-theme/use-mantine-theme.d.ts": {
-        "version": "a30b7d391a3c0aa50a9420c254ec78b44860c533fa4b7156746f3f5a25664bc6",
-        "signature": "a30b7d391a3c0aa50a9420c254ec78b44860c533fa4b7156746f3f5a25664bc6",
-        "affectsGlobalScope": false
-      },
-      "../../node_modules/theming/src/index.d.ts": {
-        "version": "8916debeee8948d7d755190c77f46a680b13a91f73a80b9cdba0338980ecb221",
-        "signature": "8916debeee8948d7d755190c77f46a680b13a91f73a80b9cdba0338980ecb221",
-        "affectsGlobalScope": false
-      },
-      "../mantine-theme/lib/mantineprovider/theme-context.d.ts": {
-        "version": "58f094e7339527fd4d5e59c4dac35d18317e2887c10f287a7ff8d20a86c8ca20",
-        "signature": "58f094e7339527fd4d5e59c4dac35d18317e2887c10f287a7ff8d20a86c8ca20",
-        "affectsGlobalScope": false
-      },
-      "../mantine-theme/lib/default-theme.d.ts": {
-        "version": "e24f221d14807a0fad17a292c1fc36bc935ca15a3aa5df7a658f308064f168bd",
-        "signature": "e24f221d14807a0fad17a292c1fc36bc935ca15a3aa5df7a658f308064f168bd",
-        "affectsGlobalScope": false
-      },
-      "../mantine-theme/lib/index.d.ts": {
-        "version": "4abf3e08fb5b8295ffdd75123f20662e11e63c5f61da64d547ad54db817ce12b",
-        "signature": "4abf3e08fb5b8295ffdd75123f20662e11e63c5f61da64d547ad54db817ce12b",
-        "affectsGlobalScope": false
-      },
-      "../../node_modules/clsx/clsx.d.ts": {
-        "version": "1552a249535ba9306d1ce112428864d06af27f6c50f24fb75b46fcc562927b0a",
-        "signature": "1552a249535ba9306d1ce112428864d06af27f6c50f24fb75b46fcc562927b0a",
-        "affectsGlobalScope": false
-      },
       "../../node_modules/indefinite-observable/dist/types.d.ts": {
         "version": "562677c03c4ae0b7550c6dac6c83a6934d3d9e160433662d2d5ade0239f2a0e3",
         "signature": "562677c03c4ae0b7550c6dac6c83a6934d3d9e160433662d2d5ade0239f2a0e3",
@@ -331,24 +276,104 @@
         "signature": "10a268c51d4e2fd2bdfe0c7ab9014e6f9a7539d757e03222b4d69a18ad92948d",
         "affectsGlobalScope": false
       },
+      "../../node_modules/theming/src/index.d.ts": {
+        "version": "8916debeee8948d7d755190c77f46a680b13a91f73a80b9cdba0338980ecb221",
+        "signature": "8916debeee8948d7d755190c77f46a680b13a91f73a80b9cdba0338980ecb221",
+        "affectsGlobalScope": false
+      },
       "../../node_modules/react-jss/src/index.d.ts": {
         "version": "76cf406f4003df8e36d142dad4bca2ecaf1afc77b4e13234d27350227e1fa30d",
         "signature": "76cf406f4003df8e36d142dad4bca2ecaf1afc77b4e13234d27350227e1fa30d",
         "affectsGlobalScope": true
       },
-      "./src/input/input.styles.ts": {
-        "version": "3f0791a6aa0ff660592d14f1c50062fb486ff4188b38d246005b9269e0df7755",
-        "signature": "9027b421d02fb0380cc5c49bc31d043e5c634c558a96a1b7543319688e200b2a",
+      "../mantine-theme/lib/create-memo-styles.d.ts": {
+        "version": "3b82a0c363b2c3bd923f79916e5a7de9d04d981e9f32827fa550acce17bd7bfb",
+        "signature": "3b82a0c363b2c3bd923f79916e5a7de9d04d981e9f32827fa550acce17bd7bfb",
         "affectsGlobalScope": false
       },
-      "./src/input/input.tsx": {
-        "version": "29f184dd6f0b83ba84abf5d5f2dcbf013eaa3bdf20248bfa2c33c6401c38fddf",
-        "signature": "e4c1623fdfa5ea8b96af2f7ce70de354297f9dd96563fa9184ee63adc9fa0025",
+      "../mantine-theme/lib/utils/get-theme-color/get-theme-color.d.ts": {
+        "version": "d017f3e8dd8562b0c33832b996db2957e005da6bc951a0a861ef896ca7dbaf39",
+        "signature": "d017f3e8dd8562b0c33832b996db2957e005da6bc951a0a861ef896ca7dbaf39",
+        "affectsGlobalScope": false
+      },
+      "../mantine-theme/lib/utils/get-focus-styles/get-focus-styles.d.ts": {
+        "version": "06b667f5cf1071a19b6b7db8d6006ba389f76b22a44afe45704b7485f15b5ac7",
+        "signature": "06b667f5cf1071a19b6b7db8d6006ba389f76b22a44afe45704b7485f15b5ac7",
+        "affectsGlobalScope": false
+      },
+      "../mantine-theme/lib/utils/get-font-styles/get-font-styles.d.ts": {
+        "version": "75e5236b5be8adef61c0231271ecad8a73bf9cef21e965a8460751423c3b7661",
+        "signature": "75e5236b5be8adef61c0231271ecad8a73bf9cef21e965a8460751423c3b7661",
+        "affectsGlobalScope": false
+      },
+      "../mantine-theme/lib/utils/get-size-value/get-size-value.d.ts": {
+        "version": "1a03a84f40da08af9852c3aea87a616fff7077ca29c83d3c9b68a968862c89c0",
+        "signature": "1a03a84f40da08af9852c3aea87a616fff7077ca29c83d3c9b68a968862c89c0",
+        "affectsGlobalScope": false
+      },
+      "../mantine-theme/lib/utils/hex-to-rgba/hex-to-rgba.d.ts": {
+        "version": "ca95031978d4cd1ed706402177422b1f3c93a35129d9b3e95f0c14a99760fdd8",
+        "signature": "ca95031978d4cd1ed706402177422b1f3c93a35129d9b3e95f0c14a99760fdd8",
+        "affectsGlobalScope": false
+      },
+      "../mantine-theme/lib/mantineprovider/mantineprovider.d.ts": {
+        "version": "b3d1eb5373c0a048cf7fe571d0d00e291a2c2cc4793101593ca118245f0947ee",
+        "signature": "b3d1eb5373c0a048cf7fe571d0d00e291a2c2cc4793101593ca118245f0947ee",
+        "affectsGlobalScope": false
+      },
+      "../mantine-theme/lib/use-mantine-theme/use-mantine-theme.d.ts": {
+        "version": "a30b7d391a3c0aa50a9420c254ec78b44860c533fa4b7156746f3f5a25664bc6",
+        "signature": "a30b7d391a3c0aa50a9420c254ec78b44860c533fa4b7156746f3f5a25664bc6",
+        "affectsGlobalScope": false
+      },
+      "../mantine-theme/lib/mantineprovider/theme-context.d.ts": {
+        "version": "58f094e7339527fd4d5e59c4dac35d18317e2887c10f287a7ff8d20a86c8ca20",
+        "signature": "58f094e7339527fd4d5e59c4dac35d18317e2887c10f287a7ff8d20a86c8ca20",
+        "affectsGlobalScope": false
+      },
+      "../mantine-theme/lib/default-theme.d.ts": {
+        "version": "e24f221d14807a0fad17a292c1fc36bc935ca15a3aa5df7a658f308064f168bd",
+        "signature": "e24f221d14807a0fad17a292c1fc36bc935ca15a3aa5df7a658f308064f168bd",
+        "affectsGlobalScope": false
+      },
+      "../mantine-theme/lib/index.d.ts": {
+        "version": "b4e8dff42c54436852bf76a96bbde7d61f98b1ec3f62d205d8cc3a672f51173a",
+        "signature": "b4e8dff42c54436852bf76a96bbde7d61f98b1ec3f62d205d8cc3a672f51173a",
+        "affectsGlobalScope": false
+      },
+      "../mantine-utils/lib/random-id/random-id.d.ts": {
+        "version": "a0b892e3ccdeb81b65d29031081843cd9d910ef9f44ecff53d5e39b9bba92265",
+        "signature": "a0b892e3ccdeb81b65d29031081843cd9d910ef9f44ecff53d5e39b9bba92265",
+        "affectsGlobalScope": false
+      },
+      "../mantine-utils/lib/upper-first/upper-first.d.ts": {
+        "version": "8c339ccb1386f7069567d6de44c8a6ba2fca6a74dad3f18a927c6b61aca6b54b",
+        "signature": "8c339ccb1386f7069567d6de44c8a6ba2fca6a74dad3f18a927c6b61aca6b54b",
+        "affectsGlobalScope": false
+      },
+      "../mantine-utils/lib/index.d.ts": {
+        "version": "ec413a36746fcb3a09d0d6be608d3ad2ce9d7396918b0206296c6dd35e4314c5",
+        "signature": "ec413a36746fcb3a09d0d6be608d3ad2ce9d7396918b0206296c6dd35e4314c5",
+        "affectsGlobalScope": false
+      },
+      "../../node_modules/clsx/clsx.d.ts": {
+        "version": "1552a249535ba9306d1ce112428864d06af27f6c50f24fb75b46fcc562927b0a",
+        "signature": "1552a249535ba9306d1ce112428864d06af27f6c50f24fb75b46fcc562927b0a",
+        "affectsGlobalScope": false
+      },
+      "./src/actionicon/actionicon.styles.ts": {
+        "version": "6b20c7fe9369d0719b8834dd2e36c204b577d373f4adfbcde84cef6cb51ddb20",
+        "signature": "84a3c9b1387f43231c8c2e1db0c3a1688b57bd157f48f05e2abf7682444133d9",
+        "affectsGlobalScope": false
+      },
+      "./src/actionicon/actionicon.tsx": {
+        "version": "d70160c0f758af9594364c67fbaf003e1a1bb1d6bb6299253c8e5f4e32d8c73d",
+        "signature": "41e0ee3f70b34b78cb80f289049c2d0cd33c6f99b311a38a9a25955a40ef8ae2",
         "affectsGlobalScope": false
       },
       "./src/text/text.styles.ts": {
-        "version": "6acaf83f2f0eb8eda0edf8b8da2af22f2728ca75d8d32bbf1124102220b45391",
-        "signature": "77204f4f0e218772367b4fb1d86a5ff12607374a1328ed0e8fab2b60c52cd850",
+        "version": "2da5eb91bc780257cdce0e885999b7aa97faad15d8ad70cfa1f584adf560f3ed",
+        "signature": "b4b32077f0229c8f85991c985fc66975f0492edba1b69c983317f10be3f70e4d",
         "affectsGlobalScope": false
       },
       "./src/text/text.tsx": {
@@ -356,44 +381,74 @@
         "signature": "3e69f293a0b10e20797b6596b2f32958a713dc22f435804a6ebbe5588dc8a540",
         "affectsGlobalScope": false
       },
-      "./src/inputwrapper/inputwrapper.styles.ts": {
-        "version": "8207ea853535cd813fde3972765adce33ede02d8ce0c63cf13c0758c1820ac5b",
-        "signature": "9a23d52482bca0812b6c256747f9abf460e26e369e46f52da45bab639982b9b0",
+      "./src/paper/paper.styles.ts": {
+        "version": "1b809addfef8197f2654902563a30819b5761eaa6b424e06d058cf1c77abe38e",
+        "signature": "56dcc01b42ec03fdb6c2a8737e685ad27fbddde9126faf9f573774959da0c0e1",
         "affectsGlobalScope": false
       },
-      "./src/inputwrapper/inputwrapper.tsx": {
-        "version": "5a8572f2135701b50dce062e0a37b2a69e8b1a694f2ba779f2550c7d722b9d98",
-        "signature": "7ba70b3239561838efa4ac38186876510926514a6e7bbbf406cf69990af1fe8b",
+      "./src/paper/paper.tsx": {
+        "version": "247cbd166dbec902e4097d602884b4ba0092062c86afbe87fdeb17954b35327a",
+        "signature": "a215db4b70e65cead75df1ff027ca01f04f72792a085bdade3f6560754b4b5e0",
         "affectsGlobalScope": false
       },
-      "../../node_modules/@types/react-transition-group/transition.d.ts": {
-        "version": "92decc8ffcee1e19965486f4c7440ab3fee1d6dfde4054eb308fc57b466cc12a",
-        "signature": "92decc8ffcee1e19965486f4c7440ab3fee1d6dfde4054eb308fc57b466cc12a",
+      "./src/alert/alert.styles.ts": {
+        "version": "e3fe97fb67bebb46618bdee422e15091271c6cd0fde28acef39aedb6a5d5a804",
+        "signature": "6bf9932533e1ecda31ae301f4ac8ac69b53d1f3791e5b3503ed7491da99f6f1d",
         "affectsGlobalScope": false
       },
-      "../../node_modules/@types/react-transition-group/csstransition.d.ts": {
-        "version": "1429ac61feca4fdc074f60eb9b07f8b9e2c0ef9335c26e18d05f8ab67653f72b",
-        "signature": "1429ac61feca4fdc074f60eb9b07f8b9e2c0ef9335c26e18d05f8ab67653f72b",
+      "./src/alert/alert.tsx": {
+        "version": "eef721e9d6bfc03f25b417ed0ae7b7c96986a3963cb768b99e0745cd4893021e",
+        "signature": "8e83d5f932d16ac578fdbc822995433b166d38cba05d4779a1ac2de5ff3afc16",
         "affectsGlobalScope": false
       },
-      "../../node_modules/@types/react-transition-group/transitiongroup.d.ts": {
-        "version": "e0db728e68cfb650b729496d5b1cb436930f593b6bf5b4ad692c18ebe40e9ee0",
-        "signature": "e0db728e68cfb650b729496d5b1cb436930f593b6bf5b4ad692c18ebe40e9ee0",
+      "./src/avatar/placeholdericon.tsx": {
+        "version": "160af24e7a449cc03fde2b5a7242606e4a3364fcc3fccac575d2823e2b8b0f2c",
+        "signature": "e7588c72f19c632dd2630ba0ae18e73fe95d88d9715a9ac8ac75f1541346c724",
         "affectsGlobalScope": false
       },
-      "../../node_modules/@types/react-transition-group/switchtransition.d.ts": {
-        "version": "9155a57743465e6540e3e81a73f3d0c0630a5c5ff80e1be6232fbd46bcb6dc90",
-        "signature": "9155a57743465e6540e3e81a73f3d0c0630a5c5ff80e1be6232fbd46bcb6dc90",
+      "./src/avatar/avatar.styles.ts": {
+        "version": "c26f9b63f6db0d38d2c4f6b476a4cec5152b566e8b7c87e1a699cf81db91b4c0",
+        "signature": "9af4b02ce68fc0e07393d4fb0230ba4b913b3b979e2c77892d1370bc43e0ad42",
         "affectsGlobalScope": false
       },
-      "../../node_modules/@types/react-transition-group/config.d.ts": {
-        "version": "960a68ced7820108787135bdae5265d2cc4b511b7dcfd5b8f213432a8483daf1",
-        "signature": "960a68ced7820108787135bdae5265d2cc4b511b7dcfd5b8f213432a8483daf1",
+      "./src/avatar/avatar.tsx": {
+        "version": "f37ce3c40a5b8894454c2f4c800710a57ff369e061fd62912ae714b4a0d7e7ca",
+        "signature": "3548bc26ff6f42b1a55777ee00439212b6ad73854569e4c609df7601fd16e690",
         "affectsGlobalScope": false
       },
-      "../../node_modules/@types/react-transition-group/index.d.ts": {
-        "version": "ed3b711f533ddb3a5451f4c4bb0df3a0b95e9d0433b3b7834644dd1718d06d31",
-        "signature": "ed3b711f533ddb3a5451f4c4bb0df3a0b95e9d0433b3b7834644dd1718d06d31",
+      "./src/badge/badge.styles.ts": {
+        "version": "54116c0708b6f71885b55841f6c2af75e376e8f79130b0c4c8ecb0c516ec3873",
+        "signature": "88afcef7188e2420c673a71b29fb289a37ccd1b27130f5291968ae2b853b5c72",
+        "affectsGlobalScope": false
+      },
+      "./src/badge/badge.tsx": {
+        "version": "b20b19cfd1507ee1dd0872db1a22be7088ed708769d580279f95ebdc6b60a991",
+        "signature": "e3ab69240348fc73b28f74850f64e992478209c3192069b2087214aeebc6e15d",
+        "affectsGlobalScope": false
+      },
+      "./src/blockquote/quoteicon.tsx": {
+        "version": "14c162bcb52257e63003673134994e33411182a92803e1fad25cbc0fec6d5af8",
+        "signature": "cb8cec658772bf570d1a803da5613233f46e4beaa28028cad961205e0b4391a3",
+        "affectsGlobalScope": false
+      },
+      "./src/blockquote/blockquote.styles.ts": {
+        "version": "b02345a7cbd132cfe77927b51eb319e58f61c0476e551e89205ae061488f53dd",
+        "signature": "35d53164f411bad59ac636c4627ff127cfbbade232dca839bbcb44e5e2f4c109",
+        "affectsGlobalScope": false
+      },
+      "./src/blockquote/blockquote.tsx": {
+        "version": "956327c70cf74b4e8ca84f0129e2353d6a1c4e7ed0dbbff7184ee4d59b1e080a",
+        "signature": "9adca22f9d20967c4915b678cc456e89406cb96840006573bef5efc706ae4248",
+        "affectsGlobalScope": false
+      },
+      "./src/breadcrumbs/breadcrumbs.styles.ts": {
+        "version": "544f9cbbe29b7fc76c9fb07a7dce22172735d39b4bcdc62be146899694193742",
+        "signature": "16d5fc5f5c4f402c626f4bf4cf542c5c582154f24ef439b0d477c9e3b3b84dde",
+        "affectsGlobalScope": false
+      },
+      "./src/breadcrumbs/breadcrumbs.tsx": {
+        "version": "17f89e3c19deb48ad4732cafd07a9ae4cc072c71c7292af9412c46f5bf5765dc",
+        "signature": "724286438e0f6006372ffe96fe9cf2ff2d7ba3b5507135baf1c53583a1cb048f",
         "affectsGlobalScope": false
       },
       "../mantine-hooks/lib/use-click-outside/use-click-outside.d.ts": {
@@ -409,6 +464,11 @@
       "../mantine-hooks/lib/use-color-scheme/use-color-scheme.d.ts": {
         "version": "854a858752254a81b6586fd947d0d574f32b545f457d160a09da587bfb17de91",
         "signature": "854a858752254a81b6586fd947d0d574f32b545f457d160a09da587bfb17de91",
+        "affectsGlobalScope": false
+      },
+      "../mantine-hooks/lib/use-debounced-value/use-debounced-value.d.ts": {
+        "version": "842e655c54f45020734560e6fc6dcfb236a34676f4d77aecf3efb35bebd39a65",
+        "signature": "842e655c54f45020734560e6fc6dcfb236a34676f4d77aecf3efb35bebd39a65",
         "affectsGlobalScope": false
       },
       "../mantine-hooks/lib/use-document-title/use-document-title.d.ts": {
@@ -427,8 +487,13 @@
         "affectsGlobalScope": false
       },
       "../mantine-hooks/lib/use-id/use-id.d.ts": {
-        "version": "c094272bdfd10982b806cb870fd855af9cd978b5abc4905be9a37d3bb12df630",
-        "signature": "c094272bdfd10982b806cb870fd855af9cd978b5abc4905be9a37d3bb12df630",
+        "version": "93836c6b0073655690e66f45d67952c1f95f65319c539201b73ebedca0dd670b",
+        "signature": "93836c6b0073655690e66f45d67952c1f95f65319c539201b73ebedca0dd670b",
+        "affectsGlobalScope": false
+      },
+      "../mantine-hooks/lib/use-isomorphic-effect/use-isomorphic-effect.d.ts": {
+        "version": "a1c73e307ff952039b35b1b334ea4b1e1fd40ff3bdf5a2ad8116267ad1251c35",
+        "signature": "a1c73e307ff952039b35b1b334ea4b1e1fd40ff3bdf5a2ad8116267ad1251c35",
         "affectsGlobalScope": false
       },
       "../mantine-hooks/lib/use-list-state/use-list-state.d.ts": {
@@ -462,8 +527,8 @@
         "affectsGlobalScope": false
       },
       "../mantine-hooks/lib/use-scroll-lock/use-scroll-lock.d.ts": {
-        "version": "e296da9ccc1b546a6611f24537fcb34b8ea8b60ef3c10c604a44932b38b85c04",
-        "signature": "e296da9ccc1b546a6611f24537fcb34b8ea8b60ef3c10c604a44932b38b85c04",
+        "version": "6a8ad616d3f6e24b5b43d3b81c3795aeb47642fafac82d534413d00e2d4760d9",
+        "signature": "6a8ad616d3f6e24b5b43d3b81c3795aeb47642fafac82d534413d00e2d4760d9",
         "affectsGlobalScope": false
       },
       "../mantine-hooks/lib/use-window-event/use-window-event.d.ts": {
@@ -472,8 +537,148 @@
         "affectsGlobalScope": false
       },
       "../mantine-hooks/lib/index.d.ts": {
-        "version": "e93803ff5b8b0ccede0a98e8f717648e4dd52d31fb3e6b559d1b7c2bcf4ad49c",
-        "signature": "e93803ff5b8b0ccede0a98e8f717648e4dd52d31fb3e6b559d1b7c2bcf4ad49c",
+        "version": "6b169c357ed8a4db779c9fb4e4ec68832ce9c30f2170e21bc5879c6147f92ecc",
+        "signature": "6b169c357ed8a4db779c9fb4e4ec68832ce9c30f2170e21bc5879c6147f92ecc",
+        "affectsGlobalScope": false
+      },
+      "./src/burger/burger.styles.ts": {
+        "version": "247daf464458e691d2d58b59a58dd55f27758cd434a69808fbaed2373d89d55a",
+        "signature": "ba0519ff58339b44b6af04e984816bca82b785c9a7908f9540f60e08faa86528",
+        "affectsGlobalScope": false
+      },
+      "./src/burger/burger.tsx": {
+        "version": "7db368c14b17453cead3c48303bb948dee988d77df93ac527d72fa5a72ffadea",
+        "signature": "345d167b8cbb19196fe7439e285e0fb7081abc75c4725dd7eade7a45553a406b",
+        "affectsGlobalScope": false
+      },
+      "./src/button/button.styles.ts": {
+        "version": "6ceeb19b7bc09444d0956f0952d8d54299ccf7c9aa0345936a263881c8d34814",
+        "signature": "54741ec49dda13ac61556bde4573f977610e4ad236ce595335280b05e566f461",
+        "affectsGlobalScope": false
+      },
+      "./src/button/button.tsx": {
+        "version": "98ca75ae9f354dd54b6329f12b8f008488f0656ba0bc58ea27167d09675e9fe3",
+        "signature": "a6d88bf60511d5a672acb914eee50837de4c63ed7333b568097b0494eca723e7",
+        "affectsGlobalScope": false
+      },
+      "./src/card/card.styles.ts": {
+        "version": "3783a88e9b699627541df6e16ad4dd6c03939d1f8b67516ca41f4dae2c46d0ab",
+        "signature": "c15bdd1bc18fd26c9cc9594416d8b7807720433e968ebc3fdf098d18a3118d03",
+        "affectsGlobalScope": false
+      },
+      "./src/card/cardsgrid/cardsgrid.styles.ts": {
+        "version": "9106ff171c916713f093532fa300689041955cbe15c1d868f01abaa256c8c928",
+        "signature": "164000e761143a243168cb541d8f3d30866abaedb3d6a4e1c7507f3e84ff7291",
+        "affectsGlobalScope": false
+      },
+      "./src/card/cardsgrid/cardsgrid.tsx": {
+        "version": "6a7b564ac0b52fc08df80bda41ab191395730bca6656f260933fe127d9298c83",
+        "signature": "333eb33125e563ac44b307f66fbd136b1a22ba2851f13dd0ca263de98d22a8ec",
+        "affectsGlobalScope": false
+      },
+      "./src/card/card.tsx": {
+        "version": "64eaa9d27c31e9dbff0bb62cf8c10a786f0774f959136520690ab5077f1dfb3a",
+        "signature": "f91a864f240a90df7838fede6e945f4d861025026cff657ca9ac75be180955af",
+        "affectsGlobalScope": false
+      },
+      "./src/checkbox/checkboxicon.tsx": {
+        "version": "cecea1be7c66d7bdde7963b0d120dde7f831b8d14a9d9b96df2349355bb856b5",
+        "signature": "79b5f124588cd71b08c2fc856b00463b80f2de897a93f3535a98fa463fd122a2",
+        "affectsGlobalScope": false
+      },
+      "./src/checkbox/checkbox.styles.ts": {
+        "version": "f1e9b340b295f099d96b2f0a4889d30475b9c66ba1ac5d27c1618d09fd167cb3",
+        "signature": "ddeba74b709a87a19957aa650190abbc7d410b1b423b32bc720cb4cd3027cded",
+        "affectsGlobalScope": false
+      },
+      "./src/checkbox/checkbox.tsx": {
+        "version": "ee1af3979eb02b952494eb12c69102608e7aa447e888ebedf25e5b1a4e53845e",
+        "signature": "6f487a974f196d3dc0313b96a87bdda95f3075e0d0900e1f0380c0831b793a24",
+        "affectsGlobalScope": false
+      },
+      "./src/code/code.styles.ts": {
+        "version": "f7616b49dcf3a645e8783a1eb3078b81261b1dcf163a9a66a49f117c6fc21fbd",
+        "signature": "178c305ae28832ed64cbf32dd3a029c82c9f61e6aac7b04ceb3cf0a3a3387056",
+        "affectsGlobalScope": false
+      },
+      "./src/code/code.tsx": {
+        "version": "9987be57b443aba602e603d5abb986bdd204b668fea2bf028c2ca10b7ad998b9",
+        "signature": "45f8b457340919d2b8e4ff2ccc63616e6591f5abd7c0581351428ed7e8bcdc4f",
+        "affectsGlobalScope": false
+      },
+      "./src/colorswatch/colorswatch.styles.ts": {
+        "version": "bbc605e8c01b57f839d21106d259b64c3669b61cfade71c6c704d6794ab355ab",
+        "signature": "c304826189a77fd4753a1d28b7d9226651e743b365265683246488f0ef55908f",
+        "affectsGlobalScope": false
+      },
+      "./src/colorswatch/colorswatch.tsx": {
+        "version": "b69b7fc4cd965b1caf064709ebda2f1160b83acb42b60d89086b0c611667fe8a",
+        "signature": "2ce77f57c9dfec410216594d4b1510b8ddffd56648ad5007bb7f31c3cebb8f14",
+        "affectsGlobalScope": false
+      },
+      "./src/container/container.styles.ts": {
+        "version": "097e44c7e9318201394bd5143a6b0042c9776fbaf6778368f2882359baadfad1",
+        "signature": "c23fbb15063d4475ab09f7faf3c2cfae60892fa4d0ecf8bdb5766752b4d041a6",
+        "affectsGlobalScope": false
+      },
+      "./src/container/container.tsx": {
+        "version": "d37456adc3d07869b9da2f5df6e0a5366bc53da70d1698811dbc3551c787ddf6",
+        "signature": "abf7081540530a4df4dff418219147c327902e9016e6b4327053710a8c594ea0",
+        "affectsGlobalScope": false
+      },
+      "./src/overlay/overlay.tsx": {
+        "version": "03d8e27c388322c4f48f11f40cd30d8e7c88f32debc758f5f9e250363ff2d21c",
+        "signature": "d2fcb1d93eb1558207821c6ffb33ee7b0f0ca008d2abf48fcb01afb4bbdec024",
+        "affectsGlobalScope": false
+      },
+      "../../node_modules/@types/react-dom/node_modules/@types/react/global.d.ts": {
+        "version": "ecf78e637f710f340ec08d5d92b3f31b134a46a4fcf2e758690d8c46ce62cba6",
+        "signature": "ecf78e637f710f340ec08d5d92b3f31b134a46a4fcf2e758690d8c46ce62cba6",
+        "affectsGlobalScope": true
+      },
+      "../../node_modules/@types/react-dom/node_modules/@types/react/index.d.ts": {
+        "version": "c90c1b049ca569edcad1f55e33bc9bd3c195a88957493f9a3a0f3e67f0b54316",
+        "signature": "c90c1b049ca569edcad1f55e33bc9bd3c195a88957493f9a3a0f3e67f0b54316",
+        "affectsGlobalScope": true
+      },
+      "../../node_modules/@types/react-dom/index.d.ts": {
+        "version": "bf2684235f5a5bf5d91c1cddb9255ecf9db2e2f2cc72c5ad4aac73033a31b81d",
+        "signature": "bf2684235f5a5bf5d91c1cddb9255ecf9db2e2f2cc72c5ad4aac73033a31b81d",
+        "affectsGlobalScope": false
+      },
+      "./src/portal/portal.tsx": {
+        "version": "3d36ced18b0421d84362c2fb4fa8dafedae31a99d47cbdddba5d191408ff557c",
+        "signature": "820051c332f7a5a1cf1b9b82bb8f28c0d119e3df414982ae1a7a2ec12a3d1b54",
+        "affectsGlobalScope": false
+      },
+      "../../node_modules/@types/react-transition-group/transition.d.ts": {
+        "version": "92decc8ffcee1e19965486f4c7440ab3fee1d6dfde4054eb308fc57b466cc12a",
+        "signature": "92decc8ffcee1e19965486f4c7440ab3fee1d6dfde4054eb308fc57b466cc12a",
+        "affectsGlobalScope": false
+      },
+      "../../node_modules/@types/react-transition-group/csstransition.d.ts": {
+        "version": "1429ac61feca4fdc074f60eb9b07f8b9e2c0ef9335c26e18d05f8ab67653f72b",
+        "signature": "1429ac61feca4fdc074f60eb9b07f8b9e2c0ef9335c26e18d05f8ab67653f72b",
+        "affectsGlobalScope": false
+      },
+      "../../node_modules/@types/react-transition-group/transitiongroup.d.ts": {
+        "version": "e0db728e68cfb650b729496d5b1cb436930f593b6bf5b4ad692c18ebe40e9ee0",
+        "signature": "e0db728e68cfb650b729496d5b1cb436930f593b6bf5b4ad692c18ebe40e9ee0",
+        "affectsGlobalScope": false
+      },
+      "../../node_modules/@types/react-transition-group/switchtransition.d.ts": {
+        "version": "9155a57743465e6540e3e81a73f3d0c0630a5c5ff80e1be6232fbd46bcb6dc90",
+        "signature": "9155a57743465e6540e3e81a73f3d0c0630a5c5ff80e1be6232fbd46bcb6dc90",
+        "affectsGlobalScope": false
+      },
+      "../../node_modules/@types/react-transition-group/config.d.ts": {
+        "version": "960a68ced7820108787135bdae5265d2cc4b511b7dcfd5b8f213432a8483daf1",
+        "signature": "960a68ced7820108787135bdae5265d2cc4b511b7dcfd5b8f213432a8483daf1",
+        "affectsGlobalScope": false
+      },
+      "../../node_modules/@types/react-transition-group/index.d.ts": {
+        "version": "ed3b711f533ddb3a5451f4c4bb0df3a0b95e9d0433b3b7834644dd1718d06d31",
+        "signature": "ed3b711f533ddb3a5451f4c4bb0df3a0b95e9d0433b3b7834644dd1718d06d31",
         "affectsGlobalScope": false
       },
       "./src/transition/transitions.ts": {
@@ -496,209 +701,49 @@
         "signature": "9f2262e7906b351c01556750592aeb660981ef0fd7a2c5a47425b961d921bc69",
         "affectsGlobalScope": false
       },
-      "./src/actionicon/actionicon.styles.ts": {
-        "version": "c5e8e9b414028738f25a1252e68f50c37227331c5e1716b8c5aabde3120079aa",
-        "signature": "4db35d2119e44b53fc88847903e1c4a6f9d3cc09022eea9bd5fe0ad904243251",
-        "affectsGlobalScope": false
-      },
-      "./src/actionicon/actionicon.tsx": {
-        "version": "1fbc4e9118b500cb5605523c98bd172e911cfbb2d141b53cc51dd2c81cb90d49",
-        "signature": "6bf1663782cc6b05e71eaa58fe1521ffa7987c04117569aad25577f5252c7702",
-        "affectsGlobalScope": false
-      },
-      "./src/paper/paper.styles.ts": {
-        "version": "ebdffa881443e10041a374c78aba3f9d5bca3f7a99df488e5e15d5a8b64ac500",
-        "signature": "ce223b02a2d83de5cfb44555d25b450ad26baa7dc2f17695dc7ad8f2694c643a",
-        "affectsGlobalScope": false
-      },
-      "./src/paper/paper.tsx": {
-        "version": "247cbd166dbec902e4097d602884b4ba0092062c86afbe87fdeb17954b35327a",
-        "signature": "a215db4b70e65cead75df1ff027ca01f04f72792a085bdade3f6560754b4b5e0",
-        "affectsGlobalScope": false
-      },
-      "./src/alert/alert.styles.ts": {
-        "version": "d9fe71179eaed6614aebaf2eda4b333198b9287570d295a1fdd5680d4642c2ab",
-        "signature": "cf73281092239c4d9f3275863810094720e1aef78919cb5aefb573499db24a11",
-        "affectsGlobalScope": false
-      },
-      "./src/alert/alert.tsx": {
-        "version": "eef721e9d6bfc03f25b417ed0ae7b7c96986a3963cb768b99e0745cd4893021e",
-        "signature": "8e83d5f932d16ac578fdbc822995433b166d38cba05d4779a1ac2de5ff3afc16",
-        "affectsGlobalScope": false
-      },
-      "./src/avatar/placeholdericon.tsx": {
-        "version": "160af24e7a449cc03fde2b5a7242606e4a3364fcc3fccac575d2823e2b8b0f2c",
-        "signature": "e7588c72f19c632dd2630ba0ae18e73fe95d88d9715a9ac8ac75f1541346c724",
-        "affectsGlobalScope": false
-      },
-      "./src/avatar/avatar.styles.ts": {
-        "version": "9556f0d2289ddf1989e068ab2feacb9495f8b8b40b8d81cda2305575e007310f",
-        "signature": "e0c65986a68fb051584ce0fa25da0860d1a00f7a625f2544be18ad10fde08459",
-        "affectsGlobalScope": false
-      },
-      "./src/avatar/avatar.tsx": {
-        "version": "dfa1941d1106b171ee710d48a1fa7934654edd6e859f349cfc4bdb4a5c3dbfaa",
-        "signature": "3548bc26ff6f42b1a55777ee00439212b6ad73854569e4c609df7601fd16e690",
-        "affectsGlobalScope": false
-      },
-      "./src/badge/badge.styles.ts": {
-        "version": "a1cfff5e84369ec911e3283a02313d17d723c1ffe240503e5159cf1dacddec4c",
-        "signature": "ffa457ab9d1be5fe5a44f34e9880ba9ad2f02aa0c86791b8d2f637e667a7b197",
-        "affectsGlobalScope": false
-      },
-      "./src/badge/badge.tsx": {
-        "version": "4481e49f4fa6257481d2b25bfb9af91d6f0791b04138cbab6969b4e752f99667",
-        "signature": "e3ab69240348fc73b28f74850f64e992478209c3192069b2087214aeebc6e15d",
-        "affectsGlobalScope": false
-      },
-      "./src/blockquote/quoteicon.tsx": {
-        "version": "14c162bcb52257e63003673134994e33411182a92803e1fad25cbc0fec6d5af8",
-        "signature": "cb8cec658772bf570d1a803da5613233f46e4beaa28028cad961205e0b4391a3",
-        "affectsGlobalScope": false
-      },
-      "./src/blockquote/blockquote.styles.ts": {
-        "version": "661b6d5d3d33ee4228ef1934a5aa6b1a5ffd88d27c908fe2626d39379e6d6aae",
-        "signature": "7e263bc69d32c53ad4a7cdd9758a20467891e5fe217c321a50e4bfe24e76513b",
-        "affectsGlobalScope": false
-      },
-      "./src/blockquote/blockquote.tsx": {
-        "version": "956327c70cf74b4e8ca84f0129e2353d6a1c4e7ed0dbbff7184ee4d59b1e080a",
-        "signature": "9adca22f9d20967c4915b678cc456e89406cb96840006573bef5efc706ae4248",
-        "affectsGlobalScope": false
-      },
-      "./src/breadcrumbs/breadcrumbs.styles.ts": {
-        "version": "7395487df7aa5e2f46038f6366ac07956a15fb2e73e62945fec484ec5c542bb9",
-        "signature": "110a067914bdf1ba242330a2f3403b54c3c3d2a539d8028defcf1e87f35ea71d",
-        "affectsGlobalScope": false
-      },
-      "./src/breadcrumbs/breadcrumbs.tsx": {
-        "version": "17f89e3c19deb48ad4732cafd07a9ae4cc072c71c7292af9412c46f5bf5765dc",
-        "signature": "724286438e0f6006372ffe96fe9cf2ff2d7ba3b5507135baf1c53583a1cb048f",
-        "affectsGlobalScope": false
-      },
-      "./src/burger/burger.styles.ts": {
-        "version": "061aed8b35f6e521371132e004d8ed96eaa3dd4c7c35c9a6f189532722925374",
-        "signature": "840113fd11fd78a4d82c46bd9c01771080dba8cb56a07ace7d77c58a94b3f878",
-        "affectsGlobalScope": false
-      },
-      "./src/burger/burger.tsx": {
-        "version": "7db368c14b17453cead3c48303bb948dee988d77df93ac527d72fa5a72ffadea",
-        "signature": "345d167b8cbb19196fe7439e285e0fb7081abc75c4725dd7eade7a45553a406b",
-        "affectsGlobalScope": false
-      },
-      "./src/button/button.styles.ts": {
-        "version": "badda9b2ae18f28ac90686adc4f47a936e606cda1b71bfc85034ac8714e89f1b",
-        "signature": "d43ddf3487c35265fa382131346a45f2b0fce08f07d1a4bc24f126c428690ece",
-        "affectsGlobalScope": false
-      },
-      "./src/button/button.tsx": {
-        "version": "89a0bda4f46971609874714b8c55f8083a17c95866ca6b3b8c6433778dfc651e",
-        "signature": "a6d88bf60511d5a672acb914eee50837de4c63ed7333b568097b0494eca723e7",
-        "affectsGlobalScope": false
-      },
-      "./src/card/card.styles.ts": {
-        "version": "a4890e8e2b43f2da4a97908e44e92b0d4cd60a25ee28353497810a9b97fa1770",
-        "signature": "ad6b95eb107fbf0dad5980ed0c69148aefd4ae650c503b6d8bbb831c28d0f231",
-        "affectsGlobalScope": false
-      },
-      "./src/card/cardsgrid/cardsgrid.styles.ts": {
-        "version": "8801b51131615b445a4995a3a6c733324ae5b4f8f93762d6ee1d73bf6f7acd19",
-        "signature": "d6619fa10c8d6accb9c2bdee172d43a18a45da250948cea4612fc8b6d3351781",
-        "affectsGlobalScope": false
-      },
-      "./src/card/cardsgrid/cardsgrid.tsx": {
-        "version": "6a7b564ac0b52fc08df80bda41ab191395730bca6656f260933fe127d9298c83",
-        "signature": "333eb33125e563ac44b307f66fbd136b1a22ba2851f13dd0ca263de98d22a8ec",
-        "affectsGlobalScope": false
-      },
-      "./src/card/card.tsx": {
-        "version": "64eaa9d27c31e9dbff0bb62cf8c10a786f0774f959136520690ab5077f1dfb3a",
-        "signature": "f91a864f240a90df7838fede6e945f4d861025026cff657ca9ac75be180955af",
-        "affectsGlobalScope": false
-      },
-      "./src/checkbox/checkboxicon.tsx": {
-        "version": "1aec907fb82c72cab736f7a1988c4572956604276bb3ea1cb506d6aab0327fa4",
-        "signature": "bb52cbd8b2ce67f356e57fab3b97a52447fedf3bfda01bc715d329a4d825168d",
-        "affectsGlobalScope": false
-      },
-      "./src/checkbox/checkbox.styles.ts": {
-        "version": "8fa039475a8eebfb8fb7fa57d9bcade97b70bcbe9d7ced5c9e4326407f57447a",
-        "signature": "5e0c759c56c7ac9186aeceda93aab3a2eceab57c3e1ee922bd3430663fd3620e",
-        "affectsGlobalScope": false
-      },
-      "./src/checkbox/checkbox.tsx": {
-        "version": "4f9b3a08bddf98d616a6c119454176d66dad3fc7b1cd9d6a057f6ebb964b5a2b",
-        "signature": "318175123bc1886164da6961e7921b1245031bb390b0aa680d24c557ef5ff305",
-        "affectsGlobalScope": false
-      },
-      "./src/code/code.styles.ts": {
-        "version": "c0492097a042f8849d6eac48f087cebc034c8441ecf3d6be757ba9b949c6a39e",
-        "signature": "f6db5eca87a3e721f92c9e749b1639db965a04ba30e57a828b023979040ecbf8",
-        "affectsGlobalScope": false
-      },
-      "./src/code/code.tsx": {
-        "version": "9987be57b443aba602e603d5abb986bdd204b668fea2bf028c2ca10b7ad998b9",
-        "signature": "45f8b457340919d2b8e4ff2ccc63616e6591f5abd7c0581351428ed7e8bcdc4f",
-        "affectsGlobalScope": false
-      },
-      "./src/colorswatch/colorswatch.styles.ts": {
-        "version": "2a79011d0945d5e51337aba8195eeb5615692783360e33bca4d85920ca4bd91c",
-        "signature": "0c58fef0586ddeb3b49ec7fa14b7aaa7cf5f75b39118c34cdae2140621e7f43a",
-        "affectsGlobalScope": false
-      },
-      "./src/colorswatch/colorswatch.tsx": {
-        "version": "bad47b5d42db0feb490a78e524c6f2de27a1d1880ffcff4b491815cb3fd1b8ef",
-        "signature": "2ce77f57c9dfec410216594d4b1510b8ddffd56648ad5007bb7f31c3cebb8f14",
-        "affectsGlobalScope": false
-      },
-      "./src/container/container.styles.ts": {
-        "version": "65d085e87281ad4040f13bc1841981d3435768f687dea7f10d8707388fa1e777",
-        "signature": "3d203d8f8d5bf196b6f68a1317d724390a48e418c1c3c886f21f134b58970c53",
-        "affectsGlobalScope": false
-      },
-      "./src/container/container.tsx": {
-        "version": "d37456adc3d07869b9da2f5df6e0a5366bc53da70d1698811dbc3551c787ddf6",
-        "signature": "abf7081540530a4df4dff418219147c327902e9016e6b4327053710a8c594ea0",
-        "affectsGlobalScope": false
-      },
-      "./src/overlay/overlay.tsx": {
-        "version": "03d8e27c388322c4f48f11f40cd30d8e7c88f32debc758f5f9e250363ff2d21c",
-        "signature": "d2fcb1d93eb1558207821c6ffb33ee7b0f0ca008d2abf48fcb01afb4bbdec024",
-        "affectsGlobalScope": false
-      },
       "./src/drawer/drawer.styles.ts": {
-        "version": "0c99f87efbf7714092256bb1d79f5b62fa46b5cd9958331219f7a164dac22e9f",
-        "signature": "555791ca7fc69e47bd787609d54a6f96d91341df245a2c290ad37fbe36aec65c",
+        "version": "bf6a0432775e71ea8b26be4f73e79089bf34b5e5431650930a0bbfe90b3a6431",
+        "signature": "deee9cd6df26c30fcbabcafa55df56dd6c58c7c9bd5f83415735bc75c51197a9",
         "affectsGlobalScope": false
       },
       "./src/drawer/drawer.tsx": {
-        "version": "a7cc2ecd854254f6981cf2f069964cf78ed5443df987faf7d4c55ab6134c0ffe",
-        "signature": "6c23b5c8a03dc9fa0ea824919dce257f703f5d51804c5083e3a12ea5ab25d8bc",
+        "version": "be3412b8f24385890c9227e0d83bf55c3a571d68b57733488fa0e10c90dc323e",
+        "signature": "49504119d9b48ca23ad954c59a20a5fe2cb3e4ccc1b592e7e8a805aa05f5dc6e",
         "affectsGlobalScope": false
       },
-      "./src/elementsgroup/elementsgroup.styles.ts": {
-        "version": "b05027fd6877270cce309c1719295341229038331533e391646ed070e51a9e62",
-        "signature": "803973fd5434293fabd47ffdd63fc0a308ab304bb06e56a687618b7f3fe934a0",
+      "./src/divider/divider.styles.ts": {
+        "version": "2da42ebd640fd7aff3171cc5d60658c3a2dd7b8b9a5c9d18c76e397d11a0f209",
+        "signature": "9fce8fb72289e4afe98bec28ee535cf6d4e97054a780602d166f1699def312f0",
         "affectsGlobalScope": false
       },
-      "./src/elementsgroup/elementsgroup.tsx": {
-        "version": "3c9116e965dbe089172d33c442007f1a6d0a5d530548545aaec03dba74b73761",
-        "signature": "71794d749b360f5eb0ef7242c4778c2533e35183ed11f7e39112c7321f45f85a",
+      "./src/divider/divider.tsx": {
+        "version": "54c6bee10e40fc20f509a6000095f7dd52673310fa747dea311f95deeca1714a",
+        "signature": "91324233f2c05d00a4ae07de5ecbf348020add93731c786076d1d07470775ca9",
+        "affectsGlobalScope": false
+      },
+      "./src/grid/col.tsx": {
+        "version": "d40b70b48843364c3dd087e28c4e4d40a7896029dc58e7b3ff9bb84f6841fc36",
+        "signature": "e90884834cee856bd67a9979db684a57ef438c1a8ce2335de682185805f37a8e",
+        "affectsGlobalScope": false
+      },
+      "./src/grid/grid.tsx": {
+        "version": "66ae42bd20d3fe3e9b9059b491d8a123fbd62bb2e334bd4ab2c734407dfeb5cc",
+        "signature": "b66cf58fba49edd1a2545c4aed1b3a11de7a94be3cf3f31492f3fd885a0c7ee8",
+        "affectsGlobalScope": false
+      },
+      "./src/group/group.styles.ts": {
+        "version": "22a1f94370dbb51997a9b7dd09a60a22d7b7f0b4d5868729b068a452538363c7",
+        "signature": "60918b6682ecd60c396e47edfa64bcbc4d2a69c9d7f8e2a9f18dd2983c1eca20",
+        "affectsGlobalScope": false
+      },
+      "./src/group/group.tsx": {
+        "version": "aac02fb4d8a0be265f5a2024a75f53e95b724f61a7dcea202c944ad6c3f719e6",
+        "signature": "7f52a083e6d4351b7feb6f37a689dc169bc1a1636a3b424317110a4071048ad6",
         "affectsGlobalScope": false
       },
       "./src/highlight/highlight.tsx": {
-        "version": "35bdf3ce01761ce91d435df4a01a7eaa72e2561e6d672eff93ba3ef3c63ccdd0",
+        "version": "51bb1fdf416f9836f933ab60bd65a606b9501ee0d73181cf2ba717d12340a404",
         "signature": "7305d36ace35a4e6f8f1037f61aec28af0c59d206c269ac514d2b9ce399f9942",
-        "affectsGlobalScope": false
-      },
-      "./src/hr/hr.styles.ts": {
-        "version": "e57aacf9c2eac111b857d99ea6446125362a16f5e0a6eea6053efb5a453935fc",
-        "signature": "b9ba1edda039900064dc913369bcfcfaf348f0b693ec8455ccc4eac3597072ad",
-        "affectsGlobalScope": false
-      },
-      "./src/hr/hr.tsx": {
-        "version": "6bfdafe8a2a52ebdcea1fb658cfa6468a89e1931e03ff8527ef37033c8a28e27",
-        "signature": "8857bb8a6294146289886b6cc67eb6b20507e5aeee779232d8fb89f725d3b2b2",
         "affectsGlobalScope": false
       },
       "./src/image/imageicon.tsx": {
@@ -707,8 +752,8 @@
         "affectsGlobalScope": false
       },
       "./src/image/image.styles.ts": {
-        "version": "0bed36f3ef0a0c6212f8fc64d87e840ff54fb81eaadd6ca8ea3b851ef6a6c1c7",
-        "signature": "fa8d072ca1e9fe8fc397a36215658f090e4c8df9fa8d6c17072956df78c4498e",
+        "version": "8982a859f4b0abe56203a11adfcfd549c9059c60d8f25adb19a01bede0b7fc57",
+        "signature": "2127ae58784851f94f20e839e2f2c709993fd31272c722fb3e4b0429ff695a1e",
         "affectsGlobalScope": false
       },
       "./src/image/image.tsx": {
@@ -716,9 +761,29 @@
         "signature": "c1336c8ce6934113e1cbed60956f5f012e8def2aada338d51b6035e942d68f1b",
         "affectsGlobalScope": false
       },
+      "./src/input/input.styles.ts": {
+        "version": "6df9f6e0ebafd698057cf8590430df31d0565b11ba014467ba23a5d35a70c191",
+        "signature": "18a3f9a925f0e62c7fd9bcceb9d195f75deb758ea0422959b1079b36f74e068e",
+        "affectsGlobalScope": false
+      },
+      "./src/input/input.tsx": {
+        "version": "29f184dd6f0b83ba84abf5d5f2dcbf013eaa3bdf20248bfa2c33c6401c38fddf",
+        "signature": "e4c1623fdfa5ea8b96af2f7ce70de354297f9dd96563fa9184ee63adc9fa0025",
+        "affectsGlobalScope": false
+      },
+      "./src/inputwrapper/inputwrapper.styles.ts": {
+        "version": "20b0291768860f84ed9b41f85e6d60c738d4ae3631fc672dff31ec0828c67120",
+        "signature": "8b34f1b0ccf26f90b1bbfe7dc12fc3ccc55cc27a00b08fab69e44de31ab9a400",
+        "affectsGlobalScope": false
+      },
+      "./src/inputwrapper/inputwrapper.tsx": {
+        "version": "5a8572f2135701b50dce062e0a37b2a69e8b1a694f2ba779f2550c7d722b9d98",
+        "signature": "7ba70b3239561838efa4ac38186876510926514a6e7bbbf406cf69990af1fe8b",
+        "affectsGlobalScope": false
+      },
       "./src/kbd/kbd.styles.ts": {
-        "version": "0d63f236fa8798dc37e3870eb4890728284448718baee21357cde89e92a0b384",
-        "signature": "4db1ef4483d5c33baf5620fc56e23ef406895f20c7fcc0daa088123c4f3e7294",
+        "version": "ee0101a3b60c9aca2a52ff94f567c4b638662154f8d9bb0d3de6b52faf53027a",
+        "signature": "3e3e7661aac0a7e13412f7c988bc13478e4f13c47201b2606673c444f7a40cf4",
         "affectsGlobalScope": false
       },
       "./src/kbd/kbd.tsx": {
@@ -732,13 +797,13 @@
         "affectsGlobalScope": false
       },
       "./src/loadingoverlay/loadingoverlay.styles.ts": {
-        "version": "93cee164584ba2a887670df10bbb6e7570db9d9392db63258166fc307661cfab",
+        "version": "2468f61ad7f4fa8e38c99c362444370f4483e85c3002a40790af6f9f48022426",
         "signature": "ab3efbedc6a1e57ec95b933525504d1a05999ef9ea3d3519b93dcbbb74470137",
         "affectsGlobalScope": false
       },
       "./src/loadingoverlay/loadingoverlay.tsx": {
-        "version": "5806aec4c8c84631812741852e2cd8c4ab958937c4b5d78d71a4f79ed9f13c7d",
-        "signature": "0a1034156499ffa52f8fdbeb94ff3f2487e573b82c7dd0ef19248122fd48558b",
+        "version": "6c91659d526f5274f6ce23276c02033b18a34361fbf015b65c3ea5e3573f9402",
+        "signature": "d734aad65c300997c76a31aeda8c6765486e6f9e450dc9556d4d3d8ebecc1f30",
         "affectsGlobalScope": false
       },
       "./src/menu/menuicon.tsx": {
@@ -747,33 +812,33 @@
         "affectsGlobalScope": false
       },
       "./src/menu/menuitem/menuitem.tsx": {
-        "version": "6a15c11b06e163314999dbe52af4ad5cbeb01928af2ff7a31e112ea73d527643",
-        "signature": "fe7c0d5dac3cc8d103041d4f965632bf9e2a1331bdb63e8ace0f9cb54c2bd071",
+        "version": "1fea560b2f0ee5072e0b997951cc9ca810a8357d0cf77746ba27afe40118dc23",
+        "signature": "c66820557728ab8089cf91db2c9e56a5fa2d7e954b606ad7c1ddab2e60d8d46a",
         "affectsGlobalScope": false
       },
       "./src/menu/menubutton/menubutton.styles.ts": {
-        "version": "bf15279363f70a4ea0ca123d5eb0be47b859d07f866c1c54446f68ffad2a3eae",
-        "signature": "ebcad5dfc09759aa7ce80b664e3cdef53346b1fb057b0f7d5d8c981083de753c",
+        "version": "53097bb93a858fcfcef2f4e26eb09ac257bdee64f819c2e6f0ac761be70e939d",
+        "signature": "08851de49726ef8e20ed4e91bc73941a5f51bb15e5cde30204d62f084354d73d",
         "affectsGlobalScope": false
       },
       "./src/menu/menubutton/menubutton.tsx": {
-        "version": "fa6108d3302e213fce033e328162ea012d0e98123c49c5b4e48efb9e341b2b7d",
-        "signature": "16b15af32c74a9f38dbc019e4d10bda2c0ffd5a327ec6c3b61c81bb14905d57a",
+        "version": "474c2221caff8cc9014bd041b04f7c670312ec0c46578e49dbfc42f1d3f39d5c",
+        "signature": "71455905bd30fa4abb7cc835196ee30ef12fe9fabb667f53de03c3d71acf8320",
         "affectsGlobalScope": false
       },
       "./src/menu/menubody/menubody.styles.ts": {
-        "version": "35c7e87de57db46d0ca81a6ed78932126dee2e9b580c3cbef4c6b1a00daa019f",
-        "signature": "91b83e3e43ec24611847de2950bd872535abb6996d1933f2975ca7b7d3c7e6db",
+        "version": "ef66daf347a9c8ecdab1e88854cad30854582d1d66ebd80ada3de960378ecfb7",
+        "signature": "273a4b57702f2d90eaeb4f24d53e003cde13fa0dd266e17f5f82f3b93abfaf99",
         "affectsGlobalScope": false
       },
       "./src/menu/menubody/menubody.tsx": {
-        "version": "13bd16b807cefcdd3c60e2f6b43176ab14a1f2aa68a6dec3a78dd56e60739591",
-        "signature": "0309d15d615c5c8abde218d976774075880e787281b4bc44f7983102037a345c",
+        "version": "859452a972f74b5ffe1f43c3e64a5fd6e33d48e5f1c00ad2f0b000951d8bbf1d",
+        "signature": "69b974ce9aff1bfd801e73504ccae26c120293a91b62c292c8b82fbe74d804a0",
         "affectsGlobalScope": false
       },
       "./src/menu/menu.tsx": {
-        "version": "e1f30f878901c2f3b760902d300184a9d55db02e02755b15c16252b94e75dfb8",
-        "signature": "9d1e6c38b124aa96364d9e3cce47fe89a25526a256782ca052373dd77286ba9c",
+        "version": "dbcccdc88b43d98bbc7d46633ed65e7cf88f914a793d8230ae3c036dfae29953",
+        "signature": "b613b26e8467707aea758403da17bb75b42cc9e3ef935c87cdb2af881965ca85",
         "affectsGlobalScope": false
       },
       "./src/modal/closeicon.tsx": {
@@ -782,18 +847,18 @@
         "affectsGlobalScope": false
       },
       "./src/modal/modal.styles.ts": {
-        "version": "2b15bf2181b8e1592afec4d904189e6246dea89145c938b168c4dfc80e782a0a",
-        "signature": "a748d05285fb59b6a4757a5376e84ad80b9dc6a380fb08d01f56709778483a68",
+        "version": "0872fe23e24038d5dce31afcd4206d71f2edc0ca5c9c3069d17efdc42c6fa7fb",
+        "signature": "86d87abe5e358d7e1603bd71d5b5eab4dd5b02bace9c21851c1d152e9aa798fc",
         "affectsGlobalScope": false
       },
       "./src/modal/modal.tsx": {
-        "version": "e792653c12525b1be68c79c6f40d9fbbfbdad689984481ead02c9525e89068c7",
-        "signature": "eb423f0ad523e036d2fccf2fc2c86db9d582b1011210e9d0868e4b023003754b",
+        "version": "63e9d21ad240db0ce6b6bad4eecb3ba2fca935c6b4fcf379d331545b4548a020",
+        "signature": "9cae60bfed3e018518dadcd5c981b54a05811c0dbb53a0c3931fa7496e72c345",
         "affectsGlobalScope": false
       },
       "./src/notification/notification.styles.ts": {
-        "version": "768a44f130e48514088d11b43dcfe5111284190bbdb1231c1a3f21949b909923",
-        "signature": "89de7912316d4c15edbe5dc59b3dd453d129284d46c6a4d7153c23396218ebd4",
+        "version": "0cf06c000e84d3b411be9d6a7adc636e082e4fa327178f00612f20a4aaff6e68",
+        "signature": "c7128e1457840c5a8a09e7e61b90412bba98842b2c423054bcc468f36040cf73",
         "affectsGlobalScope": false
       },
       "./src/notification/notification.tsx": {
@@ -807,8 +872,8 @@
         "affectsGlobalScope": false
       },
       "./src/numberinput/numberinput.styles.ts": {
-        "version": "73b658489b6ee31ebb71e6191f3af3167ef67ee064015c35e4fa699db6697937",
-        "signature": "06dffa22f65b083e90895869773682e1e678ef450626bf7f2c14ab6ab6a8e065",
+        "version": "beb1e8f5091a3fdb89284924beaca1417d1af13d48a5b8f3261040601f414aa1",
+        "signature": "95d76f2bda5ac583b7f4be48b5158354e54ac02396efe0c85054c6778d67e2d2",
         "affectsGlobalScope": false
       },
       "./src/numberinput/numberinput.tsx": {
@@ -826,29 +891,19 @@
         "signature": "560a3283a2242e1c020b7e0c976b9f2a580e6b733c8b0ae753bf546de32f91c3",
         "affectsGlobalScope": false
       },
-      "../../node_modules/@types/react-dom/node_modules/@types/react/global.d.ts": {
-        "version": "ecf78e637f710f340ec08d5d92b3f31b134a46a4fcf2e758690d8c46ce62cba6",
-        "signature": "ecf78e637f710f340ec08d5d92b3f31b134a46a4fcf2e758690d8c46ce62cba6",
-        "affectsGlobalScope": true
-      },
-      "../../node_modules/@types/react-dom/node_modules/@types/react/index.d.ts": {
-        "version": "c90c1b049ca569edcad1f55e33bc9bd3c195a88957493f9a3a0f3e67f0b54316",
-        "signature": "c90c1b049ca569edcad1f55e33bc9bd3c195a88957493f9a3a0f3e67f0b54316",
-        "affectsGlobalScope": true
-      },
-      "../../node_modules/@types/react-dom/index.d.ts": {
-        "version": "bf2684235f5a5bf5d91c1cddb9255ecf9db2e2f2cc72c5ad4aac73033a31b81d",
-        "signature": "bf2684235f5a5bf5d91c1cddb9255ecf9db2e2f2cc72c5ad4aac73033a31b81d",
+      "./src/popover/popover.styles.ts": {
+        "version": "18e77858f1d7d5e87850fc4e5c9c159d97509d758ad12d4dcc44394e79048f1e",
+        "signature": "051cfed5bf33175e7278c49b63948a1e52eed912e5edbf248502b7ab3cf224b6",
         "affectsGlobalScope": false
       },
-      "./src/portal/portal.tsx": {
-        "version": "f45d8787113bba87cbbee05cb75a9981a2a58a55478708b89bbddd195ca02b8a",
-        "signature": "820051c332f7a5a1cf1b9b82bb8f28c0d119e3df414982ae1a7a2ec12a3d1b54",
+      "./src/popover/popover.tsx": {
+        "version": "63a2d414cab0be3af29e512cf84b0d0f40e24baca618f0621ba70e6397bd90b1",
+        "signature": "6bf8bc0851c984e2c71a0e90cd77cc228d5b18f138cfff7538f2fc4f9a8117ef",
         "affectsGlobalScope": false
       },
       "./src/progress/progress.styles.ts": {
-        "version": "e85a5d725a0ef88ec2a8fa6117b137c1203229e41151011347616a76ce6c6d6d",
-        "signature": "9dd551f7800144a1e6ce0c013f426b9cfdfe09f8b525af93dfa1a839dec865c6",
+        "version": "a474fd4c3796060a35b3bb2214ec50bd8fdbfaa817c3077c07f8b8e8eedd9741",
+        "signature": "b4de3c0fa287b03195b4bca7374df1d67b0dc21b67d9f27768ccde52d368224d",
         "affectsGlobalScope": false
       },
       "./src/progress/progress.tsx": {
@@ -857,8 +912,8 @@
         "affectsGlobalScope": false
       },
       "./src/radiogroup/radio/radio.styles.ts": {
-        "version": "cb20f325260c46b0bedde248b8ffb8cf7e528319b594f30a68db1fdb858e5d88",
-        "signature": "aea9b9eb8d1b29f67c92f6fc051e21846286cb8708207f17e193e8a8f5c838ca",
+        "version": "dc945ad70d3f24f3ecc97e0b598706aacde9d75459cddde3e8a11f6480628aaf",
+        "signature": "571f045113a91210a760c84cfe6a97d2fc0c1870d0fff58d224bb6b512230293",
         "affectsGlobalScope": false
       },
       "./src/radiogroup/radio/radio.tsx": {
@@ -867,13 +922,23 @@
         "affectsGlobalScope": false
       },
       "./src/radiogroup/radiogroup.styles.ts": {
-        "version": "53dbd3dd1e89800fa8eff3873ed4d024d40e4a2cefcc18adcfd4b8aa5cff7894",
-        "signature": "ef2322ff00b579e036b454eca28500e57ba844e344170140b191058a636169b7",
+        "version": "5c656d7e6afe131504fcdebb157be8bf10e2fe20ae1d2492e3dcd7b9a40a6519",
+        "signature": "aea484b3838a843feaeed255f7e0555ee85953396369a720f2060170688d68ee",
         "affectsGlobalScope": false
       },
       "./src/radiogroup/radiogroup.tsx": {
-        "version": "b03aae7dbfccc60fe1406c8a6c7bd5e7762d0cb908895872494381d63cf20ddf",
-        "signature": "c6527e0123404ddcae8e1c96c1ab8f898baa58acc7d14724b4392934f22e076f",
+        "version": "911abf8d6b892c7c4982c3a39cada3578c6cfe04dae775ca63480e9722ea7f45",
+        "signature": "060e0b3487dd96ecfd0d6078e95e1e0c637e48d19f0a40e37560e59206845f44",
+        "affectsGlobalScope": false
+      },
+      "./src/segmentedcontrol/segmentedcontrol.styles.ts": {
+        "version": "83ff2e94132c245e2a9cd2009c84d111c259bffaf1203b0cd7103ada4801a95b",
+        "signature": "9a98af8f3519f9a41757c406a3c86035957376360f4c292668b540cf72fbff07",
+        "affectsGlobalScope": false
+      },
+      "./src/segmentedcontrol/segmentedcontrol.tsx": {
+        "version": "78ff6049992a1006f28e3e8853f94fddc13cc4664d01e7640af1ea766007456e",
+        "signature": "b655364368c8fdc2428cb9878a6906eb4785097fb40ffc9f8004c08b4152d5cd",
         "affectsGlobalScope": false
       },
       "./src/select/chevronicon.tsx": {
@@ -887,8 +952,8 @@
         "affectsGlobalScope": false
       },
       "./src/spoiler/spoiler.styles.ts": {
-        "version": "4c7492e13ec2271b8327f5a008ee36bcc66ace2021a7f385f6d8d77c81d5d18a",
-        "signature": "15418b2313ec3ca4f458f7e8e67a4778747f578be6099bbd9113c6991154d2dd",
+        "version": "46128cb4e787956d0c5946d6478eed7eed5ec1464868d7040412dacbc745d599",
+        "signature": "7b4246de58ea27804d32533305854dfe3876811143bd09e27b1c57eb03bd7427",
         "affectsGlobalScope": false
       },
       "./src/spoiler/spoiler.tsx": {
@@ -897,18 +962,18 @@
         "affectsGlobalScope": false
       },
       "./src/switch/switch.styles.ts": {
-        "version": "ae92bb8ef8e7d7869e7897b238e08b48c21361ffdf37511eb215cc046c414808",
-        "signature": "d881486de6744d60a3063d2f21a7f83d940af1057e2208bd4081bd480b8c4289",
+        "version": "9b98086559458eafa9012da9f7395e1bc39b32aa77ee16cf465b200a1328106a",
+        "signature": "5a30ac36e1c45e0feabc6a8edc6e3053e5a4df61fb0c9bbe506369c62b530692",
         "affectsGlobalScope": false
       },
       "./src/switch/switch.tsx": {
-        "version": "e59c7ec8d1a08dcd1624d2627a35f41880bb4f7aee0aca3d921f49d7905d0758",
-        "signature": "c94d7025b9e9bcd2094bb24791dbf5cbef7811d234a7fffa4826aa60ff36f462",
+        "version": "bb3f4f506098f5c06b18519ae806fb586fc8ba13d8aaf9a77298ec0f6b18b662",
+        "signature": "09a61a4245c2a1267e52f79eb0f15d1bef5510c70f8b1634bd8af225c7d31f33",
         "affectsGlobalScope": false
       },
       "./src/table/table.styles.ts": {
-        "version": "2c1af8708dc2f5df134189491b30919c2dd0a1ddfe890754c466d28af7a7b2fb",
-        "signature": "594a1a5e154c4a08a503cffe34cce7f890e45f7829b95ec6b4011385c498075a",
+        "version": "1dfd2e9006e674a4af8ae5ca56272b11ade1dace6b251ae07f7c93d8ad6071ec",
+        "signature": "8517f6b18ff1ce478c3529952bf7ee415b8591db0ee8691be31dee724aefc1cf",
         "affectsGlobalScope": false
       },
       "./src/table/table.tsx": {
@@ -922,23 +987,23 @@
         "affectsGlobalScope": false
       },
       "./src/tabs/tabcontrol/tabcontrol.styles.ts": {
-        "version": "fa66b5987fbfac88d7a67b720a9b1d165cb0f818a683233e6cb338f0a8e05aae",
-        "signature": "b2c6feff0985e397118045687c3e70cbd6ef01f365ae9550a10d192b0baeb470",
+        "version": "d180bd669f10bcae0408215aaaaddbf02a5ac801e37a3d72bdb94692ec9909b0",
+        "signature": "33e7f3fd9e08de504a427dd6619661439abd2419f7f3d4ec6b14c440e471bd03",
         "affectsGlobalScope": false
       },
       "./src/tabs/tabcontrol/tabcontrol.tsx": {
-        "version": "a9e9bc26adf85606285ff740132cdcb975e04796deb00f230e24b480770bbe4a",
+        "version": "3194c53a5d12c0d9dcfa894133dd3175fa19902a934c84f83d03ddd2220f4a83",
         "signature": "9d5a422e7cf6dce9566adfa7e0eb489c3d502a1cdd3d15686b9475e462f0c867",
         "affectsGlobalScope": false
       },
       "./src/tabs/tabs.styles.ts": {
-        "version": "8c3d6a757d3e2b1243c5be545069f399ecd2a0c9aa8c964900ca4a98dee48b8e",
-        "signature": "bbad2d3decc85e10d83120b6277cd5992adcc796072ae38048e128101350a791",
+        "version": "fae6142295c823ca37789b707d89f7fde80e497e8ef82540a96aada169fa5dba",
+        "signature": "e6f665b4867da0ce3a19a67138a05bdb29c9812586d8c2974f6e52ff547c31c6",
         "affectsGlobalScope": false
       },
       "./src/tabs/tabs.tsx": {
-        "version": "9aba9c9ad6a6fc8eabc9b2d92e08f62d1bd5006a6f2f8b547501db9394626dc0",
-        "signature": "62eaee1f54655790705fbd73c233950d6c78b845276128a159a404817c3f526a",
+        "version": "3005d0114a877ffdd73517402e6374c822efbbec2a9d7475b18941d9006ba13e",
+        "signature": "cd8ab6c8d10e3b3d160444c4d8d70346451b25375ff111e912851e2806a6de2f",
         "affectsGlobalScope": false
       },
       "../../node_modules/react-textarea-autosize/dist/declarations/src/index.d.ts": {
@@ -957,28 +1022,28 @@
         "affectsGlobalScope": false
       },
       "./src/themeicon/themeicon.styles.ts": {
-        "version": "092b57ff63605e423bb4a99d155043a83c2a4d64a2a608b4e204e3fa403e6387",
-        "signature": "52e20ee8060452bf4279b4dcd393c7596229474318017033893fe5313e656bc2",
+        "version": "99d26a10ffe020e2541ddb87c0a39627fd0e287f01dfee584b8fe1c8cf59a41e",
+        "signature": "079a42116903f10d10164aea07be7a9b8cee7b50cb918722045b59819533693f",
         "affectsGlobalScope": false
       },
       "./src/themeicon/themeicon.tsx": {
-        "version": "2aeb23927c6b23baa9565fdc61c4faf56afc135c4c91cea235a6abd5d93fd2ba",
-        "signature": "a7a4246352ca2bbe7e4c9b1ba091266ccf588104c6001e2ace1707c4cfa9eb72",
+        "version": "906e77df257ba928a792bb8ecdf69f67c3230a3c1164afca64bf73ae64c6f7c4",
+        "signature": "70848be78d03ead5644bc201e04fafcdf9d25ecfc3b8f9b0662ae43e723c3344",
         "affectsGlobalScope": false
       },
       "./src/title/title.styles.ts": {
-        "version": "df49f5df4cac8bdd534535cb6895e517305df075196fa0edf6b72468a6083412",
-        "signature": "3afc7dae9631b5b3d458fab67ed3e0e172905dbcd8d09b150530382aa85c2476",
+        "version": "546acdc8edd1e73f393992ba2d3f40e6c10c6bdf3eeea20c407174a2fbf7d6e2",
+        "signature": "66e3cdcb407c6fa947b4f3b082723f2a9f335e90e913537f5033eabf48d57342",
         "affectsGlobalScope": false
       },
       "./src/title/title.tsx": {
         "version": "07dc57983fc10cead3190f52c2c00cf8a3a753313bf0047d0501aab497b29a28",
-        "signature": "360daffa0556d09c73b87185dd532a9cb0fe121d41329fed535dfbdc06a3d820",
+        "signature": "db861a2759f96f432588bcaf59424a65180cc303afc7a36093cc1a0b6a9b8a53",
         "affectsGlobalScope": false
       },
       "./src/tooltip/tooltip.styles.ts": {
-        "version": "d96aa9258186f2a84feb4acc3f89bd2401e796eb1c4acb222b4ef697a25e0359",
-        "signature": "92cb25ba60eb0c83da83036e629ff37c4536314d336ad5a6838bddfde3a62dca",
+        "version": "acf3a1ce4c42606bcb3c8cc43c4f38161174e7c8d42cecc9731d1cd22e607dbf",
+        "signature": "a58cba724ee74e7c9c6a68f568238ed7b847a62fbc419a473eafe3fa3d2091fa",
         "affectsGlobalScope": false
       },
       "./src/tooltip/tooltip.tsx": {
@@ -987,8 +1052,8 @@
         "affectsGlobalScope": false
       },
       "./src/typographystylesprovider/typographystylesprovider.styles.ts": {
-        "version": "42d28bf8b6612dfcf8c6cc493856632cde6b3b5cf12a263a2109a7c040453a4e",
-        "signature": "680efcf82c032680e531ad51c74bd2f92feb8930748b5d111599a582061ef819",
+        "version": "20eef31b234cf45c9e3ccafd4b3586bb3fd112c1c91ab71ee9039e641c37e735",
+        "signature": "2b714b8decad7da9bd94ecae1d090565190dae7ac60920b3c6dd1746eced1099",
         "affectsGlobalScope": false
       },
       "./src/typographystylesprovider/typographystylesprovider.tsx": {
@@ -997,8 +1062,8 @@
         "affectsGlobalScope": false
       },
       "./src/index.ts": {
-        "version": "fe64c59276dd28a242f7e8efd9e7c042a4c894b3955a7acc06703f4c63c23b7e",
-        "signature": "b380a071f1410b9d5e3c7ccc6e449ec76d317bda8b528ad48dbcdc0b8791e224",
+        "version": "f0a14fefb01868d90e1fe06ba8f40b05b8969a96ef096c230d9c68e830894dc7",
+        "signature": "5838c92c1a2eba7e50226a0462c03de5b86fb806a2a89a15c4622c490aa0f87b",
         "affectsGlobalScope": false
       },
       "../../configuration/types/webpack-overrides.d.ts": {
@@ -1486,6 +1551,76 @@
         "signature": "96d14f21b7652903852eef49379d04dbda28c16ed36468f8c9fa08f7c14c9538",
         "affectsGlobalScope": false
       },
+      "../../node_modules/@types/lodash/common/common.d.ts": {
+        "version": "3594c022901a1c8993b0f78a3f534cfb81e7b619ed215348f7f6882f3db02abc",
+        "signature": "3594c022901a1c8993b0f78a3f534cfb81e7b619ed215348f7f6882f3db02abc",
+        "affectsGlobalScope": false
+      },
+      "../../node_modules/@types/lodash/common/array.d.ts": {
+        "version": "438284c7c455a29b9c0e2d1e72abc62ee93d9a163029ffe918a34c5db3b92da2",
+        "signature": "438284c7c455a29b9c0e2d1e72abc62ee93d9a163029ffe918a34c5db3b92da2",
+        "affectsGlobalScope": false
+      },
+      "../../node_modules/@types/lodash/common/collection.d.ts": {
+        "version": "0c75b204aed9cf6ff1c7b4bed87a3ece0d9d6fc857a6350c0c95ed0c38c814e8",
+        "signature": "0c75b204aed9cf6ff1c7b4bed87a3ece0d9d6fc857a6350c0c95ed0c38c814e8",
+        "affectsGlobalScope": false
+      },
+      "../../node_modules/@types/lodash/common/date.d.ts": {
+        "version": "187119ff4f9553676a884e296089e131e8cc01691c546273b1d0089c3533ce42",
+        "signature": "187119ff4f9553676a884e296089e131e8cc01691c546273b1d0089c3533ce42",
+        "affectsGlobalScope": false
+      },
+      "../../node_modules/@types/lodash/common/function.d.ts": {
+        "version": "c9f396e71966bd3a890d8a36a6a497dbf260e9b868158ea7824d4b5421210afe",
+        "signature": "c9f396e71966bd3a890d8a36a6a497dbf260e9b868158ea7824d4b5421210afe",
+        "affectsGlobalScope": false
+      },
+      "../../node_modules/@types/lodash/common/lang.d.ts": {
+        "version": "509235563ea2b939e1bbe92aae17e71e6a82ceab8f568b45fb4fce7d72523a32",
+        "signature": "509235563ea2b939e1bbe92aae17e71e6a82ceab8f568b45fb4fce7d72523a32",
+        "affectsGlobalScope": false
+      },
+      "../../node_modules/@types/lodash/common/math.d.ts": {
+        "version": "9364c7566b0be2f7b70ff5285eb34686f83ccb01bda529b82d23b2a844653bfb",
+        "signature": "9364c7566b0be2f7b70ff5285eb34686f83ccb01bda529b82d23b2a844653bfb",
+        "affectsGlobalScope": false
+      },
+      "../../node_modules/@types/lodash/common/number.d.ts": {
+        "version": "00baffbe8a2f2e4875367479489b5d43b5fc1429ecb4a4cc98cfc3009095f52a",
+        "signature": "00baffbe8a2f2e4875367479489b5d43b5fc1429ecb4a4cc98cfc3009095f52a",
+        "affectsGlobalScope": false
+      },
+      "../../node_modules/@types/lodash/common/object.d.ts": {
+        "version": "c311349ec71bb69399ffc4092853e7d8a86c1ca39ddb4cd129e775c19d985793",
+        "signature": "c311349ec71bb69399ffc4092853e7d8a86c1ca39ddb4cd129e775c19d985793",
+        "affectsGlobalScope": false
+      },
+      "../../node_modules/@types/lodash/common/seq.d.ts": {
+        "version": "3c92b6dfd43cc1c2485d9eba5ff0b74a19bb8725b692773ef1d66dac48cda4bd",
+        "signature": "3c92b6dfd43cc1c2485d9eba5ff0b74a19bb8725b692773ef1d66dac48cda4bd",
+        "affectsGlobalScope": false
+      },
+      "../../node_modules/@types/lodash/common/string.d.ts": {
+        "version": "4908e4c00832b26ce77a629de8501b0e23a903c094f9e79a7fec313a15da796a",
+        "signature": "4908e4c00832b26ce77a629de8501b0e23a903c094f9e79a7fec313a15da796a",
+        "affectsGlobalScope": false
+      },
+      "../../node_modules/@types/lodash/common/util.d.ts": {
+        "version": "2630a7cbb597e85d713b7ef47f2946d4280d3d4c02733282770741d40672b1a5",
+        "signature": "2630a7cbb597e85d713b7ef47f2946d4280d3d4c02733282770741d40672b1a5",
+        "affectsGlobalScope": false
+      },
+      "../../node_modules/@types/lodash/index.d.ts": {
+        "version": "0714e2046df66c0e93c3330d30dbc0565b3e8cd3ee302cf99e4ede6220e5fec8",
+        "signature": "0714e2046df66c0e93c3330d30dbc0565b3e8cd3ee302cf99e4ede6220e5fec8",
+        "affectsGlobalScope": true
+      },
+      "../../node_modules/@types/lodash.debounce/index.d.ts": {
+        "version": "7044c407773c0900946b7a02f3a0e7e5e79af8b0a32b14aeb419b7beedfb3fcd",
+        "signature": "7044c407773c0900946b7a02f3a0e7e5e79af8b0a32b14aeb419b7beedfb3fcd",
+        "affectsGlobalScope": false
+      },
       "../../node_modules/@types/markdown-to-jsx/index.d.ts": {
         "version": "9c138947e4cf970491111d971aa615db8353c7f0efc72bd84d8ad6e4743079c5",
         "signature": "9c138947e4cf970491111d971aa615db8353c7f0efc72bd84d8ad6e4743079c5",
@@ -1838,6 +1973,191 @@
         "../../node_modules/jest-diff/build/index.d.ts",
         "../../node_modules/pretty-format/build/index.d.ts"
       ],
+      "../../node_modules/@types/lodash.debounce/index.d.ts": [
+        "../../node_modules/@types/lodash/index.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/array.d.ts": [
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts",
+        "../../node_modules/@types/lodash/index.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/collection.d.ts": [
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts",
+        "../../node_modules/@types/lodash/index.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/common.d.ts": [
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts",
+        "../../node_modules/@types/lodash/index.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/date.d.ts": [
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts",
+        "../../node_modules/@types/lodash/index.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/function.d.ts": [
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts",
+        "../../node_modules/@types/lodash/index.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/lang.d.ts": [
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts",
+        "../../node_modules/@types/lodash/index.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/math.d.ts": [
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts",
+        "../../node_modules/@types/lodash/index.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/number.d.ts": [
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts",
+        "../../node_modules/@types/lodash/index.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/object.d.ts": [
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts",
+        "../../node_modules/@types/lodash/index.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/seq.d.ts": [
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts",
+        "../../node_modules/@types/lodash/index.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/string.d.ts": [
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts",
+        "../../node_modules/@types/lodash/index.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/util.d.ts": [
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/index.d.ts"
+      ],
+      "../../node_modules/@types/lodash/index.d.ts": [
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts"
+      ],
       "../../node_modules/@types/markdown-to-jsx/index.d.ts": [
         "../../node_modules/@types/react/index.d.ts"
       ],
@@ -2317,17 +2637,16 @@
         "../../node_modules/@types/react/index.d.ts"
       ],
       "./src/actionicon/actionicon.styles.ts": [
-        "../../node_modules/react-jss/src/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
       ],
       "./src/actionicon/actionicon.tsx": [
         "../../node_modules/@types/react/index.d.ts",
         "../../node_modules/clsx/clsx.d.ts",
         "../mantine-theme/lib/index.d.ts",
+        "../mantine-types/lib/index.d.ts",
         "./src/actionicon/actionicon.styles.ts"
       ],
       "./src/alert/alert.styles.ts": [
-        "../../node_modules/react-jss/src/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
       ],
       "./src/alert/alert.tsx": [
@@ -2339,7 +2658,6 @@
         "./src/text/text.tsx"
       ],
       "./src/avatar/avatar.styles.ts": [
-        "../../node_modules/react-jss/src/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
       ],
       "./src/avatar/avatar.tsx": [
@@ -2353,7 +2671,6 @@
         "../../node_modules/@types/react/index.d.ts"
       ],
       "./src/badge/badge.styles.ts": [
-        "../../node_modules/react-jss/src/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
       ],
       "./src/badge/badge.tsx": [
@@ -2364,7 +2681,6 @@
         "./src/badge/badge.styles.ts"
       ],
       "./src/blockquote/blockquote.styles.ts": [
-        "../../node_modules/react-jss/src/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
       ],
       "./src/blockquote/blockquote.tsx": [
@@ -2378,7 +2694,6 @@
         "../../node_modules/@types/react/index.d.ts"
       ],
       "./src/breadcrumbs/breadcrumbs.styles.ts": [
-        "../../node_modules/react-jss/src/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
       ],
       "./src/breadcrumbs/breadcrumbs.tsx": [
@@ -2389,7 +2704,6 @@
         "./src/text/text.tsx"
       ],
       "./src/burger/burger.styles.ts": [
-        "../../node_modules/react-jss/src/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
       ],
       "./src/burger/burger.tsx": [
@@ -2400,7 +2714,6 @@
         "./src/burger/burger.styles.ts"
       ],
       "./src/button/button.styles.ts": [
-        "../../node_modules/react-jss/src/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
       ],
       "./src/button/button.tsx": [
@@ -2411,7 +2724,6 @@
         "./src/button/button.styles.ts"
       ],
       "./src/card/card.styles.ts": [
-        "../../node_modules/react-jss/src/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
       ],
       "./src/card/card.tsx": [
@@ -2423,7 +2735,6 @@
         "./src/paper/paper.tsx"
       ],
       "./src/card/cardsgrid/cardsgrid.styles.ts": [
-        "../../node_modules/react-jss/src/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
       ],
       "./src/card/cardsgrid/cardsgrid.tsx": [
@@ -2433,7 +2744,6 @@
         "./src/card/cardsgrid/cardsgrid.styles.ts"
       ],
       "./src/checkbox/checkbox.styles.ts": [
-        "../../node_modules/react-jss/src/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
       ],
       "./src/checkbox/checkbox.tsx": [
@@ -2448,7 +2758,6 @@
         "../../node_modules/@types/react/index.d.ts"
       ],
       "./src/code/code.styles.ts": [
-        "../../node_modules/react-jss/src/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
       ],
       "./src/code/code.tsx": [
@@ -2458,7 +2767,6 @@
         "./src/code/code.styles.ts"
       ],
       "./src/colorswatch/colorswatch.styles.ts": [
-        "../../node_modules/react-jss/src/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
       ],
       "./src/colorswatch/colorswatch.tsx": [
@@ -2469,7 +2777,6 @@
         "./src/colorswatch/colorswatch.styles.ts"
       ],
       "./src/container/container.styles.ts": [
-        "../../node_modules/react-jss/src/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
       ],
       "./src/container/container.tsx": [
@@ -2478,9 +2785,19 @@
         "../mantine-theme/lib/index.d.ts",
         "./src/container/container.styles.ts"
       ],
+      "./src/divider/divider.styles.ts": [
+        "../../node_modules/@types/react/index.d.ts",
+        "../mantine-theme/lib/index.d.ts"
+      ],
+      "./src/divider/divider.tsx": [
+        "../../node_modules/@types/react/index.d.ts",
+        "../../node_modules/clsx/clsx.d.ts",
+        "../mantine-theme/lib/index.d.ts",
+        "./src/divider/divider.styles.ts",
+        "./src/text/text.tsx"
+      ],
       "./src/drawer/drawer.styles.ts": [
         "../../node_modules/@types/react/index.d.ts",
-        "../../node_modules/react-jss/src/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
       ],
       "./src/drawer/drawer.tsx": [
@@ -2491,17 +2808,26 @@
         "./src/drawer/drawer.styles.ts",
         "./src/overlay/overlay.tsx",
         "./src/paper/paper.tsx",
+        "./src/portal/portal.tsx",
         "./src/transition/transition.tsx"
       ],
-      "./src/elementsgroup/elementsgroup.styles.ts": [
-        "../../node_modules/react-jss/src/index.d.ts",
+      "./src/grid/col.tsx": [
+        "../../node_modules/@types/react/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
       ],
-      "./src/elementsgroup/elementsgroup.tsx": [
+      "./src/grid/grid.tsx": [
+        "../../node_modules/@types/react/index.d.ts",
+        "../mantine-theme/lib/index.d.ts",
+        "./src/grid/col.tsx"
+      ],
+      "./src/group/group.styles.ts": [
+        "../mantine-theme/lib/index.d.ts"
+      ],
+      "./src/group/group.tsx": [
         "../../node_modules/@types/react/index.d.ts",
         "../../node_modules/clsx/clsx.d.ts",
         "../mantine-theme/lib/index.d.ts",
-        "./src/elementsgroup/elementsgroup.styles.ts"
+        "./src/group/group.styles.ts"
       ],
       "./src/highlight/highlight.tsx": [
         "../../node_modules/@types/react/index.d.ts",
@@ -2509,19 +2835,7 @@
         "../mantine-types/lib/index.d.ts",
         "./src/text/text.tsx"
       ],
-      "./src/hr/hr.styles.ts": [
-        "../../node_modules/@types/react/index.d.ts",
-        "../../node_modules/react-jss/src/index.d.ts",
-        "../mantine-theme/lib/index.d.ts"
-      ],
-      "./src/hr/hr.tsx": [
-        "../../node_modules/@types/react/index.d.ts",
-        "../../node_modules/clsx/clsx.d.ts",
-        "../mantine-theme/lib/index.d.ts",
-        "./src/hr/hr.styles.ts"
-      ],
       "./src/image/image.styles.ts": [
-        "../../node_modules/react-jss/src/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
       ],
       "./src/image/image.tsx": [
@@ -2536,6 +2850,7 @@
       ],
       "./src/index.ts": [
         "../mantine-theme/lib/index.d.ts",
+        "../mantine-utils/lib/index.d.ts",
         "./src/actionicon/actionicon.tsx",
         "./src/alert/alert.tsx",
         "./src/avatar/avatar.tsx",
@@ -2549,10 +2864,11 @@
         "./src/code/code.tsx",
         "./src/colorswatch/colorswatch.tsx",
         "./src/container/container.tsx",
+        "./src/divider/divider.tsx",
         "./src/drawer/drawer.tsx",
-        "./src/elementsgroup/elementsgroup.tsx",
+        "./src/grid/grid.tsx",
+        "./src/group/group.tsx",
         "./src/highlight/highlight.tsx",
-        "./src/hr/hr.tsx",
         "./src/image/image.tsx",
         "./src/input/input.tsx",
         "./src/inputwrapper/inputwrapper.tsx",
@@ -2566,9 +2882,11 @@
         "./src/overlay/overlay.tsx",
         "./src/paper/paper.tsx",
         "./src/passwordinput/passwordinput.tsx",
+        "./src/popover/popover.tsx",
         "./src/portal/portal.tsx",
         "./src/progress/progress.tsx",
         "./src/radiogroup/radiogroup.tsx",
+        "./src/segmentedcontrol/segmentedcontrol.tsx",
         "./src/select/select.tsx",
         "./src/spoiler/spoiler.tsx",
         "./src/switch/switch.tsx",
@@ -2584,7 +2902,6 @@
         "./src/typographystylesprovider/typographystylesprovider.tsx"
       ],
       "./src/input/input.styles.ts": [
-        "../../node_modules/react-jss/src/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
       ],
       "./src/input/input.tsx": [
@@ -2595,7 +2912,6 @@
         "./src/input/input.styles.ts"
       ],
       "./src/inputwrapper/inputwrapper.styles.ts": [
-        "../../node_modules/react-jss/src/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
       ],
       "./src/inputwrapper/inputwrapper.tsx": [
@@ -2606,7 +2922,6 @@
         "./src/text/text.tsx"
       ],
       "./src/kbd/kbd.styles.ts": [
-        "../../node_modules/react-jss/src/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
       ],
       "./src/kbd/kbd.tsx": [
@@ -2644,7 +2959,6 @@
         "./src/transition/transition.tsx"
       ],
       "./src/menu/menubody/menubody.styles.ts": [
-        "../../node_modules/react-jss/src/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
       ],
       "./src/menu/menubody/menubody.tsx": [
@@ -2652,7 +2966,7 @@
         "../../node_modules/clsx/clsx.d.ts",
         "../mantine-hooks/lib/index.d.ts",
         "../mantine-theme/lib/index.d.ts",
-        "./src/hr/hr.tsx",
+        "./src/divider/divider.tsx",
         "./src/menu/menubody/menubody.styles.ts",
         "./src/menu/menubutton/menubutton.tsx",
         "./src/menu/menuitem/menuitem.tsx",
@@ -2660,13 +2974,13 @@
         "./src/transition/transition.tsx"
       ],
       "./src/menu/menubutton/menubutton.styles.ts": [
-        "../../node_modules/react-jss/src/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
       ],
       "./src/menu/menubutton/menubutton.tsx": [
         "../../node_modules/@types/react/index.d.ts",
         "../../node_modules/clsx/clsx.d.ts",
         "../mantine-theme/lib/index.d.ts",
+        "../mantine-types/lib/index.d.ts",
         "./src/menu/menubutton/menubutton.styles.ts",
         "./src/menu/menuitem/menuitem.tsx"
       ],
@@ -2674,13 +2988,13 @@
         "../../node_modules/@types/react/index.d.ts"
       ],
       "./src/menu/menuitem/menuitem.tsx": [
-        "../../node_modules/@types/react/index.d.ts"
+        "../../node_modules/@types/react/index.d.ts",
+        "../mantine-types/lib/index.d.ts"
       ],
       "./src/modal/closeicon.tsx": [
         "../../node_modules/@types/react/index.d.ts"
       ],
       "./src/modal/modal.styles.ts": [
-        "../../node_modules/react-jss/src/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
       ],
       "./src/modal/modal.tsx": [
@@ -2693,11 +3007,11 @@
         "./src/modal/modal.styles.ts",
         "./src/overlay/overlay.tsx",
         "./src/paper/paper.tsx",
+        "./src/portal/portal.tsx",
         "./src/text/text.tsx",
         "./src/transition/transition.tsx"
       ],
       "./src/notification/notification.styles.ts": [
-        "../../node_modules/react-jss/src/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
       ],
       "./src/notification/notification.tsx": [
@@ -2712,7 +3026,6 @@
         "./src/text/text.tsx"
       ],
       "./src/numberinput/numberinput.styles.ts": [
-        "../../node_modules/react-jss/src/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
       ],
       "./src/numberinput/numberinput.tsx": [
@@ -2728,7 +3041,6 @@
         "../mantine-types/lib/index.d.ts"
       ],
       "./src/paper/paper.styles.ts": [
-        "../../node_modules/react-jss/src/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
       ],
       "./src/paper/paper.tsx": [
@@ -2747,12 +3059,26 @@
       "./src/passwordinput/passwordtoggleicon.tsx": [
         "../../node_modules/@types/react/index.d.ts"
       ],
+      "./src/popover/popover.styles.ts": [
+        "../mantine-theme/lib/index.d.ts"
+      ],
+      "./src/popover/popover.tsx": [
+        "../../node_modules/@types/react/index.d.ts",
+        "../../node_modules/clsx/clsx.d.ts",
+        "../mantine-hooks/lib/index.d.ts",
+        "../mantine-theme/lib/index.d.ts",
+        "./src/actionicon/actionicon.tsx",
+        "./src/modal/closeicon.tsx",
+        "./src/popover/popover.styles.ts",
+        "./src/text/text.tsx",
+        "./src/transition/transition.tsx"
+      ],
       "./src/portal/portal.tsx": [
         "../../node_modules/@types/react-dom/index.d.ts",
-        "../../node_modules/@types/react/index.d.ts"
+        "../../node_modules/@types/react/index.d.ts",
+        "../mantine-hooks/lib/index.d.ts"
       ],
       "./src/progress/progress.styles.ts": [
-        "../../node_modules/react-jss/src/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
       ],
       "./src/progress/progress.tsx": [
@@ -2763,7 +3089,6 @@
         "./src/progress/progress.styles.ts"
       ],
       "./src/radiogroup/radio/radio.styles.ts": [
-        "../../node_modules/react-jss/src/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
       ],
       "./src/radiogroup/radio/radio.tsx": [
@@ -2774,7 +3099,6 @@
         "./src/radiogroup/radio/radio.styles.ts"
       ],
       "./src/radiogroup/radiogroup.styles.ts": [
-        "../../node_modules/react-jss/src/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
       ],
       "./src/radiogroup/radiogroup.tsx": [
@@ -2785,6 +3109,16 @@
         "./src/radiogroup/radio/radio.styles.ts",
         "./src/radiogroup/radio/radio.tsx",
         "./src/radiogroup/radiogroup.styles.ts"
+      ],
+      "./src/segmentedcontrol/segmentedcontrol.styles.ts": [
+        "../mantine-theme/lib/index.d.ts"
+      ],
+      "./src/segmentedcontrol/segmentedcontrol.tsx": [
+        "../../node_modules/@types/react/index.d.ts",
+        "../../node_modules/clsx/clsx.d.ts",
+        "../mantine-hooks/lib/index.d.ts",
+        "../mantine-theme/lib/index.d.ts",
+        "./src/segmentedcontrol/segmentedcontrol.styles.ts"
       ],
       "./src/select/chevronicon.tsx": [
         "../../node_modules/@types/react/index.d.ts"
@@ -2798,7 +3132,6 @@
         "./src/select/chevronicon.tsx"
       ],
       "./src/spoiler/spoiler.styles.ts": [
-        "../../node_modules/react-jss/src/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
       ],
       "./src/spoiler/spoiler.tsx": [
@@ -2810,7 +3143,6 @@
         "./src/spoiler/spoiler.styles.ts"
       ],
       "./src/switch/switch.styles.ts": [
-        "../../node_modules/react-jss/src/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
       ],
       "./src/switch/switch.tsx": [
@@ -2821,7 +3153,6 @@
         "./src/switch/switch.styles.ts"
       ],
       "./src/table/table.styles.ts": [
-        "../../node_modules/react-jss/src/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
       ],
       "./src/table/table.tsx": [
@@ -2834,7 +3165,6 @@
         "../../node_modules/@types/react/index.d.ts"
       ],
       "./src/tabs/tabcontrol/tabcontrol.styles.ts": [
-        "../../node_modules/react-jss/src/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
       ],
       "./src/tabs/tabcontrol/tabcontrol.tsx": [
@@ -2846,19 +3176,17 @@
         "./src/tabs/tabcontrol/tabcontrol.styles.ts"
       ],
       "./src/tabs/tabs.styles.ts": [
-        "../../node_modules/react-jss/src/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
       ],
       "./src/tabs/tabs.tsx": [
         "../../node_modules/@types/react/index.d.ts",
         "../mantine-theme/lib/index.d.ts",
-        "./src/elementsgroup/elementsgroup.tsx",
+        "./src/group/group.tsx",
         "./src/tabs/tab/tab.tsx",
         "./src/tabs/tabcontrol/tabcontrol.tsx",
         "./src/tabs/tabs.styles.ts"
       ],
       "./src/text/text.styles.ts": [
-        "../../node_modules/react-jss/src/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
       ],
       "./src/text/text.tsx": [
@@ -2884,7 +3212,6 @@
         "./src/inputwrapper/inputwrapper.tsx"
       ],
       "./src/themeicon/themeicon.styles.ts": [
-        "../../node_modules/react-jss/src/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
       ],
       "./src/themeicon/themeicon.tsx": [
@@ -2894,7 +3221,6 @@
         "./src/themeicon/themeicon.styles.ts"
       ],
       "./src/title/title.styles.ts": [
-        "../../node_modules/react-jss/src/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
       ],
       "./src/title/title.tsx": [
@@ -2904,7 +3230,6 @@
         "./src/title/title.styles.ts"
       ],
       "./src/tooltip/tooltip.styles.ts": [
-        "../../node_modules/react-jss/src/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
       ],
       "./src/tooltip/tooltip.tsx": [
@@ -2939,7 +3264,6 @@
         "../../node_modules/@types/react/index.d.ts"
       ],
       "./src/typographystylesprovider/typographystylesprovider.styles.ts": [
-        "../../node_modules/react-jss/src/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
       ],
       "./src/typographystylesprovider/typographystylesprovider.tsx": [
@@ -2952,10 +3276,12 @@
         "../mantine-hooks/lib/use-click-outside/use-click-outside.d.ts",
         "../mantine-hooks/lib/use-clipboard/use-clipboard.d.ts",
         "../mantine-hooks/lib/use-color-scheme/use-color-scheme.d.ts",
+        "../mantine-hooks/lib/use-debounced-value/use-debounced-value.d.ts",
         "../mantine-hooks/lib/use-document-title/use-document-title.d.ts",
         "../mantine-hooks/lib/use-focus-trap/use-focus-trap.d.ts",
         "../mantine-hooks/lib/use-form/use-form.d.ts",
         "../mantine-hooks/lib/use-id/use-id.d.ts",
+        "../mantine-hooks/lib/use-isomorphic-effect/use-isomorphic-effect.d.ts",
         "../mantine-hooks/lib/use-list-state/use-list-state.d.ts",
         "../mantine-hooks/lib/use-local-storage-value/use-local-storage-value.d.ts",
         "../mantine-hooks/lib/use-media-query/use-media-query.d.ts",
@@ -2971,16 +3297,25 @@
       "../mantine-hooks/lib/use-form/use-form.d.ts": [
         "../../node_modules/@types/react/index.d.ts"
       ],
+      "../mantine-hooks/lib/use-isomorphic-effect/use-isomorphic-effect.d.ts": [
+        "../../node_modules/@types/react/index.d.ts"
+      ],
       "../mantine-hooks/lib/use-list-state/use-list-state.d.ts": [
         "../../node_modules/@types/react/index.d.ts"
       ],
       "../mantine-hooks/lib/use-merged-ref/use-merged-ref.d.ts": [
         "../../node_modules/@types/react/index.d.ts"
       ],
+      "../mantine-theme/lib/create-memo-styles.d.ts": [
+        "../../node_modules/jss/src/index.d.ts",
+        "../../node_modules/react-jss/src/index.d.ts",
+        "../mantine-theme/lib/types.d.ts"
+      ],
       "../mantine-theme/lib/default-theme.d.ts": [
         "../mantine-theme/lib/types.d.ts"
       ],
       "../mantine-theme/lib/index.d.ts": [
+        "../mantine-theme/lib/create-memo-styles.d.ts",
         "../mantine-theme/lib/default-theme.d.ts",
         "../mantine-theme/lib/mantineprovider/mantineprovider.d.ts",
         "../mantine-theme/lib/mantineprovider/theme-context.d.ts",
@@ -2989,7 +3324,8 @@
         "../mantine-theme/lib/utils/get-focus-styles/get-focus-styles.d.ts",
         "../mantine-theme/lib/utils/get-font-styles/get-font-styles.d.ts",
         "../mantine-theme/lib/utils/get-size-value/get-size-value.d.ts",
-        "../mantine-theme/lib/utils/get-theme-color/get-theme-color.d.ts"
+        "../mantine-theme/lib/utils/get-theme-color/get-theme-color.d.ts",
+        "../mantine-theme/lib/utils/hex-to-rgba/hex-to-rgba.d.ts"
       ],
       "../mantine-theme/lib/mantineprovider/mantineprovider.d.ts": [
         "../../node_modules/@types/react/index.d.ts",
@@ -3018,6 +3354,10 @@
       ],
       "../mantine-types/lib/index.d.ts": [
         "../../node_modules/@types/react/index.d.ts"
+      ],
+      "../mantine-utils/lib/index.d.ts": [
+        "../mantine-utils/lib/random-id/random-id.d.ts",
+        "../mantine-utils/lib/upper-first/upper-first.d.ts"
       ]
     },
     "exportedModulesMap": {
@@ -3113,6 +3453,191 @@
         "../../node_modules/jest-diff/build/index.d.ts",
         "../../node_modules/pretty-format/build/index.d.ts"
       ],
+      "../../node_modules/@types/lodash.debounce/index.d.ts": [
+        "../../node_modules/@types/lodash/index.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/array.d.ts": [
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts",
+        "../../node_modules/@types/lodash/index.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/collection.d.ts": [
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts",
+        "../../node_modules/@types/lodash/index.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/common.d.ts": [
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts",
+        "../../node_modules/@types/lodash/index.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/date.d.ts": [
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts",
+        "../../node_modules/@types/lodash/index.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/function.d.ts": [
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts",
+        "../../node_modules/@types/lodash/index.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/lang.d.ts": [
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts",
+        "../../node_modules/@types/lodash/index.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/math.d.ts": [
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts",
+        "../../node_modules/@types/lodash/index.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/number.d.ts": [
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts",
+        "../../node_modules/@types/lodash/index.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/object.d.ts": [
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts",
+        "../../node_modules/@types/lodash/index.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/seq.d.ts": [
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts",
+        "../../node_modules/@types/lodash/index.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/string.d.ts": [
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts",
+        "../../node_modules/@types/lodash/index.d.ts"
+      ],
+      "../../node_modules/@types/lodash/common/util.d.ts": [
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/index.d.ts"
+      ],
+      "../../node_modules/@types/lodash/index.d.ts": [
+        "../../node_modules/@types/lodash/common/array.d.ts",
+        "../../node_modules/@types/lodash/common/collection.d.ts",
+        "../../node_modules/@types/lodash/common/common.d.ts",
+        "../../node_modules/@types/lodash/common/date.d.ts",
+        "../../node_modules/@types/lodash/common/function.d.ts",
+        "../../node_modules/@types/lodash/common/lang.d.ts",
+        "../../node_modules/@types/lodash/common/math.d.ts",
+        "../../node_modules/@types/lodash/common/number.d.ts",
+        "../../node_modules/@types/lodash/common/object.d.ts",
+        "../../node_modules/@types/lodash/common/seq.d.ts",
+        "../../node_modules/@types/lodash/common/string.d.ts",
+        "../../node_modules/@types/lodash/common/util.d.ts"
+      ],
       "../../node_modules/@types/markdown-to-jsx/index.d.ts": [
         "../../node_modules/@types/react/index.d.ts"
       ],
@@ -3597,7 +4122,8 @@
       ],
       "./src/actionicon/actionicon.tsx": [
         "../../node_modules/@types/react/index.d.ts",
-        "../mantine-theme/lib/index.d.ts"
+        "../mantine-theme/lib/index.d.ts",
+        "../mantine-types/lib/index.d.ts"
       ],
       "./src/alert/alert.styles.ts": [
         "../../node_modules/jss/src/index.d.ts",
@@ -3639,8 +4165,7 @@
         "../../node_modules/@types/react/index.d.ts"
       ],
       "./src/breadcrumbs/breadcrumbs.styles.ts": [
-        "../../node_modules/jss/src/index.d.ts",
-        "../mantine-theme/lib/index.d.ts"
+        "../../node_modules/jss/src/index.d.ts"
       ],
       "./src/breadcrumbs/breadcrumbs.tsx": [
         "../../node_modules/@types/react/index.d.ts",
@@ -3717,6 +4242,15 @@
         "../../node_modules/@types/react/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
       ],
+      "./src/divider/divider.styles.ts": [
+        "../../node_modules/@types/react/index.d.ts",
+        "../../node_modules/jss/src/index.d.ts",
+        "../mantine-theme/lib/index.d.ts"
+      ],
+      "./src/divider/divider.tsx": [
+        "../../node_modules/@types/react/index.d.ts",
+        "../mantine-theme/lib/index.d.ts"
+      ],
       "./src/drawer/drawer.styles.ts": [
         "../../node_modules/jss/src/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
@@ -3726,29 +4260,29 @@
         "../mantine-theme/lib/index.d.ts",
         "./src/transition/transition.tsx"
       ],
-      "./src/elementsgroup/elementsgroup.styles.ts": [
+      "./src/grid/col.tsx": [
+        "../../node_modules/@types/react/index.d.ts",
+        "../mantine-theme/lib/index.d.ts"
+      ],
+      "./src/grid/grid.tsx": [
+        "../../node_modules/@types/react/index.d.ts",
+        "../mantine-theme/lib/index.d.ts",
+        "./src/grid/col.tsx"
+      ],
+      "./src/group/group.styles.ts": [
         "../../node_modules/jss/src/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
       ],
-      "./src/elementsgroup/elementsgroup.tsx": [
+      "./src/group/group.tsx": [
         "../../node_modules/@types/react/index.d.ts",
         "../mantine-theme/lib/index.d.ts",
-        "./src/elementsgroup/elementsgroup.styles.ts"
+        "./src/group/group.styles.ts"
       ],
       "./src/highlight/highlight.tsx": [
         "../../node_modules/@types/react/index.d.ts",
         "../mantine-theme/lib/index.d.ts",
         "../mantine-types/lib/index.d.ts",
         "./src/text/text.tsx"
-      ],
-      "./src/hr/hr.styles.ts": [
-        "../../node_modules/@types/react/index.d.ts",
-        "../../node_modules/jss/src/index.d.ts",
-        "../mantine-theme/lib/index.d.ts"
-      ],
-      "./src/hr/hr.tsx": [
-        "../../node_modules/@types/react/index.d.ts",
-        "../mantine-theme/lib/index.d.ts"
       ],
       "./src/image/image.styles.ts": [
         "../../node_modules/jss/src/index.d.ts",
@@ -3763,6 +4297,7 @@
       ],
       "./src/index.ts": [
         "../mantine-theme/lib/index.d.ts",
+        "../mantine-utils/lib/index.d.ts",
         "./src/actionicon/actionicon.tsx",
         "./src/alert/alert.tsx",
         "./src/avatar/avatar.tsx",
@@ -3776,10 +4311,11 @@
         "./src/code/code.tsx",
         "./src/colorswatch/colorswatch.tsx",
         "./src/container/container.tsx",
+        "./src/divider/divider.tsx",
         "./src/drawer/drawer.tsx",
-        "./src/elementsgroup/elementsgroup.tsx",
+        "./src/grid/grid.tsx",
+        "./src/group/group.tsx",
         "./src/highlight/highlight.tsx",
-        "./src/hr/hr.tsx",
         "./src/image/image.tsx",
         "./src/input/input.tsx",
         "./src/inputwrapper/inputwrapper.tsx",
@@ -3793,9 +4329,11 @@
         "./src/overlay/overlay.tsx",
         "./src/paper/paper.tsx",
         "./src/passwordinput/passwordinput.tsx",
+        "./src/popover/popover.tsx",
         "./src/portal/portal.tsx",
         "./src/progress/progress.tsx",
         "./src/radiogroup/radiogroup.tsx",
+        "./src/segmentedcontrol/segmentedcontrol.tsx",
         "./src/select/select.tsx",
         "./src/spoiler/spoiler.tsx",
         "./src/switch/switch.tsx",
@@ -3820,16 +4358,14 @@
         "../mantine-types/lib/index.d.ts"
       ],
       "./src/inputwrapper/inputwrapper.styles.ts": [
-        "../../node_modules/jss/src/index.d.ts",
-        "../mantine-theme/lib/index.d.ts"
+        "../../node_modules/jss/src/index.d.ts"
       ],
       "./src/inputwrapper/inputwrapper.tsx": [
         "../../node_modules/@types/react/index.d.ts",
         "../mantine-theme/lib/index.d.ts"
       ],
       "./src/kbd/kbd.styles.ts": [
-        "../../node_modules/jss/src/index.d.ts",
-        "../mantine-theme/lib/index.d.ts"
+        "../../node_modules/jss/src/index.d.ts"
       ],
       "./src/kbd/kbd.tsx": [
         "../../node_modules/@types/react/index.d.ts",
@@ -3870,13 +4406,15 @@
       "./src/menu/menubutton/menubutton.tsx": [
         "../../node_modules/@types/react/index.d.ts",
         "../mantine-theme/lib/index.d.ts",
+        "../mantine-types/lib/index.d.ts",
         "./src/menu/menuitem/menuitem.tsx"
       ],
       "./src/menu/menuicon.tsx": [
         "../../node_modules/@types/react/index.d.ts"
       ],
       "./src/menu/menuitem/menuitem.tsx": [
-        "../../node_modules/@types/react/index.d.ts"
+        "../../node_modules/@types/react/index.d.ts",
+        "../mantine-types/lib/index.d.ts"
       ],
       "./src/modal/closeicon.tsx": [
         "../../node_modules/@types/react/index.d.ts"
@@ -3925,6 +4463,15 @@
       "./src/passwordinput/passwordtoggleicon.tsx": [
         "../../node_modules/@types/react/index.d.ts"
       ],
+      "./src/popover/popover.styles.ts": [
+        "../../node_modules/jss/src/index.d.ts",
+        "../mantine-theme/lib/index.d.ts"
+      ],
+      "./src/popover/popover.tsx": [
+        "../../node_modules/@types/react/index.d.ts",
+        "../mantine-theme/lib/index.d.ts",
+        "./src/transition/transition.tsx"
+      ],
       "./src/portal/portal.tsx": [
         "../../node_modules/@types/react/index.d.ts"
       ],
@@ -3953,6 +4500,14 @@
         "../mantine-theme/lib/index.d.ts",
         "./src/inputwrapper/inputwrapper.tsx",
         "./src/radiogroup/radio/radio.tsx"
+      ],
+      "./src/segmentedcontrol/segmentedcontrol.styles.ts": [
+        "../../node_modules/jss/src/index.d.ts",
+        "../mantine-theme/lib/index.d.ts"
+      ],
+      "./src/segmentedcontrol/segmentedcontrol.tsx": [
+        "../../node_modules/@types/react/index.d.ts",
+        "../mantine-theme/lib/index.d.ts"
       ],
       "./src/select/chevronicon.tsx": [
         "../../node_modules/@types/react/index.d.ts"
@@ -4000,13 +4555,12 @@
         "./src/tabs/tab/tab.tsx"
       ],
       "./src/tabs/tabs.styles.ts": [
-        "../../node_modules/jss/src/index.d.ts",
-        "../mantine-theme/lib/index.d.ts"
+        "../../node_modules/jss/src/index.d.ts"
       ],
       "./src/tabs/tabs.tsx": [
         "../../node_modules/@types/react/index.d.ts",
         "../mantine-theme/lib/index.d.ts",
-        "./src/elementsgroup/elementsgroup.tsx",
+        "./src/group/group.tsx",
         "./src/tabs/tab/tab.tsx"
       ],
       "./src/text/text.styles.ts": [
@@ -4074,8 +4628,7 @@
         "../../node_modules/@types/react/index.d.ts"
       ],
       "./src/typographystylesprovider/typographystylesprovider.styles.ts": [
-        "../../node_modules/jss/src/index.d.ts",
-        "../mantine-theme/lib/index.d.ts"
+        "../../node_modules/jss/src/index.d.ts"
       ],
       "./src/typographystylesprovider/typographystylesprovider.tsx": [
         "../../node_modules/@types/react/index.d.ts",
@@ -4085,10 +4638,12 @@
         "../mantine-hooks/lib/use-click-outside/use-click-outside.d.ts",
         "../mantine-hooks/lib/use-clipboard/use-clipboard.d.ts",
         "../mantine-hooks/lib/use-color-scheme/use-color-scheme.d.ts",
+        "../mantine-hooks/lib/use-debounced-value/use-debounced-value.d.ts",
         "../mantine-hooks/lib/use-document-title/use-document-title.d.ts",
         "../mantine-hooks/lib/use-focus-trap/use-focus-trap.d.ts",
         "../mantine-hooks/lib/use-form/use-form.d.ts",
         "../mantine-hooks/lib/use-id/use-id.d.ts",
+        "../mantine-hooks/lib/use-isomorphic-effect/use-isomorphic-effect.d.ts",
         "../mantine-hooks/lib/use-list-state/use-list-state.d.ts",
         "../mantine-hooks/lib/use-local-storage-value/use-local-storage-value.d.ts",
         "../mantine-hooks/lib/use-media-query/use-media-query.d.ts",
@@ -4104,16 +4659,25 @@
       "../mantine-hooks/lib/use-form/use-form.d.ts": [
         "../../node_modules/@types/react/index.d.ts"
       ],
+      "../mantine-hooks/lib/use-isomorphic-effect/use-isomorphic-effect.d.ts": [
+        "../../node_modules/@types/react/index.d.ts"
+      ],
       "../mantine-hooks/lib/use-list-state/use-list-state.d.ts": [
         "../../node_modules/@types/react/index.d.ts"
       ],
       "../mantine-hooks/lib/use-merged-ref/use-merged-ref.d.ts": [
         "../../node_modules/@types/react/index.d.ts"
       ],
+      "../mantine-theme/lib/create-memo-styles.d.ts": [
+        "../../node_modules/jss/src/index.d.ts",
+        "../../node_modules/react-jss/src/index.d.ts",
+        "../mantine-theme/lib/types.d.ts"
+      ],
       "../mantine-theme/lib/default-theme.d.ts": [
         "../mantine-theme/lib/types.d.ts"
       ],
       "../mantine-theme/lib/index.d.ts": [
+        "../mantine-theme/lib/create-memo-styles.d.ts",
         "../mantine-theme/lib/default-theme.d.ts",
         "../mantine-theme/lib/mantineprovider/mantineprovider.d.ts",
         "../mantine-theme/lib/mantineprovider/theme-context.d.ts",
@@ -4122,7 +4686,8 @@
         "../mantine-theme/lib/utils/get-focus-styles/get-focus-styles.d.ts",
         "../mantine-theme/lib/utils/get-font-styles/get-font-styles.d.ts",
         "../mantine-theme/lib/utils/get-size-value/get-size-value.d.ts",
-        "../mantine-theme/lib/utils/get-theme-color/get-theme-color.d.ts"
+        "../mantine-theme/lib/utils/get-theme-color/get-theme-color.d.ts",
+        "../mantine-theme/lib/utils/hex-to-rgba/hex-to-rgba.d.ts"
       ],
       "../mantine-theme/lib/mantineprovider/mantineprovider.d.ts": [
         "../../node_modules/@types/react/index.d.ts",
@@ -4151,6 +4716,10 @@
       ],
       "../mantine-types/lib/index.d.ts": [
         "../../node_modules/@types/react/index.d.ts"
+      ],
+      "../mantine-utils/lib/index.d.ts": [
+        "../mantine-utils/lib/random-id/random-id.d.ts",
+        "../mantine-utils/lib/upper-first/upper-first.d.ts"
       ]
     },
     "semanticDiagnosticsPerFile": [
@@ -4192,6 +4761,20 @@
       "../../node_modules/@types/jest/index.d.ts",
       "../../node_modules/@types/json-schema/index.d.ts",
       "../../node_modules/@types/json5/index.d.ts",
+      "../../node_modules/@types/lodash.debounce/index.d.ts",
+      "../../node_modules/@types/lodash/common/array.d.ts",
+      "../../node_modules/@types/lodash/common/collection.d.ts",
+      "../../node_modules/@types/lodash/common/common.d.ts",
+      "../../node_modules/@types/lodash/common/date.d.ts",
+      "../../node_modules/@types/lodash/common/function.d.ts",
+      "../../node_modules/@types/lodash/common/lang.d.ts",
+      "../../node_modules/@types/lodash/common/math.d.ts",
+      "../../node_modules/@types/lodash/common/number.d.ts",
+      "../../node_modules/@types/lodash/common/object.d.ts",
+      "../../node_modules/@types/lodash/common/seq.d.ts",
+      "../../node_modules/@types/lodash/common/string.d.ts",
+      "../../node_modules/@types/lodash/common/util.d.ts",
+      "../../node_modules/@types/lodash/index.d.ts",
       "../../node_modules/@types/markdown-to-jsx/index.d.ts",
       "../../node_modules/@types/mdast/index.d.ts",
       "../../node_modules/@types/micromatch/index.d.ts",
@@ -4396,13 +4979,15 @@
       "./src/colorswatch/colorswatch.tsx",
       "./src/container/container.styles.ts",
       "./src/container/container.tsx",
+      "./src/divider/divider.styles.ts",
+      "./src/divider/divider.tsx",
       "./src/drawer/drawer.styles.ts",
       "./src/drawer/drawer.tsx",
-      "./src/elementsgroup/elementsgroup.styles.ts",
-      "./src/elementsgroup/elementsgroup.tsx",
+      "./src/grid/col.tsx",
+      "./src/grid/grid.tsx",
+      "./src/group/group.styles.ts",
+      "./src/group/group.tsx",
       "./src/highlight/highlight.tsx",
-      "./src/hr/hr.styles.ts",
-      "./src/hr/hr.tsx",
       "./src/image/image.styles.ts",
       "./src/image/image.tsx",
       "./src/image/imageicon.tsx",
@@ -4435,6 +5020,8 @@
       "./src/paper/paper.tsx",
       "./src/passwordinput/passwordinput.tsx",
       "./src/passwordinput/passwordtoggleicon.tsx",
+      "./src/popover/popover.styles.ts",
+      "./src/popover/popover.tsx",
       "./src/portal/portal.tsx",
       "./src/progress/progress.styles.ts",
       "./src/progress/progress.tsx",
@@ -4442,6 +5029,8 @@
       "./src/radiogroup/radio/radio.tsx",
       "./src/radiogroup/radiogroup.styles.ts",
       "./src/radiogroup/radiogroup.tsx",
+      "./src/segmentedcontrol/segmentedcontrol.styles.ts",
+      "./src/segmentedcontrol/segmentedcontrol.tsx",
       "./src/select/chevronicon.tsx",
       "./src/select/select.tsx",
       "./src/spoiler/spoiler.styles.ts",
@@ -4475,10 +5064,12 @@
       "../mantine-hooks/lib/use-click-outside/use-click-outside.d.ts",
       "../mantine-hooks/lib/use-clipboard/use-clipboard.d.ts",
       "../mantine-hooks/lib/use-color-scheme/use-color-scheme.d.ts",
+      "../mantine-hooks/lib/use-debounced-value/use-debounced-value.d.ts",
       "../mantine-hooks/lib/use-document-title/use-document-title.d.ts",
       "../mantine-hooks/lib/use-focus-trap/use-focus-trap.d.ts",
       "../mantine-hooks/lib/use-form/use-form.d.ts",
       "../mantine-hooks/lib/use-id/use-id.d.ts",
+      "../mantine-hooks/lib/use-isomorphic-effect/use-isomorphic-effect.d.ts",
       "../mantine-hooks/lib/use-list-state/use-list-state.d.ts",
       "../mantine-hooks/lib/use-local-storage-value/use-local-storage-value.d.ts",
       "../mantine-hooks/lib/use-media-query/use-media-query.d.ts",
@@ -4487,6 +5078,7 @@
       "../mantine-hooks/lib/use-reduced-motion/use-reduced-motion.d.ts",
       "../mantine-hooks/lib/use-scroll-lock/use-scroll-lock.d.ts",
       "../mantine-hooks/lib/use-window-event/use-window-event.d.ts",
+      "../mantine-theme/lib/create-memo-styles.d.ts",
       "../mantine-theme/lib/default-theme.d.ts",
       "../mantine-theme/lib/index.d.ts",
       "../mantine-theme/lib/mantineprovider/mantineprovider.d.ts",
@@ -4497,7 +5089,11 @@
       "../mantine-theme/lib/utils/get-font-styles/get-font-styles.d.ts",
       "../mantine-theme/lib/utils/get-size-value/get-size-value.d.ts",
       "../mantine-theme/lib/utils/get-theme-color/get-theme-color.d.ts",
-      "../mantine-types/lib/index.d.ts"
+      "../mantine-theme/lib/utils/hex-to-rgba/hex-to-rgba.d.ts",
+      "../mantine-types/lib/index.d.ts",
+      "../mantine-utils/lib/index.d.ts",
+      "../mantine-utils/lib/random-id/random-id.d.ts",
+      "../mantine-utils/lib/upper-first/upper-first.d.ts"
     ]
   },
   "version": "4.2.4"

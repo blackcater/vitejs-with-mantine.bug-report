@@ -3,8 +3,6 @@ interface TableStylesProps {
     theme: MantineTheme;
     captionSide: 'top' | 'bottom';
 }
-declare const _default: (data?: TableStylesProps & {
-    theme?: MantineTheme;
-}) => import("jss").Classes<"table" | "hover" | "striped">;
+declare const _default: (args?: TableStylesProps) => import("jss").Classes<"hover" | "table" | "striped">;
 export default _default;
 //# sourceMappingURL=Table.styles.d.ts.map

@@ -1,5 +1,4 @@
-import { createUseStyles } from 'react-jss';
-import { getSizeValue, getThemeColor, getFocusStyles, getFontStyles } from '@mantine/theme';
+import { createMemoStyles, getSizeValue, getThemeColor, getFocusStyles, getFontStyles } from '@mantine/theme';
 
 var __defProp = Object.defineProperty;
 var __defProps = Object.defineProperties;
@@ -45,7 +44,7 @@ const sizes = Object.keys(switchHeight).reduce((acc, size) => {
   acc[size] = {width: switchWidth[size], height: switchHeight[size]};
   return acc;
 }, {});
-var useStyles = createUseStyles({
+var useStyles = createMemoStyles({
   wrapper: {
     display: "flex",
     alignItems: "center"
@@ -57,8 +56,8 @@ var useStyles = createUseStyles({
       WebkitTapHighlightColor: "transparent",
       position: "relative",
       borderRadius,
-      backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[3] : theme.colors.gray[2],
-      border: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[3] : theme.colors.gray[3]}`,
+      backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[2],
+      border: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[3]}`,
       height: getSizeValue({size, sizes: switchHeight}),
       width: getSizeValue({size, sizes: switchWidth}),
       minWidth: getSizeValue({size, sizes: switchWidth}),
@@ -79,7 +78,7 @@ var useStyles = createUseStyles({
         backgroundColor: theme.white,
         height: handleSize,
         width: handleSize,
-        border: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[3] : theme.colors.gray[3]}`,
+        border: `1px solid ${theme.colorScheme === "dark" ? theme.white : theme.colors.gray[3]}`,
         transition: reduceMotion ? "none" : `transform 150ms ${theme.transitionTimingFunction}`
       },
       "&:checked": {
@@ -87,7 +86,7 @@ var useStyles = createUseStyles({
         borderColor: getThemeColor({theme, color, shade: 6}),
         "&::before": {
           transform: `translateX(${getSizeValue({size, sizes: switchWidth}) - getSizeValue({size, sizes: handleSizes}) - 6}px)`,
-          borderColor: getThemeColor({theme, color, shade: 6})
+          borderColor: theme.white
         }
       },
       "&:disabled": {
@@ -108,7 +107,7 @@ var useStyles = createUseStyles({
     paddingLeft: theme.spacing.sm,
     color: theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black
   })
-}, {link: true});
+});
 
 export default useStyles;
 export { sizes };

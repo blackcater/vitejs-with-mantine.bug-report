@@ -63,7 +63,6 @@ function Avatar(_a) {
     !src ? setError(true) : setError(false);
   }, [src]);
   return /* @__PURE__ */ React.createElement("div", __spreadProps(__spreadValues({}, others), {
-    "data-mantine-composable": true,
     className: cx(classes.avatar, className)
   }), error ? /* @__PURE__ */ React.createElement("div", {
     "data-mantine-placeholder": true,

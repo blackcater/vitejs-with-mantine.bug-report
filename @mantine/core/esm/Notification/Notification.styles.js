@@ -1,7 +1,6 @@
-import { createUseStyles } from 'react-jss';
-import { getThemeColor } from '@mantine/theme';
+import { createMemoStyles, getThemeColor, hexToRgba } from '@mantine/theme';
 
-var useStyles = createUseStyles({
+var useStyles = createMemoStyles({
   withIcon: {
     paddingLeft: "10px !important",
     "&::before": {
@@ -18,8 +17,8 @@ var useStyles = createUseStyles({
     paddingTop: 10,
     paddingBottom: 10,
     borderRadius: 4,
-    backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[9] : theme.white,
-    border: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[2]}`,
+    backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.white,
+    border: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.colors.gray[2]}`,
     "&::before": {
       content: "''",
       display: "block",
@@ -29,10 +28,14 @@ var useStyles = createUseStyles({
       bottom: 4,
       left: 4,
       borderRadius: 4,
-      backgroundColor: getThemeColor({theme, color, shade: 6})
+      backgroundColor: getThemeColor({
+        theme,
+        color,
+        shade: theme.colorScheme === "dark" ? 7 : 6
+      })
     },
     "& $icon": {
-      backgroundColor: getThemeColor({theme, color, shade: 6}),
+      backgroundColor: hexToRgba(getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 7 : 6}), theme.colorScheme === "dark" ? 0.7 : 1),
       color: theme.white
     }
   }),
@@ -71,7 +74,7 @@ var useStyles = createUseStyles({
       color: theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black
     }
   })
-}, {link: true});
+});
 
 export default useStyles;
 //# sourceMappingURL=Notification.styles.js.map

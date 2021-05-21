@@ -8,8 +8,9 @@ var ActionIcon = require('../ActionIcon/ActionIcon.js');
 var MenuIcon = require('./MenuIcon.js');
 var MenuBody = require('./MenuBody/MenuBody.js');
 var MenuBody_styles = require('./MenuBody/MenuBody.styles.js');
+var MenuItem = require('./MenuItem/MenuItem.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 
@@ -45,7 +46,7 @@ var __objRest = (source, exclude) => {
   return target;
 };
 const MENU_SIZES = MenuBody_styles.sizes;
-const defaultControl = /* @__PURE__ */ React__default['default'].createElement(ActionIcon.ActionIcon, null, /* @__PURE__ */ React__default['default'].createElement(MenuIcon.MenuIcon, null));
+const defaultControl = /* @__PURE__ */ React__default.createElement(ActionIcon.ActionIcon, null, /* @__PURE__ */ React__default.createElement(MenuIcon.MenuIcon, null));
 function Menu(_a) {
   var _b = _a, {
     control = defaultControl,
@@ -122,11 +123,10 @@ function Menu(_a) {
     title: menuButtonLabel,
     [controlRefProp]: hooks.useMergedRef(controlRef, elementRef)
   });
-  return /* @__PURE__ */ React__default['default'].createElement("div", __spreadValues({
-    "data-mantine-composable": true,
+  return /* @__PURE__ */ React__default.createElement("div", __spreadValues({
     ref: wrapperRef,
     style: __spreadValues({display: "inline-block", position: "relative"}, style)
-  }, others), menuControl, /* @__PURE__ */ React__default['default'].createElement(MenuBody.MenuBody, __spreadProps(__spreadValues({}, menuBodyProps), {
+  }, others), menuControl, /* @__PURE__ */ React__default.createElement(MenuBody.MenuBody, __spreadProps(__spreadValues({}, menuBodyProps), {
     opened: menuOpened,
     onClose: handleClose,
     id: uuid,
@@ -145,6 +145,7 @@ function Menu(_a) {
 Menu.displayName = "@mantine/core/Menu";
 
 exports.MenuBody = MenuBody.MenuBody;
+exports.MenuItem = MenuItem.MenuItem;
 exports.MENU_SIZES = MENU_SIZES;
 exports.Menu = Menu;
 //# sourceMappingURL=Menu.js.map

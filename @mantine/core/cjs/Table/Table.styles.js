@@ -2,7 +2,6 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var reactJss = require('react-jss');
 var theme = require('@mantine/theme');
 
 var __defProp = Object.defineProperty;
@@ -24,7 +23,7 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-var useStyles = reactJss.createUseStyles({
+var useStyles = theme.createMemoStyles({
   striped: {},
   hover: {},
   table: ({theme: theme$1, captionSide}) => __spreadProps(__spreadValues({}, theme.getFontStyles(theme$1)), {
@@ -61,13 +60,13 @@ var useStyles = reactJss.createUseStyles({
       borderBottom: "none"
     },
     "&$striped tbody tr:nth-of-type(odd)": {
-      backgroundColor: theme$1.colorScheme === "dark" ? theme$1.colors.dark[8] : theme$1.colors.gray[0]
+      backgroundColor: theme$1.colorScheme === "dark" ? theme$1.colors.dark[6] : theme$1.colors.gray[0]
     },
     "&$hover tbody tr:hover": {
-      backgroundColor: theme$1.colorScheme === "dark" ? theme$1.colors.dark[4] : theme$1.colors.gray[1]
+      backgroundColor: theme$1.colorScheme === "dark" ? theme$1.colors.dark[5] : theme$1.colors.gray[1]
     }
   })
-}, {link: true});
+});
 
 exports.default = useStyles;
 //# sourceMappingURL=Table.styles.js.map

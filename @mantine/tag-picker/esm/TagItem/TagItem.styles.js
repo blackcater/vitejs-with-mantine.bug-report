@@ -1,5 +1,4 @@
-import { createUseStyles } from 'react-jss';
-import { getFocusStyles } from '@mantine/core';
+import { createMemoStyles, getFocusStyles } from '@mantine/core';
 
 var __defProp = Object.defineProperty;
 var __defProps = Object.defineProperties;
@@ -20,7 +19,7 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-var useStyles = createUseStyles({
+var useStyles = createMemoStyles({
   item: {
     position: "relative"
   },
@@ -51,7 +50,7 @@ var useStyles = createUseStyles({
   hovered: ({theme}) => ({
     backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[0]
   })
-}, {link: true});
+});
 
 export default useStyles;
 //# sourceMappingURL=TagItem.styles.js.map

@@ -5,7 +5,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var React = require('react');
 var TagPicker = require('./TagPicker/TagPicker.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 
@@ -119,11 +119,11 @@ function TagPickerContainer(_a) {
       }
     }
   };
-  return /* @__PURE__ */ React__default['default'].createElement("div", {
+  return /* @__PURE__ */ React__default.createElement("div", {
     onKeyDownCapture: handleKeyboardEvents,
     className: props.className,
     style: props.style
-  }, /* @__PURE__ */ React__default['default'].createElement(TagPicker.TagPicker, {
+  }, /* @__PURE__ */ React__default.createElement(TagPicker.TagPicker, {
     createColor,
     searchQuery: query,
     hovered,

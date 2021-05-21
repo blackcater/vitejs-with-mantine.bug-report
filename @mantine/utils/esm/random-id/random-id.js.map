@@ -1,0 +1,1 @@
+{"version":3,"file":"random-id.js","sources":["../../src/random-id/random-id.ts"],"sourcesContent":["export function randomId() {\n  return `mantine-${Math.random().toString(36).substr(2, 9)}`;\n}\n"],"names":[],"mappings":"oBAA2B;AACzB,SAAO,WAAW,KAAK,SAAS,SAAS,IAAI,OAAO,GAAG;AAAA;;;;"}

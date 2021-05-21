@@ -7,7 +7,7 @@ var cx = require('clsx');
 var theme = require('@mantine/theme');
 var MenuButton_styles = require('./MenuButton.styles.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var cx__default = /*#__PURE__*/_interopDefaultLegacy(cx);
@@ -51,7 +51,8 @@ function MenuButton(_a) {
     color,
     disabled,
     rightSection,
-    className
+    className,
+    component: Element = "button"
   } = _b, others = __objRest(_b, [
     "children",
     "onHover",
@@ -62,24 +63,25 @@ function MenuButton(_a) {
     "color",
     "disabled",
     "rightSection",
-    "className"
+    "className",
+    "component"
   ]);
   const classes = MenuButton_styles['default']({color, theme: theme.useMantineTheme(themeOverride)});
-  return /* @__PURE__ */ React__default['default'].createElement("button", __spreadValues({
+  return /* @__PURE__ */ React__default.createElement(Element, __spreadValues({
     type: "button",
     role: "menuitem",
-    className: cx__default['default'](classes.item, {[classes.hovered]: hovered}, className),
+    className: cx__default(classes.item, {[classes.hovered]: hovered}, className),
     onMouseEnter: () => !disabled && onHover(),
     ref: elementRef,
     disabled
-  }, others), /* @__PURE__ */ React__default['default'].createElement("div", {
+  }, others), /* @__PURE__ */ React__default.createElement("div", {
     className: classes.inner
-  }, icon && /* @__PURE__ */ React__default['default'].createElement("div", {
+  }, icon && /* @__PURE__ */ React__default.createElement("div", {
     "data-mantine-icon": true,
     className: classes.icon
-  }, icon), /* @__PURE__ */ React__default['default'].createElement("div", {
+  }, icon), /* @__PURE__ */ React__default.createElement("div", {
     className: classes.body
-  }, /* @__PURE__ */ React__default['default'].createElement("div", {
+  }, /* @__PURE__ */ React__default.createElement("div", {
     className: classes.label
   }, children), rightSection)));
 }

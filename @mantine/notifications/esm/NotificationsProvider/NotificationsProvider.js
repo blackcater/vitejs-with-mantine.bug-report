@@ -74,6 +74,7 @@ function NotificationsProvider(_a) {
   ]);
   const {
     notifications,
+    queue,
     showNotification,
     updateNotification,
     hideNotification,
@@ -106,6 +107,7 @@ function NotificationsProvider(_a) {
   return /* @__PURE__ */ React.createElement(NotificationsContext.Provider, {
     value: {
       notifications,
+      queue,
       showNotification,
       hideNotification,
       updateNotification,

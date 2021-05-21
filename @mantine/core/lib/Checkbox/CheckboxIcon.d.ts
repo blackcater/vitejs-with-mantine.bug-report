@@ -1,6 +1,7 @@
 import React from 'react';
-export interface CheckboxIconProps extends React.ComponentPropsWithoutRef<'svg'> {
-    intermediate: boolean;
+interface CheckboxIconProps extends React.ComponentPropsWithoutRef<'svg'> {
+    indeterminate: boolean;
 }
-export declare function CheckboxIcon({ intermediate, ...others }: CheckboxIconProps): JSX.Element;
+export declare function CheckboxIcon({ indeterminate, ...others }: CheckboxIconProps): JSX.Element;
+export {};
 //# sourceMappingURL=CheckboxIcon.d.ts.map

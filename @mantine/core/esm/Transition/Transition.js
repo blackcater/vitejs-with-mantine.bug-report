@@ -4,6 +4,7 @@ import { useMantineTheme } from '@mantine/theme';
 import { useReducedMotion } from '@mantine/hooks';
 import { getTransitionStyles } from './get-transition-styles/get-transition-styles.js';
 import { transitions } from './transitions.js';
+export { GroupedTransition } from './GroupedTransition.js';
 
 const AVAILABLE_TRANSITIONS = Object.keys(transitions);
 function Transition({

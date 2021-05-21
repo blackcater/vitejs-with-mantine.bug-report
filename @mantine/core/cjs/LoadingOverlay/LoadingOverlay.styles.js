@@ -13,9 +13,10 @@ var useStyles = reactJss.createUseStyles({
     bottom: 0,
     display: "flex",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    overflow: "hidden"
   }
-}, {link: true});
+});
 
 exports.default = useStyles;
 //# sourceMappingURL=LoadingOverlay.styles.js.map

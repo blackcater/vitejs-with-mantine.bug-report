@@ -7,7 +7,7 @@ var reactTransitionGroup = require('react-transition-group');
 var theme = require('@mantine/theme');
 var getTransitionStyles = require('./get-transition-styles/get-transition-styles.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 
@@ -19,7 +19,7 @@ function GroupedTransition({
 }) {
   const theme$1 = theme.useMantineTheme(themeOverride);
   const duration = Math.max(...Object.keys(transitions).map((transition) => transitions[transition].duration));
-  return /* @__PURE__ */ React__default['default'].createElement(reactTransitionGroup.Transition, {
+  return /* @__PURE__ */ React__default.createElement(reactTransitionGroup.Transition, {
     in: mounted,
     timeout: duration,
     unmountOnExit: true,

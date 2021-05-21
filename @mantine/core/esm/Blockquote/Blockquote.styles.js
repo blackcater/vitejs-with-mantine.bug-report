@@ -1,5 +1,4 @@
-import { createUseStyles } from 'react-jss';
-import { getThemeColor, getFontStyles } from '@mantine/theme';
+import { createMemoStyles, getThemeColor, getFontStyles } from '@mantine/theme';
 
 var __defProp = Object.defineProperty;
 var __defProps = Object.defineProperties;
@@ -20,11 +19,11 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-var useStyles = createUseStyles({
+var useStyles = createMemoStyles({
   blockquote: ({theme, color}) => __spreadProps(__spreadValues({}, getFontStyles(theme)), {
     fontSize: theme.fontSizes.lg,
     lineHeight: theme.lineHeight,
-    backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[9] : theme.colors.gray[0],
+    backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.colors.gray[0],
     color: theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black,
     margin: 0,
     borderTopRightRadius: theme.radius.sm,
@@ -58,7 +57,7 @@ var useStyles = createUseStyles({
     overflow: "hidden",
     textOverflow: "ellipsis"
   })
-}, {link: true});
+});
 
 export default useStyles;
 //# sourceMappingURL=Blockquote.styles.js.map

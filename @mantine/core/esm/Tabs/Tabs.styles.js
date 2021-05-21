@@ -1,6 +1,6 @@
-import { createUseStyles } from 'react-jss';
+import { createMemoStyles } from '@mantine/theme';
 
-var useStyles = createUseStyles({
+var useStyles = createMemoStyles({
   tabs: ({theme}) => ({
     borderBottom: `2px solid ${theme.colorScheme === "dark" ? theme.colors.dark[3] : theme.colors.gray[3]}`
   }),
@@ -10,7 +10,7 @@ var useStyles = createUseStyles({
   body: ({theme}) => ({
     paddingTop: theme.spacing.sm
   })
-}, {link: true});
+});
 
 export default useStyles;
 //# sourceMappingURL=Tabs.styles.js.map

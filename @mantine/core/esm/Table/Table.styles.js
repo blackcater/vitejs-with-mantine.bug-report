@@ -1,5 +1,4 @@
-import { createUseStyles } from 'react-jss';
-import { getFontStyles } from '@mantine/theme';
+import { createMemoStyles, getFontStyles } from '@mantine/theme';
 
 var __defProp = Object.defineProperty;
 var __defProps = Object.defineProperties;
@@ -20,7 +19,7 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-var useStyles = createUseStyles({
+var useStyles = createMemoStyles({
   striped: {},
   hover: {},
   table: ({theme, captionSide}) => __spreadProps(__spreadValues({}, getFontStyles(theme)), {
@@ -57,13 +56,13 @@ var useStyles = createUseStyles({
       borderBottom: "none"
     },
     "&$striped tbody tr:nth-of-type(odd)": {
-      backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[8] : theme.colors.gray[0]
+      backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.colors.gray[0]
     },
     "&$hover tbody tr:hover": {
-      backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[1]
+      backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[1]
     }
   })
-}, {link: true});
+});
 
 export default useStyles;
 //# sourceMappingURL=Table.styles.js.map

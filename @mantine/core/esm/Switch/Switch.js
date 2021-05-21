@@ -5,6 +5,8 @@ import { useMantineTheme } from '@mantine/theme';
 import useStyles, { sizes } from './Switch.styles.js';
 
 var __defProp = Object.defineProperty;
+var __defProps = Object.defineProperties;
+var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
 var __getOwnPropSymbols = Object.getOwnPropertySymbols;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __propIsEnum = Object.prototype.propertyIsEnumerable;
@@ -20,6 +22,7 @@ var __spreadValues = (a, b) => {
     }
   return a;
 };
+var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 var __objRest = (source, exclude) => {
   var target = {};
   for (var prop in source)
@@ -46,7 +49,8 @@ function Switch(_a) {
     wrapperProps,
     inputStyle,
     inputClassName,
-    elementRef
+    elementRef,
+    children
   } = _b, others = __objRest(_b, [
     "className",
     "color",
@@ -59,7 +63,8 @@ function Switch(_a) {
     "wrapperProps",
     "inputStyle",
     "inputClassName",
-    "elementRef"
+    "elementRef",
+    "children"
   ]);
   const classes = useStyles({
     size,
@@ -72,13 +77,13 @@ function Switch(_a) {
   return /* @__PURE__ */ React.createElement("div", __spreadValues({
     className: cx(classes.wrapper, className),
     style
-  }, wrapperProps), /* @__PURE__ */ React.createElement("input", __spreadValues({
+  }, wrapperProps), /* @__PURE__ */ React.createElement("input", __spreadProps(__spreadValues({}, others), {
     id: uuid,
     ref: elementRef,
     type: "checkbox",
     className: cx(classes.switch, inputClassName),
     style: inputStyle
-  }, others)), label && /* @__PURE__ */ React.createElement("label", {
+  })), label && /* @__PURE__ */ React.createElement("label", {
     className: classes.label,
     htmlFor: uuid
   }, label));

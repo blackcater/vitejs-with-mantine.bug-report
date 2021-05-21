@@ -1,5 +1,4 @@
-import { createUseStyles } from 'react-jss';
-import { getThemeColor, getFontStyles } from '@mantine/theme';
+import { createMemoStyles, getThemeColor, getFontStyles } from '@mantine/theme';
 
 var __defProp = Object.defineProperty;
 var __defProps = Object.defineProperties;
@@ -44,7 +43,7 @@ const horizontalPlacement = {
     top: 0
   }
 };
-var useStyles = createUseStyles({
+var useStyles = createMemoStyles({
   withArrow: {},
   center: {},
   start: {},
@@ -158,7 +157,7 @@ var useStyles = createUseStyles({
       bottom: arrowSize
     }
   })
-}, {link: true});
+});
 
 export default useStyles;
 //# sourceMappingURL=Tooltip.styles.js.map

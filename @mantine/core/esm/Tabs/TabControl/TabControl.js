@@ -59,7 +59,6 @@ function TabControl(_a) {
   });
   return /* @__PURE__ */ React.createElement("button", __spreadProps(__spreadValues(__spreadValues({}, others), props), {
     "data-mantine-tab": true,
-    "data-mantine-composable": true,
     tabIndex: active ? 0 : -1,
     className: cx(classes.tab, {[classes.tabActive]: active}, className),
     type: "button",

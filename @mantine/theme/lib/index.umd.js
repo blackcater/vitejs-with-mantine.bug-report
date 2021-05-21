@@ -4,9 +4,21 @@
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global['@mantine/theme'] = {}, global.React, global.reactJss));
 }(this, (function (exports, React, reactJss) { 'use strict';
 
-  function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+  function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
   var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
+
+  function createMemoStyles(styles) {
+    const useStyles = reactJss.createUseStyles(styles);
+    return function useMemoStyles(args) {
+      const dependencies = typeof args === "object" && args !== null ? Object.keys(args).filter((key) => key !== "theme").map((key) => args[key]) : [];
+      if (typeof args === "object" && "theme" in args) {
+        dependencies.push(args.theme.colorScheme);
+      }
+      const stylesProps = React.useMemo(() => args, dependencies);
+      return useStyles(stylesProps);
+    };
+  }
 
   function getThemeColor({
     theme,
@@ -21,7 +33,7 @@
     return {
       "&:focus": {
         outline: "none",
-        boxShadow: `0 0 0 2px ${theme.colorScheme === "dark" ? theme.colors.dark[9] : theme.white}, 0 0 0 4px ${theme.colors[theme.primaryColor][5]}`
+        boxShadow: `0 0 0 2px ${theme.colorScheme === "dark" ? theme.colors.dark[9] : theme.white}, 0 0 0 4px ${theme.colors[theme.primaryColor][theme.colorScheme === "dark" ? 7 : 5]}`
       },
       "&:focus:not(:focus-visible)": {
         boxShadow: "none"
@@ -46,6 +58,21 @@
       return size;
     }
     return sizes[size] || size || sizes[defaultSize];
+  }
+
+  function hexToRgba(hex, alpha) {
+    if (!hex || typeof alpha !== "number" || alpha > 1 || alpha < 0) {
+      return "";
+    }
+    const replaced = hex.replace("#", "");
+    if (replaced.length !== 6) {
+      return "";
+    }
+    const parsed = parseInt(replaced, 16);
+    const r = parsed >> 16 & 255;
+    const g = parsed >> 8 & 255;
+    const b = parsed & 255;
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
   }
 
   const colors = {
@@ -332,7 +359,7 @@
     return a;
   };
   function MantineProvider({children, theme}) {
-    return /* @__PURE__ */ React__default['default'].createElement(ThemeProvider, {
+    return /* @__PURE__ */ React__default.createElement(ThemeProvider, {
       theme: mergeTheme(__spreadValues$1({__mantine_theme: true}, DEFAULT_THEME), theme)
     }, children);
   }
@@ -368,10 +395,12 @@
 
   exports.DEFAULT_THEME = DEFAULT_THEME;
   exports.MantineProvider = MantineProvider;
+  exports.createMemoStyles = createMemoStyles;
   exports.getFocusStyles = getFocusStyles;
   exports.getFontStyles = getFontStyles;
   exports.getSizeValue = getSizeValue;
   exports.getThemeColor = getThemeColor;
+  exports.hexToRgba = hexToRgba;
   exports.theming = theming;
   exports.useMantineTheme = useMantineTheme;
 

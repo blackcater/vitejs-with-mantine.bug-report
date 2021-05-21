@@ -5,8 +5,6 @@ interface TooltipStylesProps {
     gutter: number;
     arrowSize: number;
 }
-declare const _default: (data?: TooltipStylesProps & {
-    theme?: MantineTheme;
-}) => import("jss").Classes<"bottom" | "left" | "right" | "top" | "center" | "end" | "start" | "tooltip" | "wrapper" | "withArrow" | "tooltipInner">;
+declare const _default: (args?: TooltipStylesProps) => import("jss").Classes<"bottom" | "left" | "right" | "top" | "center" | "end" | "start" | "wrapper" | "tooltip" | "withArrow" | "tooltipInner">;
 export default _default;
 //# sourceMappingURL=Tooltip.styles.d.ts.map

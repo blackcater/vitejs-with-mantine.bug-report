@@ -2,7 +2,6 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var reactJss = require('react-jss');
 var theme = require('@mantine/theme');
 
 var __defProp = Object.defineProperty;
@@ -59,7 +58,7 @@ const getWidthStyles = (fullWidth) => ({
   display: fullWidth ? "block" : "inline-block",
   width: fullWidth ? "100%" : "auto"
 });
-var useStyles = reactJss.createUseStyles({
+var useStyles = theme.createMemoStyles({
   icon: {
     display: "flex",
     alignItems: "center"
@@ -97,11 +96,7 @@ var useStyles = reactJss.createUseStyles({
     textTransform: "uppercase",
     fontWeight: "bold",
     color: theme.getThemeColor({theme: theme$1, color, shade: theme$1.colorScheme === "dark" ? 4 : 8}),
-    border: `1px solid ${theme.getThemeColor({
-      theme: theme$1,
-      color,
-      shade: theme$1.colorScheme === "dark" ? 4 : 8
-    })}`,
+    border: `1px solid ${theme.hexToRgba(theme.getThemeColor({theme: theme$1, color, shade: theme$1.colorScheme === "dark" ? 3 : 4}), theme$1.colorScheme === "dark" ? 0.45 : 1)}`,
     "&:not(:disabled):active": {
       transform: "translateY(1px)"
     },
@@ -117,17 +112,13 @@ var useStyles = reactJss.createUseStyles({
     borderRadius: theme.getSizeValue({size: radius, sizes: theme$1.radius}),
     textTransform: "uppercase",
     fontWeight: "bold",
-    backgroundColor: theme.getThemeColor({theme: theme$1, color, shade: theme$1.colorScheme === "dark" ? 4 : 0}),
-    color: theme$1.colorScheme === "dark" ? theme$1.colors.dark[9] : theme.getThemeColor({theme: theme$1, color, shade: 9}),
+    backgroundColor: theme.hexToRgba(theme.getThemeColor({theme: theme$1, color, shade: theme$1.colorScheme === "dark" ? 9 : 0}), theme$1.colorScheme === "dark" ? 0.3 : 1),
+    color: theme.getThemeColor({theme: theme$1, color, shade: theme$1.colorScheme === "dark" ? 3 : 9}),
     "& $inner": {
       height: sizes[size].height - 2
     },
     "&:hover": {
-      backgroundColor: theme.getThemeColor({
-        theme: theme$1,
-        color,
-        shade: theme$1.colorScheme === "dark" ? 5 : 1
-      })
+      backgroundColor: theme.hexToRgba(theme.getThemeColor({theme: theme$1, color, shade: theme$1.colorScheme === "dark" ? 8 : 1}), theme$1.colorScheme === "dark" ? 0.35 : 1)
     },
     "&:not(:disabled):active": {
       transform: "translateY(1px)"
@@ -145,14 +136,14 @@ var useStyles = reactJss.createUseStyles({
     borderRadius: theme.getSizeValue({size: radius, sizes: theme$1.radius}),
     textTransform: "uppercase",
     fontWeight: "bold",
-    backgroundColor: theme.getThemeColor({theme: theme$1, color, shade: 6}),
-    textShadow: `1px 1px 0 ${theme.getThemeColor({theme: theme$1, color, shade: 8})}`,
+    backgroundColor: theme.hexToRgba(theme.getThemeColor({theme: theme$1, color, shade: 7}), theme$1.colorScheme === "dark" ? 0.65 : 1),
+    textShadow: theme$1.colorScheme === "dark" ? "none" : `1px 1px 0 ${theme.getThemeColor({theme: theme$1, color, shade: 8})}`,
     color: theme$1.white,
     "& $inner": {
       height: sizes[size].height - 2
     },
     "&:hover": {
-      backgroundColor: theme.getThemeColor({theme: theme$1, color, shade: 7})
+      backgroundColor: theme.hexToRgba(theme.getThemeColor({theme: theme$1, color, shade: 8}), theme$1.colorScheme === "dark" ? 0.95 : 1)
     },
     "&:not(:disabled):active": {
       transform: "translateY(1px)"
@@ -173,6 +164,7 @@ var useStyles = reactJss.createUseStyles({
     display: "inline-block",
     color: theme.getThemeColor({theme: theme$1, color, shade: theme$1.colorScheme === "dark" ? 4 : 6}),
     cursor: "pointer",
+    lineHeight: theme$1.lineHeight,
     "&:hover": {
       textDecoration: "underline"
     },
@@ -184,7 +176,7 @@ var useStyles = reactJss.createUseStyles({
       }
     }
   })
-}, {link: true});
+});
 
 exports.default = useStyles;
 exports.heights = heights;

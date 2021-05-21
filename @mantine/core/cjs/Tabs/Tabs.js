@@ -4,12 +4,12 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var React = require('react');
 var theme = require('@mantine/theme');
-var ElementsGroup = require('../ElementsGroup/ElementsGroup.js');
+var Group = require('../Group/Group.js');
 var Tab = require('./Tab/Tab.js');
 var TabControl = require('./TabControl/TabControl.js');
 var Tabs_styles = require('./Tabs.styles.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 
@@ -90,7 +90,7 @@ function Tabs(_a) {
   ]);
   const classes = Tabs_styles['default']({theme: theme.useMantineTheme(themeOverride)});
   const controlRefs = React.useRef({});
-  const tabs = React__default['default'].Children.toArray(children).filter((item) => item.type === Tab.Tab);
+  const tabs = React__default.Children.toArray(children).filter((item) => item.type === Tab.Tab);
   const [_activeTab, _setActiveTab] = React.useState(typeof initialTab === "number" ? initialTab : findInitialTab(tabs));
   const activeTab = clamp(typeof active === "number" ? active : _activeTab, 0, tabs.length - 1);
   const setActiveTab = (tabIndex) => {
@@ -111,7 +111,7 @@ function Tabs(_a) {
       controlRefs.current[previousTab].focus();
     }
   };
-  const panes = tabs.map((tab, index) => /* @__PURE__ */ React__default['default'].createElement(TabControl.TabControl, {
+  const panes = tabs.map((tab, index) => /* @__PURE__ */ React__default.createElement(TabControl.TabControl, {
     key: index,
     active: activeTab === index,
     tabProps: tab.props,
@@ -123,16 +123,16 @@ function Tabs(_a) {
     onClick: () => activeTab !== index && setActiveTab(index)
   }));
   const content = tabs[activeTab].props.children;
-  return /* @__PURE__ */ React__default['default'].createElement("div", __spreadValues({}, others), /* @__PURE__ */ React__default['default'].createElement("div", {
+  return /* @__PURE__ */ React__default.createElement("div", __spreadValues({}, others), /* @__PURE__ */ React__default.createElement("div", {
     className: classes.tabs
-  }, /* @__PURE__ */ React__default['default'].createElement(ElementsGroup.ElementsGroup, {
+  }, /* @__PURE__ */ React__default.createElement(Group.Group, {
     className: classes.tabsInner,
     role: "tablist",
     "aria-orientation": "horizontal",
     spacing: 0,
     position,
     grow
-  }, panes)), content && /* @__PURE__ */ React__default['default'].createElement("div", {
+  }, panes)), content && /* @__PURE__ */ React__default.createElement("div", {
     "data-mantine-tab-content": true,
     className: classes.body,
     role: "tabpanel"

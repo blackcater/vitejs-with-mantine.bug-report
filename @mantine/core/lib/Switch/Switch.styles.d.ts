@@ -10,8 +10,6 @@ export declare const sizes: Record<MantineSize, {
     width: number;
     height: number;
 }>;
-declare const _default: (data?: SwitchStylesProps & {
-    theme?: MantineTheme;
-}) => import("jss").Classes<"label" | "switch" | "wrapper">;
+declare const _default: (args?: SwitchStylesProps) => import("jss").Classes<"label" | "switch" | "wrapper">;
 export default _default;
 //# sourceMappingURL=Switch.styles.d.ts.map

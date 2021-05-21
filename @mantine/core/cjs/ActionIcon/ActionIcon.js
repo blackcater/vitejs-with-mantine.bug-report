@@ -7,7 +7,7 @@ var cx = require('clsx');
 var theme = require('@mantine/theme');
 var ActionIcon_styles = require('./ActionIcon.styles.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var cx__default = /*#__PURE__*/_interopDefaultLegacy(cx);
@@ -53,7 +53,8 @@ function ActionIcon(_a) {
     size = "md",
     variant = "hover",
     themeOverride,
-    elementRef
+    elementRef,
+    component: Element = "button"
   } = _b, others = __objRest(_b, [
     "className",
     "color",
@@ -62,7 +63,8 @@ function ActionIcon(_a) {
     "size",
     "variant",
     "themeOverride",
-    "elementRef"
+    "elementRef",
+    "component"
   ]);
   const classes = ActionIcon_styles['default']({
     size,
@@ -70,9 +72,8 @@ function ActionIcon(_a) {
     color,
     theme: theme.useMantineTheme(themeOverride)
   });
-  return /* @__PURE__ */ React__default['default'].createElement("button", __spreadProps(__spreadValues({}, others), {
-    "data-mantine-composable": true,
-    className: cx__default['default'](classes.actionIcon, classes[variant], className),
+  return /* @__PURE__ */ React__default.createElement(Element, __spreadProps(__spreadValues({}, others), {
+    className: cx__default(classes.actionIcon, classes[variant], className),
     type: "button",
     ref: elementRef
   }), children);

@@ -2,15 +2,15 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var reactJss = require('react-jss');
 var theme = require('@mantine/theme');
 
-var useStyles = reactJss.createUseStyles({
+var useStyles = theme.createMemoStyles({
   card: ({theme: theme$1, radius, padding}) => {
     const spacing = theme.getSizeValue({size: padding, sizes: theme$1.spacing});
     const borderRadius = theme.getSizeValue({size: radius, sizes: theme$1.radius});
     return {
       position: "relative",
+      backgroundColor: theme$1.colorScheme === "dark" ? theme$1.colors.dark[6] : theme$1.white,
       "& [data-mantine-image]": {
         width: `calc(100% + ${spacing * 2}px) !important`,
         marginLeft: -spacing,
@@ -41,7 +41,7 @@ var useStyles = reactJss.createUseStyles({
       }
     };
   }
-}, {link: true});
+});
 
 exports.default = useStyles;
 //# sourceMappingURL=Card.styles.js.map

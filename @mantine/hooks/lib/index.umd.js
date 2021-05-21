@@ -9,7 +9,6 @@
     react.useEffect(() => {
       const listener = (event) => {
         if (ref.current && !ref.current.contains(event.target)) {
-          event.preventDefault();
           handler();
         }
       };
@@ -75,6 +74,33 @@
 
   function useColorScheme() {
     return useMediaQuery("(prefers-color-scheme: dark)") ? "dark" : "light";
+  }
+
+  function useDebouncedValue(value, wait, options = {leading: false}) {
+    const [_value, setValue] = react.useState(value);
+    const mountedRef = react.useRef(false);
+    const timeoutRef = react.useRef(null);
+    const cooldownRef = react.useRef(false);
+    const cancel = () => window.clearTimeout(timeoutRef.current);
+    react.useEffect(() => {
+      if (mountedRef.current) {
+        if (!cooldownRef.current && options.leading) {
+          cooldownRef.current = true;
+          setValue(value);
+        } else {
+          cancel();
+          timeoutRef.current = window.setTimeout(() => {
+            cooldownRef.current = false;
+            setValue(value);
+          }, wait);
+        }
+      }
+    }, [value, options.leading]);
+    react.useEffect(() => {
+      mountedRef.current = true;
+      return cancel;
+    }, []);
+    return [_value, cancel];
   }
 
   function useDocumentTitle(title) {
@@ -356,10 +382,13 @@
   function randomId() {
     return `mantine-${Math.random().toString(36).substr(2, 9)}`;
   }
+
   function useId(id, generateId = randomId) {
     const generatedId = react.useRef(generateId());
     return id || generatedId.current;
   }
+
+  const useIsomorphicEffect = typeof document !== "undefined" ? react.useLayoutEffect : react.useEffect;
 
   var __defProp = Object.defineProperty;
   var __defProps = Object.defineProperties;
@@ -429,10 +458,10 @@
 
   function useLocalStorageValue({
     key,
-    defaultValue = null
+    defaultValue = void 0
   }) {
-    const [value, setValue] = react.useState(typeof window !== "undefined" && "localStorage" in window ? window.localStorage.getItem(key) : defaultValue);
-    const setLocalStorageValue = (val) => {
+    const [value, setValue] = react.useState(typeof window !== "undefined" && "localStorage" in window ? window.localStorage.getItem(key) : defaultValue != null ? defaultValue : "");
+    const setLocalStorageValue = react.useCallback((val) => {
       if (typeof val === "function") {
         setValue((current) => {
           const result = val(current);
@@ -443,12 +472,17 @@
         window.localStorage.setItem(key, val);
         setValue(val);
       }
-    };
+    }, [key]);
     useWindowEvent("storage", (event) => {
       if (event.storageArea === window.localStorage && event.key === key) {
         setValue(event.newValue);
       }
     });
+    react.useEffect(() => {
+      if (defaultValue && !value) {
+        setLocalStorageValue(defaultValue);
+      }
+    }, [defaultValue, value, setLocalStorageValue]);
     return [value, setLocalStorageValue];
   }
 
@@ -500,21 +534,25 @@
   const preventDefault = (event) => {
     event.preventDefault();
   };
-  function useScrollLock(lock) {
+  function useScrollLock(lock, options = {disableTouchEvents: false}) {
     const locked = react.useRef(false);
     const bodyOverflow = react.useRef(null);
     const unlockScroll = () => {
       if (locked.current) {
         locked.current = false;
         document.body.style.overflow = bodyOverflow.current || "";
-        document.body.removeEventListener("touchmove", preventDefault);
+        if (options.disableTouchEvents) {
+          document.body.removeEventListener("touchmove", preventDefault);
+        }
       }
     };
     const lockScroll = () => {
       locked.current = true;
       bodyOverflow.current = document.body.style.overflow;
       document.body.style.overflow = "hidden";
-      document.body.addEventListener("touchmove", preventDefault, {passive: false});
+      if (options.disableTouchEvents) {
+        document.body.addEventListener("touchmove", preventDefault, {passive: false});
+      }
     };
     react.useEffect(() => {
       if (lock) {
@@ -526,14 +564,15 @@
     }, [lock]);
   }
 
-  exports.randomId = randomId;
   exports.useClickOutside = useClickOutside;
   exports.useClipboard = useClipboard;
   exports.useColorScheme = useColorScheme;
+  exports.useDebouncedValue = useDebouncedValue;
   exports.useDocumentTitle = useDocumentTitle;
   exports.useFocusTrap = useFocusTrap;
   exports.useForm = useForm;
   exports.useId = useId;
+  exports.useIsomorphicEffect = useIsomorphicEffect;
   exports.useListState = useListState;
   exports.useLocalStorageValue = useLocalStorageValue;
   exports.useMediaQuery = useMediaQuery;

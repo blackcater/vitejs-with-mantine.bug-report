@@ -2,7 +2,6 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var reactJss = require('react-jss');
 var theme = require('@mantine/theme');
 
 var __defProp = Object.defineProperty;
@@ -25,13 +24,13 @@ var __spreadValues = (a, b) => {
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 const LINE_WIDTH = 4;
-var useStyles = reactJss.createUseStyles({
+var useStyles = theme.createMemoStyles({
   alert: ({color, theme: theme$1}) => ({
     position: "relative",
     padding: [theme$1.spacing.xs, theme$1.spacing.md],
     paddingLeft: theme$1.spacing.md + theme$1.spacing.xs / 2 + LINE_WIDTH,
-    backgroundColor: theme$1.colorScheme === "dark" ? theme$1.colors.dark[9] : theme$1.white,
-    border: `1px solid ${theme$1.colorScheme === "dark" ? theme$1.colors.dark[9] : theme$1.colors.gray[2]}`,
+    backgroundColor: theme$1.colorScheme === "dark" ? theme$1.colors.dark[6] : theme$1.white,
+    border: `1px solid ${theme$1.colorScheme === "dark" ? theme$1.colors.dark[6] : theme$1.colors.gray[2]}`,
     "&::before": {
       content: '""',
       display: "block",
@@ -41,12 +40,16 @@ var useStyles = reactJss.createUseStyles({
       left: theme$1.spacing.xs,
       width: LINE_WIDTH,
       borderRadius: LINE_WIDTH,
-      backgroundColor: theme.getThemeColor({theme: theme$1, color, shade: 6})
+      backgroundColor: theme.getThemeColor({
+        theme: theme$1,
+        color,
+        shade: theme$1.colorScheme === "dark" ? 4 : 6
+      })
     }
   }),
   title: ({color, theme: theme$1}) => ({
     boxSizing: "border-box",
-    color: theme.getThemeColor({theme: theme$1, color, shade: 6}),
+    color: theme.getThemeColor({theme: theme$1, color, shade: theme$1.colorScheme === "dark" ? 4 : 6}),
     margin: 0,
     marginBottom: theme$1.spacing.xs / 2,
     textOverflow: "ellipsis",
@@ -65,7 +68,7 @@ var useStyles = reactJss.createUseStyles({
       borderTopLeftRadius: theme$1.radius.sm
     }
   })
-}, {link: true});
+});
 
 exports.default = useStyles;
 //# sourceMappingURL=Alert.styles.js.map

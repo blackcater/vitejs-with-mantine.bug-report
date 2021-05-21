@@ -9,7 +9,7 @@ var Text = require('../Text/Text.js');
 var Paper = require('../Paper/Paper.js');
 var Alert_styles = require('./Alert.styles.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var cx__default = /*#__PURE__*/_interopDefaultLegacy(cx);
@@ -59,16 +59,16 @@ function Alert(_a) {
     "shadow"
   ]);
   const classes = Alert_styles['default']({color, theme: theme.useMantineTheme(themeOverride)});
-  return /* @__PURE__ */ React__default['default'].createElement(Paper.Paper, __spreadValues({
+  return /* @__PURE__ */ React__default.createElement(Paper.Paper, __spreadValues({
     shadow,
-    className: cx__default['default'](classes.alert, className),
+    className: cx__default(classes.alert, className),
     themeOverride
-  }, others), title && /* @__PURE__ */ React__default['default'].createElement(Text.Text, {
+  }, others), title && /* @__PURE__ */ React__default.createElement(Text.Text, {
     themeOverride,
     "data-mantine-alert-title": true,
     weight: 700,
     className: classes.title
-  }, title), /* @__PURE__ */ React__default['default'].createElement("div", {
+  }, title), /* @__PURE__ */ React__default.createElement("div", {
     "data-mantine-alert-body": true,
     className: classes.body
   }, children));

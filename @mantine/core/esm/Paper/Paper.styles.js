@@ -1,7 +1,6 @@
-import { createUseStyles } from 'react-jss';
-import { getSizeValue } from '@mantine/theme';
+import { createMemoStyles, getSizeValue } from '@mantine/theme';
 
-var useStyles = createUseStyles({
+var useStyles = createMemoStyles({
   paper: ({theme, radius, shadow, padding}) => ({
     backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
     boxSizing: "border-box",
@@ -9,7 +8,7 @@ var useStyles = createUseStyles({
     boxShadow: theme.shadows[shadow] || shadow || "none",
     padding: getSizeValue({size: padding, sizes: theme.spacing})
   })
-}, {link: true});
+});
 
 export default useStyles;
 //# sourceMappingURL=Paper.styles.js.map

@@ -1,5 +1,4 @@
-import { createUseStyles } from 'react-jss';
-import { getFocusStyles, getFontStyles, getThemeColor } from '@mantine/theme';
+import { createMemoStyles, getFocusStyles, getFontStyles, getThemeColor } from '@mantine/theme';
 
 var __defProp = Object.defineProperty;
 var __defProps = Object.defineProperties;
@@ -20,7 +19,7 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-var useStyles = createUseStyles({
+var useStyles = createMemoStyles({
   tab: ({theme, reduceMotion}) => __spreadProps(__spreadValues(__spreadValues({}, getFontStyles(theme)), getFocusStyles(theme)), {
     WebkitTapHighlightColor: "transparent",
     boxSizing: "border-box",

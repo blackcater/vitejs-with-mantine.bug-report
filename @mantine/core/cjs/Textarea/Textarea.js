@@ -9,7 +9,7 @@ var theme = require('@mantine/theme');
 var InputWrapper = require('../InputWrapper/InputWrapper.js');
 var Input = require('../Input/Input.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var TextareaAutosize__default = /*#__PURE__*/_interopDefaultLegacy(TextareaAutosize);
@@ -79,7 +79,7 @@ function Textarea(_a) {
   ]);
   const uuid = hooks.useId(id);
   const theme$1 = theme.useMantineTheme(themeOverride);
-  return /* @__PURE__ */ React__default['default'].createElement(InputWrapper.InputWrapper, __spreadValues({
+  return /* @__PURE__ */ React__default.createElement(InputWrapper.InputWrapper, __spreadValues({
     label,
     error,
     id: uuid,
@@ -87,9 +87,9 @@ function Textarea(_a) {
     required,
     style,
     className
-  }, wrapperProps), autosize ? /* @__PURE__ */ React__default['default'].createElement(Input.Input, __spreadValues({
+  }, wrapperProps), autosize ? /* @__PURE__ */ React__default.createElement(Input.Input, __spreadValues({
     required,
-    component: TextareaAutosize__default['default'],
+    component: TextareaAutosize__default,
     invalid: !!error,
     maxRows,
     minRows,
@@ -101,7 +101,7 @@ function Textarea(_a) {
     }, inputStyle), {
       height: void 0
     })
-  }, others)) : /* @__PURE__ */ React__default['default'].createElement(Input.Input, __spreadValues({
+  }, others)) : /* @__PURE__ */ React__default.createElement(Input.Input, __spreadValues({
     component: "textarea",
     required,
     id: uuid,

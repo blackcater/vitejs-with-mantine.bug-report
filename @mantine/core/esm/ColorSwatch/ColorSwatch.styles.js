@@ -1,5 +1,4 @@
-import { createUseStyles } from 'react-jss';
-import { getSizeValue, getFocusStyles } from '@mantine/theme';
+import { createMemoStyles, getSizeValue, getFocusStyles } from '@mantine/theme';
 
 var __defProp = Object.defineProperty;
 var __defProps = Object.defineProperties;
@@ -20,7 +19,7 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-var useStyles = createUseStyles({
+var useStyles = createMemoStyles({
   colorSwatch: ({theme, radius}) => __spreadProps(__spreadValues({}, getFocusStyles(theme)), {
     border: 0,
     borderRadius: getSizeValue({size: radius, sizes: theme.radius}),
@@ -28,7 +27,7 @@ var useStyles = createUseStyles({
     WebkitAppearance: "none",
     padding: 0
   })
-}, {link: true});
+});
 
 export default useStyles;
 //# sourceMappingURL=ColorSwatch.styles.js.map

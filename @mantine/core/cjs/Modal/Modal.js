@@ -10,11 +10,13 @@ var ActionIcon = require('../ActionIcon/ActionIcon.js');
 var Text = require('../Text/Text.js');
 var Paper = require('../Paper/Paper.js');
 var Overlay = require('../Overlay/Overlay.js');
+var Portal = require('../Portal/Portal.js');
+require('../Transition/Transition.js');
 var CloseIcon = require('./CloseIcon.js');
 var Modal_styles = require('./Modal.styles.js');
 var GroupedTransition = require('../Transition/GroupedTransition.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var cx__default = /*#__PURE__*/_interopDefaultLegacy(cx);
@@ -48,7 +50,7 @@ var __objRest = (source, exclude) => {
   return target;
 };
 const MODAL_SIZES = Modal_styles.sizes;
-function Modal(_a) {
+function MantineModal(_a) {
   var _b = _a, {
     className,
     opened,
@@ -95,21 +97,21 @@ function Modal(_a) {
   const duration = reduceMotion ? 1 : transitionDuration;
   const _overlayOpacity = typeof overlayOpacity === "number" ? overlayOpacity : theme$1.colorScheme === "dark" ? 0.85 : 0.75;
   hooks.useScrollLock(opened);
-  return /* @__PURE__ */ React__default['default'].createElement(GroupedTransition.GroupedTransition, {
+  return /* @__PURE__ */ React__default.createElement(GroupedTransition.GroupedTransition, {
     mounted: opened,
     transitions: {
       modal: {duration, transition},
       overlay: {duration: duration / 2, transition: "fade", timingFunction: "ease"}
     }
-  }, (styles) => /* @__PURE__ */ React__default['default'].createElement("div", __spreadValues({
-    className: cx__default['default'](classes.wrapper, className)
-  }, others), /* @__PURE__ */ React__default['default'].createElement("div", {
+  }, (styles) => /* @__PURE__ */ React__default.createElement("div", __spreadValues({
+    className: cx__default(classes.wrapper, className)
+  }, others), /* @__PURE__ */ React__default.createElement("div", {
     "data-mantine-modal-inner": true,
     className: classes.inner,
     onKeyDownCapture: (event) => event.nativeEvent.code === "Escape" && onClose(),
     style: {zIndex: zIndex + 1},
     ref: focusTrapRef
-  }, /* @__PURE__ */ React__default['default'].createElement(Paper.Paper, {
+  }, /* @__PURE__ */ React__default.createElement(Paper.Paper, {
     className: classes.modal,
     shadow: "lg",
     role: "dialog",
@@ -119,29 +121,35 @@ function Modal(_a) {
     style: styles.modal,
     elementRef: clickOutsideRef,
     tabIndex: -1
-  }, (title || !hideCloseButton) && /* @__PURE__ */ React__default['default'].createElement("div", {
+  }, (title || !hideCloseButton) && /* @__PURE__ */ React__default.createElement("div", {
     "data-mantine-modal-header": true,
     className: classes.header
-  }, /* @__PURE__ */ React__default['default'].createElement(Text.Text, {
+  }, /* @__PURE__ */ React__default.createElement(Text.Text, {
     id: titleId,
     "data-mantine-modal-title": true,
     className: classes.title
-  }, title), !hideCloseButton && /* @__PURE__ */ React__default['default'].createElement(ActionIcon.ActionIcon, {
+  }, title), !hideCloseButton && /* @__PURE__ */ React__default.createElement(ActionIcon.ActionIcon, {
     onClick: onClose,
     "aria-label": closeButtonLabel
-  }, /* @__PURE__ */ React__default['default'].createElement(CloseIcon.CloseIcon, null))), /* @__PURE__ */ React__default['default'].createElement("div", {
+  }, /* @__PURE__ */ React__default.createElement(CloseIcon.CloseIcon, null))), /* @__PURE__ */ React__default.createElement("div", {
     id: bodyId,
     className: classes.body
-  }, children))), /* @__PURE__ */ React__default['default'].createElement("div", {
+  }, children))), /* @__PURE__ */ React__default.createElement("div", {
     style: styles.overlay
-  }, /* @__PURE__ */ React__default['default'].createElement(Overlay.Overlay, {
+  }, /* @__PURE__ */ React__default.createElement(Overlay.Overlay, {
     color: overlayColor || (theme$1.colorScheme === "dark" ? theme$1.colors.dark[9] : theme$1.black),
     opacity: _overlayOpacity,
     zIndex
   }))));
 }
+function Modal(props) {
+  return /* @__PURE__ */ React__default.createElement(Portal.Portal, {
+    zIndex: props.zIndex || 1e3
+  }, /* @__PURE__ */ React__default.createElement(MantineModal, __spreadValues({}, props)));
+}
 Modal.displayName = "@mantine/core/Modal";
 
 exports.MODAL_SIZES = MODAL_SIZES;
+exports.MantineModal = MantineModal;
 exports.Modal = Modal;
 //# sourceMappingURL=Modal.js.map

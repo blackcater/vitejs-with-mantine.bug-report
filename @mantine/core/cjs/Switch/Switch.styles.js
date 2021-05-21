@@ -2,7 +2,6 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var reactJss = require('react-jss');
 var theme = require('@mantine/theme');
 
 var __defProp = Object.defineProperty;
@@ -49,7 +48,7 @@ const sizes = Object.keys(switchHeight).reduce((acc, size) => {
   acc[size] = {width: switchWidth[size], height: switchHeight[size]};
   return acc;
 }, {});
-var useStyles = reactJss.createUseStyles({
+var useStyles = theme.createMemoStyles({
   wrapper: {
     display: "flex",
     alignItems: "center"
@@ -61,8 +60,8 @@ var useStyles = reactJss.createUseStyles({
       WebkitTapHighlightColor: "transparent",
       position: "relative",
       borderRadius,
-      backgroundColor: theme$1.colorScheme === "dark" ? theme$1.colors.dark[3] : theme$1.colors.gray[2],
-      border: `1px solid ${theme$1.colorScheme === "dark" ? theme$1.colors.dark[3] : theme$1.colors.gray[3]}`,
+      backgroundColor: theme$1.colorScheme === "dark" ? theme$1.colors.dark[4] : theme$1.colors.gray[2],
+      border: `1px solid ${theme$1.colorScheme === "dark" ? theme$1.colors.dark[4] : theme$1.colors.gray[3]}`,
       height: theme.getSizeValue({size, sizes: switchHeight}),
       width: theme.getSizeValue({size, sizes: switchWidth}),
       minWidth: theme.getSizeValue({size, sizes: switchWidth}),
@@ -83,7 +82,7 @@ var useStyles = reactJss.createUseStyles({
         backgroundColor: theme$1.white,
         height: handleSize,
         width: handleSize,
-        border: `1px solid ${theme$1.colorScheme === "dark" ? theme$1.colors.dark[3] : theme$1.colors.gray[3]}`,
+        border: `1px solid ${theme$1.colorScheme === "dark" ? theme$1.white : theme$1.colors.gray[3]}`,
         transition: reduceMotion ? "none" : `transform 150ms ${theme$1.transitionTimingFunction}`
       },
       "&:checked": {
@@ -91,7 +90,7 @@ var useStyles = reactJss.createUseStyles({
         borderColor: theme.getThemeColor({theme: theme$1, color, shade: 6}),
         "&::before": {
           transform: `translateX(${theme.getSizeValue({size, sizes: switchWidth}) - theme.getSizeValue({size, sizes: handleSizes}) - 6}px)`,
-          borderColor: theme.getThemeColor({theme: theme$1, color, shade: 6})
+          borderColor: theme$1.white
         }
       },
       "&:disabled": {
@@ -112,7 +111,7 @@ var useStyles = reactJss.createUseStyles({
     paddingLeft: theme$1.spacing.sm,
     color: theme$1.colorScheme === "dark" ? theme$1.colors.dark[0] : theme$1.black
   })
-}, {link: true});
+});
 
 exports.default = useStyles;
 exports.sizes = sizes;

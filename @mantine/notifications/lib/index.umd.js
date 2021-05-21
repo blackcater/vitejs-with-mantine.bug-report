@@ -1,10 +1,10 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('react'), require('@mantine/core'), require('@mantine/hooks'), require('react-jss'), require('react-dom')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'react', '@mantine/core', '@mantine/hooks', 'react-jss', 'react-dom'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global['@mantine/notifications'] = {}, global.React, global['@mantine/core'], global['@mantine/hooks'], global.reactJss, global.ReactDOM));
-}(this, (function (exports, React, core, hooks, reactJss, ReactDOM) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('react'), require('@mantine/core'), require('@mantine/hooks'), require('react-dom')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'react', '@mantine/core', '@mantine/hooks', 'react-dom'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global['@mantine/notifications'] = {}, global.React, global['@mantine/core'], global['@mantine/hooks'], global.ReactDOM));
+}(this, (function (exports, React, core, hooks, ReactDOM) { 'use strict';
 
-  function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+  function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
   var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
   var ReactDOM__default = /*#__PURE__*/_interopDefaultLegacy(ReactDOM);
@@ -1213,7 +1213,7 @@
     exitActive: PropTypes.string
   })]) : null;
 
-  var TransitionGroupContext = React__default['default'].createContext(null);
+  var TransitionGroupContext = React__default.createContext(null);
 
   var UNMOUNTED = 'unmounted';
   var EXITED = 'exited';
@@ -1451,7 +1451,7 @@
       var enter = this.props.enter;
       var appearing = this.context ? this.context.isMounting : mounting;
 
-      var _ref2 = this.props.nodeRef ? [appearing] : [ReactDOM__default['default'].findDOMNode(this), appearing],
+      var _ref2 = this.props.nodeRef ? [appearing] : [ReactDOM__default.findDOMNode(this), appearing],
           maybeNode = _ref2[0],
           maybeAppearing = _ref2[1];
 
@@ -1489,7 +1489,7 @@
 
       var exit = this.props.exit;
       var timeouts = this.getTimeouts();
-      var maybeNode = this.props.nodeRef ? undefined : ReactDOM__default['default'].findDOMNode(this); // no exit animation skip right to EXITED
+      var maybeNode = this.props.nodeRef ? undefined : ReactDOM__default.findDOMNode(this); // no exit animation skip right to EXITED
 
       if (!exit || config.disabled) {
         this.safeSetState({
@@ -1553,7 +1553,7 @@
 
     _proto.onTransitionEnd = function onTransitionEnd(timeout, handler) {
       this.setNextCallback(handler);
-      var node = this.props.nodeRef ? this.props.nodeRef.current : ReactDOM__default['default'].findDOMNode(this);
+      var node = this.props.nodeRef ? this.props.nodeRef.current : ReactDOM__default.findDOMNode(this);
       var doesNotHaveTimeoutOrListener = timeout == null && !this.props.addEndListener;
 
       if (!node || doesNotHaveTimeoutOrListener) {
@@ -1603,14 +1603,14 @@
       return (
         /*#__PURE__*/
         // allows for nested Transitions
-        React__default['default'].createElement(TransitionGroupContext.Provider, {
+        React__default.createElement(TransitionGroupContext.Provider, {
           value: null
-        }, typeof children === 'function' ? children(status, childProps) : React__default['default'].cloneElement(React__default['default'].Children.only(children), childProps))
+        }, typeof children === 'function' ? children(status, childProps) : React__default.cloneElement(React__default.Children.only(children), childProps))
       );
     };
 
     return Transition;
-  }(React__default['default'].Component);
+  }(React__default.Component);
 
   Transition.contextType = TransitionGroupContext;
   Transition.propTypes = process.env.NODE_ENV !== "production" ? {
@@ -2075,18 +2075,18 @@
       delete props.exit;
 
       if (Component === null) {
-        return /*#__PURE__*/React__default['default'].createElement(TransitionGroupContext.Provider, {
+        return /*#__PURE__*/React__default.createElement(TransitionGroupContext.Provider, {
           value: contextValue
         }, children);
       }
 
-      return /*#__PURE__*/React__default['default'].createElement(TransitionGroupContext.Provider, {
+      return /*#__PURE__*/React__default.createElement(TransitionGroupContext.Provider, {
         value: contextValue
-      }, /*#__PURE__*/React__default['default'].createElement(Component, props, children));
+      }, /*#__PURE__*/React__default.createElement(Component, props, children));
     };
 
     return TransitionGroup;
-  }(React__default['default'].Component);
+  }(React__default.Component);
 
   TransitionGroup.propTypes = process.env.NODE_ENV !== "production" ? {
     /**
@@ -2261,7 +2261,7 @@
       handleDelayedHide();
       return cancelDelayedHide;
     }, [autoClose, notification.autoClose]);
-    return /* @__PURE__ */ React__default['default'].createElement(core.Notification, {
+    return /* @__PURE__ */ React__default.createElement(core.Notification, {
       style,
       className,
       title: notification.title,
@@ -2277,7 +2277,7 @@
   }
   NotificationContainer.displayName = "@mantine/notifications/NotificationContainer";
 
-  var useStyles = reactJss.createUseStyles({
+  var useStyles = core.createMemoStyles({
     notifications: ({theme}) => ({
       width: `calc(100% - ${theme.spacing.md * 2}px)`,
       boxSizing: "border-box",
@@ -2289,7 +2289,7 @@
         marginTop: theme.spacing.sm
       }
     })
-  }, {link: true});
+  });
 
   var __defProp$1 = Object.defineProperty;
   var __defProps = Object.defineProperties;
@@ -2316,7 +2316,7 @@
       limit
     });
     const showNotification = (notification) => {
-      const id = notification.id || hooks.randomId();
+      const id = notification.id || core.randomId();
       update((notifications) => {
         if (notification.id && notifications.some((n) => n.id === notification.id)) {
           return notifications;
@@ -2417,6 +2417,7 @@
     ]);
     const {
       notifications,
+      queue,
       showNotification,
       updateNotification,
       hideNotification,
@@ -2428,13 +2429,13 @@
     const theme = core.useMantineTheme(themeOverride);
     const classes = useStyles({theme});
     const positioning = (POSITIONS.includes(position) ? position : "bottom-right").split("-");
-    const items = notifications.map((notification) => /* @__PURE__ */ React__default['default'].createElement(Transition, {
+    const items = notifications.map((notification) => /* @__PURE__ */ React__default.createElement(Transition, {
       key: notification.id,
       timeout: duration,
       unmountOnExit: true,
       mountOnEnter: true,
       onEnter: (node) => node.offsetHeight
-    }, (state) => /* @__PURE__ */ React__default['default'].createElement(NotificationContainer, {
+    }, (state) => /* @__PURE__ */ React__default.createElement(NotificationContainer, {
       notification,
       onHide: hideNotification,
       className: classes.notification,
@@ -2446,23 +2447,24 @@
         maxHeight: notificationMaxHeight
       }))
     })));
-    return /* @__PURE__ */ React__default['default'].createElement(NotificationsContext.Provider, {
+    return /* @__PURE__ */ React__default.createElement(NotificationsContext.Provider, {
       value: {
         notifications,
+        queue,
         showNotification,
         hideNotification,
         updateNotification,
         clean,
         cleanQueue
       }
-    }, /* @__PURE__ */ React__default['default'].createElement(core.Portal, {
+    }, /* @__PURE__ */ React__default.createElement(core.Portal, {
       zIndex
-    }, /* @__PURE__ */ React__default['default'].createElement("div", __spreadValues({
+    }, /* @__PURE__ */ React__default.createElement("div", __spreadValues({
       className: cx(classes.notifications, className),
       style: __spreadValues(__spreadValues({
         maxWidth: containerWidth
       }, getPositionStyles(positioning, containerWidth, theme.spacing.md)), style)
-    }, others), /* @__PURE__ */ React__default['default'].createElement(TransitionGroup, null, items))), children);
+    }, others), /* @__PURE__ */ React__default.createElement(TransitionGroup, null, items))), children);
   }
   NotificationsProvider.displayName = "@mantine/notifications/NotificationsProvider";
 

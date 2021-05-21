@@ -2,7 +2,6 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var reactJss = require('react-jss');
 var theme = require('@mantine/theme');
 
 var __defProp = Object.defineProperty;
@@ -48,7 +47,7 @@ const horizontalPlacement = {
     top: 0
   }
 };
-var useStyles = reactJss.createUseStyles({
+var useStyles = theme.createMemoStyles({
   withArrow: {},
   center: {},
   start: {},
@@ -162,7 +161,7 @@ var useStyles = reactJss.createUseStyles({
       bottom: arrowSize
     }
   })
-}, {link: true});
+});
 
 exports.default = useStyles;
 //# sourceMappingURL=Tooltip.styles.js.map

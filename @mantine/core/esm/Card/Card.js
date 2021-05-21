@@ -3,6 +3,7 @@ import cx from 'clsx';
 import { useMantineTheme } from '@mantine/theme';
 import { Paper } from '../Paper/Paper.js';
 import useStyles from './Card.styles.js';
+export { CardsGrid } from './CardsGrid/CardsGrid.js';
 
 var __defProp = Object.defineProperty;
 var __getOwnPropSymbols = Object.getOwnPropertySymbols;

@@ -9,7 +9,7 @@ var hooks = require('@mantine/hooks');
 var Button = require('../Button/Button.js');
 var Spoiler_styles = require('./Spoiler.styles.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var cx__default = /*#__PURE__*/_interopDefaultLegacy(cx);
@@ -73,16 +73,16 @@ function Spoiler(_a) {
   React.useEffect(() => {
     setSpoilerState(maxHeight < contentRef.current.clientHeight);
   }, [maxHeight, children]);
-  return /* @__PURE__ */ React__default['default'].createElement("div", __spreadValues({
-    className: cx__default['default'](classes.spoiler, className)
-  }, others), /* @__PURE__ */ React__default['default'].createElement("div", {
+  return /* @__PURE__ */ React__default.createElement("div", __spreadValues({
+    className: cx__default(classes.spoiler, className)
+  }, others), /* @__PURE__ */ React__default.createElement("div", {
     className: classes.content,
     style: {
       maxHeight: !show ? maxHeight : contentRef.current && contentRef.current.clientHeight
     }
-  }, /* @__PURE__ */ React__default['default'].createElement("div", {
+  }, /* @__PURE__ */ React__default.createElement("div", {
     ref: contentRef
-  }, children)), spoiler && /* @__PURE__ */ React__default['default'].createElement(Button.Button, {
+  }, children)), spoiler && /* @__PURE__ */ React__default.createElement(Button.Button, {
     variant: "link",
     elementRef: controlRef,
     onClick: () => setShowState((opened) => !opened),

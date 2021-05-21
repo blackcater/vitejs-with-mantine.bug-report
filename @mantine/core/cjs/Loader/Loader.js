@@ -5,7 +5,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var React = require('react');
 var theme = require('@mantine/theme');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 
@@ -47,104 +47,104 @@ const LOADER_SIZES = {
 function Loader(_a) {
   var _b = _a, {size = "md", color, themeOverride} = _b, others = __objRest(_b, ["size", "color", "themeOverride"]);
   const theme$1 = theme.useMantineTheme(themeOverride);
-  return /* @__PURE__ */ React__default['default'].createElement("svg", __spreadValues({
+  return /* @__PURE__ */ React__default.createElement("svg", __spreadValues({
     width: `${theme.getSizeValue({size, sizes: LOADER_SIZES})}px`,
     fill: theme.getThemeColor({theme: theme$1, color, shade: theme$1.colorScheme === "dark" ? 4 : 6}),
     viewBox: "0 0 135 140",
     xmlns: "http://www.w3.org/2000/svg",
     role: "presentation"
-  }, others), /* @__PURE__ */ React__default['default'].createElement("rect", {
+  }, others), /* @__PURE__ */ React__default.createElement("rect", {
     y: "10",
     width: "15",
     height: "120",
     rx: "6"
-  }, /* @__PURE__ */ React__default['default'].createElement("animate", {
+  }, /* @__PURE__ */ React__default.createElement("animate", {
     attributeName: "height",
     begin: "0.5s",
     dur: "1s",
     values: "120;110;100;90;80;70;60;50;40;140;120",
     calcMode: "linear",
     repeatCount: "indefinite"
-  }), /* @__PURE__ */ React__default['default'].createElement("animate", {
+  }), /* @__PURE__ */ React__default.createElement("animate", {
     attributeName: "y",
     begin: "0.5s",
     dur: "1s",
     values: "10;15;20;25;30;35;40;45;50;0;10",
     calcMode: "linear",
     repeatCount: "indefinite"
-  })), /* @__PURE__ */ React__default['default'].createElement("rect", {
+  })), /* @__PURE__ */ React__default.createElement("rect", {
     x: "30",
     y: "10",
     width: "15",
     height: "120",
     rx: "6"
-  }, /* @__PURE__ */ React__default['default'].createElement("animate", {
+  }, /* @__PURE__ */ React__default.createElement("animate", {
     attributeName: "height",
     begin: "0.25s",
     dur: "1s",
     values: "120;110;100;90;80;70;60;50;40;140;120",
     calcMode: "linear",
     repeatCount: "indefinite"
-  }), /* @__PURE__ */ React__default['default'].createElement("animate", {
+  }), /* @__PURE__ */ React__default.createElement("animate", {
     attributeName: "y",
     begin: "0.25s",
     dur: "1s",
     values: "10;15;20;25;30;35;40;45;50;0;10",
     calcMode: "linear",
     repeatCount: "indefinite"
-  })), /* @__PURE__ */ React__default['default'].createElement("rect", {
+  })), /* @__PURE__ */ React__default.createElement("rect", {
     x: "60",
     width: "15",
     height: "140",
     rx: "6"
-  }, /* @__PURE__ */ React__default['default'].createElement("animate", {
+  }, /* @__PURE__ */ React__default.createElement("animate", {
     attributeName: "height",
     begin: "0s",
     dur: "1s",
     values: "120;110;100;90;80;70;60;50;40;140;120",
     calcMode: "linear",
     repeatCount: "indefinite"
-  }), /* @__PURE__ */ React__default['default'].createElement("animate", {
+  }), /* @__PURE__ */ React__default.createElement("animate", {
     attributeName: "y",
     begin: "0s",
     dur: "1s",
     values: "10;15;20;25;30;35;40;45;50;0;10",
     calcMode: "linear",
     repeatCount: "indefinite"
-  })), /* @__PURE__ */ React__default['default'].createElement("rect", {
+  })), /* @__PURE__ */ React__default.createElement("rect", {
     x: "90",
     y: "10",
     width: "15",
     height: "120",
     rx: "6"
-  }, /* @__PURE__ */ React__default['default'].createElement("animate", {
+  }, /* @__PURE__ */ React__default.createElement("animate", {
     attributeName: "height",
     begin: "0.25s",
     dur: "1s",
     values: "120;110;100;90;80;70;60;50;40;140;120",
     calcMode: "linear",
     repeatCount: "indefinite"
-  }), /* @__PURE__ */ React__default['default'].createElement("animate", {
+  }), /* @__PURE__ */ React__default.createElement("animate", {
     attributeName: "y",
     begin: "0.25s",
     dur: "1s",
     values: "10;15;20;25;30;35;40;45;50;0;10",
     calcMode: "linear",
     repeatCount: "indefinite"
-  })), /* @__PURE__ */ React__default['default'].createElement("rect", {
+  })), /* @__PURE__ */ React__default.createElement("rect", {
     x: "120",
     y: "10",
     width: "15",
     height: "120",
     rx: "6"
-  }, /* @__PURE__ */ React__default['default'].createElement("animate", {
+  }, /* @__PURE__ */ React__default.createElement("animate", {
     attributeName: "height",
     begin: "0.5s",
     dur: "1s",
     values: "120;110;100;90;80;70;60;50;40;140;120",
     calcMode: "linear",
     repeatCount: "indefinite"
-  }), /* @__PURE__ */ React__default['default'].createElement("animate", {
+  }), /* @__PURE__ */ React__default.createElement("animate", {
     attributeName: "y",
     begin: "0.5s",
     dur: "1s",

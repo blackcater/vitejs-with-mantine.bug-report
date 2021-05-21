@@ -7,7 +7,7 @@ var cx = require('clsx');
 var theme = require('@mantine/theme');
 var Title_styles = require('./Title.styles.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var cx__default = /*#__PURE__*/_interopDefaultLegacy(cx);
@@ -47,8 +47,8 @@ function Title(_a) {
   }
   const element = `h${order}`;
   const classes = Title_styles['default']({theme: theme.useMantineTheme(themeOverride), element});
-  return React__default['default'].createElement(element, __spreadValues({
-    className: cx__default['default'](classes.title, className)
+  return React__default.createElement(element, __spreadValues({
+    className: cx__default(classes.title, className)
   }, others), children);
 }
 Title.displayName = "@mantine/core/Title";

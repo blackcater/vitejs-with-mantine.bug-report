@@ -8,7 +8,7 @@ var theme = require('@mantine/theme');
 var Text = require('../Text/Text.js');
 var Breadcrumbs_styles = require('./Breadcrumbs.styles.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var cx__default = /*#__PURE__*/_interopDefaultLegacy(cx);
@@ -54,14 +54,14 @@ function Breadcrumbs(_a) {
     "separator"
   ]);
   const classes = Breadcrumbs_styles['default']({theme: theme.useMantineTheme(themeOverride)});
-  const items = React__default['default'].Children.toArray(children).reduce((acc, child, index, array) => {
-    acc.push(React__default['default'].cloneElement(child, {
+  const items = React__default.Children.toArray(children).reduce((acc, child, index, array) => {
+    acc.push(React__default.cloneElement(child, {
       className: classes.breadcrumb,
       key: index,
       "data-mantine-breadcrumb": true
     }));
     if (index !== array.length - 1) {
-      acc.push(/* @__PURE__ */ React__default['default'].createElement(Text.Text, {
+      acc.push(/* @__PURE__ */ React__default.createElement(Text.Text, {
         size: "sm",
         "data-mantine-separator": true,
         className: classes.separator,
@@ -71,8 +71,8 @@ function Breadcrumbs(_a) {
     }
     return acc;
   }, []);
-  return /* @__PURE__ */ React__default['default'].createElement("div", __spreadValues({
-    className: cx__default['default'](classes.breadcrumbs, className)
+  return /* @__PURE__ */ React__default.createElement("div", __spreadValues({
+    className: cx__default(classes.breadcrumbs, className)
   }, others), items);
 }
 Breadcrumbs.displayName = "@mantine/core/Breadcrumbs";

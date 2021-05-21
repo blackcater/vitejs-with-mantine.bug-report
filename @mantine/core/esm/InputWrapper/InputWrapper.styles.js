@@ -1,5 +1,4 @@
-import { createUseStyles } from 'react-jss';
-import { getFontStyles } from '@mantine/theme';
+import { createMemoStyles, getFontStyles } from '@mantine/theme';
 
 var __defProp = Object.defineProperty;
 var __defProps = Object.defineProperties;
@@ -20,7 +19,7 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-var useStyles = createUseStyles({
+var useStyles = createMemoStyles({
   inputWrapper: ({theme}) => __spreadProps(__spreadValues({}, getFontStyles(theme)), {
     lineHeight: theme.lineHeight
   }),
@@ -44,7 +43,7 @@ var useStyles = createUseStyles({
   required: ({theme}) => ({
     color: theme.colorScheme === "dark" ? theme.colors.red[5] : theme.colors.red[7]
   })
-}, {link: true});
+});
 
 export default useStyles;
 //# sourceMappingURL=InputWrapper.styles.js.map

@@ -2,6 +2,8 @@ import React from 'react';
 import { DefaultProps } from '@mantine/theme';
 import { LoaderProps } from '../Loader/Loader';
 export interface LoadingOverlayProps extends DefaultProps, React.ComponentPropsWithoutRef<'div'> {
+    /** Provide custom loader */
+    loader?: React.ReactNode;
     /** Loader component props */
     loaderProps?: LoaderProps;
     /** Sets overlay opacity */
@@ -15,7 +17,7 @@ export interface LoadingOverlayProps extends DefaultProps, React.ComponentPropsW
     /** Appear and disappear animation duration */
     transitionDuration?: number;
 }
-export declare function LoadingOverlay({ className, visible, loaderProps, overlayOpacity, overlayColor, themeOverride, transitionDuration, zIndex, style, ...others }: LoadingOverlayProps): JSX.Element;
+export declare function LoadingOverlay({ className, visible, loaderProps, overlayOpacity, overlayColor, themeOverride, transitionDuration, zIndex, style, loader, ...others }: LoadingOverlayProps): JSX.Element;
 export declare namespace LoadingOverlay {
     var displayName: string;
 }

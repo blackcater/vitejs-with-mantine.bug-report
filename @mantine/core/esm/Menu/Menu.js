@@ -5,6 +5,7 @@ import { MenuIcon } from './MenuIcon.js';
 import { MenuBody } from './MenuBody/MenuBody.js';
 export { MenuBody } from './MenuBody/MenuBody.js';
 import { sizes } from './MenuBody/MenuBody.styles.js';
+export { MenuItem } from './MenuItem/MenuItem.js';
 
 var __defProp = Object.defineProperty;
 var __defProps = Object.defineProperties;
@@ -116,7 +117,6 @@ function Menu(_a) {
     [controlRefProp]: useMergedRef(controlRef, elementRef)
   });
   return /* @__PURE__ */ React.createElement("div", __spreadValues({
-    "data-mantine-composable": true,
     ref: wrapperRef,
     style: __spreadValues({display: "inline-block", position: "relative"}, style)
   }, others), menuControl, /* @__PURE__ */ React.createElement(MenuBody, __spreadProps(__spreadValues({}, menuBodyProps), {

@@ -69,7 +69,6 @@ function Badge(_a) {
     theme: useMantineTheme(themeOverride)
   });
   return /* @__PURE__ */ React.createElement(Component, __spreadProps(__spreadValues({}, others), {
-    "data-mantine-composable": true,
     className: cx(classes.badge, classes[variant], className)
   }), leftSection && /* @__PURE__ */ React.createElement("span", {
     "data-mantine-badge-left": true,

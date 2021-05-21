@@ -1,4 +1,5 @@
 import React from 'react';
+import { ComponentPassThrough } from '@mantine/types';
 export interface MenuItemProps extends React.ComponentPropsWithoutRef<'button'> {
     /** Item label */
     children: React.ReactNode;
@@ -14,7 +15,7 @@ export interface MenuItemType {
     props: MenuItemProps;
     ref?: React.RefObject<HTMLButtonElement> | ((instance: HTMLButtonElement) => void);
 }
-export declare function MenuItem(props: MenuItemProps): any;
+export declare function MenuItem<T extends React.ElementType = 'button'>(props: ComponentPassThrough<T, MenuItemProps>): any;
 export declare namespace MenuItem {
     var displayName: string;
 }

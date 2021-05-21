@@ -3,8 +3,6 @@ interface ColorSwatchStylesProps {
     theme: MantineTheme;
     radius: MantineNumberSize;
 }
-declare const _default: (data?: ColorSwatchStylesProps & {
-    theme?: MantineTheme;
-}) => import("jss").Classes<"colorSwatch">;
+declare const _default: (args?: ColorSwatchStylesProps) => import("jss").Classes<"colorSwatch">;
 export default _default;
 //# sourceMappingURL=ColorSwatch.styles.d.ts.map

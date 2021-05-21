@@ -1,7 +1,7 @@
-import React, { useState, useRef, useLayoutEffect, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { createPortal } from 'react-dom';
+import { useIsomorphicEffect } from '@mantine/hooks';
 
-const useIsomorphicEffect = typeof document !== "undefined" ? useLayoutEffect : useEffect;
 function Portal({children, zIndex = 1, target, className}) {
   const [mounted, setMounted] = useState(false);
   const elementRef = useRef();

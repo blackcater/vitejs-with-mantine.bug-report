@@ -8,7 +8,7 @@ var core = require('@mantine/core');
 var TagsList = require('../TagsList/TagsList.js');
 var TagPicker_styles = require('./TagPicker.styles.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 
@@ -73,9 +73,9 @@ function TagPicker(_a) {
   const dropdownRef = hooks.useClickOutside(closeDropdown);
   const reduceMotion = hooks.useReducedMotion();
   const duration = reduceMotion ? 1 : transitionDuration;
-  return /* @__PURE__ */ React__default['default'].createElement("div", {
+  return /* @__PURE__ */ React__default.createElement("div", {
     className: classes.tagPicker
-  }, /* @__PURE__ */ React__default['default'].createElement("button", {
+  }, /* @__PURE__ */ React__default.createElement("button", {
     className: classes.control,
     type: "button",
     ref: controlRef,
@@ -84,24 +84,24 @@ function TagPicker(_a) {
     "aria-labelledby": labelledBy,
     "aria-haspopup": "listbox",
     "aria-expanded": dropdownOpened
-  }, /* @__PURE__ */ React__default['default'].createElement(core.Badge, {
+  }, /* @__PURE__ */ React__default.createElement(core.Badge, {
     color: value && value.color || "gray",
     style: {cursor: "pointer", display: "block"},
     themeOverride
-  }, value && value.name || noValueLabel)), /* @__PURE__ */ React__default['default'].createElement(core.Transition, {
+  }, value && value.name || noValueLabel)), /* @__PURE__ */ React__default.createElement(core.Transition, {
     duration,
     mounted: dropdownOpened,
     transition,
     timingFunction: transitionTimingFunction,
     themeOverride
-  }, (transitionStyles) => /* @__PURE__ */ React__default['default'].createElement(core.Paper, {
+  }, (transitionStyles) => /* @__PURE__ */ React__default.createElement(core.Paper, {
     shadow: "sm",
     className: classes.dropdown,
     elementRef: dropdownRef,
     style: transitionStyles,
     themeOverride,
     tabIndex: -1
-  }, /* @__PURE__ */ React__default['default'].createElement(TagsList.TagsList, __spreadValues({
+  }, /* @__PURE__ */ React__default.createElement(TagsList.TagsList, __spreadValues({
     value,
     transition,
     transitionDuration,

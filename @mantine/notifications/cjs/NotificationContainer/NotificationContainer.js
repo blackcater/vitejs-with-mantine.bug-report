@@ -6,7 +6,7 @@ var React = require('react');
 var core = require('@mantine/core');
 var getAutoClose = require('./get-auto-close/get-auto-close.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 
@@ -41,7 +41,7 @@ function NotificationContainer({
     handleDelayedHide();
     return cancelDelayedHide;
   }, [autoClose, notification.autoClose]);
-  return /* @__PURE__ */ React__default['default'].createElement(core.Notification, {
+  return /* @__PURE__ */ React__default.createElement(core.Notification, {
     style,
     className,
     title: notification.title,

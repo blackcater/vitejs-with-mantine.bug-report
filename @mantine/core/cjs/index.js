@@ -3,6 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var theme = require('@mantine/theme');
+var utils = require('@mantine/utils');
 var ActionIcon = require('./ActionIcon/ActionIcon.js');
 var Alert = require('./Alert/Alert.js');
 var Avatar = require('./Avatar/Avatar.js');
@@ -17,9 +18,10 @@ var Code = require('./Code/Code.js');
 var ColorSwatch = require('./ColorSwatch/ColorSwatch.js');
 var Container = require('./Container/Container.js');
 var Drawer = require('./Drawer/Drawer.js');
-var ElementsGroup = require('./ElementsGroup/ElementsGroup.js');
+var Divider = require('./Divider/Divider.js');
+var Grid = require('./Grid/Grid.js');
+var Group = require('./Group/Group.js');
 var Highlight = require('./Highlight/Highlight.js');
-var Hr = require('./Hr/Hr.js');
 var Image = require('./Image/Image.js');
 var Input = require('./Input/Input.js');
 var InputWrapper = require('./InputWrapper/InputWrapper.js');
@@ -33,9 +35,11 @@ var NumberInput = require('./NumberInput/NumberInput.js');
 var Overlay = require('./Overlay/Overlay.js');
 var Paper = require('./Paper/Paper.js');
 var PasswordInput = require('./PasswordInput/PasswordInput.js');
+var Popover = require('./Popover/Popover.js');
 var Portal = require('./Portal/Portal.js');
 var Progress = require('./Progress/Progress.js');
 var RadioGroup = require('./RadioGroup/RadioGroup.js');
+var SegmentedControl = require('./SegmentedControl/SegmentedControl.js');
 var Select = require('./Select/Select.js');
 var Spoiler = require('./Spoiler/Spoiler.js');
 var Switch = require('./Switch/Switch.js');
@@ -49,12 +53,13 @@ var Title = require('./Title/Title.js');
 var Tooltip = require('./Tooltip/Tooltip.js');
 var Transition = require('./Transition/Transition.js');
 var TypographyStylesProvider = require('./TypographyStylesProvider/TypographyStylesProvider.js');
-var CardsGrid = require('./Card/CardsGrid/CardsGrid.js');
+var Col = require('./Grid/Col.js');
 var MenuItem = require('./Menu/MenuItem/MenuItem.js');
 var MenuBody = require('./Menu/MenuBody/MenuBody.js');
 var Radio = require('./RadioGroup/Radio/Radio.js');
 var Tab = require('./Tabs/Tab/Tab.js');
 var GroupedTransition = require('./Transition/GroupedTransition.js');
+var CardsGrid = require('./Card/CardsGrid/CardsGrid.js');
 
 
 
@@ -80,10 +85,14 @@ exports.CONTAINER_SIZES = Container.CONTAINER_SIZES;
 exports.Container = Container.Container;
 exports.DRAWER_SIZES = Drawer.DRAWER_SIZES;
 exports.Drawer = Drawer.Drawer;
-exports.ElementsGroup = ElementsGroup.ElementsGroup;
+exports.DIVIDER_SIZES = Divider.DIVIDER_SIZES;
+exports.Divider = Divider.Divider;
+exports.HR_SIZES = Divider.DIVIDER_SIZES;
+exports.Hr = Divider.Divider;
+exports.Grid = Grid.Grid;
+exports.ElementsGroup = Group.Group;
+exports.Group = Group.Group;
 exports.Highlight = Highlight.Highlight;
-exports.HR_SIZES = Hr.HR_SIZES;
-exports.Hr = Hr.Hr;
 exports.Image = Image.Image;
 exports.Input = Input.Input;
 exports.InputWrapper = InputWrapper.InputWrapper;
@@ -100,11 +109,13 @@ exports.NumberInput = NumberInput.NumberInput;
 exports.Overlay = Overlay.Overlay;
 exports.Paper = Paper.Paper;
 exports.PasswordInput = PasswordInput.PasswordInput;
+exports.Popover = Popover.Popover;
 exports.Portal = Portal.Portal;
 exports.PROGRESS_SIZES = Progress.PROGRESS_SIZES;
 exports.Progress = Progress.Progress;
 exports.RADIO_SIZES = RadioGroup.RADIO_SIZES;
 exports.RadioGroup = RadioGroup.RadioGroup;
+exports.SegmentedControl = SegmentedControl.SegmentedControl;
 exports.Select = Select.Select;
 exports.Spoiler = Spoiler.Spoiler;
 exports.SWITCH_SIZES = Switch.SWITCH_SIZES;
@@ -122,18 +133,17 @@ exports.Tooltip = Tooltip.Tooltip;
 exports.AVAILABLE_TRANSITIONS = Transition.AVAILABLE_TRANSITIONS;
 exports.Transition = Transition.Transition;
 exports.TypographyStylesProvider = TypographyStylesProvider.TypographyStylesProvider;
-exports.CardsGrid = CardsGrid.CardsGrid;
+exports.Col = Col.Col;
 exports.MenuItem = MenuItem.MenuItem;
 exports.MenuBody = MenuBody.MenuBody;
 exports.Radio = Radio.Radio;
 exports.Tab = Tab.Tab;
 exports.GroupedTransition = GroupedTransition.GroupedTransition;
+exports.CardsGrid = CardsGrid.CardsGrid;
 Object.keys(theme).forEach(function (k) {
-	if (k !== 'default' && !exports.hasOwnProperty(k)) Object.defineProperty(exports, k, {
-		enumerable: true,
-		get: function () {
-			return theme[k];
-		}
-	});
+  if (k !== 'default' && !exports.hasOwnProperty(k)) exports[k] = theme[k];
+});
+Object.keys(utils).forEach(function (k) {
+  if (k !== 'default' && !exports.hasOwnProperty(k)) exports[k] = utils[k];
 });
 //# sourceMappingURL=index.js.map

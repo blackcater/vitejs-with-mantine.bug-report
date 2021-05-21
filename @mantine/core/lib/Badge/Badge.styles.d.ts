@@ -7,8 +7,6 @@ interface BadgeStylesProps {
     fullWidth: boolean;
 }
 export declare const heights: Record<MantineSize, number>;
-declare const _default: (data?: BadgeStylesProps & {
-    theme?: MantineTheme;
-}) => import("jss").Classes<"outline" | "rightSection" | "light" | "filled" | "leftSection" | "inner" | "badge">;
+declare const _default: (args?: BadgeStylesProps) => import("jss").Classes<"outline" | "filled" | "light" | "leftSection" | "rightSection" | "inner" | "badge">;
 export default _default;
 //# sourceMappingURL=Badge.styles.d.ts.map

@@ -8,10 +8,12 @@ var hooks = require('@mantine/hooks');
 var theme = require('@mantine/theme');
 var Paper = require('../Paper/Paper.js');
 var Overlay = require('../Overlay/Overlay.js');
+var Portal = require('../Portal/Portal.js');
+require('../Transition/Transition.js');
 var Drawer_styles = require('./Drawer.styles.js');
 var GroupedTransition = require('../Transition/GroupedTransition.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var cx__default = /*#__PURE__*/_interopDefaultLegacy(cx);
@@ -54,7 +56,7 @@ const transitions = {
   left: "slide-right",
   right: "slide-left"
 };
-function Drawer(_a) {
+function MantineDrawer(_a) {
   var _b = _a, {
     opened,
     onClose,
@@ -117,7 +119,7 @@ function Drawer(_a) {
       return () => window.removeEventListener("keydown", closeOnEscape);
     }
   }, [noFocusTrap]);
-  return /* @__PURE__ */ React__default['default'].createElement(GroupedTransition.GroupedTransition, {
+  return /* @__PURE__ */ React__default.createElement(GroupedTransition.GroupedTransition, {
     mounted: opened,
     transitions: {
       overlay: {duration: duration / 2, transition: "fade", timingFunction: "ease"},
@@ -127,12 +129,12 @@ function Drawer(_a) {
         timingFunction: transitionTimingFunction
       }
     }
-  }, (styles) => /* @__PURE__ */ React__default['default'].createElement("div", __spreadValues({
-    className: cx__default['default'](classes.wrapper, {[classes.noOverlay]: noOverlay}, className),
+  }, (styles) => /* @__PURE__ */ React__default.createElement("div", __spreadValues({
+    className: cx__default(classes.wrapper, {[classes.noOverlay]: noOverlay}, className),
     role: "dialog",
     "aria-modal": true
-  }, others), /* @__PURE__ */ React__default['default'].createElement(Paper.Paper, {
-    className: cx__default['default'](classes.drawer, className),
+  }, others), /* @__PURE__ */ React__default.createElement(Paper.Paper, {
+    className: cx__default(classes.drawer, className),
     elementRef: hooks.useMergedRef(focusTrapRef, clickOutsideRef),
     style: __spreadProps(__spreadValues({}, styles.drawer), {zIndex: zIndex + 1}),
     radius: 0,
@@ -141,16 +143,22 @@ function Drawer(_a) {
     shadow,
     padding,
     themeOverride
-  }, children), !noOverlay && /* @__PURE__ */ React__default['default'].createElement("div", {
+  }, children), !noOverlay && /* @__PURE__ */ React__default.createElement("div", {
     style: styles.overlay
-  }, /* @__PURE__ */ React__default['default'].createElement(Overlay.Overlay, {
+  }, /* @__PURE__ */ React__default.createElement(Overlay.Overlay, {
     opacity: _overlayOpacity,
     zIndex,
     color: overlayColor || (theme$1.colorScheme === "dark" ? theme$1.colors.dark[9] : theme$1.black)
   }))));
 }
+function Drawer(props) {
+  return /* @__PURE__ */ React__default.createElement(Portal.Portal, {
+    zIndex: props.zIndex || 1e3
+  }, /* @__PURE__ */ React__default.createElement(MantineDrawer, __spreadValues({}, props)));
+}
 Drawer.displayName = "@mantine/core/Drawer";
 
 exports.DRAWER_SIZES = DRAWER_SIZES;
 exports.Drawer = Drawer;
+exports.MantineDrawer = MantineDrawer;
 //# sourceMappingURL=Drawer.js.map

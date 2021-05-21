@@ -2,7 +2,6 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var reactJss = require('react-jss');
 var theme = require('@mantine/theme');
 
 var __defProp = Object.defineProperty;
@@ -31,12 +30,12 @@ const sizes = {
   lg: 34,
   xl: 44
 };
-var useStyles = reactJss.createUseStyles({
+var useStyles = theme.createMemoStyles({
   filled: ({theme: theme$1, color}) => ({
-    backgroundColor: theme.getThemeColor({theme: theme$1, color, shade: 6}),
+    backgroundColor: theme.hexToRgba(theme.getThemeColor({theme: theme$1, color, shade: 7}), theme$1.colorScheme === "dark" ? 0.65 : 1),
     color: theme$1.white,
     "&:not(:disabled):hover": {
-      backgroundColor: theme.getThemeColor({theme: theme$1, color, shade: 7})
+      backgroundColor: theme.hexToRgba(theme.getThemeColor({theme: theme$1, color, shade: 8}), theme$1.colorScheme === "dark" ? 0.95 : 1)
     },
     "&:disabled": {
       backgroundColor: theme.getThemeColor({
@@ -47,14 +46,10 @@ var useStyles = reactJss.createUseStyles({
     }
   }),
   light: ({theme: theme$1, color}) => ({
-    backgroundColor: theme.getThemeColor({theme: theme$1, color, shade: theme$1.colorScheme === "dark" ? 4 : 0}),
-    color: theme$1.colorScheme === "dark" ? theme$1.colors.dark[9] : theme.getThemeColor({theme: theme$1, color, shade: 9}),
+    backgroundColor: theme.hexToRgba(theme.getThemeColor({theme: theme$1, color, shade: theme$1.colorScheme === "dark" ? 9 : 0}), theme$1.colorScheme === "dark" ? 0.3 : 1),
+    color: theme.getThemeColor({theme: theme$1, color, shade: theme$1.colorScheme === "dark" ? 3 : 9}),
     "&:not(:disabled):hover": {
-      backgroundColor: theme.getThemeColor({
-        theme: theme$1,
-        color,
-        shade: theme$1.colorScheme === "dark" ? 5 : 1
-      })
+      backgroundColor: theme.hexToRgba(theme.getThemeColor({theme: theme$1, color, shade: theme$1.colorScheme === "dark" ? 8 : 1}), theme$1.colorScheme === "dark" ? 0.65 : 1)
     },
     "&:disabled": {
       backgroundColor: theme.getThemeColor({
@@ -65,14 +60,14 @@ var useStyles = reactJss.createUseStyles({
     }
   }),
   hover: ({theme: theme$1, color}) => ({
-    color: theme.getThemeColor({theme: theme$1, color, shade: theme$1.colorScheme === "dark" ? 4 : 6}),
+    color: theme.getThemeColor({theme: theme$1, color, shade: theme$1.colorScheme === "dark" ? 5 : 7}),
     backgroundColor: "transparent",
     "&:not(:disabled):hover": {
       backgroundColor: theme$1.colorScheme === "dark" ? theme$1.colors.dark[8] : theme.getThemeColor({theme: theme$1, color, shade: 0})
     }
   }),
   transparent: ({theme: theme$1, color}) => ({
-    color: theme.getThemeColor({theme: theme$1, color, shade: theme$1.colorScheme === "dark" ? 4 : 6}),
+    color: theme.getThemeColor({theme: theme$1, color, shade: theme$1.colorScheme === "dark" ? 5 : 7}),
     backgroundColor: "transparent"
   }),
   actionIcon: ({radius, theme: theme$1, size}) => __spreadProps(__spreadValues(__spreadValues({}, theme.getFocusStyles(theme$1)), theme.getFontStyles(theme$1)), {
@@ -102,13 +97,9 @@ var useStyles = reactJss.createUseStyles({
     }
   }),
   outline: ({theme: theme$1, color}) => ({
-    color: theme.getThemeColor({theme: theme$1, color, shade: theme$1.colorScheme === "dark" ? 4 : 6}),
+    color: theme.getThemeColor({theme: theme$1, color, shade: theme$1.colorScheme === "dark" ? 4 : 8}),
     backgroundColor: "transparent",
-    borderColor: theme.getThemeColor({
-      theme: theme$1,
-      color,
-      shade: theme$1.colorScheme === "dark" ? 4 : 6
-    }),
+    border: `1px solid ${theme.hexToRgba(theme.getThemeColor({theme: theme$1, color, shade: theme$1.colorScheme === "dark" ? 3 : 4}), theme$1.colorScheme === "dark" ? 0.45 : 1)}`,
     "&:not(:disabled):hover": {
       backgroundColor: theme$1.colorScheme === "dark" ? theme$1.colors.dark[8] : theme.getThemeColor({theme: theme$1, color, shade: 0})
     },
@@ -116,7 +107,7 @@ var useStyles = reactJss.createUseStyles({
       borderColor: theme$1.colors.gray[theme$1.colorScheme === "dark" ? 7 : 3]
     }
   })
-}, {link: true});
+});
 
 exports.default = useStyles;
 exports.sizes = sizes;

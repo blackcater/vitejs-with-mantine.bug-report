@@ -1,5 +1,4 @@
-import { createUseStyles } from 'react-jss';
-import { getThemeColor, getSizeValue, getFontStyles, getFocusStyles } from '@mantine/theme';
+import { createMemoStyles, hexToRgba, getThemeColor, getSizeValue, getFontStyles, getFocusStyles } from '@mantine/theme';
 
 var __defProp = Object.defineProperty;
 var __defProps = Object.defineProperties;
@@ -27,12 +26,12 @@ const sizes = {
   lg: 34,
   xl: 44
 };
-var useStyles = createUseStyles({
+var useStyles = createMemoStyles({
   filled: ({theme, color}) => ({
-    backgroundColor: getThemeColor({theme, color, shade: 6}),
+    backgroundColor: hexToRgba(getThemeColor({theme, color, shade: 7}), theme.colorScheme === "dark" ? 0.65 : 1),
     color: theme.white,
     "&:not(:disabled):hover": {
-      backgroundColor: getThemeColor({theme, color, shade: 7})
+      backgroundColor: hexToRgba(getThemeColor({theme, color, shade: 8}), theme.colorScheme === "dark" ? 0.95 : 1)
     },
     "&:disabled": {
       backgroundColor: getThemeColor({
@@ -43,14 +42,10 @@ var useStyles = createUseStyles({
     }
   }),
   light: ({theme, color}) => ({
-    backgroundColor: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 4 : 0}),
-    color: theme.colorScheme === "dark" ? theme.colors.dark[9] : getThemeColor({theme, color, shade: 9}),
+    backgroundColor: hexToRgba(getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 9 : 0}), theme.colorScheme === "dark" ? 0.3 : 1),
+    color: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 3 : 9}),
     "&:not(:disabled):hover": {
-      backgroundColor: getThemeColor({
-        theme,
-        color,
-        shade: theme.colorScheme === "dark" ? 5 : 1
-      })
+      backgroundColor: hexToRgba(getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 8 : 1}), theme.colorScheme === "dark" ? 0.65 : 1)
     },
     "&:disabled": {
       backgroundColor: getThemeColor({
@@ -61,14 +56,14 @@ var useStyles = createUseStyles({
     }
   }),
   hover: ({theme, color}) => ({
-    color: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 4 : 6}),
+    color: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 5 : 7}),
     backgroundColor: "transparent",
     "&:not(:disabled):hover": {
       backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[8] : getThemeColor({theme, color, shade: 0})
     }
   }),
   transparent: ({theme, color}) => ({
-    color: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 4 : 6}),
+    color: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 5 : 7}),
     backgroundColor: "transparent"
   }),
   actionIcon: ({radius, theme, size}) => __spreadProps(__spreadValues(__spreadValues({}, getFocusStyles(theme)), getFontStyles(theme)), {
@@ -98,13 +93,9 @@ var useStyles = createUseStyles({
     }
   }),
   outline: ({theme, color}) => ({
-    color: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 4 : 6}),
+    color: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 4 : 8}),
     backgroundColor: "transparent",
-    borderColor: getThemeColor({
-      theme,
-      color,
-      shade: theme.colorScheme === "dark" ? 4 : 6
-    }),
+    border: `1px solid ${hexToRgba(getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 3 : 4}), theme.colorScheme === "dark" ? 0.45 : 1)}`,
     "&:not(:disabled):hover": {
       backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[8] : getThemeColor({theme, color, shade: 0})
     },
@@ -112,7 +103,7 @@ var useStyles = createUseStyles({
       borderColor: theme.colors.gray[theme.colorScheme === "dark" ? 7 : 3]
     }
   })
-}, {link: true});
+});
 
 export default useStyles;
 export { sizes };

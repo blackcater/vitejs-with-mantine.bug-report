@@ -6,8 +6,6 @@ import { CheckboxIcon } from './CheckboxIcon.js';
 import useStyles, { sizes } from './Checkbox.styles.js';
 
 var __defProp = Object.defineProperty;
-var __defProps = Object.defineProperties;
-var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
 var __getOwnPropSymbols = Object.getOwnPropertySymbols;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __propIsEnum = Object.prototype.propertyIsEnumerable;
@@ -23,7 +21,6 @@ var __spreadValues = (a, b) => {
     }
   return a;
 };
-var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 var __objRest = (source, exclude) => {
   var target = {};
   for (var prop in source)
@@ -46,14 +43,15 @@ function Checkbox(_a) {
     themeOverride,
     label,
     disabled,
-    intermediate,
+    indeterminate,
     id,
     size,
     wrapperProps,
     style,
     inputStyle,
     inputClassName,
-    elementRef
+    elementRef,
+    children
   } = _b, others = __objRest(_b, [
     "className",
     "checked",
@@ -62,14 +60,15 @@ function Checkbox(_a) {
     "themeOverride",
     "label",
     "disabled",
-    "intermediate",
+    "indeterminate",
     "id",
     "size",
     "wrapperProps",
     "style",
     "inputStyle",
     "inputClassName",
-    "elementRef"
+    "elementRef",
+    "children"
   ]);
   const uuid = useId(id);
   const classes = useStyles({size, color, theme: useMantineTheme(themeOverride)});
@@ -78,17 +77,17 @@ function Checkbox(_a) {
     style
   }, wrapperProps), /* @__PURE__ */ React.createElement("div", {
     className: classes.checkboxWrapper
-  }, /* @__PURE__ */ React.createElement("input", __spreadProps(__spreadValues({}, others), {
+  }, /* @__PURE__ */ React.createElement("input", __spreadValues({
     id: uuid,
     ref: elementRef,
     type: "checkbox",
     className: cx(classes.checkbox, inputClassName),
-    checked: intermediate || checked,
+    checked: indeterminate || checked,
     onChange,
     disabled,
     style: inputStyle
-  })), /* @__PURE__ */ React.createElement(CheckboxIcon, {
-    intermediate,
+  }, others)), /* @__PURE__ */ React.createElement(CheckboxIcon, {
+    indeterminate,
     className: classes.icon
   })), label && /* @__PURE__ */ React.createElement("label", {
     className: classes.label,

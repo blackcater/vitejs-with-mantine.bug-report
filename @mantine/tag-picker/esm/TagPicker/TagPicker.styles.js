@@ -1,5 +1,4 @@
-import { createUseStyles } from 'react-jss';
-import { getFocusStyles } from '@mantine/core';
+import { createMemoStyles, getFocusStyles } from '@mantine/core';
 
 var __defProp = Object.defineProperty;
 var __defProps = Object.defineProperties;
@@ -20,13 +19,13 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-var useStyles = createUseStyles({
+var useStyles = createMemoStyles({
   tagPicker: {
     position: "relative"
   },
   dropdown: ({theme}) => ({
-    border: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[2]}`,
-    backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[8] : theme.white,
+    border: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.colors.gray[2]}`,
+    backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.white,
     width: 280,
     position: "absolute",
     top: 0,
@@ -34,6 +33,7 @@ var useStyles = createUseStyles({
     zIndex: 1
   }),
   control: ({theme}) => __spreadProps(__spreadValues({}, getFocusStyles(theme)), {
+    backgroundColor: "transparent",
     border: 0,
     padding: [0, 0],
     borderRadius: 24,
@@ -41,7 +41,7 @@ var useStyles = createUseStyles({
     appearance: "none",
     WebkitAppearance: "none"
   })
-}, {link: true});
+});
 
 export default useStyles;
 //# sourceMappingURL=TagPicker.styles.js.map

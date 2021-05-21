@@ -2,9 +2,9 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var reactJss = require('react-jss');
+var theme = require('@mantine/theme');
 
-var useStyles = reactJss.createUseStyles({
+var useStyles = theme.createMemoStyles({
   kbd: ({theme}) => ({
     lineHeight: theme.lineHeight,
     fontFamily: theme.fontFamilyMonospace,
@@ -15,9 +15,9 @@ var useStyles = reactJss.createUseStyles({
     padding: [3, theme.spacing.xs / 2],
     borderRadius: theme.radius.sm,
     border: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[9] : theme.colors.gray[3]}`,
-    borderBottomWidth: 3
+    borderBottom: `3px solid ${theme.colorScheme === "dark" ? theme.colors.dark[9] : theme.colors.gray[3]}`
   })
-}, {link: true});
+});
 
 exports.default = useStyles;
 //# sourceMappingURL=Kbd.styles.js.map

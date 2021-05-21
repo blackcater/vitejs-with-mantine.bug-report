@@ -7,7 +7,7 @@ var cx = require('clsx');
 var theme = require('@mantine/theme');
 var ColorSwatch_styles = require('./ColorSwatch.styles.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var cx__default = /*#__PURE__*/_interopDefaultLegacy(cx);
@@ -59,10 +59,9 @@ function ColorSwatch(_a) {
     "themeOverride"
   ]);
   const classes = ColorSwatch_styles['default']({radius, theme: theme.useMantineTheme(themeOverride)});
-  return /* @__PURE__ */ React__default['default'].createElement(Element, __spreadValues({
-    className: cx__default['default'](classes.colorSwatch, className),
-    style: __spreadValues({width: size, height: size, backgroundColor: color}, style),
-    "data-mantine-composable": true
+  return /* @__PURE__ */ React__default.createElement(Element, __spreadValues({
+    className: cx__default(classes.colorSwatch, className),
+    style: __spreadValues({width: size, height: size, backgroundColor: color}, style)
   }, others));
 }
 ColorSwatch.displayName = "@mantine/core/ColorSwatch";

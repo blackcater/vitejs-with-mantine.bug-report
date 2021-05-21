@@ -3,8 +3,8 @@ import { DefaultProps, MantineNumberSize } from '@mantine/theme';
 export declare const THEME_ICON_SIZES: {
     xs: number;
     sm: number;
+    /** Icon */
     md: number;
-    /** Predefined width and height or number for width and height in px */
     lg: number;
     xl: number;
 };

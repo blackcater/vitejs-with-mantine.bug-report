@@ -2,10 +2,9 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var reactJss = require('react-jss');
 var theme = require('@mantine/theme');
 
-var useStyles = reactJss.createUseStyles({
+var useStyles = theme.createMemoStyles({
   withIcon: {
     paddingLeft: "10px !important",
     "&::before": {
@@ -22,8 +21,8 @@ var useStyles = reactJss.createUseStyles({
     paddingTop: 10,
     paddingBottom: 10,
     borderRadius: 4,
-    backgroundColor: theme$1.colorScheme === "dark" ? theme$1.colors.dark[9] : theme$1.white,
-    border: `1px solid ${theme$1.colorScheme === "dark" ? theme$1.colors.dark[5] : theme$1.colors.gray[2]}`,
+    backgroundColor: theme$1.colorScheme === "dark" ? theme$1.colors.dark[6] : theme$1.white,
+    border: `1px solid ${theme$1.colorScheme === "dark" ? theme$1.colors.dark[6] : theme$1.colors.gray[2]}`,
     "&::before": {
       content: "''",
       display: "block",
@@ -33,10 +32,14 @@ var useStyles = reactJss.createUseStyles({
       bottom: 4,
       left: 4,
       borderRadius: 4,
-      backgroundColor: theme.getThemeColor({theme: theme$1, color, shade: 6})
+      backgroundColor: theme.getThemeColor({
+        theme: theme$1,
+        color,
+        shade: theme$1.colorScheme === "dark" ? 7 : 6
+      })
     },
     "& $icon": {
-      backgroundColor: theme.getThemeColor({theme: theme$1, color, shade: 6}),
+      backgroundColor: theme.hexToRgba(theme.getThemeColor({theme: theme$1, color, shade: theme$1.colorScheme === "dark" ? 7 : 6}), theme$1.colorScheme === "dark" ? 0.7 : 1),
       color: theme$1.white
     }
   }),
@@ -75,7 +78,7 @@ var useStyles = reactJss.createUseStyles({
       color: theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black
     }
   })
-}, {link: true});
+});
 
 exports.default = useStyles;
 //# sourceMappingURL=Notification.styles.js.map

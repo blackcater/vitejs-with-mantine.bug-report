@@ -1,7 +1,6 @@
-import { createUseStyles } from 'react-jss';
-import { getSizeValue } from '@mantine/theme';
+import { createMemoStyles, getSizeValue } from '@mantine/theme';
 
-var useStyles = createUseStyles({
+var useStyles = createMemoStyles({
   grid: ({theme, gutter, cardsPerRow, grow}) => {
     const gutterSize = getSizeValue({size: gutter, sizes: theme.spacing});
     const getCardFlex = (perRow) => `${grow ? 1 : 0} 0 calc(${100 / perRow}% - ${gutterSize}px)`;
@@ -15,7 +14,7 @@ var useStyles = createUseStyles({
       }
     };
   }
-}, {link: true});
+});
 
 export default useStyles;
 //# sourceMappingURL=CardsGrid.styles.js.map

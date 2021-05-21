@@ -9,7 +9,7 @@ var theme = require('@mantine/theme');
 var TextInput = require('../TextInput/TextInput.js');
 var NumberInput_styles = require('./NumberInput.styles.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var cx__default = /*#__PURE__*/_interopDefaultLegacy(cx);
@@ -104,9 +104,9 @@ function NumberInput(_a) {
       setTempValue(value.toFixed(precision));
     }
   }, [value]);
-  const rightSection = /* @__PURE__ */ React__default['default'].createElement("div", {
+  const rightSection = /* @__PURE__ */ React__default.createElement("div", {
     className: classes.rightSection
-  }, /* @__PURE__ */ React__default['default'].createElement("button", {
+  }, /* @__PURE__ */ React__default.createElement("button", {
     type: "button",
     tabIndex: -1,
     "aria-hidden": true,
@@ -119,8 +119,8 @@ function NumberInput(_a) {
       inputRef.current.focus();
     },
     disabled: finalValue >= max,
-    className: cx__default['default'](classes.control, classes.controlUp)
-  }), /* @__PURE__ */ React__default['default'].createElement("button", {
+    className: cx__default(classes.control, classes.controlUp)
+  }), /* @__PURE__ */ React__default.createElement("button", {
     type: "button",
     tabIndex: -1,
     "aria-hidden": true,
@@ -133,7 +133,7 @@ function NumberInput(_a) {
       inputRef.current.focus();
     },
     disabled: finalValue <= min,
-    className: cx__default['default'](classes.control, classes.controlDown)
+    className: cx__default(classes.control, classes.controlDown)
   }));
   const handleChange = (event) => {
     const val = event.currentTarget.value;
@@ -158,7 +158,7 @@ function NumberInput(_a) {
     setFocused(true);
     typeof onFocus === "function" && onBlur(event);
   };
-  return /* @__PURE__ */ React__default['default'].createElement(TextInput.TextInput, __spreadProps(__spreadValues({}, others), {
+  return /* @__PURE__ */ React__default.createElement(TextInput.TextInput, __spreadProps(__spreadValues({}, others), {
     variant,
     value: tempValue,
     disabled,

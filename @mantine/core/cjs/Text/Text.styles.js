@@ -2,7 +2,6 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var reactJss = require('react-jss');
 var theme = require('@mantine/theme');
 
 var __defProp = Object.defineProperty;
@@ -24,7 +23,7 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-var useStyles = reactJss.createUseStyles({
+var useStyles = theme.createMemoStyles({
   text: ({theme: theme$1, color, variant, size}) => __spreadProps(__spreadValues(__spreadValues({}, theme.getFontStyles(theme$1)), theme.getFocusStyles(theme$1)), {
     color: color in theme$1.colors ? theme$1.colors[color][theme$1.colorScheme === "dark" ? 4 : 6] : variant === "link" ? theme$1.colors[theme$1.primaryColor][theme$1.colorScheme === "dark" ? 4 : 6] : theme$1.colorScheme === "dark" ? theme$1.colors.dark[0] : theme$1.black,
     fontSize: theme$1.fontSizes[size],
@@ -35,7 +34,7 @@ var useStyles = reactJss.createUseStyles({
       textDecoration: variant === "link" ? "underline" : "none"
     }
   })
-}, {link: true});
+});
 
 exports.default = useStyles;
 //# sourceMappingURL=Text.styles.js.map

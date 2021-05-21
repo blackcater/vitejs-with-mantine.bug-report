@@ -10,7 +10,7 @@ var Radio = require('./Radio/Radio.js');
 var Radio_styles = require('./Radio/Radio.styles.js');
 var RadioGroup_styles = require('./RadioGroup.styles.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 
@@ -85,9 +85,9 @@ function RadioGroup(_a) {
     size,
     onChange: (event) => handleChange(event.currentTarget.value)
   }));
-  return /* @__PURE__ */ React__default['default'].createElement(InputWrapper.InputWrapper, __spreadValues({
+  return /* @__PURE__ */ React__default.createElement(InputWrapper.InputWrapper, __spreadValues({
     labelElement: "div"
-  }, others), /* @__PURE__ */ React__default['default'].createElement("div", {
+  }, others), /* @__PURE__ */ React__default.createElement("div", {
     role: "radiogroup",
     className: classes.wrapper
   }, radios));

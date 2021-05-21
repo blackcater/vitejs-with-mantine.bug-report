@@ -2,9 +2,9 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var reactJss = require('react-jss');
+var theme = require('@mantine/theme');
 
-var useStyles = reactJss.createUseStyles({
+var useStyles = theme.createMemoStyles({
   spoiler: {
     position: "relative"
   },
@@ -14,7 +14,7 @@ var useStyles = reactJss.createUseStyles({
     transitionTimingFunction: "ease",
     transitionDuration: transitionDuration || 0
   })
-}, {link: true});
+});
 
 exports.default = useStyles;
 //# sourceMappingURL=Spoiler.styles.js.map

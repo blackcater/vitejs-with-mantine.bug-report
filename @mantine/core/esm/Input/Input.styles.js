@@ -1,5 +1,4 @@
-import { createUseStyles } from 'react-jss';
-import { getSizeValue, getFontStyles } from '@mantine/theme';
+import { createMemoStyles, getSizeValue, getFontStyles } from '@mantine/theme';
 
 var __defProp = Object.defineProperty;
 var __defProps = Object.defineProperties;
@@ -20,7 +19,7 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-var useStyles = createUseStyles({
+var useStyles = createMemoStyles({
   withIcon: {},
   inputWrapper: ({radius, theme}) => ({
     position: "relative",
@@ -29,17 +28,17 @@ var useStyles = createUseStyles({
   }),
   defaultVariant: ({theme, radius}) => ({
     "& $input": {
-      backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.white,
+      backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
       minHeight: 36,
-      padding: [7, theme.spacing.sm],
+      paddingLeft: theme.spacing.md,
+      paddingRight: theme.spacing.md,
       borderRadius: getSizeValue({size: radius, sizes: theme.radius}),
       border: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[4]}`,
       transition: "border-color 100ms ease, box-shadow 100ms ease",
       color: theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black,
       "&:focus": {
         outline: "none",
-        borderColor: theme.colors[theme.primaryColor][6],
-        boxShadow: `0 0 4px ${theme.colors.gray[3]}`
+        borderColor: theme.colors[theme.primaryColor][theme.colorScheme === "dark" ? 8 : 6]
       }
     },
     "&$invalid $input": {
@@ -59,12 +58,11 @@ var useStyles = createUseStyles({
       paddingRight: theme.spacing.md,
       borderRadius: getSizeValue({size: radius, sizes: theme.radius}),
       border: "1px solid transparent",
-      backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[9] : theme.colors.gray[1],
+      backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[1],
       color: theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black,
       "&:focus": {
         outline: "none",
-        borderColor: `${theme.colors[theme.primaryColor][theme.colorScheme === "dark" ? 4 : 6]} !important`,
-        boxShadow: `0 0 4px ${theme.colors.gray[3]}`
+        borderColor: `${theme.colors[theme.primaryColor][theme.colorScheme === "dark" ? 8 : 6]} !important`
       },
       "&::placeholder": {
         color: theme.colorScheme === "dark" ? theme.colors.dark[2] : theme.colors.gray[6]
@@ -77,7 +75,7 @@ var useStyles = createUseStyles({
     },
     "&$invalid $input": {
       borderColor: theme.colorScheme === "dark" ? theme.colors.red[4] : "transparent",
-      backgroundColor: theme.colorScheme !== "dark" && theme.colors.red[0]
+      backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.red[0]
     },
     "& $withIcon": {
       paddingLeft: 35
@@ -111,7 +109,7 @@ var useStyles = createUseStyles({
     appearance: "none",
     resize: "none",
     boxSizing: "border-box",
-    fontSize: 14,
+    fontSize: theme.fontSizes.sm,
     width: "100%",
     color: theme.black,
     display: "block",
@@ -138,7 +136,7 @@ var useStyles = createUseStyles({
     left: 0,
     top: 0,
     bottom: 0,
-    color: theme.colorScheme === "dark" ? theme.colors.dark[3] : theme.colors.gray[5],
+    color: theme.colorScheme === "dark" ? theme.colors.dark[2] : theme.colors.gray[5],
     display: "flex",
     alignItems: "center",
     justifyContent: "center"
@@ -164,7 +162,7 @@ var useStyles = createUseStyles({
     alignItems: "center",
     justifyContent: "center"
   }
-}, {link: true});
+});
 
 export default useStyles;
 //# sourceMappingURL=Input.styles.js.map

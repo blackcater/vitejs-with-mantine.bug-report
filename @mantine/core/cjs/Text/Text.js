@@ -7,7 +7,7 @@ var cx = require('clsx');
 var theme = require('@mantine/theme');
 var Text_styles = require('./Text.styles.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var cx__default = /*#__PURE__*/_interopDefaultLegacy(cx);
@@ -69,8 +69,8 @@ function Text(_a) {
     "elementRef"
   ]);
   const classes = Text_styles['default']({variant, color, size, theme: theme.useMantineTheme(themeOverride)});
-  return React__default['default'].createElement(component, __spreadValues({
-    className: cx__default['default'](classes.text, className),
+  return React__default.createElement(component, __spreadValues({
+    className: cx__default(classes.text, className),
     style: __spreadValues({fontWeight: weight, textTransform: transform, textAlign: align}, style),
     ref: elementRef
   }, others), children);
@@ -82,7 +82,7 @@ function Anchor(_c) {
   } = _d, others = __objRest(_d, [
     "component"
   ]);
-  return /* @__PURE__ */ React__default['default'].createElement(Text, __spreadValues({
+  return /* @__PURE__ */ React__default.createElement(Text, __spreadValues({
     component,
     variant: "link"
   }, others));

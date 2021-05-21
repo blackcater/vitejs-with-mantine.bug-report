@@ -1,5 +1,6 @@
 import React from 'react';
 import { DefaultProps, MantineNumberSize } from '@mantine/theme';
+import { ComponentPassThrough } from '@mantine/types';
 export interface ActionIconProps extends DefaultProps, React.ComponentPropsWithoutRef<'button'> {
     /** Icon rendered inside button */
     children: React.ReactNode;
@@ -21,7 +22,9 @@ export declare const ACTION_ICON_SIZES: {
     lg: number;
     xl: number;
 };
-export declare function ActionIcon({ className, color, children, radius, size, variant, themeOverride, elementRef, ...others }: ActionIconProps): JSX.Element;
+export declare function ActionIcon<T extends React.ElementType = 'button', U = HTMLButtonElement>({ className, color, children, radius, size, variant, themeOverride, elementRef, component: Element, ...others }: ComponentPassThrough<T, ActionIconProps> & {
+    elementRef?: React.ForwardedRef<U>;
+}): JSX.Element;
 export declare namespace ActionIcon {
     var displayName: string;
 }

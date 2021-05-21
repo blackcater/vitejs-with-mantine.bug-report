@@ -2,11 +2,10 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var reactJss = require('react-jss');
 var theme = require('@mantine/theme');
 
 const CONTROL_WIDTH = 24;
-var useStyles = reactJss.createUseStyles({
+var useStyles = theme.createMemoStyles({
   rightSection: {
     display: "flex",
     flexDirection: "column",
@@ -19,7 +18,8 @@ var useStyles = reactJss.createUseStyles({
     flex: "0 0 50%",
     boxSizing: "border-box",
     width: CONTROL_WIDTH,
-    border: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[4]}`,
+    borderBottom: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[4]}`,
+    borderLeft: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[4]}`,
     borderTop: 0,
     borderRight: 0,
     backgroundColor: "transparent",
@@ -69,7 +69,7 @@ var useStyles = reactJss.createUseStyles({
       borderTopColor: theme$1.colorScheme === "dark" ? theme$1.colors.dark[2] : theme$1.colors.gray[5]
     }
   })
-}, {link: true});
+});
 
 exports.CONTROL_WIDTH = CONTROL_WIDTH;
 exports.default = useStyles;

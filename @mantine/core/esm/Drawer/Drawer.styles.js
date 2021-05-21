@@ -1,5 +1,4 @@
-import { createUseStyles } from 'react-jss';
-import { getSizeValue } from '@mantine/theme';
+import { createMemoStyles, getSizeValue } from '@mantine/theme';
 
 var __defProp = Object.defineProperty;
 var __defProps = Object.defineProperties;
@@ -45,7 +44,7 @@ function getPositionStyles({
       return null;
   }
 }
-var useStyles = createUseStyles({
+var useStyles = createMemoStyles({
   noOverlay: {},
   wrapper: {
     "&:not($noOverlay)": {
@@ -62,7 +61,7 @@ var useStyles = createUseStyles({
     position: "fixed",
     outline: 0
   })
-}, {link: true});
+});
 
 export default useStyles;
 export { sizes };

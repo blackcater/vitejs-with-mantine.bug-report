@@ -8,7 +8,7 @@ var ActionIcon = require('../ActionIcon/ActionIcon.js');
 var TextInput = require('../TextInput/TextInput.js');
 var PasswordToggleIcon = require('./PasswordToggleIcon.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 
@@ -69,16 +69,16 @@ function PasswordInput(_a) {
       inputRef.current.focus();
     }
   };
-  const rightSection = /* @__PURE__ */ React__default['default'].createElement(ActionIcon.ActionIcon, {
+  const rightSection = /* @__PURE__ */ React__default.createElement(ActionIcon.ActionIcon, {
     onClick: toggleReveal,
     themeOverride,
     title: reveal ? hidePasswordLabel : showPasswordLabel,
     "aria-label": reveal ? hidePasswordLabel : showPasswordLabel,
     radius
-  }, /* @__PURE__ */ React__default['default'].createElement(PasswordToggleIcon.PasswordToggleIcon, {
+  }, /* @__PURE__ */ React__default.createElement(PasswordToggleIcon.PasswordToggleIcon, {
     reveal
   }));
-  return /* @__PURE__ */ React__default['default'].createElement(TextInput.TextInput, __spreadProps(__spreadValues({}, others), {
+  return /* @__PURE__ */ React__default.createElement(TextInput.TextInput, __spreadProps(__spreadValues({}, others), {
     disabled,
     themeOverride,
     elementRef: hooks.useMergedRef(inputRef, elementRef),

@@ -7,7 +7,7 @@ var cx = require('clsx');
 var theme = require('@mantine/theme');
 var Button_styles = require('./Button.styles.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var cx__default = /*#__PURE__*/_interopDefaultLegacy(cx);
@@ -83,25 +83,24 @@ function Button(_a) {
     fullWidth,
     theme: theme.useMantineTheme(themeOverride)
   });
-  return /* @__PURE__ */ React__default['default'].createElement(Element, __spreadProps(__spreadValues({}, others), {
-    className: cx__default['default'](classes.shared, classes[variant], className),
+  return /* @__PURE__ */ React__default.createElement(Element, __spreadProps(__spreadValues({}, others), {
+    className: cx__default(classes.shared, classes[variant], className),
     type,
     disabled,
-    "data-mantine-composable": true,
     ref: elementRef,
     onTouchStart: () => {
     }
-  }), /* @__PURE__ */ React__default['default'].createElement("div", {
+  }), /* @__PURE__ */ React__default.createElement("div", {
     className: classes.inner
-  }, leftIcon && /* @__PURE__ */ React__default['default'].createElement("span", {
+  }, leftIcon && /* @__PURE__ */ React__default.createElement("span", {
     "data-mantine-left-icon": true,
-    className: cx__default['default'](classes.icon, classes.leftIcon)
-  }, leftIcon), /* @__PURE__ */ React__default['default'].createElement("span", {
+    className: cx__default(classes.icon, classes.leftIcon)
+  }, leftIcon), /* @__PURE__ */ React__default.createElement("span", {
     className: classes.label,
     "data-mantine-label": true
-  }, children), rightIcon && /* @__PURE__ */ React__default['default'].createElement("span", {
+  }, children), rightIcon && /* @__PURE__ */ React__default.createElement("span", {
     "data-mantine-right-icon": true,
-    className: cx__default['default'](classes.icon, classes.rightIcon)
+    className: cx__default(classes.icon, classes.rightIcon)
   }, rightIcon)));
 }
 Button.displayName = "@mantine/core/Button";

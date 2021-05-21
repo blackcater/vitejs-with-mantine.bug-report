@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { useMantineTheme } from '@mantine/theme';
-import { ElementsGroup } from '../ElementsGroup/ElementsGroup.js';
+import { Group } from '../Group/Group.js';
 import { Tab } from './Tab/Tab.js';
 export { Tab } from './Tab/Tab.js';
 import { TabControl } from './TabControl/TabControl.js';
@@ -118,7 +118,7 @@ function Tabs(_a) {
   const content = tabs[activeTab].props.children;
   return /* @__PURE__ */ React.createElement("div", __spreadValues({}, others), /* @__PURE__ */ React.createElement("div", {
     className: classes.tabs
-  }, /* @__PURE__ */ React.createElement(ElementsGroup, {
+  }, /* @__PURE__ */ React.createElement(Group, {
     className: classes.tabsInner,
     role: "tablist",
     "aria-orientation": "horizontal",

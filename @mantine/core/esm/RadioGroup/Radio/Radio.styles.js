@@ -1,5 +1,4 @@
-import { createUseStyles } from 'react-jss';
-import { getSizeValue, getThemeColor, getFocusStyles, getFontStyles } from '@mantine/theme';
+import { createMemoStyles, getSizeValue, getThemeColor, getFocusStyles, getFontStyles } from '@mantine/theme';
 
 var __defProp = Object.defineProperty;
 var __defProps = Object.defineProperties;
@@ -27,7 +26,7 @@ const sizes = {
   lg: 26,
   xl: 36
 };
-var useStyles = createUseStyles({
+var useStyles = createMemoStyles({
   labelDisabled: {},
   wrapper: {
     display: "flex",
@@ -35,8 +34,8 @@ var useStyles = createUseStyles({
     WebkitTapHighlightColor: "transparent"
   },
   radio: ({theme, size, color}) => __spreadProps(__spreadValues({}, getFocusStyles(theme)), {
-    backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[3] : theme.colors.gray[0],
-    border: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[3] : theme.colors.gray[4]}`,
+    backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[0],
+    border: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[4]}`,
     position: "relative",
     appearance: "none",
     width: getSizeValue({sizes, size}),
@@ -61,8 +60,8 @@ var useStyles = createUseStyles({
       }
     },
     "&:disabled": {
-      borderColor: theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[4],
-      backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[1],
+      borderColor: theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[4],
+      backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[1],
       "&::before": {
         backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.colors.gray[4]
       }
@@ -78,7 +77,7 @@ var useStyles = createUseStyles({
       color: theme.colorScheme === "dark" ? theme.colors.dark[3] : theme.colors.gray[5]
     }
   })
-}, {link: true});
+});
 
 export default useStyles;
 export { sizes };

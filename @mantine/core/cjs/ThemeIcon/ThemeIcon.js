@@ -7,7 +7,7 @@ var cx = require('clsx');
 var theme = require('@mantine/theme');
 var ThemeIcon_styles = require('./ThemeIcon.styles.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var cx__default = /*#__PURE__*/_interopDefaultLegacy(cx);
@@ -60,15 +60,13 @@ function ThemeIcon(_a) {
     "themeOverride"
   ]);
   const classes = ThemeIcon_styles['default']({
-    variant,
+    theme: theme.useMantineTheme(themeOverride),
     radius,
     color,
-    size,
-    theme: theme.useMantineTheme(themeOverride)
+    size
   });
-  return /* @__PURE__ */ React__default['default'].createElement("div", __spreadValues({
-    "data-mantine-composable": true,
-    className: cx__default['default'](classes.themeIcon, className)
+  return /* @__PURE__ */ React__default.createElement("div", __spreadValues({
+    className: cx__default(classes.themeIcon, classes[variant], className)
   }, others), children);
 }
 ThemeIcon.displayName = "@mantine/core/ThemeIcon";

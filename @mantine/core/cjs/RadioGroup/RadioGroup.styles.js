@@ -2,10 +2,9 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var reactJss = require('react-jss');
 var theme = require('@mantine/theme');
 
-var useStyles = reactJss.createUseStyles({
+var useStyles = theme.createMemoStyles({
   wrapper: ({theme: theme$1, spacing, variant}) => ({
     display: "flex",
     flexWrap: "wrap",
@@ -18,7 +17,7 @@ var useStyles = reactJss.createUseStyles({
       marginBottom: variant === "vertical" && theme.getSizeValue({sizes: theme$1.spacing, size: spacing}) / 4
     }
   })
-}, {link: true});
+});
 
 exports.default = useStyles;
 //# sourceMappingURL=RadioGroup.styles.js.map

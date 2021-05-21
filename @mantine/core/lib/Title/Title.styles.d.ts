@@ -4,8 +4,6 @@ interface TitleStylesProps {
     theme: MantineTheme;
     element: HeadingElement;
 }
-declare const _default: (data?: TitleStylesProps & {
-    theme?: MantineTheme;
-}) => import("jss").Classes<"title">;
+declare const _default: (args?: TitleStylesProps) => import("jss").Classes<"title">;
 export default _default;
 //# sourceMappingURL=Title.styles.d.ts.map

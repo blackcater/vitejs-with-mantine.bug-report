@@ -1,1 +1,1 @@
-{"version":3,"file":"use-scroll-lock.d.ts","sourceRoot":"","sources":["../../src/use-scroll-lock/use-scroll-lock.ts"],"names":[],"mappings":"AASA,wBAAgB,aAAa,CAAC,IAAI,EAAE,OAAO,QA+B1C"}
+{"version":3,"file":"use-scroll-lock.d.ts","sourceRoot":"","sources":["../../src/use-scroll-lock/use-scroll-lock.ts"],"names":[],"mappings":"AASA,wBAAgB,aAAa,CAAC,IAAI,EAAE,OAAO,EAAE,OAAO;;CAAgC,QAqCnF"}

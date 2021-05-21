@@ -2,7 +2,6 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var reactJss = require('react-jss');
 var theme = require('@mantine/theme');
 
 const sizes = {
@@ -12,13 +11,13 @@ const sizes = {
   lg: 240,
   xl: 300
 };
-var useStyles = reactJss.createUseStyles({
+var useStyles = theme.createMemoStyles({
   menu: ({theme: theme$1, size}) => ({
     position: "absolute",
     width: theme.getSizeValue({size, sizes}),
     overflow: "hidden",
-    backgroundColor: theme$1.colorScheme === "dark" ? theme$1.colors.dark[9] : theme$1.white,
-    border: `1px solid ${theme$1.colorScheme === "dark" ? theme$1.colors.dark[9] : theme$1.colors.gray[2]}`,
+    backgroundColor: theme$1.colorScheme === "dark" ? theme$1.colors.dark[6] : theme$1.white,
+    border: `1px solid ${theme$1.colorScheme === "dark" ? theme$1.colors.dark[6] : theme$1.colors.gray[2]}`,
     paddingTop: theme$1.spacing.xs / 2,
     paddingBottom: theme$1.spacing.xs / 2
   }),
@@ -27,7 +26,7 @@ var useStyles = reactJss.createUseStyles({
     marginTop: theme.spacing.xs / 2,
     marginBottom: theme.spacing.xs / 2
   })
-}, {link: true});
+});
 
 exports.default = useStyles;
 exports.sizes = sizes;

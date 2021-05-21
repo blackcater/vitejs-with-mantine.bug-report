@@ -2,7 +2,6 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var reactJss = require('react-jss');
 var theme = require('@mantine/theme');
 
 var __defProp = Object.defineProperty;
@@ -31,7 +30,7 @@ const sizes = {
   lg: 56,
   xl: 84
 };
-var useStyles = reactJss.createUseStyles({
+var useStyles = theme.createMemoStyles({
   avatar: ({size, radius, theme: theme$1}) => ({
     boxSizing: "border-box",
     position: "relative",
@@ -50,7 +49,7 @@ var useStyles = reactJss.createUseStyles({
     fontSize: theme.getSizeValue({size, sizes}) / 2.5,
     color: theme.getThemeColor({theme: theme$1, color, shade: theme$1.colorScheme === "dark" ? 0 : 6}),
     fontWeight: 700,
-    backgroundColor: theme.getThemeColor({theme: theme$1, color, shade: theme$1.colorScheme === "dark" ? 9 : 1}),
+    backgroundColor: theme.hexToRgba(theme.getThemeColor({theme: theme$1, color, shade: theme$1.colorScheme === "dark" ? 8 : 1}), theme$1.colorScheme === "dark" ? 0.5 : 1),
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -63,7 +62,7 @@ var useStyles = reactJss.createUseStyles({
     height: "70%",
     color: theme.getThemeColor({theme: theme$1, color, shade: theme$1.colorScheme === "dark" ? 0 : 6})
   })
-}, {link: true});
+});
 
 exports.default = useStyles;
 exports.sizes = sizes;

@@ -3,8 +3,6 @@ interface BlockquoteStylesProps {
     theme: MantineTheme;
     color: string;
 }
-declare const _default: (data?: BlockquoteStylesProps & {
-    theme?: MantineTheme;
-}) => import("jss").Classes<"icon" | "blockquote" | "body" | "cite" | "inner">;
+declare const _default: (args?: BlockquoteStylesProps) => import("jss").Classes<"blockquote" | "body" | "cite" | "inner" | "icon">;
 export default _default;
 //# sourceMappingURL=Blockquote.styles.d.ts.map

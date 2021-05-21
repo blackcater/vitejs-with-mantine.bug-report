@@ -14,7 +14,7 @@ var NotificationContainer = require('../NotificationContainer/NotificationContai
 var NotificationsProvider_styles = require('./NotificationsProvider.styles.js');
 var useNotificationsState = require('./use-notifications-state/use-notifications-state.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var cx__default = /*#__PURE__*/_interopDefaultLegacy(cx);
@@ -83,6 +83,7 @@ function NotificationsProvider(_a) {
   ]);
   const {
     notifications,
+    queue,
     showNotification,
     updateNotification,
     hideNotification,
@@ -94,13 +95,13 @@ function NotificationsProvider(_a) {
   const theme = core.useMantineTheme(themeOverride);
   const classes = NotificationsProvider_styles['default']({theme});
   const positioning = (POSITIONS.includes(position) ? position : "bottom-right").split("-");
-  const items = notifications.map((notification) => /* @__PURE__ */ React__default['default'].createElement(reactTransitionGroup.Transition, {
+  const items = notifications.map((notification) => /* @__PURE__ */ React__default.createElement(reactTransitionGroup.Transition, {
     key: notification.id,
     timeout: duration,
     unmountOnExit: true,
     mountOnEnter: true,
     onEnter: (node) => node.offsetHeight
-  }, (state) => /* @__PURE__ */ React__default['default'].createElement(NotificationContainer['default'], {
+  }, (state) => /* @__PURE__ */ React__default.createElement(NotificationContainer['default'], {
     notification,
     onHide: hideNotification,
     className: classes.notification,
@@ -112,23 +113,24 @@ function NotificationsProvider(_a) {
       maxHeight: notificationMaxHeight
     }))
   })));
-  return /* @__PURE__ */ React__default['default'].createElement(Notifications_context.NotificationsContext.Provider, {
+  return /* @__PURE__ */ React__default.createElement(Notifications_context.NotificationsContext.Provider, {
     value: {
       notifications,
+      queue,
       showNotification,
       hideNotification,
       updateNotification,
       clean,
       cleanQueue
     }
-  }, /* @__PURE__ */ React__default['default'].createElement(core.Portal, {
+  }, /* @__PURE__ */ React__default.createElement(core.Portal, {
     zIndex
-  }, /* @__PURE__ */ React__default['default'].createElement("div", __spreadValues({
-    className: cx__default['default'](classes.notifications, className),
+  }, /* @__PURE__ */ React__default.createElement("div", __spreadValues({
+    className: cx__default(classes.notifications, className),
     style: __spreadValues(__spreadValues({
       maxWidth: containerWidth
     }, getPositionStyles['default'](positioning, containerWidth, theme.spacing.md)), style)
-  }, others), /* @__PURE__ */ React__default['default'].createElement(reactTransitionGroup.TransitionGroup, null, items))), children);
+  }, others), /* @__PURE__ */ React__default.createElement(reactTransitionGroup.TransitionGroup, null, items))), children);
 }
 NotificationsProvider.displayName = "@mantine/notifications/NotificationsProvider";
 

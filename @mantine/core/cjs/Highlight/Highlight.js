@@ -6,7 +6,7 @@ var React = require('react');
 var theme = require('@mantine/theme');
 var Text = require('../Text/Text.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 
@@ -67,16 +67,16 @@ function Highlight(_a) {
     "highlightColor"
   ]);
   const theme$1 = theme.useMantineTheme(themeOverride);
-  const color = theme.getThemeColor({
+  const color = theme.hexToRgba(theme.getThemeColor({
     theme: theme$1,
     color: highlightColor,
-    shade: 2
-  });
+    shade: theme$1.colorScheme === "dark" ? 4 : 2
+  }), theme$1.colorScheme === "dark" ? 0.7 : 1);
   const {start, end, highlighted} = highlighter(children, highlight);
-  return /* @__PURE__ */ React__default['default'].createElement(Text.Text, __spreadValues({
+  return /* @__PURE__ */ React__default.createElement(Text.Text, __spreadValues({
     component,
     themeOverride
-  }, others), !!start && start, !!highlighted && /* @__PURE__ */ React__default['default'].createElement("mark", {
+  }, others), !!start && start, !!highlighted && /* @__PURE__ */ React__default.createElement("mark", {
     style: {
       backgroundColor: color,
       color: theme$1.colorScheme === "dark" ? theme$1.colors.dark[9] : "inherit"

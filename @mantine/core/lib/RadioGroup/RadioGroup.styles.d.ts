@@ -4,8 +4,6 @@ interface RadioGroupStylesProps {
     spacing: MantineNumberSize;
     variant: 'vertical' | 'horizontal';
 }
-declare const _default: (data?: RadioGroupStylesProps & {
-    theme?: MantineTheme;
-}) => import("jss").Classes<"wrapper">;
+declare const _default: (args?: RadioGroupStylesProps) => import("jss").Classes<"wrapper">;
 export default _default;
 //# sourceMappingURL=RadioGroup.styles.d.ts.map

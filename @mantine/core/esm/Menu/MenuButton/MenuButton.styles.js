@@ -1,5 +1,4 @@
-import { getThemeColor, getFontStyles } from '@mantine/theme';
-import { createUseStyles } from 'react-jss';
+import { createMemoStyles, getThemeColor, getFontStyles } from '@mantine/theme';
 
 var __defProp = Object.defineProperty;
 var __defProps = Object.defineProperties;
@@ -20,7 +19,7 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-var useStyles = createUseStyles({
+var useStyles = createMemoStyles({
   hovered: {},
   item: ({theme, color}) => __spreadProps(__spreadValues({}, getFontStyles(theme)), {
     WebkitTapHighlightColor: "transparent",
@@ -30,7 +29,10 @@ var useStyles = createUseStyles({
     outline: 0,
     width: "100%",
     textAlign: "left",
+    display: "inline-block",
+    textDecoration: "none",
     height: 32,
+    boxSizing: "border-box",
     padding: [0, theme.spacing.sm],
     cursor: "pointer",
     color: color ? getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 4 : 6}) : theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.colors.gray[9],
@@ -39,15 +41,16 @@ var useStyles = createUseStyles({
       cursor: "not-allowed"
     },
     "&$hovered:not(:disabled), &:not(:disabled):hover": {
-      backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[1],
+      backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[1],
       "&:not(:disabled):active": {
-        backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.colors.gray[2]
+        backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[2]
       }
     }
   }),
   inner: {
     display: "flex",
-    alignItems: "center"
+    alignItems: "center",
+    height: "100%"
   },
   body: {
     display: "flex",
@@ -57,14 +60,14 @@ var useStyles = createUseStyles({
   },
   icon: ({theme}) => ({
     marginRight: theme.spacing.xs,
-    "& > *": {
+    "& *": {
       display: "block"
     }
   }),
   label: {
     lineHeight: 1
   }
-}, {link: true});
+});
 
 export default useStyles;
 //# sourceMappingURL=MenuButton.styles.js.map

@@ -7,7 +7,7 @@ var cx = require('clsx');
 var theme = require('@mantine/theme');
 var Kbd_styles = require('./Kbd.styles.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var cx__default = /*#__PURE__*/_interopDefaultLegacy(cx);
@@ -43,8 +43,8 @@ var __objRest = (source, exclude) => {
 function Kbd(_a) {
   var _b = _a, {className, children, themeOverride} = _b, others = __objRest(_b, ["className", "children", "themeOverride"]);
   const classes = Kbd_styles['default']({theme: theme.useMantineTheme(themeOverride)});
-  return /* @__PURE__ */ React__default['default'].createElement("kbd", __spreadValues({
-    className: cx__default['default'](classes.kbd, className)
+  return /* @__PURE__ */ React__default.createElement("kbd", __spreadValues({
+    className: cx__default(classes.kbd, className)
   }, others), children);
 }
 Kbd.displayName = "@mantine/core/Kbd";

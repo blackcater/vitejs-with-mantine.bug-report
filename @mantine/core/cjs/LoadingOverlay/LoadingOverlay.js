@@ -11,7 +11,7 @@ var Transition = require('../Transition/Transition.js');
 var Loader = require('../Loader/Loader.js');
 var LoadingOverlay_styles = require('./LoadingOverlay.styles.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var cx__default = /*#__PURE__*/_interopDefaultLegacy(cx);
@@ -57,7 +57,8 @@ function LoadingOverlay(_a) {
     themeOverride,
     transitionDuration = 200,
     zIndex = 1e3,
-    style
+    style,
+    loader
   } = _b, others = __objRest(_b, [
     "className",
     "visible",
@@ -67,27 +68,30 @@ function LoadingOverlay(_a) {
     "themeOverride",
     "transitionDuration",
     "zIndex",
-    "style"
+    "style",
+    "loader"
   ]);
   const theme$1 = theme.useMantineTheme(themeOverride);
   const classes = LoadingOverlay_styles['default']();
   const reduceMotion = hooks.useReducedMotion();
   const duration = reduceMotion ? 1 : transitionDuration;
-  return /* @__PURE__ */ React__default['default'].createElement(Transition.Transition, {
+  return /* @__PURE__ */ React__default.createElement(Transition.Transition, {
     duration,
     mounted: visible,
     transition: "fade",
     themeOverride
-  }, (transitionStyles) => /* @__PURE__ */ React__default['default'].createElement("div", __spreadValues({
-    className: cx__default['default'](classes.loadingOverlay, className),
+  }, (transitionStyles) => /* @__PURE__ */ React__default.createElement("div", __spreadValues({
+    className: cx__default(classes.loadingOverlay, className),
     style: __spreadProps(__spreadValues(__spreadValues({}, transitionStyles), style), {zIndex})
-  }, others), /* @__PURE__ */ React__default['default'].createElement(Loader.Loader, __spreadValues({
+  }, others), loader ? /* @__PURE__ */ React__default.createElement("div", {
+    style: {zIndex: zIndex + 1}
+  }, loader) : /* @__PURE__ */ React__default.createElement(Loader.Loader, __spreadValues({
     themeOverride,
     style: {zIndex: zIndex + 1}
-  }, loaderProps)), /* @__PURE__ */ React__default['default'].createElement(Overlay.Overlay, {
+  }, loaderProps)), /* @__PURE__ */ React__default.createElement(Overlay.Overlay, {
     opacity: overlayOpacity,
-    color: overlayColor || (theme$1.colorScheme === "dark" ? theme$1.colors.dark[5] : theme$1.white),
-    zIndex
+    zIndex,
+    color: overlayColor || (theme$1.colorScheme === "dark" ? theme$1.colors.dark[5] : theme$1.white)
   })));
 }
 LoadingOverlay.displayName = "@mantine/core/LoadingOverlay";

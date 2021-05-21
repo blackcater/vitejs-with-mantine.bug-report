@@ -8,7 +8,7 @@ var hooks = require('@mantine/hooks');
 var theme = require('@mantine/theme');
 var Burger_styles = require('./Burger.styles.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var cx__default = /*#__PURE__*/_interopDefaultLegacy(cx);
@@ -64,12 +64,12 @@ function Burger(_a) {
     theme: theme.useMantineTheme(themeOverride),
     reduceMotion: hooks.useReducedMotion()
   });
-  return /* @__PURE__ */ React__default['default'].createElement("button", __spreadValues({
+  return /* @__PURE__ */ React__default.createElement("button", __spreadValues({
     type: "button",
-    className: cx__default['default'](classes.wrapper, className),
+    className: cx__default(classes.wrapper, className),
     ref: elementRef
-  }, others), /* @__PURE__ */ React__default['default'].createElement("div", {
-    className: cx__default['default'](classes.burger, {[classes.opened]: opened})
+  }, others), /* @__PURE__ */ React__default.createElement("div", {
+    className: cx__default(classes.burger, {[classes.opened]: opened})
   }));
 }
 Burger.displayName = "@mantine/core/Burger";

@@ -14,8 +14,6 @@ interface ProgressStylesProps {
     size: MantineNumberSize;
     striped: boolean;
 }
-declare const _default: (data?: ProgressStylesProps & {
-    theme?: MantineTheme;
-}) => import("jss").Classes<"progress" | "bar">;
+declare const _default: (args?: ProgressStylesProps) => import("jss").Classes<"progress" | "bar">;
 export default _default;
 //# sourceMappingURL=Progress.styles.d.ts.map

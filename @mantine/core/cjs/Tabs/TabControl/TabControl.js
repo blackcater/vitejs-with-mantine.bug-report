@@ -8,7 +8,7 @@ var hooks = require('@mantine/hooks');
 var theme = require('@mantine/theme');
 var TabControl_styles = require('./TabControl.styles.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var cx__default = /*#__PURE__*/_interopDefaultLegacy(cx);
@@ -66,21 +66,20 @@ function TabControl(_a) {
     color: overrideColor || color,
     theme: theme.useMantineTheme(themeOverride)
   });
-  return /* @__PURE__ */ React__default['default'].createElement("button", __spreadProps(__spreadValues(__spreadValues({}, others), props), {
+  return /* @__PURE__ */ React__default.createElement("button", __spreadProps(__spreadValues(__spreadValues({}, others), props), {
     "data-mantine-tab": true,
-    "data-mantine-composable": true,
     tabIndex: active ? 0 : -1,
-    className: cx__default['default'](classes.tab, {[classes.tabActive]: active}, className),
+    className: cx__default(classes.tab, {[classes.tabActive]: active}, className),
     type: "button",
     role: "tab",
     "aria-selected": active,
     ref: hooks.useMergedRef(elementRef, tabProps.elementRef)
-  }), /* @__PURE__ */ React__default['default'].createElement("div", {
+  }), /* @__PURE__ */ React__default.createElement("div", {
     className: classes.tabInner
-  }, icon && /* @__PURE__ */ React__default['default'].createElement("div", {
+  }, icon && /* @__PURE__ */ React__default.createElement("div", {
     "data-mantine-icon": true,
     className: classes.tabIcon
-  }, icon), label && /* @__PURE__ */ React__default['default'].createElement("div", {
+  }, icon), label && /* @__PURE__ */ React__default.createElement("div", {
     "data-mantine-label": true
   }, label)));
 }

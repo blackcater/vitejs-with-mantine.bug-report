@@ -4,7 +4,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var React = require('react');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 
@@ -50,7 +50,7 @@ function Overlay(_a) {
     "style",
     "component"
   ]);
-  return /* @__PURE__ */ React__default['default'].createElement(Element, __spreadValues({
+  return /* @__PURE__ */ React__default.createElement(Element, __spreadValues({
     style: __spreadValues({
       opacity,
       backgroundColor: color,

@@ -78,7 +78,6 @@ function Button(_a) {
     className: cx(classes.shared, classes[variant], className),
     type,
     disabled,
-    "data-mantine-composable": true,
     ref: elementRef,
     onTouchStart: () => {
     }

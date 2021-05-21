@@ -1,9 +1,3 @@
-import { MantineTheme } from '@mantine/theme';
-interface BreadcrumbsStylesProps {
-    theme: MantineTheme;
-}
-declare const _default: (data?: BreadcrumbsStylesProps & {
-    theme?: MantineTheme;
-}) => import("jss").Classes<"separator" | "breadcrumbs" | "breadcrumb">;
+declare const _default: (args?: unknown) => import("jss").Classes<"breadcrumbs" | "breadcrumb" | "separator">;
 export default _default;
 //# sourceMappingURL=Breadcrumbs.styles.d.ts.map

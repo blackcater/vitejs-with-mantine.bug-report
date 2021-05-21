@@ -8,7 +8,7 @@ var theme = require('@mantine/theme');
 var QuoteIcon = require('./QuoteIcon.js');
 var Blockquote_styles = require('./Blockquote.styles.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var cx__default = /*#__PURE__*/_interopDefaultLegacy(cx);
@@ -41,7 +41,7 @@ var __objRest = (source, exclude) => {
     }
   return target;
 };
-const defaultIcon = /* @__PURE__ */ React__default['default'].createElement(QuoteIcon.QuoteIcon, null);
+const defaultIcon = /* @__PURE__ */ React__default.createElement(QuoteIcon.QuoteIcon, null);
 function Blockquote(_a) {
   var _b = _a, {
     className,
@@ -59,16 +59,16 @@ function Blockquote(_a) {
     "themeOverride"
   ]);
   const classes = Blockquote_styles['default']({color, theme: theme.useMantineTheme(themeOverride)});
-  return /* @__PURE__ */ React__default['default'].createElement("blockquote", __spreadValues({
-    className: cx__default['default'](classes.blockquote, className)
-  }, others), /* @__PURE__ */ React__default['default'].createElement("div", {
+  return /* @__PURE__ */ React__default.createElement("blockquote", __spreadValues({
+    className: cx__default(classes.blockquote, className)
+  }, others), /* @__PURE__ */ React__default.createElement("div", {
     className: classes.inner
-  }, icon && /* @__PURE__ */ React__default['default'].createElement("div", {
+  }, icon && /* @__PURE__ */ React__default.createElement("div", {
     "data-mantine-icon": true,
     className: classes.icon
-  }, icon), /* @__PURE__ */ React__default['default'].createElement("div", {
+  }, icon), /* @__PURE__ */ React__default.createElement("div", {
     className: classes.body
-  }, children, cite && /* @__PURE__ */ React__default['default'].createElement("cite", {
+  }, children, cite && /* @__PURE__ */ React__default.createElement("cite", {
     className: classes.cite
   }, cite))));
 }

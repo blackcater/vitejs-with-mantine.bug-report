@@ -8,14 +8,14 @@ export declare const CHECKBOX_SIZES: {
     xl: number;
 };
 export interface CheckboxProps extends DefaultProps, Omit<React.ComponentPropsWithoutRef<'input'>, 'type' | 'size'> {
-    /** Checkbox checked and intermediate state color from theme, defaults to theme.primaryColor */
+    /** Checkbox checked and indeterminate state color from theme, defaults to theme.primaryColor */
     color?: string;
     /** Predefined label font-size and checkbox width and height in px */
     size?: MantineSize;
     /** Checkbox label */
     label?: React.ReactNode;
-    /** Intermediate state of checkbox, overwrites checked */
-    intermediate?: boolean;
+    /** Indeterminate state of checkbox, overwrites checked */
+    indeterminate?: boolean;
     /** Style properties added to input element */
     inputStyle?: React.CSSProperties;
     /** Class name added to input element */
@@ -27,7 +27,7 @@ export interface CheckboxProps extends DefaultProps, Omit<React.ComponentPropsWi
     /** Get input ref */
     elementRef?: React.ForwardedRef<HTMLInputElement>;
 }
-export declare function Checkbox({ className, checked, onChange, color, themeOverride, label, disabled, intermediate, id, size, wrapperProps, style, inputStyle, inputClassName, elementRef, ...others }: CheckboxProps): JSX.Element;
+export declare function Checkbox({ className, checked, onChange, color, themeOverride, label, disabled, indeterminate, id, size, wrapperProps, style, inputStyle, inputClassName, elementRef, children, ...others }: CheckboxProps): JSX.Element;
 export declare namespace Checkbox {
     var displayName: string;
 }

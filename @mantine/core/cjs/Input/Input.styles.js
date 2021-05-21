@@ -2,7 +2,6 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var reactJss = require('react-jss');
 var theme = require('@mantine/theme');
 
 var __defProp = Object.defineProperty;
@@ -24,7 +23,7 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-var useStyles = reactJss.createUseStyles({
+var useStyles = theme.createMemoStyles({
   withIcon: {},
   inputWrapper: ({radius, theme: theme$1}) => ({
     position: "relative",
@@ -33,17 +32,17 @@ var useStyles = reactJss.createUseStyles({
   }),
   defaultVariant: ({theme: theme$1, radius}) => ({
     "& $input": {
-      backgroundColor: theme$1.colorScheme === "dark" ? theme$1.colors.dark[5] : theme$1.white,
+      backgroundColor: theme$1.colorScheme === "dark" ? theme$1.colors.dark[7] : theme$1.white,
       minHeight: 36,
-      padding: [7, theme$1.spacing.sm],
+      paddingLeft: theme$1.spacing.md,
+      paddingRight: theme$1.spacing.md,
       borderRadius: theme.getSizeValue({size: radius, sizes: theme$1.radius}),
       border: `1px solid ${theme$1.colorScheme === "dark" ? theme$1.colors.dark[4] : theme$1.colors.gray[4]}`,
       transition: "border-color 100ms ease, box-shadow 100ms ease",
       color: theme$1.colorScheme === "dark" ? theme$1.colors.dark[0] : theme$1.black,
       "&:focus": {
         outline: "none",
-        borderColor: theme$1.colors[theme$1.primaryColor][6],
-        boxShadow: `0 0 4px ${theme$1.colors.gray[3]}`
+        borderColor: theme$1.colors[theme$1.primaryColor][theme$1.colorScheme === "dark" ? 8 : 6]
       }
     },
     "&$invalid $input": {
@@ -63,12 +62,11 @@ var useStyles = reactJss.createUseStyles({
       paddingRight: theme$1.spacing.md,
       borderRadius: theme.getSizeValue({size: radius, sizes: theme$1.radius}),
       border: "1px solid transparent",
-      backgroundColor: theme$1.colorScheme === "dark" ? theme$1.colors.dark[9] : theme$1.colors.gray[1],
+      backgroundColor: theme$1.colorScheme === "dark" ? theme$1.colors.dark[5] : theme$1.colors.gray[1],
       color: theme$1.colorScheme === "dark" ? theme$1.colors.dark[0] : theme$1.black,
       "&:focus": {
         outline: "none",
-        borderColor: `${theme$1.colors[theme$1.primaryColor][theme$1.colorScheme === "dark" ? 4 : 6]} !important`,
-        boxShadow: `0 0 4px ${theme$1.colors.gray[3]}`
+        borderColor: `${theme$1.colors[theme$1.primaryColor][theme$1.colorScheme === "dark" ? 8 : 6]} !important`
       },
       "&::placeholder": {
         color: theme$1.colorScheme === "dark" ? theme$1.colors.dark[2] : theme$1.colors.gray[6]
@@ -81,7 +79,7 @@ var useStyles = reactJss.createUseStyles({
     },
     "&$invalid $input": {
       borderColor: theme$1.colorScheme === "dark" ? theme$1.colors.red[4] : "transparent",
-      backgroundColor: theme$1.colorScheme !== "dark" && theme$1.colors.red[0]
+      backgroundColor: theme$1.colorScheme === "dark" ? theme$1.colors.dark[5] : theme$1.colors.red[0]
     },
     "& $withIcon": {
       paddingLeft: 35
@@ -115,7 +113,7 @@ var useStyles = reactJss.createUseStyles({
     appearance: "none",
     resize: "none",
     boxSizing: "border-box",
-    fontSize: 14,
+    fontSize: theme$1.fontSizes.sm,
     width: "100%",
     color: theme$1.black,
     display: "block",
@@ -142,7 +140,7 @@ var useStyles = reactJss.createUseStyles({
     left: 0,
     top: 0,
     bottom: 0,
-    color: theme.colorScheme === "dark" ? theme.colors.dark[3] : theme.colors.gray[5],
+    color: theme.colorScheme === "dark" ? theme.colors.dark[2] : theme.colors.gray[5],
     display: "flex",
     alignItems: "center",
     justifyContent: "center"
@@ -168,7 +166,7 @@ var useStyles = reactJss.createUseStyles({
     alignItems: "center",
     justifyContent: "center"
   }
-}, {link: true});
+});
 
 exports.default = useStyles;
 //# sourceMappingURL=Input.styles.js.map

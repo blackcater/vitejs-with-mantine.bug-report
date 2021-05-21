@@ -16,6 +16,10 @@ export default defineConfig({
         replacement: path.resolve(__dirname, "@mantine/hooks"),
       },
       {
+        find: "@mantine/utils",
+        replacement: path.resolve(__dirname, "@mantine/utils"),
+      },
+      {
         find: "@mantine/theme",
         replacement: path.resolve(__dirname, "@mantine/theme"),
       },

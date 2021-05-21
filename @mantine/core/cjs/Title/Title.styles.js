@@ -2,7 +2,6 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var reactJss = require('react-jss');
 var theme = require('@mantine/theme');
 
 var __defProp = Object.defineProperty;
@@ -24,7 +23,7 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-var useStyles = reactJss.createUseStyles({
+var useStyles = theme.createMemoStyles({
   title: ({theme: theme$1, element}) => __spreadProps(__spreadValues({}, theme.getFontStyles(theme$1)), {
     fontFamily: theme$1.headings.fontFamily,
     fontWeight: theme$1.headings.fontWeight,
@@ -36,7 +35,7 @@ var useStyles = reactJss.createUseStyles({
       fontSize: typeof theme$1.headings.sizes[element].fontSize === "number" && theme$1.headings.sizes[element].fontSize / 1.3
     }
   })
-}, {link: true});
+});
 
 exports.default = useStyles;
 //# sourceMappingURL=Title.styles.js.map

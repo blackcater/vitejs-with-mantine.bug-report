@@ -1,5 +1,4 @@
-import { createUseStyles } from 'react-jss';
-import { getThemeColor, getFontStyles } from '@mantine/theme';
+import { createMemoStyles, getThemeColor, hexToRgba, getFontStyles } from '@mantine/theme';
 
 var __defProp = Object.defineProperty;
 var __defProps = Object.defineProperties;
@@ -20,19 +19,19 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-var useStyles = createUseStyles({
+var useStyles = createMemoStyles({
   code: ({theme, color}) => __spreadProps(__spreadValues({}, getFontStyles(theme)), {
     lineHeight: theme.lineHeight,
     padding: [1, theme.spacing.xs / 2],
     borderRadius: theme.radius.sm,
     color: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 1 : 9}),
-    backgroundColor: getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 9 : 0}),
+    backgroundColor: hexToRgba(getThemeColor({theme, color, shade: theme.colorScheme === "dark" ? 9 : 0}), theme.colorScheme === "dark" ? 0.45 : 1),
     fontFamily: theme.fontFamilyMonospace,
     fontSize: theme.fontSizes.xs,
-    border: `1px solid ${getThemeColor({
+    border: `1px solid ${theme.colorScheme === "dark" ? "transparent" : getThemeColor({
       theme,
       color,
-      shade: theme.colorScheme === "dark" ? 9 : 3
+      shade: 2
     })}`
   }),
   pre: ({theme}) => ({
@@ -40,7 +39,7 @@ var useStyles = createUseStyles({
     margin: 0,
     overflowX: "auto"
   })
-}, {link: true});
+});
 
 export default useStyles;
 //# sourceMappingURL=Code.styles.js.map

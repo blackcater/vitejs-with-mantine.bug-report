@@ -8,7 +8,7 @@ var core = require('@mantine/core');
 var CheckIcon = require('./CheckIcon.js');
 var TagEdit_styles = require('./TagEdit.styles.js');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 
@@ -69,36 +69,36 @@ function TagEdit({
   React.useEffect(() => {
     setValues(initialValues);
   }, [initialValues]);
-  const colorsList = colors.map((color) => /* @__PURE__ */ React__default['default'].createElement("button", {
+  const colorsList = colors.map((color) => /* @__PURE__ */ React__default.createElement("button", {
     "data-mantine-tag-color": true,
     className: classes.colorControl,
     type: "button",
     key: color.color,
     onClick: () => handleColorChange(color.color)
-  }, /* @__PURE__ */ React__default['default'].createElement("div", {
+  }, /* @__PURE__ */ React__default.createElement("div", {
     className: classes.colorControlBody
-  }, /* @__PURE__ */ React__default['default'].createElement(core.ColorSwatch, {
+  }, /* @__PURE__ */ React__default.createElement(core.ColorSwatch, {
     color: theme.colors[color.color][5],
     size: 18,
     themeOverride
-  }), /* @__PURE__ */ React__default['default'].createElement("span", {
+  }), /* @__PURE__ */ React__default.createElement("span", {
     "data-mantine-tag-color-label": true,
     className: classes.colorLabel
-  }, color.name)), color.color === values.color && /* @__PURE__ */ React__default['default'].createElement(CheckIcon.CheckIcon, {
+  }, color.name)), color.color === values.color && /* @__PURE__ */ React__default.createElement(CheckIcon.CheckIcon, {
     style: {width: 14, height: 14}
   })));
-  return /* @__PURE__ */ React__default['default'].createElement(core.Paper, {
+  return /* @__PURE__ */ React__default.createElement(core.Paper, {
     shadow: "sm",
     className: classes.tagEdit,
     elementRef: dropdownRef,
     onKeyDownCapture: handleKeyDownCapture,
     style,
     themeOverride
-  }, /* @__PURE__ */ React__default['default'].createElement("div", {
+  }, /* @__PURE__ */ React__default.createElement("div", {
     ref: focusTrapRef
-  }, /* @__PURE__ */ React__default['default'].createElement("div", {
+  }, /* @__PURE__ */ React__default.createElement("div", {
     className: classes.header
-  }, /* @__PURE__ */ React__default['default'].createElement(core.TextInput, {
+  }, /* @__PURE__ */ React__default.createElement(core.TextInput, {
     "data-mantine-tag-input": true,
     className: classes.input,
     value: values.name,
@@ -107,21 +107,21 @@ function TagEdit({
     autoFocus: true,
     "aria-label": tagNameEditLabel,
     themeOverride
-  }), /* @__PURE__ */ React__default['default'].createElement(core.ActionIcon, {
+  }), /* @__PURE__ */ React__default.createElement(core.ActionIcon, {
     "data-mantine-tag-save": true,
     size: 36,
     variant: theme.colorScheme === "dark" ? "transparent" : "light",
     onClick: handleSubmit,
     themeOverride,
     "aria-label": saveLabel
-  }, /* @__PURE__ */ React__default['default'].createElement(CheckIcon.CheckIcon, {
+  }, /* @__PURE__ */ React__default.createElement(CheckIcon.CheckIcon, {
     style: {width: 16, height: 16}
-  }))), enableDelete && /* @__PURE__ */ React__default['default'].createElement("button", {
+  }))), enableDelete && /* @__PURE__ */ React__default.createElement("button", {
     "data-mantine-tag-delete": true,
     className: classes.deleteControl,
     type: "button",
     onClick: handleDelete
-  }, deleteLabel), enableColorChange && /* @__PURE__ */ React__default['default'].createElement("div", {
+  }, deleteLabel), enableColorChange && /* @__PURE__ */ React__default.createElement("div", {
     "data-mantine-tag-colors": true,
     className: classes.colorsList
   }, colorsList)));
