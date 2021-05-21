@@ -1001,11 +1001,6 @@
         "signature": "b380a071f1410b9d5e3c7ccc6e449ec76d317bda8b528ad48dbcdc0b8791e224",
         "affectsGlobalScope": false
       },
-      "./src/transition/get-transition-styles/get-transition-styles.test.ts": {
-        "version": "208ec5948d95755ffe00467d95a8a2acf2b8147a4c9282d4a2ec95708ca8fab8",
-        "signature": "4278ecaf274ac08f12d79a1df575c9b988916f7170f9a176025f210c4a1b8fd1",
-        "affectsGlobalScope": false
-      },
       "../../configuration/types/webpack-overrides.d.ts": {
         "version": "36b84d4ff6f8021d1b752145eaf03c2b672a5f1bb48ae3213883d98545177fef",
         "signature": "36b84d4ff6f8021d1b752145eaf03c2b672a5f1bb48ae3213883d98545177fef",
@@ -1722,8 +1717,8 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/yargs/index.d.ts": {
-        "version": "5a2a25feca554a8f289ed62114771b8c63d89f2b58325e2f8b7043e4e0160d11",
-        "signature": "5a2a25feca554a8f289ed62114771b8c63d89f2b58325e2f8b7043e4e0160d11",
+        "version": "99bbadcf4153b61d79a2616b377da8f42a16fcb41d2136f1f6c2cf070b084216",
+        "signature": "99bbadcf4153b61d79a2616b377da8f42a16fcb41d2136f1f6c2cf070b084216",
         "affectsGlobalScope": false
       }
     },
@@ -1741,13 +1736,7 @@
       "skipLibCheck": true,
       "noEmitOnError": true,
       "allowJs": true,
-      "baseUrl": "../..",
-      "paths": {
-        "@mantine/*": [
-          "./src/mantine-*/src"
-        ]
-      },
-      "pathsBasePath": "/Users/blackcater/Downloads/Codes/javascript/mantine",
+      "baseUrl": "./",
       "rootDir": "./src",
       "outDir": "./lib",
       "declaration": true,
@@ -2925,10 +2914,6 @@
         "../mantine-theme/lib/index.d.ts",
         "./src/tooltip/tooltip.styles.ts",
         "./src/transition/transition.tsx"
-      ],
-      "./src/transition/get-transition-styles/get-transition-styles.test.ts": [
-        "./src/transition/get-transition-styles/get-transition-styles.ts",
-        "./src/transition/transitions.ts"
       ],
       "./src/transition/get-transition-styles/get-transition-styles.ts": [
         "../../node_modules/@types/react-transition-group/index.d.ts",
@@ -4480,7 +4465,6 @@
       "./src/title/title.tsx",
       "./src/tooltip/tooltip.styles.ts",
       "./src/tooltip/tooltip.tsx",
-      "./src/transition/get-transition-styles/get-transition-styles.test.ts",
       "./src/transition/get-transition-styles/get-transition-styles.ts",
       "./src/transition/groupedtransition.tsx",
       "./src/transition/transition.tsx",

@@ -341,56 +341,6 @@
         "signature": "e93803ff5b8b0ccede0a98e8f717648e4dd52d31fb3e6b559d1b7c2bcf4ad49c",
         "affectsGlobalScope": false
       },
-      "../../node_modules/@testing-library/react-hooks/lib/types/index.d.ts": {
-        "version": "8c0cb9be8009a01a2e26fb159c125bfc2f658d5298086b68306a0e5348794a70",
-        "signature": "8c0cb9be8009a01a2e26fb159c125bfc2f658d5298086b68306a0e5348794a70",
-        "affectsGlobalScope": false
-      },
-      "../../node_modules/@testing-library/react-hooks/lib/types/react.d.ts": {
-        "version": "880122ebb7ccf430e4a15762fbee7190dbc7fd12ae774f1b57f07d205de39a8c",
-        "signature": "880122ebb7ccf430e4a15762fbee7190dbc7fd12ae774f1b57f07d205de39a8c",
-        "affectsGlobalScope": false
-      },
-      "../../node_modules/@testing-library/react-hooks/lib/pure.d.ts": {
-        "version": "7412268a2a0e03d5e001fe4d21948e9138833ce5e6e8bbe695f5a35980cedd10",
-        "signature": "7412268a2a0e03d5e001fe4d21948e9138833ce5e6e8bbe695f5a35980cedd10",
-        "affectsGlobalScope": false
-      },
-      "../../node_modules/@testing-library/react-hooks/lib/index.d.ts": {
-        "version": "15f22e0d2b12a74931641f1eea436a198bec2a710aa6a5a8402b1b01a698eb0c",
-        "signature": "15f22e0d2b12a74931641f1eea436a198bec2a710aa6a5a8402b1b01a698eb0c",
-        "affectsGlobalScope": false
-      },
-      "./src/use-document-title/use-document-title.test.ts": {
-        "version": "2995ae6396d6aecb4c4b77cb85c7eb2867fb8dce4536764eae4f7c00c95eb77b",
-        "signature": "5da1bedb1e043e58531336bf3a50edf86a4fc385f4d6cbe88de6cbc160b4a3b6",
-        "affectsGlobalScope": false
-      },
-      "./src/use-form/use-form.test.ts": {
-        "version": "b6e3a39b4ef61392119782c9c7e6d46ab496d169c4351e0de7262f1f1e344feb",
-        "signature": "42af102dd0755be17a3094461e69ff2c610ad60e790af8106916f79407836f8e",
-        "affectsGlobalScope": false
-      },
-      "./src/use-id/use-id.test.ts": {
-        "version": "7f89f56c8ad1e6a2b0a1f224474f3749a8dd8698d1f03721a37aaa33d2560f7e",
-        "signature": "1a869ebb8b324cf58c62988039a58acc0af9fd87f507947e43cbd15a36da7871",
-        "affectsGlobalScope": false
-      },
-      "./src/use-list-state/use-list-state.test.ts": {
-        "version": "0e4b217f1f933e3651f321a27e779b613b14398172cac8adb0a3d0b160e0c417",
-        "signature": "12ad15bd36d583ef806fd27f387e463c3d5e1af55fbe97e216f9ed3d997743ce",
-        "affectsGlobalScope": false
-      },
-      "./src/use-queue/use-queue.test.ts": {
-        "version": "6ccf8afd53062aca6669e73be10639939c9f55bd01a0b6233eff09b4c7033f3b",
-        "signature": "81e8ee6308c7860c2d7cc9c157c6ca72560ad184b68d9e642488915fc7e85213",
-        "affectsGlobalScope": false
-      },
-      "./src/use-scroll-lock/use-scroll-lock.test.ts": {
-        "version": "8955ed89fe1f9d8d166ab32464d8cb4d8027c0a078808f51d3e5eb1ba8ce0fdd",
-        "signature": "8e112067b88a77722c2b2a75aaf8aa88be504574f45110b4ad1de0f8e24a56b7",
-        "affectsGlobalScope": false
-      },
       "../../configuration/types/webpack-overrides.d.ts": {
         "version": "36b84d4ff6f8021d1b752145eaf03c2b672a5f1bb48ae3213883d98545177fef",
         "signature": "36b84d4ff6f8021d1b752145eaf03c2b672a5f1bb48ae3213883d98545177fef",
@@ -1152,8 +1102,8 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/yargs/index.d.ts": {
-        "version": "5a2a25feca554a8f289ed62114771b8c63d89f2b58325e2f8b7043e4e0160d11",
-        "signature": "5a2a25feca554a8f289ed62114771b8c63d89f2b58325e2f8b7043e4e0160d11",
+        "version": "99bbadcf4153b61d79a2616b377da8f42a16fcb41d2136f1f6c2cf070b084216",
+        "signature": "99bbadcf4153b61d79a2616b377da8f42a16fcb41d2136f1f6c2cf070b084216",
         "affectsGlobalScope": false
       }
     },
@@ -1171,13 +1121,7 @@
       "skipLibCheck": true,
       "noEmitOnError": true,
       "allowJs": true,
-      "baseUrl": "../..",
-      "paths": {
-        "@mantine/*": [
-          "./src/mantine-*/src"
-        ]
-      },
-      "pathsBasePath": "/Users/blackcater/Downloads/Codes/javascript/mantine",
+      "baseUrl": "./",
       "rootDir": "./src",
       "outDir": "./lib",
       "declaration": true,
@@ -1189,17 +1133,6 @@
     "referencedMap": {
       "../../node_modules/@babel/parser/typings/babel-parser.d.ts": [
         "../../node_modules/@babel/types/lib/index.d.ts"
-      ],
-      "../../node_modules/@testing-library/react-hooks/lib/index.d.ts": [
-        "../../node_modules/@testing-library/react-hooks/lib/pure.d.ts"
-      ],
-      "../../node_modules/@testing-library/react-hooks/lib/pure.d.ts": [
-        "../../node_modules/@testing-library/react-hooks/lib/types/index.d.ts",
-        "../../node_modules/@testing-library/react-hooks/lib/types/react.d.ts"
-      ],
-      "../../node_modules/@testing-library/react-hooks/lib/types/react.d.ts": [
-        "../../node_modules/@testing-library/react-hooks/lib/types/index.d.ts",
-        "../../node_modules/@types/react/index.d.ts"
       ],
       "../../node_modules/@types/babel__core/index.d.ts": [
         "../../node_modules/@babel/parser/typings/babel-parser.d.ts",
@@ -1765,10 +1698,6 @@
       "./src/use-color-scheme/use-color-scheme.ts": [
         "./src/use-media-query/use-media-query.ts"
       ],
-      "./src/use-document-title/use-document-title.test.ts": [
-        "../../node_modules/@testing-library/react-hooks/lib/index.d.ts",
-        "./src/use-document-title/use-document-title.ts"
-      ],
       "./src/use-document-title/use-document-title.ts": [
         "../../node_modules/@types/react/index.d.ts"
       ],
@@ -1785,23 +1714,11 @@
         "./src/use-focus-trap/scope-tab.ts",
         "./src/use-focus-trap/tabbable.ts"
       ],
-      "./src/use-form/use-form.test.ts": [
-        "../../node_modules/@testing-library/react-hooks/lib/index.d.ts",
-        "./src/use-form/use-form.ts"
-      ],
       "./src/use-form/use-form.ts": [
         "../../node_modules/@types/react/index.d.ts"
       ],
-      "./src/use-id/use-id.test.ts": [
-        "../../node_modules/@testing-library/react-hooks/lib/index.d.ts",
-        "./src/use-id/use-id.ts"
-      ],
       "./src/use-id/use-id.ts": [
         "../../node_modules/@types/react/index.d.ts"
-      ],
-      "./src/use-list-state/use-list-state.test.ts": [
-        "../../node_modules/@testing-library/react-hooks/lib/index.d.ts",
-        "./src/use-list-state/use-list-state.ts"
       ],
       "./src/use-list-state/use-list-state.ts": [
         "../../node_modules/@types/react/index.d.ts"
@@ -1816,19 +1733,11 @@
       "./src/use-merged-ref/use-merged-ref.ts": [
         "../../node_modules/@types/react/index.d.ts"
       ],
-      "./src/use-queue/use-queue.test.ts": [
-        "../../node_modules/@testing-library/react-hooks/lib/index.d.ts",
-        "./src/use-queue/use-queue.ts"
-      ],
       "./src/use-queue/use-queue.ts": [
         "../../node_modules/@types/react/index.d.ts"
       ],
       "./src/use-reduced-motion/use-reduced-motion.ts": [
         "./src/use-media-query/use-media-query.ts"
-      ],
-      "./src/use-scroll-lock/use-scroll-lock.test.ts": [
-        "../../node_modules/@testing-library/react-hooks/lib/index.d.ts",
-        "./src/use-scroll-lock/use-scroll-lock.ts"
       ],
       "./src/use-scroll-lock/use-scroll-lock.ts": [
         "../../node_modules/@types/react/index.d.ts"
@@ -1840,17 +1749,6 @@
     "exportedModulesMap": {
       "../../node_modules/@babel/parser/typings/babel-parser.d.ts": [
         "../../node_modules/@babel/types/lib/index.d.ts"
-      ],
-      "../../node_modules/@testing-library/react-hooks/lib/index.d.ts": [
-        "../../node_modules/@testing-library/react-hooks/lib/pure.d.ts"
-      ],
-      "../../node_modules/@testing-library/react-hooks/lib/pure.d.ts": [
-        "../../node_modules/@testing-library/react-hooks/lib/types/index.d.ts",
-        "../../node_modules/@testing-library/react-hooks/lib/types/react.d.ts"
-      ],
-      "../../node_modules/@testing-library/react-hooks/lib/types/react.d.ts": [
-        "../../node_modules/@testing-library/react-hooks/lib/types/index.d.ts",
-        "../../node_modules/@types/react/index.d.ts"
       ],
       "../../node_modules/@types/babel__core/index.d.ts": [
         "../../node_modules/@babel/parser/typings/babel-parser.d.ts",
@@ -2424,10 +2322,6 @@
       "../../configuration/types/webpack-overrides.d.ts",
       "../../node_modules/@babel/parser/typings/babel-parser.d.ts",
       "../../node_modules/@babel/types/lib/index.d.ts",
-      "../../node_modules/@testing-library/react-hooks/lib/index.d.ts",
-      "../../node_modules/@testing-library/react-hooks/lib/pure.d.ts",
-      "../../node_modules/@testing-library/react-hooks/lib/types/index.d.ts",
-      "../../node_modules/@testing-library/react-hooks/lib/types/react.d.ts",
       "../../node_modules/@types/anymatch/index.d.ts",
       "../../node_modules/@types/babel__core/index.d.ts",
       "../../node_modules/@types/babel__generator/index.d.ts",
@@ -2630,26 +2524,20 @@
       "./src/use-click-outside/use-click-outside.ts",
       "./src/use-clipboard/use-clipboard.ts",
       "./src/use-color-scheme/use-color-scheme.ts",
-      "./src/use-document-title/use-document-title.test.ts",
       "./src/use-document-title/use-document-title.ts",
       "./src/use-focus-trap/create-aria-hider.ts",
       "./src/use-focus-trap/focus-manager.ts",
       "./src/use-focus-trap/scope-tab.ts",
       "./src/use-focus-trap/tabbable.ts",
       "./src/use-focus-trap/use-focus-trap.ts",
-      "./src/use-form/use-form.test.ts",
       "./src/use-form/use-form.ts",
-      "./src/use-id/use-id.test.ts",
       "./src/use-id/use-id.ts",
-      "./src/use-list-state/use-list-state.test.ts",
       "./src/use-list-state/use-list-state.ts",
       "./src/use-local-storage-value/use-local-storage-value.ts",
       "./src/use-media-query/use-media-query.ts",
       "./src/use-merged-ref/use-merged-ref.ts",
-      "./src/use-queue/use-queue.test.ts",
       "./src/use-queue/use-queue.ts",
       "./src/use-reduced-motion/use-reduced-motion.ts",
-      "./src/use-scroll-lock/use-scroll-lock.test.ts",
       "./src/use-scroll-lock/use-scroll-lock.ts",
       "./src/use-window-event/use-window-event.ts"
     ]

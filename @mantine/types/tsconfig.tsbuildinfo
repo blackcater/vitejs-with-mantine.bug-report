@@ -1007,8 +1007,8 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/yargs/index.d.ts": {
-        "version": "5a2a25feca554a8f289ed62114771b8c63d89f2b58325e2f8b7043e4e0160d11",
-        "signature": "5a2a25feca554a8f289ed62114771b8c63d89f2b58325e2f8b7043e4e0160d11",
+        "version": "99bbadcf4153b61d79a2616b377da8f42a16fcb41d2136f1f6c2cf070b084216",
+        "signature": "99bbadcf4153b61d79a2616b377da8f42a16fcb41d2136f1f6c2cf070b084216",
         "affectsGlobalScope": false
       }
     },
@@ -1026,13 +1026,7 @@
       "skipLibCheck": true,
       "noEmitOnError": true,
       "allowJs": true,
-      "baseUrl": "../..",
-      "paths": {
-        "@mantine/*": [
-          "./src/mantine-*/src"
-        ]
-      },
-      "pathsBasePath": "/Users/blackcater/Downloads/Codes/javascript/mantine",
+      "baseUrl": "./",
       "rootDir": "./src",
       "outDir": "./lib",
       "declaration": true,

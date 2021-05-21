@@ -4,7 +4,7 @@
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global['@mantine/theme'] = {}, global.React, global.reactJss));
 }(this, (function (exports, React, reactJss) { 'use strict';
 
-  function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
+  function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
   var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 
@@ -332,7 +332,7 @@
     return a;
   };
   function MantineProvider({children, theme}) {
-    return /* @__PURE__ */ React__default.createElement(ThemeProvider, {
+    return /* @__PURE__ */ React__default['default'].createElement(ThemeProvider, {
       theme: mergeTheme(__spreadValues$1({__mantine_theme: true}, DEFAULT_THEME), theme)
     }, children);
   }

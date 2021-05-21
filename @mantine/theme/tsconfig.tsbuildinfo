@@ -341,31 +341,6 @@
         "signature": "4abf3e08fb5b8295ffdd75123f20662e11e63c5f61da64d547ad54db817ce12b",
         "affectsGlobalScope": false
       },
-      "./src/utils/get-focus-styles/get-focus-styles.test.ts": {
-        "version": "dd2e07e13e247a851b564018c3be39c26c45fe5304229b5d56315b9dc43a2ab5",
-        "signature": "d1940a4ccb139323c3f102b72f558cce31147706accfe19dfeabb5b77d1403c5",
-        "affectsGlobalScope": false
-      },
-      "./src/utils/get-font-styles/get-font-styles.test.ts": {
-        "version": "247df00dd6bee094b5b157bc35f086c2f080f1b161d5f6d1939e2022f2f752fc",
-        "signature": "b54089ebbc3e8079508ae9dd83e917dc193c0e09c29f4e147271270e95bd324d",
-        "affectsGlobalScope": false
-      },
-      "./src/utils/get-size-value/get-size-value.test.ts": {
-        "version": "8bc2ee25bd54f72b2825a276cf5521631e7030882f6df3431b2bcc7e08ae4cd7",
-        "signature": "f5314fdee1c7b14344dac82ec71d01353ce9e1162e7039bf25601d1a4f4f33e2",
-        "affectsGlobalScope": false
-      },
-      "./src/utils/get-theme-color/get-theme-color.test.ts": {
-        "version": "728d0b1695fc5100fcc3d6538ebe37076a32d9eca7b0862a0f9cfc0838a77277",
-        "signature": "8f6a62b13e4523071ef2c1ee9ecd336dcae60f3cf5c4e7d2573fbd7c15dfafe3",
-        "affectsGlobalScope": false
-      },
-      "./src/utils/merge-theme/merge-theme.test.ts": {
-        "version": "a47d26330456ef28e13fb5a0b0d5c764d05f92067dea04d4e3cdac910cf66e33",
-        "signature": "9daae3ab878f464396734b33d83efd8cfc7c599332bcba9488ec98da7943014b",
-        "affectsGlobalScope": false
-      },
       "../../configuration/types/webpack-overrides.d.ts": {
         "version": "36b84d4ff6f8021d1b752145eaf03c2b672a5f1bb48ae3213883d98545177fef",
         "signature": "36b84d4ff6f8021d1b752145eaf03c2b672a5f1bb48ae3213883d98545177fef",
@@ -1127,8 +1102,8 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/yargs/index.d.ts": {
-        "version": "5a2a25feca554a8f289ed62114771b8c63d89f2b58325e2f8b7043e4e0160d11",
-        "signature": "5a2a25feca554a8f289ed62114771b8c63d89f2b58325e2f8b7043e4e0160d11",
+        "version": "99bbadcf4153b61d79a2616b377da8f42a16fcb41d2136f1f6c2cf070b084216",
+        "signature": "99bbadcf4153b61d79a2616b377da8f42a16fcb41d2136f1f6c2cf070b084216",
         "affectsGlobalScope": false
       }
     },
@@ -1146,13 +1121,7 @@
       "skipLibCheck": true,
       "noEmitOnError": true,
       "allowJs": true,
-      "baseUrl": "../..",
-      "paths": {
-        "@mantine/*": [
-          "./src/mantine-*/src"
-        ]
-      },
-      "pathsBasePath": "/Users/blackcater/Downloads/Codes/javascript/mantine",
+      "baseUrl": "./",
       "rootDir": "./src",
       "outDir": "./lib",
       "declaration": true,
@@ -1765,33 +1734,14 @@
         "./src/types.ts",
         "./src/utils/merge-theme/merge-theme.ts"
       ],
-      "./src/utils/get-focus-styles/get-focus-styles.test.ts": [
-        "./src/default-theme.ts",
-        "./src/utils/get-focus-styles/get-focus-styles.ts"
-      ],
       "./src/utils/get-focus-styles/get-focus-styles.ts": [
         "./src/types.ts"
-      ],
-      "./src/utils/get-font-styles/get-font-styles.test.ts": [
-        "./src/default-theme.ts",
-        "./src/utils/get-font-styles/get-font-styles.ts"
       ],
       "./src/utils/get-font-styles/get-font-styles.ts": [
         "./src/types.ts"
       ],
-      "./src/utils/get-size-value/get-size-value.test.ts": [
-        "./src/utils/get-size-value/get-size-value.ts"
-      ],
-      "./src/utils/get-theme-color/get-theme-color.test.ts": [
-        "./src/default-theme.ts",
-        "./src/utils/get-theme-color/get-theme-color.ts"
-      ],
       "./src/utils/get-theme-color/get-theme-color.ts": [
         "./src/types.ts"
-      ],
-      "./src/utils/merge-theme/merge-theme.test.ts": [
-        "./src/default-theme.ts",
-        "./src/utils/merge-theme/merge-theme.ts"
       ],
       "./src/utils/merge-theme/merge-theme.ts": [
         "./src/types.ts"
@@ -2630,15 +2580,10 @@
       "./src/mantineprovider/theme-context.ts",
       "./src/types.ts",
       "./src/use-mantine-theme/use-mantine-theme.ts",
-      "./src/utils/get-focus-styles/get-focus-styles.test.ts",
       "./src/utils/get-focus-styles/get-focus-styles.ts",
-      "./src/utils/get-font-styles/get-font-styles.test.ts",
       "./src/utils/get-font-styles/get-font-styles.ts",
-      "./src/utils/get-size-value/get-size-value.test.ts",
       "./src/utils/get-size-value/get-size-value.ts",
-      "./src/utils/get-theme-color/get-theme-color.test.ts",
       "./src/utils/get-theme-color/get-theme-color.ts",
-      "./src/utils/merge-theme/merge-theme.test.ts",
       "./src/utils/merge-theme/merge-theme.ts",
       "../mantine-types/lib/index.d.ts"
     ]
