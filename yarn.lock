@@ -231,19 +231,19 @@
   resolved "https://registry.npm.taobao.org/@emotion/memoize/download/@emotion/memoize-0.7.1.tgz?cache=0&sync_timestamp=1607211718513&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40emotion%2Fmemoize%2Fdownload%2F%40emotion%2Fmemoize-0.7.1.tgz#e93c13942592cf5ef01aa8297444dc192beee52f"
   integrity sha1-6TwTlCWSz17wGqgpdETcGSvu5S8=
 
-"@mantine/core@^1.0.6":
-  version "1.0.6"
-  resolved "https://registry.nlark.com/@mantine/core/download/@mantine/core-1.0.6.tgz#41e8ae7f57aa840486d8426e73d6fe494befc6b4"
-  integrity sha1-Qeiuf1eqhASG2EJuc9b+SUvvxrQ=
+"@mantine/core@1.2.0-alpha.5":
+  version "1.2.0-alpha.5"
+  resolved "https://registry.nlark.com/@mantine/core/download/@mantine/core-1.2.0-alpha.5.tgz#c854800e98dc848482be738ea1dca47986ad47f8"
+  integrity sha1-yFSADpjchISCvnOOodykeYatR/g=
   dependencies:
     clsx "^1.1.1"
-    react-textarea-autosize "^8.3.0"
+    react-textarea-autosize "^8.3.2"
     react-transition-group "^4.4.1"
 
-"@mantine/hooks@^1.0.6":
-  version "1.0.6"
-  resolved "https://registry.nlark.com/@mantine/hooks/download/@mantine/hooks-1.0.6.tgz#8ce6fe52202b08850e1f31fd0d33a36dc9fb746e"
-  integrity sha1-jOb+UiArCIUOHzH9DTOjbcn7dG4=
+"@mantine/hooks@1.2.0-alpha.5":
+  version "1.2.0-alpha.5"
+  resolved "https://registry.nlark.com/@mantine/hooks/download/@mantine/hooks-1.2.0-alpha.5.tgz#2f31dc585be884dfb33af2c2a8bee5d9bcab7418"
+  integrity sha1-LzHcWFvohN+zOvLCqL7l2byrdBg=
 
 "@types/prop-types@*":
   version "15.7.3"
@@ -710,7 +710,7 @@ react-refresh@^0.9.0:
   resolved "https://registry.nlark.com/react-refresh/download/react-refresh-0.9.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.nlark.com%2Freact-refresh%2Fdownload%2Freact-refresh-0.9.0.tgz#71863337adc3e5c2f8a6bfddd12ae3bfe32aafbf"
   integrity sha1-cYYzN63D5cL4pr/d0Srjv+Mqr78=
 
-react-textarea-autosize@^8.3.0:
+react-textarea-autosize@^8.3.2:
   version "8.3.2"
   resolved "https://registry.npm.taobao.org/react-textarea-autosize/download/react-textarea-autosize-8.3.2.tgz#4f9374d357b0a6f6469956726722549124a1b2db"
   integrity sha1-T5N001ewpvZGmVZyZyJUkSShsts=
